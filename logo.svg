@@ -1,0 +1,16 @@
+ <svg xmlns="http://www.w3.org/2000/svg" width="300" height="80" viewBox="0 0 300 80">               
+    <!-- Fond transparent -->                                                                         
+                                                                                                      
+    <!-- Icône -->                                                                                    
+    <rect x="10" y="15" width="50" height="50" rx="12" fill="#2563eb"/>                               
+    <text x="35" y="48" font-family="Segoe UI, sans-serif" font-size="28" font-weight="700"           
+  fill="white" text-anchor="middle">R</text>                                                          
+                                                                                                      
+    <!-- Texte Romand -->                                                                             
+    <text x="75" y="42" font-family="Segoe UI, sans-serif" font-size="26" font-weight="700" 
+  fill="#1a1a2e">Romand</text>                                                                        
+                  
+    <!-- Texte Web -->                                                                                
+    <text x="75" y="65" font-family="Segoe UI, sans-serif" font-size="18" font-weight="400" 
+  fill="#2563eb" letter-spacing="6">WEB</text>                                                        
+  </svg>  
