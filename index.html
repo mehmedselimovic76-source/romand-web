@@ -1,276 +1,847 @@
-  <!DOCTYPE html>                                                                                     
-  <html lang="fr">                                                                                    
-  <head>          
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />                          
-    <title>Romand Web – Sites Internet pour PME de Romandie</title>
-    <style>                                                                                           
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font-family: 'Segoe UI', sans-serif; color: #1a1a2e; }                                   
-                                                                                                      
-      /* NAVBAR */                                                                                    
-      nav {                                                                                           
-        background: #fff;                                                                             
-        padding: 20px 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.08);                                                      
-        position: sticky;
-        top: 0;                                                                                       
-        z-index: 100;
-      }                                                                                               
-      nav .logo { font-size: 1.5rem; font-weight: 700; color: #2563eb; display: flex; align-items:
-  center; gap: 8px; letter-spacing: -0.5px; }                                                         
-      nav .logo .logo-icon { font-size: 1.8rem; color: #2563eb; line-height: 1; }                                                                 
-                                                                                                      
-      /* HERO */                                                                                      
-      .hero {     
-        background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-        color: white;                                                                                 
-        text-align: center;
-        padding: 100px 20px;                                                                          
-      }           
-      .hero h1 { font-size: 2.8rem; margin-bottom: 20px; line-height: 1.3; }
-      .hero p { font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9; }                               
-      .btn {                                                                                          
-        background: #fff;                                                                             
-        color: #2563eb;                                                                               
-        padding: 15px 40px;
-        border-radius: 50px;
-        text-decoration: none;                                                                        
-        font-weight: 700;
-        font-size: 1rem;                                                                              
-        transition: transform 0.2s;
-      }
-      .btn:hover { transform: scale(1.05); }                                                          
-   
-      /* SECTION TITLE */                                                                             
-      .section { padding: 80px 20px; text-align: center; }
-      .section h2 { font-size: 2rem; margin-bottom: 15px; color: #1a1a2e; }
-      .section p.sub { color: #666; margin-bottom: 50px; font-size: 1.05rem; }                        
-                                                                                                      
-      /* SERVICES */                                                                                  
-      .services-grid {                                                                                
-        display: flex;
-        justify-content: center;
-        gap: 30px;                                                                                    
-        flex-wrap: wrap;
-        max-width: 1100px;                                                                            
-        margin: 0 auto;
-      }                                                                                               
-      .card {
-        background: #fff;                                                                             
-        border-radius: 16px;
-        padding: 40px 30px;
-        width: 300px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08);                                                      
-        transition: transform 0.2s;
-      }                                                                                               
-      .card:hover { transform: translateY(-5px); }
-      .card.popular { border: 2px solid #2563eb; }                                                    
-      .card .badge {                                                                                  
-        background: #2563eb;
-        color: white;                                                                                 
-        font-size: 0.75rem;
-        padding: 4px 12px;
-        border-radius: 20px;                                                                          
-        display: inline-block;
-        margin-bottom: 15px;                                                                          
-      }           
-      .card h3 { font-size: 1.4rem; margin-bottom: 10px; }
-      .card .price { font-size: 2rem; font-weight: 700; color: #2563eb; margin: 15px 0; }             
-      .card ul { list-style: none; text-align: left; margin-bottom: 25px; }                           
-      .card ul li { padding: 6px 0; color: #444; }                                                    
-      .card ul li::before { content: "✓ "; color: #2563eb; font-weight: 700; }                        
-      .card a {                                                                                       
-        display: block;                                                                               
-        background: #2563eb;                                                                          
-        color: white;
-        padding: 12px;                                                                                
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;                                                                             
-        transition: background 0.2s;
-      }                                                                                               
-      .card a:hover { background: #1e40af; }
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Romand Web – Sites Internet pour PME de Romandie</title>
+  <meta name="description" content="Romand Web crée des sites internet professionnels pour les PME de Romandie. Design moderne, livraison rapide, prix transparent. Devis gratuit." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://romand-web.ch/" />
 
-      /* WHY US */                                                                                    
-      .why { background: #f8faff; }
-      .why-grid {                                                                                     
-        display: flex;
-        justify-content: center;                                                                      
-        gap: 30px;
-        flex-wrap: wrap;                                                                              
-        max-width: 900px;
-        margin: 0 auto;
-      }
-      .why-item { width: 220px; }
-      .why-item .icon { font-size: 2.5rem; margin-bottom: 15px; }                                     
-      .why-item h4 { font-size: 1.1rem; margin-bottom: 8px; }                                         
-      .why-item p { color: #666; font-size: 0.95rem; }                                                
-                                                                                                      
-      /* CONTACT */
-      .contact { background: #1a1a2e; color: white; }                                                 
-      .contact h2 { color: white; }                                                                   
-      .contact p.sub { color: #aaa; }
-      .contact form {                                                                                 
-        max-width: 500px;
-        margin: 0 auto;                                                                               
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-      }                                                                                               
-      .contact input, .contact textarea {
-        padding: 14px;                                                                                
-        border-radius: 8px;
-        border: none;
-        font-size: 1rem;
-        font-family: inherit;                                                                         
-      }
-      .contact textarea { height: 130px; resize: vertical; }                                          
-      .contact button {
-        background: #2563eb;                                                                          
-        color: white;
-        padding: 15px;                                                                                
-        border: none;
-        border-radius: 8px;
-        font-size: 1rem;
-        font-weight: 700;
-        cursor: pointer;                                                                              
-        transition: background 0.2s;
-      }                                                                                               
-      .contact button:hover { background: #1e40af; }
+  <!-- Open Graph / WhatsApp / LinkedIn -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://romand-web.ch/" />
+  <meta property="og:title" content="Romand Web – Sites Internet pour PME de Romandie" />
+  <meta property="og:description" content="Des sites internet professionnels pour les PME locales. Simple, rapide et abordable. Devis gratuit sous 24h." />
+  <meta property="og:image" content="https://romand-web.ch/og-image.jpg" />
+  <meta property="og:locale" content="fr_CH" />
+  <meta property="og:site_name" content="Romand Web" />
 
-      /* FOOTER */
-      footer {
-        background: #111;
-        color: #888;                                                                                  
-        text-align: center;
-        padding: 20px;                                                                                
-        font-size: 0.9rem;
-      }                                                                                               
-   
-      @media (max-width: 768px) {                                                                     
-        .hero h1 { font-size: 2rem; }
-        nav a { display: none; }
-      }                                                                                               
-    </style>
-  </head>                                                                                             
-  <body>          
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Romand Web – Sites Internet pour PME de Romandie" />
+  <meta name="twitter:description" content="Des sites internet professionnels pour les PME locales. Simple, rapide et abordable." />
+  <meta name="twitter:image" content="https://romand-web.ch/og-image.jpg" />
 
-    <!-- NAVBAR -->
-    <nav>
-      <div class="logo">
-        <span class="logo-icon">◈</span> Romand Web
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #1d1d1f;
+      --gray: #6e6e73;
+      --light-gray: #f5f5f7;
+      --blue: #0071e3;
+      --blue-hover: #0077ed;
+      --white: #ffffff;
+      --divider: rgba(0,0,0,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--black);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAVBAR */
+    nav {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--divider);
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 22px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      max-width: 100%;
+    }
+    /* LOGO ANIMATION */
+    @keyframes logoSpin {
+      0%   { transform: rotate(0deg) scale(1); }
+      25%  { transform: rotate(90deg) scale(1.15); }
+      50%  { transform: rotate(180deg) scale(1); }
+      75%  { transform: rotate(270deg) scale(1.15); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+    @keyframes logoPulse {
+      0%, 100% { opacity: 1; filter: drop-shadow(0 0 0px var(--blue)); }
+      50%       { opacity: 0.85; filter: drop-shadow(0 0 6px var(--blue)); }
+    }
+    nav .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--black);
+      letter-spacing: -0.3px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    nav .logo-icon {
+      color: var(--blue);
+      font-size: 1.5rem;
+      display: inline-block;
+      animation: logoSpin 6s cubic-bezier(0.4,0,0.2,1) infinite, logoPulse 3s ease-in-out infinite;
+      transform-origin: center;
+    }
+    nav .logo:hover .logo-icon {
+      animation: logoSpin 1s cubic-bezier(0.4,0,0.2,1) infinite, logoPulse 1s ease-in-out infinite;
+    }
+    nav .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    nav .nav-links a {
+      text-decoration: none;
+      color: var(--black);
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.2px;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    nav .nav-links a:hover { opacity: 1; }
+    nav .nav-cta {
+      color: var(--blue) !important;
+      opacity: 1 !important;
+      font-weight: 500 !important;
+    }
+
+    /* HERO */
+    @keyframes heroBgSpin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to   { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    .hero {
+      background: var(--light-gray);
+      text-align: center;
+      padding: 90px 20px 100px;
+      border-bottom: 1px solid var(--divider);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '◈';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(0deg);
+      font-size: 52vw;
+      color: rgba(0, 113, 227, 0.045);
+      animation: heroBgSpin 20s linear infinite;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+      z-index: 0;
+    }
+    .hero > * { position: relative; z-index: 1; }
+    .hero .eyebrow {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: var(--blue);
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-size: 5.2rem;
+      font-weight: 800;
+      letter-spacing: -3px;
+      line-height: 1.02;
+      color: var(--black);
+      margin-bottom: 24px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero p {
+      font-size: 1.35rem;
+      color: var(--gray);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    .hero-links { display: flex; gap: 24px; justify-content: center; align-items: center; flex-wrap: wrap; }
+    .hero-links a.cta-primary {
+      background: var(--blue);
+      color: white;
+      padding: 15px 32px;
+      border-radius: 980px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: background 0.2s;
+      letter-spacing: 0.1px;
+    }
+    .hero-links a.cta-primary:hover { background: var(--blue-hover); }
+    .hero-links a.cta-secondary {
+      color: var(--blue);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .hero-links a.cta-secondary::after { content: ' ›'; }
+    .hero-links a.cta-secondary:hover { opacity: 0.7; }
+
+    /* TRUST BAND */
+    .trust-band {
+      background: var(--white);
+      border-bottom: 1px solid var(--divider);
+      padding: 22px 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 32px;
+      border-right: 1px solid var(--divider);
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-item .trust-num {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--black);
+    }
+    .trust-item .trust-label {
+      font-size: 0.88rem;
+      color: var(--gray);
+      font-weight: 400;
+    }
+    @media (max-width: 768px) {
+      .trust-item { border-right: none; border-bottom: 1px solid var(--divider); width: 100%; justify-content: center; padding: 12px 0; }
+      .trust-item:last-child { border-bottom: none; }
+      .trust-band { padding: 0 20px; }
+    }
+
+    /* SECTION BASE */
+    .section {
+      padding: 90px 40px;
+      text-align: center;
+      border-bottom: 1px solid var(--divider);
+    }
+    .section .eyebrow {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section h2 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      color: var(--black);
+      margin-bottom: 14px;
+      line-height: 1.08;
+    }
+    .section p.sub {
+      font-size: 1.15rem;
+      color: var(--gray);
+      max-width: 460px;
+      margin: 0 auto 60px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* PRICING */
+    .services-grid {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      max-width: 1020px;
+      margin: 0 auto;
+    }
+    .card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 40px 32px;
+      width: 300px;
+      border: 1px solid rgba(0,0,0,0.1);
+      text-align: left;
+      transition: box-shadow 0.3s;
+    }
+    .card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .card.popular {
+      background: var(--black);
+      border-color: var(--black);
+      color: white;
+    }
+    .card .badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 20px;
+      display: block;
+    }
+    .card.popular .badge { color: #60a5fa; }
+    .card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+    .card.popular h3 { color: white; }
+    .card .price {
+      font-size: 3.4rem;
+      font-weight: 800;
+      letter-spacing: -2px;
+      color: var(--black);
+      line-height: 1;
+      margin: 14px 0 4px;
+    }
+    .card.popular .price { color: white; }
+    .card .price-note {
+      font-size: 0.78rem;
+      color: #aeaeb2;
+      margin-bottom: 28px;
+    }
+    .card .divider {
+      height: 1px;
+      background: rgba(0,0,0,0.08);
+      margin-bottom: 24px;
+    }
+    .card.popular .divider { background: rgba(255,255,255,0.1); }
+    .card ul { list-style: none; margin-bottom: 32px; }
+    .card ul li {
+      padding: 6px 0;
+      font-size: 0.95rem;
+      color: #3a3a3c;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+    .card.popular ul li { color: #aeaeb2; }
+    .card ul li::before {
+      content: '✓';
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 0.8rem;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+    .card.popular ul li::before { color: #60a5fa; }
+    .card a.card-btn {
+      display: block;
+      text-align: center;
+      padding: 14px;
+      border-radius: 980px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.1px;
+      background: var(--light-gray);
+      color: var(--blue);
+      border: none;
+      transition: background 0.2s;
+    }
+    .card a.card-btn:hover { background: #e8e8ed; }
+    .card.popular a.card-btn {
+      background: var(--blue);
+      color: white;
+    }
+    .card.popular a.card-btn:hover { background: var(--blue-hover); }
+
+    /* WHY US */
+    .why { background: var(--light-gray); }
+    .why-grid {
+      display: flex;
+      justify-content: center;
+      gap: 1px;
+      flex-wrap: wrap;
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--divider);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+    .why-item {
+      background: var(--light-gray);
+      padding: 44px 36px;
+      width: 240px;
+      flex: 1;
+      min-width: 200px;
+      text-align: center;
+    }
+    .why-item .icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .why-item h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+      margin-bottom: 8px;
+      color: var(--black);
+    }
+    .why-item p {
+      color: var(--gray);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      font-weight: 300;
+    }
+
+    /* CONTACT */
+    .contact { background: var(--white); }
+    .contact form {
+      max-width: 460px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .contact input, .contact textarea {
+      padding: 15px 18px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.15);
+      background: var(--light-gray);
+      font-size: 1rem;
+      font-family: inherit;
+      color: var(--black);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      -webkit-appearance: none;
+    }
+    .contact input::placeholder, .contact textarea::placeholder { color: #aeaeb2; }
+    .contact input:focus, .contact textarea:focus {
+      border-color: var(--blue);
+      background: white;
+    }
+    .contact textarea { height: 120px; resize: vertical; }
+    .contact button {
+      background: var(--blue);
+      color: white;
+      padding: 16px;
+      border: none;
+      border-radius: 980px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-family: inherit;
+      letter-spacing: 0.1px;
+      margin-top: 4px;
+    }
+    .contact button:hover { background: var(--blue-hover); }
+    .contact .form-note {
+      font-size: 0.75rem;
+      color: #aeaeb2;
+      text-align: center;
+      margin-top: 6px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--light-gray);
+      border-top: 1px solid var(--divider);
+      padding: 22px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    footer p { font-size: 0.78rem; color: #aeaeb2; }
+    footer .footer-links { display: flex; gap: 20px; }
+    footer .footer-links a { font-size: 0.78rem; color: #aeaeb2; text-decoration: none; }
+    footer .footer-links a:hover { color: var(--gray); }
+
+    /* SCROLL ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.94); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes slideLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    [data-anim] {
+      opacity: 0;
+    }
+    [data-anim].visible {
+      animation-fill-mode: both;
+      animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+      animation-duration: 0.7s;
+    }
+    [data-anim="fade-up"].visible    { animation-name: fadeUp; }
+    [data-anim="fade-in"].visible    { animation-name: fadeIn; }
+    [data-anim="scale-in"].visible   { animation-name: scaleIn; }
+    [data-anim="slide-left"].visible { animation-name: slideLeft; }
+    [data-anim="slide-right"].visible{ animation-name: slideRight; }
+
+    [data-delay="100"].visible { animation-delay: 0.1s; }
+    [data-delay="200"].visible { animation-delay: 0.2s; }
+    [data-delay="300"].visible { animation-delay: 0.3s; }
+    [data-delay="400"].visible { animation-delay: 0.4s; }
+    [data-delay="500"].visible { animation-delay: 0.5s; }
+    [data-delay="600"].visible { animation-delay: 0.6s; }
+
+    /* HAMBURGER */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--black);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 52px;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--divider);
+      flex-direction: column;
+      padding: 12px 0;
+      z-index: 99;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none;
+      color: var(--black);
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--divider);
+      transition: background 0.15s;
+    }
+    .mobile-menu a:last-child { border-bottom: none; color: var(--blue); }
+    .mobile-menu a:active { background: var(--light-gray); }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 3rem; letter-spacing: -1.5px; }
+      .section h2 { font-size: 2.4rem; }
+      nav .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .section { padding: 70px 20px; }
+      footer { justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="#" class="logo">
+      <span class="logo-icon">◈</span> Romand Web
+    </a>
+    <div class="nav-links">
+      <a href="#services">Offres</a>
+      <a href="#why">Pourquoi nous</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#services" class="mobile-link">Offres</a>
+    <a href="#why" class="mobile-link">Pourquoi nous</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="eyebrow" data-anim="fade-in" data-delay="100">Agence Web · Romandie</div>
+    <h1 data-anim="fade-up" data-delay="200">Votre vitrine<br>digitale en Romandie.</h1>
+    <p data-anim="fade-up" data-delay="300">Des sites internet professionnels pour les PME locales. Simple, rapide et abordable.</p>
+    <div class="hero-links" data-anim="fade-up" data-delay="400">
+      <a href="#contact" class="cta-primary">Demander un devis gratuit</a>
+      <a href="#services" class="cta-secondary">Voir nos offres</a>
+    </div>
+  </section>
+
+  <!-- TRUST BAND -->
+  <div class="trust-band">
+    <div class="trust-item" data-anim="fade-in" data-delay="100">
+      <span class="trust-num" data-count="50" data-suffix="+">0+</span>
+      <span class="trust-label">clients satisfaits</span>
+    </div>
+    <div class="trust-item" data-anim="fade-in" data-delay="200">
+      <span class="trust-num" data-count-range="7,14" data-suffix="">7–14</span>
+      <span class="trust-label">jours de livraison</span>
+    </div>
+    <div class="trust-item" data-anim="fade-in" data-delay="300">
+      <span class="trust-num" data-count="100" data-suffix="%">0%</span>
+      <span class="trust-label">local · Romandie</span>
+    </div>
+    <div class="trust-item" data-anim="fade-in" data-delay="400">
+      <span class="trust-num" data-count="24" data-suffix="h">0h</span>
+      <span class="trust-label">réponse garantie</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="eyebrow" data-anim="fade-in">Tarifs</div>
+    <h2 data-anim="fade-up" data-delay="100">Nos offres.</h2>
+    <p class="sub" data-anim="fade-up" data-delay="200">Des forfaits clairs, sans surprise.</p>
+    <div class="services-grid">
+
+      <div class="card" data-anim="fade-up" data-delay="100">
+        <span class="badge">Starter</span>
+        <h3>CHF 299</h3>
+        <div class="price-note">paiement unique · mise en ligne incluse</div>
+        <div class="divider"></div>
+        <ul>
+          <li>1 page complète</li>
+          <li>Design responsive</li>
+          <li>Formulaire de contact</li>
+          <li>Mise en ligne incluse</li>
+        </ul>
+        <a href="#contact" class="card-btn">Choisir Starter</a>
       </div>
-        <a href="#services">Offres</a>                                                                
-        <a href="#why">Pourquoi nous</a>
-        <a href="#contact">Contact</a>                                                                
-      </div>      
-    </nav>                                                                                            
-                  
-    <!-- HERO -->
-    <section class="hero">
-      <h1>Votre vitrine digitale<br>en Romandie</h1>
-      <p>Nous créons des sites internet professionnels pour les PME locales.<br>Simple, rapide et     
-  abordable.</p>                                                                                      
-      <a href="#contact" class="btn">Demander un devis gratuit</a>                                    
-    </section>                                                                                        
-                  
-    <!-- SERVICES -->                                                                                 
-    <section class="section" id="services">
-      <h2>Nos offres</h2>
-      <p class="sub">Des forfaits clairs, sans surprise.</p>                                          
-      <div class="services-grid">
-                                                                                                      
-        <div class="card">
-          <h3>Starter</h3>
-          <div class="price">CHF 299</div>
-          <ul>                                                                                        
-            <li>1 page complète</li>
-            <li>Design responsive (mobile)</li>                                                       
-            <li>Formulaire de contact</li>                                                            
-            <li>Mise en ligne incluse</li>
-          </ul>                                                                                       
-          <a href="#contact">Choisir ce forfait</a>                                                   
-        </div>
-                                                                                                      
-        <div class="card popular">                                                                    
-          <div class="badge">⭐ Populaire</div>
-          <h3>Business</h3>                                                                           
-          <div class="price">CHF 599</div>
-          <ul>
-            <li>3 à 5 pages</li>
-            <li>Optimisation SEO de base</li>                                                         
-            <li>Intégration Google Maps</li>
-            <li>Design personnalisé</li>                                                              
-          </ul>   
-          <a href="#contact">Choisir ce forfait</a>                                                   
-        </div>    
-                                                                                                      
-        <div class="card">
-          <h3>Premium</h3>                                                                            
-          <div class="price">CHF 999</div>
-          <ul>
-            <li>Boutique en ligne complète</li>
-            <li>Jusqu'à 10 pages</li>                                                                 
-            <li>Shopify ou WooCommerce</li>
-            <li>Formation incluse</li>                                                                
-          </ul>                                                                                       
-          <a href="#contact">Choisir ce forfait</a>
-        </div>                                                                                        
-                  
+
+      <div class="card popular" data-anim="scale-in" data-delay="200">
+        <span class="badge">⭐ Le plus populaire</span>
+        <h3>CHF 599</h3>
+        <div class="price-note">Business · paiement unique</div>
+        <div class="divider"></div>
+        <ul>
+          <li>3 à 5 pages</li>
+          <li>Optimisation SEO de base</li>
+          <li>Intégration Google Maps</li>
+          <li>Design personnalisé</li>
+        </ul>
+        <a href="#contact" class="card-btn">Choisir Business</a>
       </div>
-    </section>
 
-    <!-- WHY US -->
-    <section class="section why" id="why">
-      <h2>Pourquoi Romand Web ?</h2>                                                                  
-      <p class="sub">Nous comprenons les besoins des entreprises locales.</p>
-      <div class="why-grid">                                                                          
-        <div class="why-item">
-          <div class="icon">🏡</div>                                                                  
-          <h4>Local & proche</h4>                                                                     
-          <p>Basé en Romandie, nous parlons votre langue et connaissons votre marché.</p>
-        </div>                                                                                        
-        <div class="why-item">
-          <div class="icon">⚡</div>                                                                  
-          <h4>Rapide</h4>
-          <p>Votre site livré en 7 à 14 jours ouvrables.</p>                                          
-        </div>                                                                                        
-        <div class="why-item">                                                                        
-          <div class="icon">💰</div>                                                                  
-          <h4>Prix transparent</h4>
-          <p>Pas de frais cachés. Vous savez exactement ce que vous payez.</p>                        
-        </div>
-        <div class="why-item">                                                                        
-          <div class="icon">📱</div>
-          <h4>100% mobile</h4>
-          <p>Tous nos sites sont optimisés pour smartphones et tablettes.</p>
-        </div>
+      <div class="card" data-anim="fade-up" data-delay="300">
+        <span class="badge">Premium</span>
+        <h3>CHF 999</h3>
+        <div class="price-note">paiement unique · formation incluse</div>
+        <div class="divider"></div>
+        <ul>
+          <li>Boutique en ligne complète</li>
+          <li>Jusqu'à 10 pages</li>
+          <li>Shopify ou WooCommerce</li>
+          <li>Formation incluse</li>
+        </ul>
+        <a href="#contact" class="card-btn">Choisir Premium</a>
       </div>
-    </section>
 
-    <!-- CONTACT -->
-    <section class="section contact" id="contact">
-      <h2>Demandez un devis gratuit</h2>                                                              
-      <p class="sub">Réponse sous 24h — sans engagement.</p>
-      <form action="https://formspree.io/f/mzdygoeo" method="POST">                            
-        <input type="text" name="name" placeholder="Votre nom & entreprise" required />               
-        <input type="email" name="email" placeholder="Votre adresse email" required />                
-        <input type="tel" name="phone" placeholder="Votre numéro de téléphone (optionnel)" />         
-        <textarea name="message" placeholder="Décrivez votre projet en quelques mots..."></textarea>  
-        <button type="submit">Envoyer ma demande →</button>                                           
-      </form>                                                                                         
-    </section>                                                                                        
-                                                                                                      
-    <!-- FOOTER -->
-    <footer>                                                                                          
-      <p>© 2026 Romand Web — Tous droits réservés | Romandie, Suisse</p>
-    </footer>                                                                                         
-   
-  </body>                                                                                             
-  </html>         
+    </div>
+    <p data-anim="fade-in" data-delay="400" style="margin-top: 32px; font-size: 0.8rem; color: #aeaeb2;">* L'achat du nom de domaine est exclu de tous les tarifs.</p>
+  </section>
 
+  <!-- WHY US -->
+  <section class="section why" id="why">
+    <div class="eyebrow" data-anim="fade-in">Nos atouts</div>
+    <h2 data-anim="fade-up" data-delay="100">Pourquoi Romand Web ?</h2>
+    <p class="sub" data-anim="fade-up" data-delay="200">Nous comprenons les besoins des entreprises locales de Romandie.</p>
+    <div class="why-grid">
+      <div class="why-item" data-anim="slide-left" data-delay="100">
+        <span class="icon">🏡</span>
+        <h4>Local & proche</h4>
+        <p>Basé en Romandie, nous parlons votre langue et connaissons votre marché.</p>
+      </div>
+      <div class="why-item" data-anim="fade-up" data-delay="200">
+        <span class="icon">⚡</span>
+        <h4>Livraison rapide</h4>
+        <p>Votre site livré en 7 à 14 jours ouvrables.</p>
+      </div>
+      <div class="why-item" data-anim="fade-up" data-delay="300">
+        <span class="icon">💰</span>
+        <h4>Prix transparent</h4>
+        <p>Pas de frais cachés. Vous savez exactement ce que vous payez.</p>
+      </div>
+      <div class="why-item" data-anim="slide-right" data-delay="400">
+        <span class="icon">📱</span>
+        <h4>100% mobile</h4>
+        <p>Tous nos sites sont optimisés pour smartphones et tablettes.</p>
+      </div>
+    </div>
+  </section>
 
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="eyebrow" data-anim="fade-in">Devis gratuit</div>
+    <h2 data-anim="fade-up" data-delay="100">Travaillons ensemble.</h2>
+    <p class="sub" data-anim="fade-up" data-delay="200">Réponse sous 24h — sans engagement.</p>
+    <form id="contact-form" data-anim="fade-up" data-delay="300">
+      <input type="text" name="name" placeholder="Votre nom & entreprise" required />
+      <input type="email" name="email" placeholder="Adresse email" required />
+      <input type="tel" name="phone" placeholder="Téléphone (optionnel)" />
+      <textarea name="message" placeholder="Décrivez votre projet..."></textarea>
+      <div class="h-captcha" data-sitekey="5be2c998-15a0-4876-9f7a-b944f43429ae" style="margin: 4px 0;"></div>
+      <button type="submit" id="form-btn">Envoyer →</button>
+      <p class="form-note">Réponse garantie sous 24h ouvrables.</p>
+    </form>
+    <div id="form-success" style="display:none; margin-top: 32px; padding: 28px 32px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; max-width: 460px; margin-left: auto; margin-right: auto;">
+      <p style="font-size: 1.4rem; font-weight: 700; color: #15803d; margin-bottom: 8px;">Message envoyé ✓</p>
+      <p style="font-size: 0.95rem; color: #4b5563; line-height: 1.6;">Merci pour votre demande. Nous vous répondons sous 24h ouvrables.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Romand Web — Romandie, Suisse</p>
+    <div class="footer-links">
+      <a href="#services">Offres</a>
+      <a href="#why">Pourquoi nous</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    // AJAX form submission — no Formspree redirect
+    const form = document.getElementById('contact-form');
+    const btn  = document.getElementById('form-btn');
+    const success = document.getElementById('form-success');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Vérification hCaptcha
+      const captchaRes = form.querySelector('[name="h-captcha-response"]');
+      if (!captchaRes || !captchaRes.value) {
+        alert('Veuillez compléter le CAPTCHA.');
+        return;
+      }
+
+      btn.textContent = 'Envoi en cours…';
+      btn.disabled = true;
+
+      const res = await fetch('https://formspree.io/f/xqewdqjp', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+        success.style.animation = 'fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) both';
+      } else {
+        btn.textContent = 'Erreur — réessayez';
+        btn.disabled = false;
+      }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('[data-anim]').forEach(el => observer.observe(el));
+
+    // Counter animation
+    function animateCount(el) {
+      if (el.dataset.animated) return;
+      el.dataset.animated = '1';
+
+      if (el.dataset.countRange) {
+        const [from, to] = el.dataset.countRange.split(',').map(Number);
+        const duration = 1200;
+        const start = performance.now();
+        const step = ts => {
+          const p = Math.min((ts - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          const vFrom = Math.round(from + (from * ease));
+          const vTo   = Math.round(to * ease);
+          el.textContent = (vFrom > from ? vFrom : from) + '–' + (vTo < to ? vTo : to);
+          if (p < 1) requestAnimationFrame(step);
+          else el.textContent = from + '–' + to;
+        };
+        requestAnimationFrame(step);
+        return;
+      }
+
+      const target = parseInt(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      const duration = target >= 50 ? 1400 : 1000;
+      const start = performance.now();
+      const step = ts => {
+        const p = Math.min((ts - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * ease) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+        else el.textContent = target + suffix;
+      };
+      requestAnimationFrame(step);
+    }
+
+    const counterObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const nums = entry.target.querySelectorAll('[data-count], [data-count-range]');
+          nums.forEach(n => setTimeout(() => animateCount(n), parseInt(n.closest('[data-delay]')?.dataset.delay || 0)));
+          if (nums.length) counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    document.querySelector('.trust-band') && counterObserver.observe(document.querySelector('.trust-band'));
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
