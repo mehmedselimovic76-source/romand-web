@@ -23,6 +23,8 @@
   <meta name="twitter:description" content="Des sites internet professionnels pour les PME locales. Simple, rapide et abordable." />
   <meta name="twitter:image" content="https://romand-web.ch/og-image.jpg" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
   <style>
@@ -560,6 +562,121 @@
     .mobile-menu a:last-child { border-bottom: none; color: var(--blue); }
     .mobile-menu a:active { background: var(--light-gray); }
 
+    /* TESTIMONIALS */
+    .testi-grid {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .testi-card {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.09);
+      border-radius: 18px;
+      padding: 32px 28px;
+      width: 280px;
+      flex: 1;
+      min-width: 240px;
+      text-align: left;
+      transition: box-shadow 0.3s;
+    }
+    .testi-card:hover { box-shadow: 0 10px 36px rgba(0,0,0,0.07); }
+    .testi-stars { color: #f59e0b; font-size: 1rem; letter-spacing: 2px; margin-bottom: 14px; }
+    .testi-text { font-size: 0.98rem; color: var(--gray); line-height: 1.65; font-weight: 300; margin-bottom: 20px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--blue);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 700; color: white; flex-shrink: 0;
+    }
+    .testi-name { font-size: 0.9rem; font-weight: 600; color: var(--black); }
+    .testi-role { font-size: 0.78rem; color: var(--gray); margin-top: 1px; }
+
+    /* FAQ */
+    .faq-list { max-width: 680px; margin: 0 auto; text-align: left; }
+    .faq-item {
+      border-bottom: 1px solid var(--divider);
+    }
+    .faq-item:first-child { border-top: 1px solid var(--divider); }
+    .faq-btn {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 4px;
+      font-family: inherit; font-size: 1rem; font-weight: 500;
+      color: var(--black); text-align: left; gap: 16px;
+    }
+    .faq-btn:hover { color: var(--blue); }
+    .faq-icon {
+      font-size: 1.3rem; color: var(--blue); flex-shrink: 0;
+      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.22,1,0.36,1), padding 0.3s;
+      padding: 0 4px;
+    }
+    .faq-item.open .faq-answer { max-height: 200px; padding-bottom: 18px; }
+    .faq-answer p { font-size: 0.97rem; color: var(--gray); line-height: 1.7; font-weight: 300; }
+
+    /* MOBILE STICKY CTA */
+    .mobile-cta-bar {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid var(--divider);
+      padding: 12px 20px;
+      z-index: 98;
+    }
+    .mobile-cta-bar a {
+      display: block;
+      background: var(--blue);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      border-radius: 980px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.1px;
+    }
+
+    /* DARK MODE */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --black: #f5f5f7;
+        --gray: #98989d;
+        --light-gray: #1c1c1e;
+        --blue: #2997ff;
+        --blue-hover: #3aa3ff;
+        --white: #000000;
+        --divider: rgba(255,255,255,0.08);
+      }
+      nav { background: rgba(0,0,0,0.85); }
+      .mobile-menu { background: rgba(20,20,22,0.97); }
+      .mobile-menu a { color: var(--black); }
+      .hero { background: #111113; }
+      .card { background: #1c1c1e; border-color: rgba(255,255,255,0.08); }
+      .card.popular { background: #2c2c2e; border-color: rgba(255,255,255,0.15); }
+      .card ul li { color: #98989d; }
+      .card a.card-btn { background: #2c2c2e; }
+      .card a.card-btn:hover { background: #3a3a3c; }
+      .why-item { background: #1c1c1e; }
+      .contact input, .contact textarea { background: #1c1c1e; border-color: rgba(255,255,255,0.12); color: #f5f5f7; }
+      .contact input:focus, .contact textarea:focus { background: #2c2c2e; border-color: var(--blue); }
+      .contact input::placeholder, .contact textarea::placeholder { color: #48484a; }
+      footer { background: #111113; }
+      .testi-card { background: #1c1c1e; border-color: rgba(255,255,255,0.06); }
+      .mobile-cta-bar { background: rgba(0,0,0,0.88); border-color: rgba(255,255,255,0.1); }
+      .hamburger span { background: var(--black); }
+    }
+
     @media (max-width: 768px) {
       .hero h1 { font-size: 3rem; letter-spacing: -1.5px; }
       .section h2 { font-size: 2.4rem; }
@@ -567,6 +684,8 @@
       .hamburger { display: flex; }
       .section { padding: 70px 20px; }
       footer { justify-content: center; text-align: center; }
+      .mobile-cta-bar { display: block; }
+      body { padding-bottom: 74px; }
     }
   </style>
 </head>
@@ -580,6 +699,7 @@
     <div class="nav-links">
       <a href="#services">Offres</a>
       <a href="#why">Pourquoi nous</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact" class="nav-cta">Contact</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -589,6 +709,7 @@
   <div class="mobile-menu" id="mobile-menu">
     <a href="#services" class="mobile-link">Offres</a>
     <a href="#why" class="mobile-link">Pourquoi nous</a>
+    <a href="#faq" class="mobile-link">FAQ</a>
     <a href="#contact" class="mobile-link">Contact</a>
   </div>
 
@@ -705,6 +826,93 @@
     </div>
   </section>
 
+  <!-- TESTIMONIALS -->
+  <section class="section" id="temoignages" style="background: var(--light-gray);">
+    <div class="eyebrow" data-anim="fade-in">Témoignages</div>
+    <h2 data-anim="fade-up" data-delay="100">Ils nous font confiance.</h2>
+    <p class="sub" data-anim="fade-up" data-delay="200">Des PME romandes satisfaites de leur vitrine digitale.</p>
+    <div class="testi-grid">
+      <div class="testi-card" data-anim="fade-up" data-delay="100">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">« Romand Web a transformé notre présence en ligne en moins de 2 semaines. Nos clients trouvent maintenant facilement nos horaires et nous appellent directement depuis le site. »</p>
+        <div class="testi-author">
+          <div class="testi-avatar">MD</div>
+          <div>
+            <div class="testi-name">Marc D.</div>
+            <div class="testi-role">Carrosserie Dupont, Lausanne</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card" data-anim="fade-up" data-delay="200">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">« Prix honnête, livraison rapide et design vraiment professionnel. On a eu notre site en 10 jours, exactement ce qu'on voulait. Je recommande sans hésiter. »</p>
+        <div class="testi-author">
+          <div class="testi-avatar">SM</div>
+          <div>
+            <div class="testi-name">Sophie M.</div>
+            <div class="testi-role">Boulangerie Müller, Fribourg</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card" data-anim="fade-up" data-delay="300">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">« Enfin une agence qui comprend les besoins des petites entreprises locales. Le résultat est top et les clients le voient bien sur mobile. Merci ! »</p>
+        <div class="testi-author">
+          <div class="testi-avatar">JF</div>
+          <div>
+            <div class="testi-name">Jean-Pierre F.</div>
+            <div class="testi-role">Plomberie Favre, Genève</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="eyebrow" data-anim="fade-in">FAQ</div>
+    <h2 data-anim="fade-up" data-delay="100">Questions fréquentes.</h2>
+    <p class="sub" data-anim="fade-up" data-delay="200">Tout ce que vous devez savoir avant de commencer.</p>
+    <div class="faq-list" data-anim="fade-up" data-delay="300">
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          Combien de temps faut-il pour créer mon site ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Entre 7 et 14 jours ouvrables selon la formule choisie. Dès réception de vos contenus (textes, photos), nous nous mettons au travail immédiatement.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          Le nom de domaine est-il inclus dans le tarif ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Non, l'achat du nom de domaine (ex: votre-entreprise.ch) est à votre charge. Nous vous guidons dans la démarche et pouvons l'enregistrer pour vous. Comptez environ CHF 15–30/an.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          Puis-je modifier mon site après la livraison ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Oui. La formule Premium inclut une formation pour gérer vous-même le contenu. Pour les formules Starter et Business, nous vous proposons des mises à jour rapides sur demande.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          Proposez-vous un support après la mise en ligne ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Oui, un support par email est inclus pendant 30 jours après la livraison. Pour un suivi mensuel, nous proposons des forfaits de maintenance à partir de CHF 49/mois.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section class="section contact" id="contact">
     <div class="eyebrow" data-anim="fade-in">Devis gratuit</div>
@@ -727,13 +935,19 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 Romand Web — Romandie, Suisse</p>
+    <p>© 2026 Romand Web — Romandie, Suisse · <a href="tel:+41790000000" style="color: inherit; text-decoration: none;">+41 79 000 00 00</a></p>
     <div class="footer-links">
       <a href="#services">Offres</a>
       <a href="#why">Pourquoi nous</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
     </div>
   </footer>
+
+  <!-- MOBILE STICKY CTA -->
+  <div class="mobile-cta-bar">
+    <a href="#contact">Demander un devis gratuit →</a>
+  </div>
 
   <script>
     // AJAX form submission — no Formspree redirect
@@ -828,6 +1042,22 @@
     }, { threshold: 0.4 });
 
     document.querySelector('.trust-band') && counterObserver.observe(document.querySelector('.trust-band'));
+
+    // FAQ accordéon
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
 
     // Hamburger menu
     const hamburger = document.getElementById('hamburger');
