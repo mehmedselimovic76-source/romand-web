@@ -405,6 +405,26 @@
     .card.popular a.card-btn:hover { background: var(--blue-hover); }
 
     /* WHY US */
+    @keyframes iconBounce {
+      0%, 100% { transform: translateY(0) scale(1); }
+      30%       { transform: translateY(-8px) scale(1.15); }
+      60%       { transform: translateY(-3px) scale(1.05); }
+    }
+    @keyframes iconSpin {
+      0%   { transform: rotate(0deg) scale(1); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+    @keyframes iconPulse {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.25); }
+    }
+    @keyframes iconShake {
+      0%, 100% { transform: rotate(0deg); }
+      20%       { transform: rotate(-12deg); }
+      40%       { transform: rotate(12deg); }
+      60%       { transform: rotate(-8deg); }
+      80%       { transform: rotate(8deg); }
+    }
     .why { background: var(--light-gray); }
     .why-grid {
       display: flex;
@@ -424,19 +444,34 @@
       flex: 1;
       min-width: 200px;
       text-align: center;
+      transition: background 0.3s, transform 0.3s cubic-bezier(0.22,1,0.36,1);
+      cursor: default;
+    }
+    .why-item:hover {
+      background: var(--white);
+      transform: translateY(-4px);
+      z-index: 1;
+      position: relative;
     }
     .why-item .icon {
       font-size: 2rem;
       margin-bottom: 16px;
-      display: block;
+      display: inline-block;
+      transition: transform 0.2s;
     }
+    .why-item:nth-child(1):hover .icon { animation: iconBounce 0.6s ease forwards; }
+    .why-item:nth-child(2):hover .icon { animation: iconPulse 0.5s ease forwards; }
+    .why-item:nth-child(3):hover .icon { animation: iconShake 0.5s ease forwards; }
+    .why-item:nth-child(4):hover .icon { animation: iconSpin 0.6s cubic-bezier(0.4,0,0.2,1) forwards; }
     .why-item h4 {
       font-size: 1.1rem;
       font-weight: 600;
       letter-spacing: -0.2px;
       margin-bottom: 8px;
       color: var(--black);
+      transition: color 0.2s;
     }
+    .why-item:hover h4 { color: var(--blue); }
     .why-item p {
       color: var(--gray);
       font-size: 0.95rem;
