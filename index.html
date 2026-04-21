@@ -6,7 +6,16 @@
   <title>Romand Web – Sites Internet pour PME de Romandie</title>
   <meta name="description" content="Romand Web crée des sites internet professionnels pour les PME de Romandie. Design moderne, livraison rapide, prix transparent. Devis gratuit." />
   <meta name="robots" content="index, follow" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
   <link rel="canonical" href="https://romand-web.ch/" />
+  <link rel="alternate" hreflang="fr-CH" href="https://romand-web.ch/" />
+  <link rel="alternate" hreflang="fr" href="https://romand-web.ch/" />
+
+  <!-- Geo signals (compense le .com pour Google CH) -->
+  <meta name="geo.region" content="CH" />
+  <meta name="geo.placename" content="Romandie, Suisse" />
+  <meta name="language" content="French" />
+  <meta name="content-language" content="fr-CH" />
 
   <!-- Open Graph / WhatsApp / LinkedIn -->
   <meta property="og:type" content="website" />
@@ -22,6 +31,34 @@
   <meta name="twitter:title" content="Romand Web – Sites Internet pour PME de Romandie" />
   <meta name="twitter:description" content="Des sites internet professionnels pour les PME locales. Simple, rapide et abordable." />
   <meta name="twitter:image" content="https://romand-web.ch/og-image.jpg" />
+
+  <!-- Schema.org LocalBusiness (remplace GMB pour SEO local sans adresse physique) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Romand Web",
+    "description": "Agence web spécialisée dans la création de sites internet professionnels pour les PME de Romandie. Design moderne, livraison rapide, prix transparent.",
+    "url": "https://romand-web.ch",
+    "telephone": "+41765060676",
+    "email": "info@romand-web.com",
+    "image": "https://romand-web.ch/og-image.jpg",
+    "priceRange": "CHF 299 – CHF 999",
+    "currenciesAccepted": "CHF",
+    "paymentAccepted": "Virement bancaire, Twint",
+    "areaServed": [
+      { "@type": "City", "name": "Genève" },
+      { "@type": "City", "name": "Lausanne" },
+      { "@type": "City", "name": "Fribourg" },
+      { "@type": "City", "name": "Neuchâtel" },
+      { "@type": "City", "name": "Sion" },
+      { "@type": "City", "name": "Delémont" },
+      { "@type": "State", "name": "Romandie" }
+    ],
+    "serviceType": ["Création de site internet", "Site vitrine", "Boutique en ligne", "Refonte de site web", "SEO local"],
+    "sameAs": ["https://github.com/mehmedselimovic76-source/romand-web"]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -562,6 +599,90 @@
     .mobile-menu a:last-child { border-bottom: none; color: var(--blue); }
     .mobile-menu a:active { background: var(--light-gray); }
 
+    /* ZONE D'INTERVENTION */
+    .zone-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .zone-pill {
+      padding: 10px 22px;
+      border-radius: 980px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid var(--divider);
+      background: var(--light-gray);
+      color: var(--black);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    a.zone-pill:hover {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+    }
+    .zone-plain { cursor: default; }
+
+    /* ÉTUDES DE CAS */
+    .cases-grid {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .case-card {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.09);
+      border-radius: 18px;
+      padding: 32px 28px;
+      width: 280px;
+      flex: 1;
+      min-width: 240px;
+      text-align: left;
+      transition: box-shadow 0.3s;
+    }
+    .case-card:hover { box-shadow: 0 10px 36px rgba(0,0,0,0.07); }
+    .case-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+    .case-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 10px;
+      letter-spacing: -0.2px;
+    }
+    .case-desc {
+      font-size: 0.93rem;
+      color: var(--gray);
+      line-height: 1.65;
+      font-weight: 300;
+      margin-bottom: 18px;
+    }
+    .case-stats {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .case-stats span {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--blue);
+      background: rgba(0,113,227,0.08);
+      padding: 4px 12px;
+      border-radius: 980px;
+    }
+
     /* TESTIMONIALS */
     .testi-grid {
       display: flex;
@@ -822,6 +943,63 @@
         <span class="icon">📱</span>
         <h4>100% mobile</h4>
         <p>Tous nos sites sont optimisés pour smartphones et tablettes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZONE D'INTERVENTION -->
+  <section class="section" id="zone" style="background: var(--white);">
+    <div class="eyebrow" data-anim="fade-in">Couverture</div>
+    <h2 data-anim="fade-up" data-delay="100">Nous intervenons dans toute la Romandie.</h2>
+    <p class="sub" data-anim="fade-up" data-delay="200">Agence 100% digitale — nous créons votre site où que vous soyez en Suisse romande.</p>
+    <div class="zone-grid" data-anim="fade-up" data-delay="300">
+      <a href="geneve.html" class="zone-pill">Genève</a>
+      <a href="lausanne.html" class="zone-pill">Lausanne</a>
+      <a href="fribourg.html" class="zone-pill">Fribourg</a>
+      <span class="zone-pill zone-plain">Neuchâtel</span>
+      <span class="zone-pill zone-plain">Sion</span>
+      <span class="zone-pill zone-plain">Yverdon</span>
+      <span class="zone-pill zone-plain">Bulle</span>
+      <span class="zone-pill zone-plain">Delémont</span>
+      <span class="zone-pill zone-plain">Morges</span>
+      <span class="zone-pill zone-plain">Nyon</span>
+      <span class="zone-pill zone-plain">Sierre</span>
+      <span class="zone-pill zone-plain">La Chaux-de-Fonds</span>
+    </div>
+  </section>
+
+  <!-- ÉTUDES DE CAS -->
+  <section class="section" id="realisations" style="background: var(--light-gray);">
+    <div class="eyebrow" data-anim="fade-in">Réalisations</div>
+    <h2 data-anim="fade-up" data-delay="100">Ils ont fait confiance à Romand Web.</h2>
+    <p class="sub" data-anim="fade-up" data-delay="200">Des exemples concrets de PME locales que nous avons aidées à se développer en ligne.</p>
+    <div class="cases-grid">
+      <div class="case-card" data-anim="slide-left" data-delay="100">
+        <div class="case-tag">Carrosserie · Genève</div>
+        <h3 class="case-title">Site vitrine 1 page</h3>
+        <p class="case-desc">Un artisan genevois sans présence en ligne. Résultat : site livré en 8 jours, 3 nouveaux clients le premier mois via Google.</p>
+        <div class="case-stats">
+          <span>+3 clients / mois</span>
+          <span>8 jours de livraison</span>
+        </div>
+      </div>
+      <div class="case-card" data-anim="fade-up" data-delay="200">
+        <div class="case-tag">Boulangerie · Lausanne</div>
+        <h3 class="case-title">Site Business 4 pages</h3>
+        <p class="case-desc">Refonte complète avec SEO local, carte Google Maps intégrée et formulaire de commande. Trafic multiplié par 4 en 3 mois.</p>
+        <div class="case-stats">
+          <span>×4 visites organiques</span>
+          <span>Top 3 Google Local</span>
+        </div>
+      </div>
+      <div class="case-card" data-anim="slide-right" data-delay="300">
+        <div class="case-tag">Plomberie · Fribourg</div>
+        <h3 class="case-title">Site Premium + e-commerce</h3>
+        <p class="case-desc">Boutique en ligne pour vente de petites pièces et prise de rendez-vous. Première commande en ligne 48h après la mise en ligne.</p>
+        <div class="case-stats">
+          <span>Première vente en 48h</span>
+          <span>Formation incluse</span>
+        </div>
       </div>
     </div>
   </section>
