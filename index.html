@@ -567,6 +567,67 @@
     footer .footer-links a { font-size: 0.78rem; color: #aeaeb2; text-decoration: none; }
     footer .footer-links a:hover { color: var(--gray); }
 
+    /* SUCCESS OVERLAY */
+    #success-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(18px) saturate(180%);
+      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 40px 24px; text-align: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.5s cubic-bezier(0.22,1,0.36,1);
+    }
+    #success-overlay.show { opacity: 1; pointer-events: all; }
+    .suc-checkmark { width: 80px; height: 80px; margin-bottom: 28px; }
+    .suc-circle {
+      stroke: #0071e3; stroke-width: 2.5; fill: none;
+      stroke-dasharray: 166; stroke-dashoffset: 166;
+      stroke-linecap: round;
+      animation: drawCircle 0.7s cubic-bezier(0.22,1,0.36,1) 0.1s forwards;
+    }
+    .suc-check {
+      stroke: #0071e3; stroke-width: 2.5; fill: none;
+      stroke-dasharray: 48; stroke-dashoffset: 48;
+      stroke-linecap: round; stroke-linejoin: round;
+      animation: drawCheck 0.4s cubic-bezier(0.22,1,0.36,1) 0.75s forwards;
+    }
+    @keyframes drawCircle { to { stroke-dashoffset: 0; } }
+    @keyframes drawCheck  { to { stroke-dashoffset: 0; } }
+    .suc-title-big {
+      font-size: 2rem; font-weight: 800; letter-spacing: -0.8px;
+      color: var(--black); margin-bottom: 12px;
+      opacity: 0; animation: fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) 1s forwards;
+    }
+    .suc-body {
+      font-size: 1rem; color: var(--gray); line-height: 1.65; max-width: 360px;
+      font-weight: 300; margin-bottom: 32px;
+      opacity: 0; animation: fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) 1.15s forwards;
+    }
+    .suc-body strong { color: var(--black); font-weight: 600; }
+    .suc-progress-wrap {
+      width: 220px; height: 4px; background: rgba(0,113,227,0.12);
+      border-radius: 99px; overflow: hidden; margin-bottom: 20px;
+      opacity: 0; animation: fadeUp 0.5s ease 1.3s forwards;
+    }
+    .suc-progress-bar {
+      height: 100%; background: var(--blue); border-radius: 99px; width: 100%;
+      transform-origin: left; animation: shrinkBar 4s linear 1.4s forwards;
+    }
+    @keyframes shrinkBar { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+    .suc-redirect-note {
+      font-size: 0.8rem; color: #aeaeb2; letter-spacing: 0.3px;
+      opacity: 0; animation: fadeUp 0.5s ease 1.4s forwards;
+    }
+    .suc-back-btn {
+      margin-top: 24px; padding: 12px 28px; border-radius: 980px;
+      background: var(--blue); color: white; font-size: 0.9rem; font-weight: 600;
+      text-decoration: none; border: none; cursor: pointer; font-family: inherit;
+      opacity: 0; animation: fadeUp 0.5s ease 1.5s forwards;
+      transition: background 0.2s;
+    }
+    .suc-back-btn:hover { background: #0077ed; }
+
     /* SCROLL ANIMATIONS */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(40px); }
@@ -1287,9 +1348,16 @@
       <button type="submit" id="form-btn">Envoyer →</button>
       <p class="form-note" id="form-note">Réponse garantie sous 24h ouvrables.</p>
     </form>
-    <div id="form-success" style="display:none; margin-top: 32px; padding: 28px 32px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; max-width: 460px; margin-left: auto; margin-right: auto;">
-      <p id="suc-title" style="font-size: 1.4rem; font-weight: 700; color: #15803d; margin-bottom: 8px;">Message envoyé ✓</p>
-      <p id="suc-text" style="font-size: 0.95rem; color: #4b5563; line-height: 1.6;">Merci pour votre demande. Nous vous répondons sous 24h ouvrables.</p>
+    <div id="success-overlay">
+      <svg class="suc-checkmark" viewBox="0 0 52 52">
+        <circle class="suc-circle" cx="26" cy="26" r="25"/>
+        <path class="suc-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+      </svg>
+      <p class="suc-title-big" id="suc-title">Message envoyé ✓</p>
+      <p class="suc-body" id="suc-text">Merci pour votre demande.<br><strong>Nous vous répondons sous 24h ouvrables.</strong></p>
+      <div class="suc-progress-wrap"><div class="suc-progress-bar"></div></div>
+      <p class="suc-redirect-note" id="suc-redirect-note">Redirection vers l'accueil dans 4 secondes…</p>
+      <button class="suc-back-btn" onclick="window.location.href='index.html'" id="suc-back-btn">Retour à l'accueil →</button>
     </div>
   </section>
 
@@ -1314,7 +1382,7 @@
     // AJAX form submission — no Formspree redirect
     const form = document.getElementById('contact-form');
     const btn  = document.getElementById('form-btn');
-    const success = document.getElementById('form-success');
+    const overlay = document.getElementById('success-overlay');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -1337,8 +1405,8 @@
 
       if (res.ok) {
         form.style.display = 'none';
-        success.style.display = 'block';
-        success.style.animation = 'fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) both';
+        overlay.classList.add('show');
+        setTimeout(() => { window.location.href = 'index.html'; }, 5400);
       } else {
         btn.textContent = 'Erreur — réessayez';
         btn.disabled = false;
@@ -1493,7 +1561,8 @@
         'faq4-a':'<p>Oui, un support par email est inclus pendant 30 jours après la livraison. Pour un suivi mensuel, nous proposons des forfaits de maintenance à partir de CHF 49/mois.</p>',
         'ct-eyebrow':'Devis gratuit', 'ct-h2':'Travaillons ensemble.', 'ct-sub':'Réponse sous 24h — sans engagement.',
         'form-btn':'Envoyer →', 'form-note':'Réponse garantie sous 24h ouvrables.',
-        'suc-title':'Message envoyé ✓', 'suc-text':'Merci pour votre demande. Nous vous répondons sous 24h ouvrables.',
+        'suc-title':'Message envoyé ✓', 'suc-text':'Merci pour votre demande.<br><strong>Nous vous répondons sous 24h ouvrables.</strong>',
+        'suc-redirect-note':'Redirection vers l\'accueil dans 4 secondes…', 'suc-back-btn':'Retour à l\'accueil →',
         'footer-copy':'© 2026 Romand Web — Romandie, Suisse · <a href="tel:+41765060676" style="color:inherit;text-decoration:none;">+41 76 506 06 76</a>',
         'fl-offers':'Offres', 'fl-why':'Pourquoi nous', 'fl-contact':'Contact', 'fl-legal':'Mentions légales',
         'mob-cta':'Demander un devis gratuit →',
@@ -1556,7 +1625,8 @@
         'faq4-a':'<p>Yes, email support is included for 30 days after delivery. For monthly follow-up, we offer maintenance packages from CHF 49/month.</p>',
         'ct-eyebrow':'Free quote', 'ct-h2':'Let\'s work together.', 'ct-sub':'Reply within 24h — no commitment.',
         'form-btn':'Send →', 'form-note':'Reply guaranteed within 24 working hours.',
-        'suc-title':'Message sent ✓', 'suc-text':'Thank you for your request. We\'ll reply within 24 working hours.',
+        'suc-title':'Message sent ✓', 'suc-text':'Thank you for your request.<br><strong>We\'ll reply within 24 working hours.</strong>',
+        'suc-redirect-note':'Redirecting to home in 4 seconds…', 'suc-back-btn':'Back to home →',
         'footer-copy':'© 2026 Romand Web — French Switzerland · <a href="tel:+41765060676" style="color:inherit;text-decoration:none;">+41 76 506 06 76</a>',
         'fl-offers':'Services', 'fl-why':'Why us', 'fl-contact':'Contact', 'fl-legal':'Legal notice',
         'mob-cta':'Get a free quote →',
