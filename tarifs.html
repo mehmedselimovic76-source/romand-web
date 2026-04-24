@@ -590,7 +590,7 @@
   <div class="pricing-grid" id="pricingGrid">
 
     <!-- STARTER -->
-    <div class="plan-card">
+    <div class="plan-card" style="cursor:pointer;" onclick="smoothGo('pack-starter.html')">
       <span class="plan-badge">Starter</span>
       <p class="plan-name">Site vitrine</p>
       <p class="plan-desc">L'essentiel pour exister en ligne. Idéal pour les indépendants et petites entreprises.</p>
@@ -607,11 +607,11 @@
         <li><span class="check">✓</span><span class="feat-text">Livraison en <strong>7 jours</strong></span></li>
         <li><span class="check">✓</span><span class="feat-text">1 mois de support offert</span></li>
       </ul>
-      <a href="index.html#contact" class="plan-cta">Commencer →</a>
+      <span class="plan-cta" style="display:block;text-align:center;padding:14px 24px;border-radius:980px;font-size:.95rem;font-weight:600;background:var(--blue);color:white;cursor:pointer;">Découvrir ce pack →</span>
     </div>
 
     <!-- BUSINESS (featured) -->
-    <div class="plan-card featured">
+    <div class="plan-card featured" style="cursor:pointer;" onclick="smoothGo('pack-business.html')">
       <span class="plan-badge popular">⭐ Le plus populaire</span>
       <p class="plan-name">Business</p>
       <p class="plan-desc">Site multi-pages avec SEO local. La solution complète pour attirer des clients en Romandie.</p>
@@ -629,11 +629,11 @@
         <li><span class="check">✓</span><span class="feat-text">Livraison en <strong>10 jours</strong></span></li>
         <li><span class="check">✓</span><span class="feat-text">3 mois de support offert</span></li>
       </ul>
-      <a href="index.html#contact" class="plan-cta">Choisir Business →</a>
+      <span class="plan-cta" style="display:block;text-align:center;padding:14px 24px;border-radius:980px;font-size:.95rem;font-weight:600;background:white;color:var(--black);cursor:pointer;">Découvrir ce pack →</span>
     </div>
 
     <!-- PREMIUM -->
-    <div class="plan-card">
+    <div class="plan-card" style="cursor:pointer;" onclick="smoothGo('pack-premium.html')">
       <span class="plan-badge">Premium</span>
       <p class="plan-name">E-commerce</p>
       <p class="plan-desc">Boutique en ligne complète pour vendre vos produits ou services 24h/24 en Suisse.</p>
@@ -651,7 +651,7 @@
         <li><span class="check">✓</span><span class="feat-text">Livraison en <strong>14 jours</strong></span></li>
         <li><span class="check">✓</span><span class="feat-text">6 mois de support offert</span></li>
       </ul>
-      <a href="index.html#contact" class="plan-cta">Commencer →</a>
+      <span class="plan-cta" style="display:block;text-align:center;padding:14px 24px;border-radius:980px;font-size:.95rem;font-weight:600;background:var(--blue);color:white;cursor:pointer;">Découvrir ce pack →</span>
     </div>
 
   </div>
@@ -800,6 +800,13 @@
 <script>
   // Fade-in on load
   window.addEventListener('load', () => document.body.classList.add('loaded'));
+
+  // Smooth navigation
+  function smoothGo(href) {
+    document.body.style.transition = 'opacity 0.3s ease';
+    document.body.style.opacity = '0';
+    setTimeout(() => window.location.href = href, 300);
+  }
 
   // Hamburger
   document.getElementById('hamburger').addEventListener('click', function() {
