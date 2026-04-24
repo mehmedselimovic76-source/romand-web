@@ -119,8 +119,8 @@
       100% { transform: rotate(360deg) scale(1); }
     }
     @keyframes logoPulse {
-      0%, 100% { opacity: 1; filter: drop-shadow(0 0 0px var(--blue)); }
-      50%       { opacity: 0.85; filter: drop-shadow(0 0 6px var(--blue)); }
+      0%, 100% { filter: drop-shadow(0 0 2px rgba(0,113,227,0.2)); }
+      50%       { filter: drop-shadow(0 0 10px rgba(0,113,227,0.65)); }
     }
     nav .logo {
       font-size: 1.2rem;
@@ -648,19 +648,7 @@
       z-index: 0;
     }
 
-    /* ── HERO H1 GRADIENT SHIMMER ─────────────────── */
-    @keyframes textShimmer {
-      0%   { background-position: -200% center; }
-      100% { background-position: 200% center; }
-    }
-    .hero h1 {
-      background: linear-gradient(90deg, var(--black) 30%, var(--blue) 50%, var(--black) 70%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: textShimmer 6s linear infinite;
-    }
+    /* ── HERO H1 : pas d'animation, texte stable ─── */
 
     /* ── NAV LINK UNDERLINE SLIDE ─────────────────── */
     nav .nav-links a:not(.nav-cta) {
