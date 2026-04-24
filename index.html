@@ -594,6 +594,89 @@
     [data-delay="500"].visible { animation-delay: 0.5s; }
     [data-delay="600"].visible { animation-delay: 0.6s; }
 
+    /* ── SCROLL PROGRESS BAR ─────────────────────── */
+    #scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2.5px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--blue), #60a5fa);
+      z-index: 9999;
+      transition: width 0.08s linear;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* ── CURSOR GLOW ──────────────────────────────── */
+    #cursor-glow {
+      position: fixed;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,113,227,0.07) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      will-change: transform;
+    }
+    @media (max-width: 768px) { #cursor-glow { display: none; } }
+
+    /* ── RIPPLE ───────────────────────────────────── */
+    .ripple {
+      position: absolute;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.45);
+      transform: scale(0);
+      animation: rippleAnim 0.6s linear;
+      pointer-events: none;
+    }
+    @keyframes rippleAnim {
+      to { transform: scale(60); opacity: 0; }
+    }
+
+    /* ── FLOATING DIAMONDS IN HERO ────────────────── */
+    @keyframes floatDiamond {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      33%       { transform: translateY(-18px) rotate(45deg); }
+      66%       { transform: translateY(8px) rotate(-20deg); }
+    }
+    .hero-float {
+      position: absolute;
+      color: var(--blue);
+      pointer-events: none;
+      user-select: none;
+      animation: floatDiamond linear infinite;
+      z-index: 0;
+    }
+
+    /* ── HERO H1 GRADIENT SHIMMER ─────────────────── */
+    @keyframes textShimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    .hero h1 {
+      background: linear-gradient(90deg, var(--black) 30%, var(--blue) 50%, var(--black) 70%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: textShimmer 6s linear infinite;
+    }
+
+    /* ── NAV LINK UNDERLINE SLIDE ─────────────────── */
+    nav .nav-links a:not(.nav-cta) {
+      position: relative;
+    }
+    nav .nav-links a:not(.nav-cta)::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1.5px;
+      background: var(--blue);
+      transition: width 0.25s cubic-bezier(0.22,1,0.36,1);
+      border-radius: 2px;
+    }
+    nav .nav-links a:not(.nav-cta):hover::after { width: 100%; }
+
     /* HAMBURGER */
     .hamburger {
       display: none;
@@ -1339,6 +1422,103 @@
         mobileMenu.classList.remove('open');
       });
     });
+
+    // ─── 1. SCROLL PROGRESS BAR ───────────────────────────────────────
+    const progressBar = document.createElement('div');
+    progressBar.id = 'scroll-progress';
+    document.body.prepend(progressBar);
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+      progressBar.style.width = (scrolled * 100) + '%';
+    }, { passive: true });
+
+    // ─── 2. CURSOR GLOW ───────────────────────────────────────────────
+    const glow = document.createElement('div');
+    glow.id = 'cursor-glow';
+    document.body.appendChild(glow);
+    let mx = -200, my = -200, glowX = -200, glowY = -200;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function animGlow() {
+      glowX += (mx - glowX) * 0.08;
+      glowY += (my - glowY) * 0.08;
+      glow.style.transform = `translate(${glowX - 180}px, ${glowY - 180}px)`;
+      requestAnimationFrame(animGlow);
+    })();
+
+    // ─── 3. 3D TILT ON CARDS ──────────────────────────────────────────
+    document.querySelectorAll('.card, .case-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width  - 0.5;
+        const y = (e.clientY - r.top)  / r.height - 0.5;
+        card.style.transform = `perspective(600px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateZ(6px)`;
+        card.style.transition = 'transform 0.1s';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+        card.style.transition = 'transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s';
+      });
+    });
+
+    // ─── 4. MAGNETIC CTA BUTTON ───────────────────────────────────────
+    document.querySelectorAll('.cta-primary').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const x = (e.clientX - r.left - r.width  / 2) * 0.35;
+        const y = (e.clientY - r.top  - r.height / 2) * 0.35;
+        btn.style.transform = `translate(${x}px, ${y}px)`;
+        btn.style.transition = 'transform 0.15s';
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+        btn.style.transition = 'transform 0.5s cubic-bezier(0.22,1,0.36,1)';
+      });
+    });
+
+    // ─── 5. RIPPLE ON BUTTONS ─────────────────────────────────────────
+    document.querySelectorAll('.cta-primary, .card a.card-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const r = this.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        ripple.style.cssText = `left:${e.clientX - r.left}px;top:${e.clientY - r.top}px`;
+        this.style.position = 'relative';
+        this.style.overflow = 'hidden';
+        this.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+      });
+    });
+
+    // ─── 6. FLOATING DIAMONDS IN HERO ────────────────────────────────
+    const heroEl = document.querySelector('.hero');
+    for (let i = 0; i < 8; i++) {
+      const d = document.createElement('span');
+      d.className = 'hero-float';
+      d.textContent = '◈';
+      d.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;font-size:${0.6 + Math.random()*1.2}rem;animation-delay:${Math.random()*6}s;animation-duration:${5 + Math.random()*5}s;opacity:${0.04 + Math.random()*0.08}`;
+      heroEl.appendChild(d);
+    }
+
+    // ─── 7. ZONE PILLS STAGGER ────────────────────────────────────────
+    const pillObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.zone-pill').forEach((pill, i) => {
+            pill.style.opacity = '0';
+            pill.style.transform = 'translateY(12px)';
+            setTimeout(() => {
+              pill.style.transition = 'opacity 0.4s ease, transform 0.4s cubic-bezier(0.22,1,0.36,1)';
+              pill.style.opacity = '1';
+              pill.style.transform = 'translateY(0)';
+            }, i * 60);
+          });
+          pillObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    const zoneGrid = document.querySelector('.zone-grid');
+    if (zoneGrid) pillObs.observe(zoneGrid);
+
   </script>
 </body>
 </html>
