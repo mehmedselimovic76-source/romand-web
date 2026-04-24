@@ -965,7 +965,32 @@
 
     </div>
     <p data-anim="fade-in" data-delay="400" style="margin-top: 32px; font-size: 0.8rem; color: #aeaeb2;">* L'achat du nom de domaine est exclu de tous les tarifs.</p>
+
+    <div data-anim="fade-up" data-delay="500" style="margin-top:36px;">
+      <a href="tarifs.html" id="tarifs-link" style="display:inline-flex;align-items:center;gap:8px;background:var(--black);color:white;padding:15px 32px;border-radius:980px;text-decoration:none;font-size:1rem;font-weight:600;transition:background 0.2s,transform 0.2s;letter-spacing:0.1px;">
+        Voir le détail complet des formules
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
   </section>
+
+  <style>
+    #tarifs-link:hover { background: #333; transform: scale(1.03); }
+  </style>
+
+  <script>
+    document.getElementById('tarifs-link').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.body.style.transition = 'opacity 0.35s ease';
+      document.body.style.opacity = '0';
+      setTimeout(() => { window.location.href = this.href; }, 350);
+    });
+    window.addEventListener('pageshow', function() {
+      document.body.style.transition = 'opacity 0.35s ease';
+      document.body.style.opacity = '1';
+    });
+    document.body.style.opacity = '1';
+  </script>
 
   <!-- WHY US -->
   <section class="section why" id="why">
