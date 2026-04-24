@@ -31,6 +31,7 @@
     .hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;}
     .hamburger span{display:block;width:22px;height:2px;background:var(--black);margin:5px 0;border-radius:2px;}
     @media(max-width:768px){.nav-links{display:none;flex-direction:column;position:absolute;top:52px;left:0;right:0;background:rgba(255,255,255,.97);padding:16px 22px;border-bottom:1px solid var(--divider);gap:16px;}.nav-links.open{display:flex;}.hamburger{display:block;}}
+    .lang-btn{background:none;border:1.5px solid var(--divider);border-radius:8px;padding:4px 11px;font-size:.78rem;font-weight:700;color:var(--gray);cursor:pointer;transition:border-color .2s,color .2s,background .2s;font-family:inherit;letter-spacing:.6px;margin-left:8px;}.lang-btn:hover{border-color:var(--blue);color:var(--blue);}.lang-btn.active{border-color:var(--blue);color:var(--blue);background:rgba(0,113,227,0.07);}
 
     /* BREADCRUMB */
     .breadcrumb{padding:12px 40px;font-size:.82rem;color:var(--gray);border-bottom:1px solid var(--divider);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
@@ -146,72 +147,76 @@
 <nav>
   <a href="index.html" class="logo"><span class="logo-icon">◈</span>Romand Web</a>
   <div class="nav-links" id="navLinks">
-    <a href="index.html">Accueil</a>
-    <a href="tarifs.html" class="nav-back">← Tous les tarifs</a>
-    <a href="index.html#contact" style="color:var(--blue);font-weight:500;opacity:1;">Devis gratuit</a>
+    <a href="index.html" data-en="Home">Accueil</a>
+    <a href="tarifs.html" class="nav-back" data-en="← All plans">← Tous les tarifs</a>
+    <a href="index.html#contact" style="color:var(--blue);font-weight:500;opacity:1;" data-en="Free quote">Devis gratuit</a>
   </div>
-  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <div style="display:flex;align-items:center;gap:6px;">
+    <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 
 <!-- BREADCRUMB -->
 <div class="breadcrumb">
-  <a href="index.html">Accueil</a><span class="sep">›</span>
-  <a href="tarifs.html">Tarifs</a><span class="sep">›</span>
-  <span>Pack Starter</span>
+  <a href="index.html" data-en="Home">Accueil</a><span class="sep">›</span>
+  <a href="tarifs.html" data-en="Pricing">Tarifs</a><span class="sep">›</span>
+  <span data-en="Starter Pack">Pack Starter</span>
 </div>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="badge">Pack Starter</div>
-  <h1>Votre vitrine<br>en ligne. <span>Dès demain.</span></h1>
-  <p class="sub">Tout ce qu'il faut pour exister sur internet, sans complexité. Idéal pour les indépendants et petites entreprises.</p>
+  <div class="badge" data-en="Starter Pack">Pack Starter</div>
+  <h1 data-en="Your online<br>showcase. <span>From tomorrow.</span>">Votre vitrine<br>en ligne. <span>Dès demain.</span></h1>
+  <p class="sub" data-en="Everything you need to exist online, without complexity. Ideal for freelancers and small businesses.">Tout ce qu'il faut pour exister sur internet, sans complexité. Idéal pour les indépendants et petites entreprises.</p>
   <div class="hero-price"><sup>CHF</sup>299</div>
-  <p class="hero-note">Paiement unique · domaine exclu · livraison en 7 jours</p>
+  <p class="hero-note" data-en="One-time payment · domain excluded · delivered in 7 days">Paiement unique · domaine exclu · livraison en 7 jours</p>
   <div class="hero-btns">
-    <a href="index.html#contact" class="btn-primary" id="cta-hero">
+    <a href="index.html#contact" class="btn-primary" id="cta-hero" data-en="Choose this pack">
       Choisir ce pack
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
-    <a href="tarifs.html" class="btn-secondary" id="compare-link">Comparer les packs</a>
+    <a href="tarifs.html" class="btn-secondary" id="compare-link" data-en="Compare plans">Comparer les packs</a>
   </div>
 </section>
 
 <!-- POUR QUI -->
 <div class="section-full">
   <div class="section">
-    <p class="eyebrow" data-anim>Idéal pour</p>
-    <h2 class="section-title" data-anim>Qui choisit le Pack Starter ?</h2>
-    <p class="section-sub" data-anim>Une solution rapide et professionnelle pour tous ceux qui ont besoin d'une présence en ligne solide sans sur-investir.</p>
+    <p class="eyebrow" data-anim data-en="Ideal for">Idéal pour</p>
+    <h2 class="section-title" data-anim data-en="Who chooses the Starter Pack?">Qui choisit le Pack Starter ?</h2>
+    <p class="section-sub" data-anim data-en="A fast, professional solution for anyone who needs a solid online presence without over-investing.">Une solution rapide et professionnelle pour tous ceux qui ont besoin d'une présence en ligne solide sans sur-investir.</p>
     <div class="target-grid">
       <div class="target-card" data-anim>
         <div class="icon">✂️</div>
-        <h4>Coiffeurs & esthéticiennes</h4>
-        <p>Présentez vos services, horaires et coordonnées. Soyez trouvé sur Google.</p>
+        <h4 data-en="Hairdressers & beauticians">Coiffeurs & esthéticiennes</h4>
+        <p data-en="Present your services, hours and contact info. Be found on Google.">Présentez vos services, horaires et coordonnées. Soyez trouvé sur Google.</p>
       </div>
       <div class="target-card" data-anim>
         <div class="icon">🔧</div>
-        <h4>Artisans & plombiers</h4>
-        <p>Remplacez les pages jaunes. Recevez des demandes de devis directement.</p>
+        <h4 data-en="Tradespeople & plumbers">Artisans & plombiers</h4>
+        <p data-en="Replace yellow pages. Receive quote requests directly.">Remplacez les pages jaunes. Recevez des demandes de devis directement.</p>
       </div>
       <div class="target-card" data-anim>
         <div class="icon">🍕</div>
-        <h4>Restaurants & cafés</h4>
-        <p>Menu, horaires, réservation par formulaire. Simple et efficace.</p>
+        <h4 data-en="Restaurants & cafés">Restaurants & cafés</h4>
+        <p data-en="Menu, hours, booking form. Simple and effective.">Menu, horaires, réservation par formulaire. Simple et efficace.</p>
       </div>
       <div class="target-card" data-anim>
         <div class="icon">💆</div>
-        <h4>Thérapeutes & coachs</h4>
-        <p>Présentez votre approche et permettez à vos clients de vous contacter facilement.</p>
+        <h4 data-en="Therapists & coaches">Thérapeutes & coachs</h4>
+        <p data-en="Present your approach and let clients contact you easily.">Présentez votre approche et permettez à vos clients de vous contacter facilement.</p>
       </div>
       <div class="target-card" data-anim>
         <div class="icon">🏠</div>
-        <h4>Agents immobiliers</h4>
-        <p>Page de présentation avec formulaire de contact pour qualifier vos prospects.</p>
+        <h4 data-en="Real estate agents">Agents immobiliers</h4>
+        <p data-en="Presentation page with contact form to qualify your prospects.">Page de présentation avec formulaire de contact pour qualifier vos prospects.</p>
       </div>
       <div class="target-card" data-anim>
         <div class="icon">🎨</div>
-        <h4>Freelances & créatifs</h4>
-        <p>Portfolio en ligne pour montrer vos réalisations et décrocher des contrats.</p>
+        <h4 data-en="Freelancers & creatives">Freelances & créatifs</h4>
+        <p data-en="Online portfolio to showcase your work and land contracts.">Portfolio en ligne pour montrer vos réalisations et décrocher des contrats.</p>
       </div>
     </div>
   </div>
@@ -220,50 +225,50 @@
 <!-- FEATURES -->
 <div class="features-wrap">
   <div class="features-inner">
-    <p class="eyebrow" data-anim>Ce qui est inclus</p>
-    <h2 class="section-title" data-anim>Tout est dans le prix.</h2>
-    <p class="section-sub" data-anim>Pas de frais cachés, pas de surprises. Voici exactement ce que vous recevez pour CHF 299.</p>
+    <p class="eyebrow" data-anim data-en="What's included">Ce qui est inclus</p>
+    <h2 class="section-title" data-anim data-en="Everything is in the price.">Tout est dans le prix.</h2>
+    <p class="section-sub" data-anim data-en="No hidden fees, no surprises. Here is exactly what you get for CHF 299.">Pas de frais cachés, pas de surprises. Voici exactement ce que vous recevez pour CHF 299.</p>
     <div class="features-grid">
       <div class="feat-item" data-anim>
         <div class="feat-icon">📱</div>
         <div>
-          <h4>Design responsive</h4>
-          <p>Votre site s'adapte parfaitement sur mobile, tablette et desktop. 70% du trafic vient du mobile.</p>
+          <h4 data-en="Responsive design">Design responsive</h4>
+          <p data-en="Your site adapts perfectly on mobile, tablet and desktop. 70% of traffic comes from mobile.">Votre site s'adapte parfaitement sur mobile, tablette et desktop. 70% du trafic vient du mobile.</p>
         </div>
       </div>
       <div class="feat-item" data-anim>
         <div class="feat-icon">✉️</div>
         <div>
-          <h4>Formulaire de contact</h4>
-          <p>Recevez les messages de vos clients directement dans votre boîte email.</p>
+          <h4 data-en="Contact form">Formulaire de contact</h4>
+          <p data-en="Receive your clients' messages directly in your inbox.">Recevez les messages de vos clients directement dans votre boîte email.</p>
         </div>
       </div>
       <div class="feat-item" data-anim>
         <div class="feat-icon">🚀</div>
         <div>
-          <h4>Hébergement GitHub 100% gratuit</h4>
-          <p>Votre site est hébergé sur GitHub Pages — infrastructure fiable, disponible 24h/24, sans aucun frais mensuel.</p>
+          <h4 data-en="GitHub hosting 100% free">Hébergement GitHub 100% gratuit</h4>
+          <p data-en="Your site is hosted on GitHub Pages — reliable infrastructure, available 24/7, with no monthly fees.">Votre site est hébergé sur GitHub Pages — infrastructure fiable, disponible 24h/24, sans aucun frais mensuel.</p>
         </div>
       </div>
       <div class="feat-item" data-anim>
         <div class="feat-icon">⚡</div>
         <div>
-          <h4>Chargement rapide</h4>
-          <p>Code optimisé pour une vitesse maximale. Un site lent fait fuir les visiteurs.</p>
+          <h4 data-en="Fast loading">Chargement rapide</h4>
+          <p data-en="Optimised code for maximum speed. A slow site drives visitors away.">Code optimisé pour une vitesse maximale. Un site lent fait fuir les visiteurs.</p>
         </div>
       </div>
       <div class="feat-item" data-anim>
         <div class="feat-icon">🔒</div>
         <div>
-          <h4>HTTPS sécurisé</h4>
-          <p>Certificat SSL inclus. Le cadenas vert qui inspire confiance à vos visiteurs.</p>
+          <h4 data-en="Secure HTTPS">HTTPS sécurisé</h4>
+          <p data-en="SSL certificate included. The green padlock that builds trust with your visitors.">Certificat SSL inclus. Le cadenas vert qui inspire confiance à vos visiteurs.</p>
         </div>
       </div>
       <div class="feat-item" data-anim>
         <div class="feat-icon">🛠️</div>
         <div>
-          <h4>1 mois de support offert</h4>
-          <p>Corrections et ajustements mineurs inclus pendant 30 jours après la livraison.</p>
+          <h4 data-en="1 month support included">1 mois de support offert</h4>
+          <p data-en="Minor corrections and adjustments included for 30 days after delivery.">Corrections et ajustements mineurs inclus pendant 30 jours après la livraison.</p>
         </div>
       </div>
     </div>
@@ -273,9 +278,9 @@
 <!-- EXAMPLES -->
 <div class="section-full" style="border-bottom:none;">
   <div class="section">
-    <p class="eyebrow" data-anim>Exemples concrets</p>
-    <h2 class="section-title" data-anim>À quoi ressemble un site Starter ?</h2>
-    <p class="section-sub" data-anim>Chaque site est conçu sur mesure selon votre activité. Voici quelques exemples typiques.</p>
+    <p class="eyebrow" data-anim data-en="Concrete examples">Exemples concrets</p>
+    <h2 class="section-title" data-anim data-en="What does a Starter site look like?">À quoi ressemble un site Starter ?</h2>
+    <p class="section-sub" data-anim data-en="Each site is custom-designed for your business. Here are some typical examples.">Chaque site est conçu sur mesure selon votre activité. Voici quelques exemples typiques.</p>
     <div class="examples-grid">
       <div class="example-card" data-anim>
         <div class="example-mockup ex-resto">🍽️</div>
@@ -308,35 +313,35 @@
 <!-- TIMELINE -->
 <div class="features-wrap">
   <div class="features-inner">
-    <p class="eyebrow" data-anim>Notre processus</p>
-    <h2 class="section-title" data-anim>De la commande à la mise en ligne en 7 jours.</h2>
+    <p class="eyebrow" data-anim data-en="Our process">Notre processus</p>
+    <h2 class="section-title" data-anim data-en="From order to launch in 7 days.">De la commande à la mise en ligne en 7 jours.</h2>
     <div class="timeline">
       <div class="timeline-item" data-anim>
         <div class="timeline-dot">J1</div>
         <div class="timeline-content">
-          <h4>Appel de découverte (30 min)</h4>
-          <p>On discute de votre activité, vos objectifs, et les contenus à mettre en avant. Aucune préparation requise de votre part.</p>
+          <h4 data-en="Discovery call (30 min)">Appel de découverte (30 min)</h4>
+          <p data-en="We discuss your business, goals, and key content to highlight. No preparation required on your end.">On discute de votre activité, vos objectifs, et les contenus à mettre en avant. Aucune préparation requise de votre part.</p>
         </div>
       </div>
       <div class="timeline-item" data-anim>
         <div class="timeline-dot">J2</div>
         <div class="timeline-content">
-          <h4>Proposition de design</h4>
-          <p>Nous vous envoyons une première version de votre site. Vous pouvez demander des modifications.</p>
+          <h4 data-en="Design proposal">Proposition de design</h4>
+          <p data-en="We send you a first version of your site. You can request changes.">Nous vous envoyons une première version de votre site. Vous pouvez demander des modifications.</p>
         </div>
       </div>
       <div class="timeline-item" data-anim>
         <div class="timeline-dot">J4</div>
         <div class="timeline-content">
-          <h4>Révisions & validation</h4>
-          <p>Ajustements selon vos retours jusqu'à ce que vous soyez 100% satisfait.</p>
+          <h4 data-en="Revisions & approval">Révisions & validation</h4>
+          <p data-en="Adjustments based on your feedback until you are 100% satisfied.">Ajustements selon vos retours jusqu'à ce que vous soyez 100% satisfait.</p>
         </div>
       </div>
       <div class="timeline-item" data-anim>
         <div class="timeline-dot">J7</div>
         <div class="timeline-content">
-          <h4>Mise en ligne 🎉</h4>
-          <p>Votre site est en ligne. Nous vérifions tout — mobile, formulaire, vitesse — avant de vous remettre les clés.</p>
+          <h4 data-en="Launch 🎉">Mise en ligne 🎉</h4>
+          <p data-en="Your site is live. We check everything — mobile, form, speed — before handing over the keys.">Votre site est en ligne. Nous vérifions tout — mobile, formulaire, vitesse — avant de vous remettre les clés.</p>
         </div>
       </div>
     </div>
@@ -346,8 +351,8 @@
 <!-- COMPARE TABLE -->
 <div class="section-full">
   <div class="section">
-    <p class="eyebrow" data-anim>Comparatif</p>
-    <h2 class="section-title" data-anim>Starter vs les autres packs</h2>
+    <p class="eyebrow" data-anim data-en="Comparison">Comparatif</p>
+    <h2 class="section-title" data-anim data-en="Starter vs other plans">Starter vs les autres packs</h2>
     <div class="compare-wrap" data-anim>
       <div style="overflow-x:auto;">
       <table class="compare-table">
@@ -380,14 +385,14 @@
 
 <!-- CTA -->
 <section class="cta-section">
-  <p class="eyebrow">Pack Starter · CHF 299</p>
-  <h2>Prêt à vous lancer ?</h2>
-  <p>Réponse sous 24h · Sans engagement · Livraison en 7 jours</p>
-  <a href="index.html#contact" class="cta-btn" id="cta-bottom">Demander mon devis gratuit →</a>
+  <p class="eyebrow" data-en="Starter Pack · CHF 299">Pack Starter · CHF 299</p>
+  <h2 data-en="Ready to get started?">Prêt à vous lancer ?</h2>
+  <p data-en="Reply within 24h · No commitment · Delivered in 7 days">Réponse sous 24h · Sans engagement · Livraison en 7 jours</p>
+  <a href="index.html#contact" class="cta-btn" id="cta-bottom" data-en="Request my free quote →">Demander mon devis gratuit →</a>
 </section>
 
 <footer>
-  <p>© 2025 Romand Web · <a href="index.html">Accueil</a> · <a href="tarifs.html">Tarifs</a> · <a href="mentions-legales.html">Mentions légales</a> · <a href="tel:+41765060676">+41 76 506 06 76</a> · <a href="mailto:info@romand-web.com">info@romand-web.com</a></p>
+  <p data-en='© 2025 Romand Web · <a href="index.html">Home</a> · <a href="tarifs.html">Pricing</a> · <a href="mentions-legales.html">Legal Notice</a> · <a href="tel:+41765060676">+41 76 506 06 76</a> · <a href="mailto:info@romand-web.com">info@romand-web.com</a>'>© 2025 Romand Web · <a href="index.html">Accueil</a> · <a href="tarifs.html">Tarifs</a> · <a href="mentions-legales.html">Mentions légales</a> · <a href="tel:+41765060676">+41 76 506 06 76</a> · <a href="mailto:info@romand-web.com">info@romand-web.com</a></p>
 </footer>
 
 <script>
@@ -411,6 +416,19 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('[data-anim]').forEach(el => obs.observe(el));
+
+  // FR/EN translation
+  function setLang(lang) {
+    localStorage.setItem('rw-lang', lang);
+    document.documentElement.lang = lang;
+    document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.querySelectorAll('[data-en]').forEach(el => {
+      if (!el.dataset.fr) el.dataset.fr = el.innerHTML;
+      el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.fr;
+    });
+  }
+  (function(){ const l = localStorage.getItem('rw-lang'); if (l === 'en') setLang('en'); })();
 </script>
 </body>
 </html>

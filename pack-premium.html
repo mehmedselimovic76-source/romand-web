@@ -31,6 +31,7 @@
     .hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;}
     .hamburger span{display:block;width:22px;height:2px;background:var(--black);margin:5px 0;border-radius:2px;}
     @media(max-width:768px){.nav-links{display:none;flex-direction:column;position:absolute;top:52px;left:0;right:0;background:rgba(255,255,255,.97);padding:16px 22px;border-bottom:1px solid var(--divider);gap:16px;}.nav-links.open{display:flex;}.hamburger{display:block;}}
+    .lang-btn{background:none;border:1.5px solid var(--divider);border-radius:8px;padding:4px 11px;font-size:.78rem;font-weight:700;color:var(--gray);cursor:pointer;transition:border-color .2s,color .2s,background .2s;font-family:inherit;letter-spacing:.6px;}.lang-btn:hover{border-color:var(--blue);color:var(--blue);}.lang-btn.active{border-color:var(--blue);color:var(--blue);background:rgba(0,113,227,0.07);}
 
     .breadcrumb{padding:12px 40px;font-size:.82rem;color:var(--gray);border-bottom:1px solid var(--divider);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
     .breadcrumb a{color:var(--blue);text-decoration:none;}
@@ -160,42 +161,46 @@
 <nav>
   <a href="index.html" class="logo"><span class="logo-icon">◈</span>Romand Web</a>
   <div class="nav-links" id="navLinks">
-    <a href="index.html">Accueil</a>
-    <a href="tarifs.html" class="nav-back">← Tous les tarifs</a>
-    <a href="index.html#contact" style="color:var(--blue);font-weight:500;opacity:1;">Devis gratuit</a>
+    <a href="index.html" data-en="Home">Accueil</a>
+    <a href="tarifs.html" class="nav-back" data-en="← All plans">← Tous les tarifs</a>
+    <a href="index.html#contact" style="color:var(--blue);font-weight:500;opacity:1;" data-en="Free quote">Devis gratuit</a>
   </div>
-  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <div style="display:flex;align-items:center;gap:6px;">
+    <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 
 <div class="breadcrumb">
-  <a href="index.html">Accueil</a><span class="sep">›</span>
-  <a href="tarifs.html">Tarifs</a><span class="sep">›</span>
-  <span>Pack Premium</span>
+  <a href="index.html" data-en="Home">Accueil</a><span class="sep">›</span>
+  <a href="tarifs.html" data-en="Pricing">Tarifs</a><span class="sep">›</span>
+  <span data-en="Premium Pack">Pack Premium</span>
 </div>
 
 <section class="hero">
-  <div class="badge">✦ Premium</div>
-  <h1>Vendez en ligne.<br><span>Sans limites.</span></h1>
-  <p class="sub">Une boutique en ligne complète pour vendre vos produits 24h/24 en Suisse et au-delà. Avec la formation pour tout gérer vous-même.</p>
+  <div class="badge" data-en="✦ Premium">✦ Premium</div>
+  <h1 data-en="Sell online.<br><span>Without limits.</span>">Vendez en ligne.<br><span>Sans limites.</span></h1>
+  <p class="sub" data-en="A complete online store to sell your products 24/7 in Switzerland and beyond. With training to manage everything yourself.">Une boutique en ligne complète pour vendre vos produits 24h/24 en Suisse et au-delà. Avec la formation pour tout gérer vous-même.</p>
   <div class="hero-price"><sup>CHF</sup>999</div>
-  <p class="hero-note">Paiement unique · domaine exclu · livraison en 14 jours</p>
+  <p class="hero-note" data-en="One-time payment · domain excluded · delivered in 14 days">Paiement unique · domaine exclu · livraison en 14 jours</p>
   <div class="hero-btns">
-    <a href="index.html#contact" class="btn-primary" id="cta-hero">Choisir Premium <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    <a href="tarifs.html" class="btn-secondary" id="compare-link">Comparer les packs</a>
+    <a href="index.html#contact" class="btn-primary" id="cta-hero" data-en="Choose Premium ">Choisir Premium <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <a href="tarifs.html" class="btn-secondary" id="compare-link" data-en="Compare plans">Comparer les packs</a>
   </div>
 </section>
 
 <!-- ECOMMERCE -->
 <div class="section-full">
   <div class="section">
-    <p class="eyebrow" data-anim>Boutique en ligne</p>
-    <h2 class="section-title" data-anim>Tout pour vendre en ligne, dès le premier jour.</h2>
-    <p class="section-sub" data-anim>Une boutique e-commerce complète, sécurisée et optimisée pour les clients suisses. Acceptez les paiements, gérez vos stocks, suivez vos commandes.</p>
+    <p class="eyebrow" data-anim data-en="Online store">Boutique en ligne</p>
+    <h2 class="section-title" data-anim data-en="Everything to sell online, from day one.">Tout pour vendre en ligne, dès le premier jour.</h2>
+    <p class="section-sub" data-anim data-en="A complete, secure e-commerce store optimised for Swiss customers. Accept payments, manage stock, track orders.">Une boutique e-commerce complète, sécurisée et optimisée pour les clients suisses. Acceptez les paiements, gérez vos stocks, suivez vos commandes.</p>
     <div class="ecom-grid">
-      <div class="ecom-card dark" data-anim><div class="e-icon">💳</div><h4>Paiement en ligne sécurisé</h4><p>Carte bancaire, Twint, PayPal, virement — vos clients paient comme ils veulent. Stripe ou autre processeur de paiement suisse intégré.</p></div>
-      <div class="ecom-card" data-anim><div class="e-icon">📦</div><h4>Gestion des stocks</h4><p>Tableau de bord intuitif pour gérer vos produits, variantes, stocks et prix. Alertes automatiques en cas de rupture.</p></div>
-      <div class="ecom-card" data-anim><div class="e-icon">🚚</div><h4>Options de livraison</h4><p>Configurez vos zones de livraison, tarifs postaux suisses et délais. Intégration La Poste Suisse disponible.</p></div>
-      <div class="ecom-card dark" data-anim><div class="e-icon">📊</div><h4>Tableau de bord complet</h4><p>Chiffre d'affaires, commandes, clients fidèles — tout votre business sous les yeux en temps réel.</p></div>
+      <div class="ecom-card dark" data-anim><div class="e-icon">💳</div><h4 data-en="Secure online payment">Paiement en ligne sécurisé</h4><p data-en="Bank card, Twint, PayPal, transfer — clients pay how they want. Stripe or other Swiss payment processor integrated.">Carte bancaire, Twint, PayPal, virement — vos clients paient comme ils veulent. Stripe ou autre processeur de paiement suisse intégré.</p></div>
+      <div class="ecom-card" data-anim><div class="e-icon">📦</div><h4 data-en="Stock management">Gestion des stocks</h4><p data-en="Intuitive dashboard to manage products, variants, stock and prices. Automatic low-stock alerts.">Tableau de bord intuitif pour gérer vos produits, variantes, stocks et prix. Alertes automatiques en cas de rupture.</p></div>
+      <div class="ecom-card" data-anim><div class="e-icon">🚚</div><h4 data-en="Delivery options">Options de livraison</h4><p data-en="Configure your delivery zones, Swiss postal rates and lead times. Swiss Post integration available.">Configurez vos zones de livraison, tarifs postaux suisses et délais. Intégration La Poste Suisse disponible.</p></div>
+      <div class="ecom-card dark" data-anim><div class="e-icon">📊</div><h4 data-en="Complete dashboard">Tableau de bord complet</h4><p data-en="Revenue, orders, loyal customers — your entire business at a glance in real time.">Chiffre d'affaires, commandes, clients fidèles — tout votre business sous les yeux en temps réel.</p></div>
     </div>
   </div>
 </div>
@@ -203,9 +208,9 @@
 <!-- PLATFORMS -->
 <div class="section-full">
   <div class="section">
-    <p class="eyebrow" data-anim>Technologie</p>
-    <h2 class="section-title" data-anim>Shopify ou WooCommerce — vous choisissez.</h2>
-    <p class="section-sub" data-anim>Deux plateformes leaders du marché. Nous vous recommandons la meilleure selon votre activité.</p>
+    <p class="eyebrow" data-anim data-en="Technology">Technologie</p>
+    <h2 class="section-title" data-anim data-en="Shopify or WooCommerce — you choose.">Shopify ou WooCommerce — vous choisissez.</h2>
+    <p class="section-sub" data-anim data-en="Two market-leading platforms. We recommend the best one for your business.">Deux plateformes leaders du marché. Nous vous recommandons la meilleure selon votre activité.</p>
     <div class="platform-grid">
       <div class="platform-card" data-anim>
         <div class="p-logo">🛍️</div>
@@ -240,15 +245,15 @@
 <!-- POUR QUI -->
 <div class="section-full">
   <div class="section">
-    <p class="eyebrow" data-anim>Idéal pour</p>
-    <h2 class="section-title" data-anim>Qui choisit le Pack Premium ?</h2>
+    <p class="eyebrow" data-anim data-en="Ideal for">Idéal pour</p>
+    <h2 class="section-title" data-anim data-en="Who chooses the Premium Pack?">Qui choisit le Pack Premium ?</h2>
     <div class="target-grid">
-      <div class="target-card" data-anim><div class="icon">👗</div><h4>Boutiques de mode</h4><p>Catalogue produits avec variantes (taille, couleur), photos et gestion des retours.</p></div>
-      <div class="target-card" data-anim><div class="icon">🌿</div><h4>Épiceries bio & locales</h4><p>Vente en ligne avec click-and-collect ou livraison locale en Romandie.</p></div>
-      <div class="target-card" data-anim><div class="icon">💎</div><h4>Bijouteries & créateurs</h4><p>Boutique élégante avec photos haute qualité et paiement sécurisé.</p></div>
-      <div class="target-card" data-anim><div class="icon">📚</div><h4>Formations & e-learning</h4><p>Vente de cours en ligne, accès membres et téléchargements numériques.</p></div>
-      <div class="target-card" data-anim><div class="icon">🍾</div><h4>Caves à vin & épiceries fines</h4><p>Catalogue avec filtres, abonnements et livraison à domicile en Suisse.</p></div>
-      <div class="target-card" data-anim><div class="icon">🏋️</div><h4>Studios fitness & yoga</h4><p>Vente d'abonnements, réservation de cours et boutique accessoires.</p></div>
+      <div class="target-card" data-anim><div class="icon">👗</div><h4 data-en="Fashion boutiques">Boutiques de mode</h4><p data-en="Product catalogue with variants (size, colour), photos and returns management.">Catalogue produits avec variantes (taille, couleur), photos et gestion des retours.</p></div>
+      <div class="target-card" data-anim><div class="icon">🌿</div><h4 data-en="Organic & local groceries">Épiceries bio & locales</h4><p data-en="Online sales with click-and-collect or local delivery in Switzerland.">Vente en ligne avec click-and-collect ou livraison locale en Romandie.</p></div>
+      <div class="target-card" data-anim><div class="icon">💎</div><h4 data-en="Jewellers & creators">Bijouteries & créateurs</h4><p data-en="Elegant store with high-quality photos and secure payment.">Boutique élégante avec photos haute qualité et paiement sécurisé.</p></div>
+      <div class="target-card" data-anim><div class="icon">📚</div><h4 data-en="Training & e-learning">Formations & e-learning</h4><p data-en="Online course sales, member access and digital downloads.">Vente de cours en ligne, accès membres et téléchargements numériques.</p></div>
+      <div class="target-card" data-anim><div class="icon">🍾</div><h4 data-en="Wine & fine food shops">Caves à vin & épiceries fines</h4><p data-en="Catalogue with filters, subscriptions and home delivery in Switzerland.">Catalogue avec filtres, abonnements et livraison à domicile en Suisse.</p></div>
+      <div class="target-card" data-anim><div class="icon">🏋️</div><h4 data-en="Fitness & yoga studios">Studios fitness & yoga</h4><p data-en="Membership sales, class bookings and accessories shop.">Vente d'abonnements, réservation de cours et boutique accessoires.</p></div>
     </div>
   </div>
 </div>
@@ -256,14 +261,14 @@
 <!-- FORMATION -->
 <div class="formation-wrap">
   <div class="formation-inner">
-    <p class="eyebrow" data-anim>Formation incluse</p>
-    <h2 class="section-title" data-anim>Vous êtes autonome dès le premier jour.</h2>
-    <p class="section-sub" data-anim>Nous vous formons à gérer votre boutique vous-même. Plus besoin de nous appeler pour chaque modification.</p>
+    <p class="eyebrow" data-anim data-en="Training included">Formation incluse</p>
+    <h2 class="section-title" data-anim data-en="You're independent from day one.">Vous êtes autonome dès le premier jour.</h2>
+    <p class="section-sub" data-anim data-en="We train you to manage your store yourself. No need to call us for every change.">Nous vous formons à gérer votre boutique vous-même. Plus besoin de nous appeler pour chaque modification.</p>
     <div class="formation-grid">
-      <div class="form-item" data-anim><div class="form-icon">🎓</div><div><h4>Session de formation (2h)</h4><p>Formation en visio ou en personne pour maîtriser votre back-office : produits, commandes, stocks.</p></div></div>
-      <div class="form-item" data-anim><div class="form-icon">📖</div><div><h4>Guide de gestion personnalisé</h4><p>Document PDF sur mesure avec les étapes exactes pour votre boutique. Gardez-le précieusement.</p></div></div>
-      <div class="form-item" data-anim><div class="form-icon">📸</div><div><h4>Bonnes pratiques photos produits</h4><p>Conseils pour prendre des photos qui vendent. Avec votre smartphone, sans matériel pro.</p></div></div>
-      <div class="form-item" data-anim><div class="form-icon">🔒</div><div><h4>6 mois de support offert</h4><p>Questions, blocages, nouvelles idées — on est disponibles pendant 6 mois après la livraison.</p></div></div>
+      <div class="form-item" data-anim><div class="form-icon">🎓</div><div><h4 data-en="Training session (2h)">Session de formation (2h)</h4><p data-en="Video or in-person training to master your back-office: products, orders, stock.">Formation en visio ou en personne pour maîtriser votre back-office : produits, commandes, stocks.</p></div></div>
+      <div class="form-item" data-anim><div class="form-icon">📖</div><div><h4 data-en="Custom management guide">Guide de gestion personnalisé</h4><p data-en="Tailored PDF document with the exact steps for your store. Keep it safe.">Document PDF sur mesure avec les étapes exactes pour votre boutique. Gardez-le précieusement.</p></div></div>
+      <div class="form-item" data-anim><div class="form-icon">📸</div><div><h4 data-en="Product photo best practices">Bonnes pratiques photos produits</h4><p data-en="Tips for taking photos that sell. With your smartphone, no pro equipment needed.">Conseils pour prendre des photos qui vendent. Avec votre smartphone, sans matériel pro.</p></div></div>
+      <div class="form-item" data-anim><div class="form-icon">🔒</div><div><h4 data-en="6 months support included">6 mois de support offert</h4><p data-en="Questions, blockers, new ideas — we're available for 6 months after delivery.">Questions, blocages, nouvelles idées — on est disponibles pendant 6 mois après la livraison.</p></div></div>
     </div>
   </div>
 </div>
@@ -271,8 +276,8 @@
 <!-- EXAMPLES -->
 <div class="section-full">
   <div class="section">
-    <p class="eyebrow" data-anim>Exemples concrets</p>
-    <h2 class="section-title" data-anim>Boutiques Premium typiques</h2>
+    <p class="eyebrow" data-anim data-en="Concrete examples">Exemples concrets</p>
+    <h2 class="section-title" data-anim data-en="Typical Premium stores">Boutiques Premium typiques</h2>
     <div class="examples-grid">
       <div class="example-card" data-anim><div class="example-mockup ex-mode">👗</div><div class="example-body"><h4>Atelier Couture Vaud</h4><p>Boutique Shopify avec 80+ produits, filtres par collection, paiement Twint + CB, livraison Suisse.</p><span class="example-tag">Mode · Lausanne</span></div></div>
       <div class="example-card" data-anim><div class="example-mockup ex-bio">🌿</div><div class="example-body"><h4>La Ferme du Lac</h4><p>WooCommerce avec panier click-and-collect, abonnement légumes hebdomadaire, zone de livraison Genève.</p><span class="example-tag">Bio · Genève</span></div></div>
@@ -284,15 +289,15 @@
 <!-- TIMELINE -->
 <div class="formation-wrap">
   <div class="timeline-wrap">
-    <p class="eyebrow" data-anim>Notre processus</p>
-    <h2 class="section-title" data-anim>Votre boutique en ligne en 14 jours.</h2>
+    <p class="eyebrow" data-anim data-en="Our process">Notre processus</p>
+    <h2 class="section-title" data-anim data-en="Your online store in 14 days.">Votre boutique en ligne en 14 jours.</h2>
     <div class="timeline">
-      <div class="timeline-item" data-anim><div class="timeline-dot">J1</div><div class="timeline-content"><h4>Découverte & stratégie (1h)</h4><p>Analyse de votre catalogue, choix de la plateforme, définition des fonctionnalités et du design.</p></div></div>
-      <div class="timeline-item" data-anim><div class="timeline-dot">J3</div><div class="timeline-content"><h4>Maquette & architecture</h4><p>Design de la boutique, navigation, fiches produits. Validation avant développement.</p></div></div>
-      <div class="timeline-item" data-anim><div class="timeline-dot">J7</div><div class="timeline-content"><h4>Boutique fonctionnelle livrée</h4><p>Boutique complète avec produits, paiement configuré et options de livraison.</p></div></div>
-      <div class="timeline-item" data-anim><div class="timeline-dot">J10</div><div class="timeline-content"><h4>Tests & révisions</h4><p>Test des paiements, vérification mobile, optimisation SEO et corrections finales.</p></div></div>
-      <div class="timeline-item" data-anim><div class="timeline-dot">J13</div><div class="timeline-content"><h4>Formation (2h)</h4><p>Session de prise en main de votre boutique. Vous savez tout gérer seul.</p></div></div>
-      <div class="timeline-item" data-anim><div class="timeline-dot">J14</div><div class="timeline-content"><h4>Mise en ligne officielle 🎉</h4><p>Boutique en ligne, indexée sur Google, prête à recevoir ses premières commandes.</p></div></div>
+      <div class="timeline-item" data-anim><div class="timeline-dot">J1</div><div class="timeline-content"><h4 data-en="Discovery & strategy (1h)">Découverte & stratégie (1h)</h4><p data-en="Catalogue analysis, platform choice, features and design definition.">Analyse de votre catalogue, choix de la plateforme, définition des fonctionnalités et du design.</p></div></div>
+      <div class="timeline-item" data-anim><div class="timeline-dot">J3</div><div class="timeline-content"><h4 data-en="Wireframe & architecture">Maquette & architecture</h4><p data-en="Store design, navigation, product pages. Approval before development.">Design de la boutique, navigation, fiches produits. Validation avant développement.</p></div></div>
+      <div class="timeline-item" data-anim><div class="timeline-dot">J7</div><div class="timeline-content"><h4 data-en="Functional store delivered">Boutique fonctionnelle livrée</h4><p data-en="Complete store with products, payment configured and delivery options.">Boutique complète avec produits, paiement configuré et options de livraison.</p></div></div>
+      <div class="timeline-item" data-anim><div class="timeline-dot">J10</div><div class="timeline-content"><h4 data-en="Testing & revisions">Tests & révisions</h4><p data-en="Payment testing, mobile check, SEO optimisation and final corrections.">Test des paiements, vérification mobile, optimisation SEO et corrections finales.</p></div></div>
+      <div class="timeline-item" data-anim><div class="timeline-dot">J13</div><div class="timeline-content"><h4 data-en="Training (2h)">Formation (2h)</h4><p data-en="Store onboarding session. You know how to manage everything yourself.">Session de prise en main de votre boutique. Vous savez tout gérer seul.</p></div></div>
+      <div class="timeline-item" data-anim><div class="timeline-dot">J14</div><div class="timeline-content"><h4 data-en="Official launch 🎉">Mise en ligne officielle 🎉</h4><p data-en="Store live, indexed on Google, ready to receive its first orders.">Boutique en ligne, indexée sur Google, prête à recevoir ses premières commandes.</p></div></div>
     </div>
   </div>
 </div>
@@ -300,8 +305,8 @@
 <!-- COMPARE TABLE -->
 <div class="section-full">
   <div class="section">
-    <p class="eyebrow" data-anim>Comparatif</p>
-    <h2 class="section-title" data-anim>Premium vs les autres packs</h2>
+    <p class="eyebrow" data-anim data-en="Comparison">Comparatif</p>
+    <h2 class="section-title" data-anim data-en="Premium vs other plans">Premium vs les autres packs</h2>
     <div class="compare-wrap" data-anim>
       <div style="overflow-x:auto;">
       <table class="compare-table">
@@ -328,14 +333,14 @@
 </div>
 
 <section class="cta-section">
-  <p class="eyebrow">Pack Premium · CHF 999</p>
-  <h2>Lancez votre boutique<br>en ligne maintenant.</h2>
-  <p>Réponse sous 24h · Sans engagement · Livraison en 14 jours</p>
-  <a href="index.html#contact" class="cta-btn" id="cta-bottom">Demander mon devis gratuit →</a>
+  <p class="eyebrow" data-en="Premium Pack · CHF 999">Pack Premium · CHF 999</p>
+  <h2 data-en="Launch your online<br>store now.">Lancez votre boutique<br>en ligne maintenant.</h2>
+  <p data-en="Reply within 24h · No commitment · Delivered in 14 days">Réponse sous 24h · Sans engagement · Livraison en 14 jours</p>
+  <a href="index.html#contact" class="cta-btn" id="cta-bottom" data-en="Request my free quote →">Demander mon devis gratuit →</a>
 </section>
 
 <footer>
-  <p>© 2025 Romand Web · <a href="index.html">Accueil</a> · <a href="tarifs.html">Tarifs</a> · <a href="mentions-legales.html">Mentions légales</a> · <a href="tel:+41765060676">+41 76 506 06 76</a> · <a href="mailto:info@romand-web.com">info@romand-web.com</a></p>
+  <p data-en='© 2025 Romand Web · <a href="index.html">Home</a> · <a href="tarifs.html">Pricing</a> · <a href="mentions-legales.html">Legal Notice</a> · <a href="tel:+41765060676">+41 76 506 06 76</a> · <a href="mailto:info@romand-web.com">info@romand-web.com</a>'>© 2025 Romand Web · <a href="index.html">Accueil</a> · <a href="tarifs.html">Tarifs</a> · <a href="mentions-legales.html">Mentions légales</a> · <a href="tel:+41765060676">+41 76 506 06 76</a> · <a href="mailto:info@romand-web.com">info@romand-web.com</a></p>
 </footer>
 
 <script>
@@ -355,6 +360,18 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('[data-anim]').forEach(el => obs.observe(el));
+
+  function setLang(lang) {
+    localStorage.setItem('rw-lang', lang);
+    document.documentElement.lang = lang;
+    document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.querySelectorAll('[data-en]').forEach(el => {
+      if (!el.dataset.fr) el.dataset.fr = el.innerHTML;
+      el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.fr;
+    });
+  }
+  (function(){ const l = localStorage.getItem('rw-lang'); if (l === 'en') setLang('en'); })();
 </script>
 </body>
 </html>

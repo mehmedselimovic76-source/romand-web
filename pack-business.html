@@ -30,6 +30,7 @@
     .hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;}
     .hamburger span{display:block;width:22px;height:2px;background:var(--black);margin:5px 0;border-radius:2px;}
     @media(max-width:768px){.nav-links{display:none;flex-direction:column;position:absolute;top:52px;left:0;right:0;background:rgba(255,255,255,.97);padding:16px 22px;border-bottom:1px solid var(--divider);gap:16px;}.nav-links.open{display:flex;}.hamburger{display:block;}}
+    .lang-btn{background:none;border:1.5px solid var(--divider);border-radius:8px;padding:4px 11px;font-size:.78rem;font-weight:700;color:var(--gray);cursor:pointer;transition:border-color .2s,color .2s,background .2s;font-family:inherit;letter-spacing:.6px;}.lang-btn:hover{border-color:var(--blue);color:var(--blue);}.lang-btn.active{border-color:var(--blue);color:var(--blue);background:rgba(0,113,227,0.07);}
 
     .breadcrumb{padding:12px 40px;font-size:.82rem;color:var(--gray);border-bottom:1px solid var(--divider);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
     .breadcrumb a{color:var(--blue);text-decoration:none;}
@@ -153,57 +154,61 @@
 <nav>
   <a href="index.html" class="logo"><span class="logo-icon">◈</span>Romand Web</a>
   <div class="nav-links" id="navLinks">
-    <a href="index.html">Accueil</a>
-    <a href="tarifs.html" class="nav-back">← Tous les tarifs</a>
-    <a href="index.html#contact" style="color:var(--blue);font-weight:500;opacity:1;">Devis gratuit</a>
+    <a href="index.html" data-en="Home">Accueil</a>
+    <a href="tarifs.html" class="nav-back" data-en="← All plans">← Tous les tarifs</a>
+    <a href="index.html#contact" style="color:var(--blue);font-weight:500;opacity:1;" data-en="Free quote">Devis gratuit</a>
   </div>
-  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <div style="display:flex;align-items:center;gap:6px;">
+    <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 
 <div class="breadcrumb">
-  <a href="index.html">Accueil</a><span class="sep">›</span>
-  <a href="tarifs.html">Tarifs</a><span class="sep">›</span>
-  <span>Pack Business</span>
+  <a href="index.html" data-en="Home">Accueil</a><span class="sep">›</span>
+  <a href="tarifs.html" data-en="Pricing">Tarifs</a><span class="sep">›</span>
+  <span data-en="Business Pack">Pack Business</span>
 </div>
 
 <section class="hero">
-  <div class="badge">⭐ Le plus populaire</div>
-  <h1>Dominez Google<br>en <span>Romandie.</span></h1>
-  <p class="sub">Un site multi-pages avec SEO local intégré pour apparaître en tête des résultats sur votre ville. La solution complète pour les PME ambitieuses.</p>
+  <div class="badge" data-en="⭐ Most popular">⭐ Le plus populaire</div>
+  <h1 data-en="Dominate Google<br>in <span>Switzerland.</span>">Dominez Google<br>en <span>Romandie.</span></h1>
+  <p class="sub" data-en="A multi-page website with integrated local SEO to appear at the top of results in your city. The complete solution for ambitious SMEs.">Un site multi-pages avec SEO local intégré pour apparaître en tête des résultats sur votre ville. La solution complète pour les PME ambitieuses.</p>
   <div class="hero-price"><sup>CHF</sup>599</div>
-  <p class="hero-note">Paiement unique · domaine exclu · livraison en 10 jours</p>
+  <p class="hero-note" data-en="One-time payment · domain excluded · delivered in 10 days">Paiement unique · domaine exclu · livraison en 10 jours</p>
   <div class="hero-btns">
-    <a href="index.html#contact" class="btn-primary" id="cta-hero">Choisir Business <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    <a href="tarifs.html" class="btn-secondary" id="compare-link">Comparer les packs</a>
+    <a href="index.html#contact" class="btn-primary" id="cta-hero" data-en="Choose Business ">Choisir Business <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <a href="tarifs.html" class="btn-secondary" id="compare-link" data-en="Compare plans">Comparer les packs</a>
   </div>
 </section>
 
 <!-- SEO -->
 <div class="section-full">
   <div class="section">
-    <p class="eyebrow" data-anim>SEO Local Romandie</p>
-    <h2 class="section-title" data-anim>Soyez trouvé par vos clients locaux.</h2>
-    <p class="section-sub" data-anim>80% des consommateurs cherchent un service local sur Google avant d'acheter. Le Pack Business vous place exactement là où ils cherchent.</p>
+    <p class="eyebrow" data-anim data-en="Local SEO Switzerland">SEO Local Romandie</p>
+    <h2 class="section-title" data-anim data-en="Be found by your local clients.">Soyez trouvé par vos clients locaux.</h2>
+    <p class="section-sub" data-anim data-en="80% of consumers search for a local service on Google before buying. The Business Pack places you exactly where they're looking.">80% des consommateurs cherchent un service local sur Google avant d'acheter. Le Pack Business vous place exactement là où ils cherchent.</p>
     <div class="seo-grid">
       <div class="seo-card" data-anim>
         <div class="seo-icon">📍</div>
-        <h4>Optimisation géographique</h4>
-        <p>Mots-clés ciblés sur votre ville et région. "Coiffeur Lausanne", "Plombier Genève" — votre site remonte en priorité.</p>
+        <h4 data-en="Geographic optimisation">Optimisation géographique</h4>
+        <p data-en='Keywords targeting your city and region. "Hairdresser Lausanne", "Plumber Geneva" — your site ranks first.'>Mots-clés ciblés sur votre ville et région. "Coiffeur Lausanne", "Plombier Genève" — votre site remonte en priorité.</p>
       </div>
       <div class="seo-card light" data-anim>
         <div class="seo-icon">🗺️</div>
-        <h4>Google Maps intégré</h4>
-        <p>Votre carte Google Maps directement sur votre site. Vos clients vous localisent et vous contactent en un clic.</p>
+        <h4 data-en="Google Maps integrated">Google Maps intégré</h4>
+        <p data-en="Your Google Maps directly on your site. Clients locate you and contact you in one click.">Votre carte Google Maps directement sur votre site. Vos clients vous localisent et vous contactent en un clic.</p>
       </div>
       <div class="seo-card light" data-anim>
         <div class="seo-icon">📊</div>
-        <h4>Balises Schema.org</h4>
-        <p>Les métadonnées structurées indiquent précisément à Google votre activité, zone et contacts. Résultats enrichis garantis.</p>
+        <h4 data-en="Schema.org markup">Balises Schema.org</h4>
+        <p data-en="Structured metadata tells Google precisely your business, area and contacts. Rich results guaranteed.">Les métadonnées structurées indiquent précisément à Google votre activité, zone et contacts. Résultats enrichis garantis.</p>
       </div>
       <div class="seo-card" data-anim>
         <div class="seo-icon">⚡</div>
-        <h4>Core Web Vitals optimisés</h4>
-        <p>Google pénalise les sites lents. Votre site est livré avec un score de performance 90+/100 sur PageSpeed Insights.</p>
+        <h4 data-en="Optimised Core Web Vitals">Core Web Vitals optimisés</h4>
+        <p data-en="Google penalises slow sites. Your site is delivered with a 90+/100 performance score on PageSpeed Insights.">Google pénalise les sites lents. Votre site est livré avec un score de performance 90+/100 sur PageSpeed Insights.</p>
       </div>
     </div>
   </div>
@@ -212,16 +217,16 @@
 <!-- POUR QUI -->
 <div class="section-full">
   <div class="section">
-    <p class="eyebrow" data-anim>Idéal pour</p>
-    <h2 class="section-title" data-anim>Qui choisit le Pack Business ?</h2>
-    <p class="section-sub" data-anim>Les entreprises qui veulent plus qu'une simple présence — elles veulent des clients.</p>
+    <p class="eyebrow" data-anim data-en="Ideal for">Idéal pour</p>
+    <h2 class="section-title" data-anim data-en="Who chooses the Business Pack?">Qui choisit le Pack Business ?</h2>
+    <p class="section-sub" data-anim data-en="Businesses that want more than a simple presence — they want clients.">Les entreprises qui veulent plus qu'une simple présence — elles veulent des clients.</p>
     <div class="target-grid">
-      <div class="target-card" data-anim><div class="icon">🏥</div><h4>Cabinets médicaux</h4><p>Page d'équipe, services, prise de RDV et localisation précise.</p></div>
-      <div class="target-card" data-anim><div class="icon">⚖️</div><h4>Avocats & notaires</h4><p>Profil professionnel, domaines de droit et formulaire de contact qualifiant.</p></div>
-      <div class="target-card" data-anim><div class="icon">🏗️</div><h4>Entreprises de construction</h4><p>Portfolio de réalisations, services et devis en ligne. SEO pour vos villes cibles.</p></div>
-      <div class="target-card" data-anim><div class="icon">💼</div><h4>Agences & consultants</h4><p>Présentation de l'équipe, méthodes, études de cas et contacts.</p></div>
-      <div class="target-card" data-anim><div class="icon">🏫</div><h4>Écoles & formations</h4><p>Programmes, inscription en ligne et page de contact dédiée.</p></div>
-      <div class="target-card" data-anim><div class="icon">🛒</div><h4>Commerces locaux</h4><p>Catalogue produits, horaires, promotions et localisation.</p></div>
+      <div class="target-card" data-anim><div class="icon">🏥</div><h4 data-en="Medical practices">Cabinets médicaux</h4><p data-en="Team page, services, appointment booking and precise location.">Page d'équipe, services, prise de RDV et localisation précise.</p></div>
+      <div class="target-card" data-anim><div class="icon">⚖️</div><h4 data-en="Lawyers & notaries">Avocats & notaires</h4><p data-en="Professional profile, areas of law and qualifying contact form.">Profil professionnel, domaines de droit et formulaire de contact qualifiant.</p></div>
+      <div class="target-card" data-anim><div class="icon">🏗️</div><h4 data-en="Construction companies">Entreprises de construction</h4><p data-en="Project portfolio, services and online quotes. SEO for your target cities.">Portfolio de réalisations, services et devis en ligne. SEO pour vos villes cibles.</p></div>
+      <div class="target-card" data-anim><div class="icon">💼</div><h4 data-en="Agencies & consultants">Agences & consultants</h4><p data-en="Team presentation, methods, case studies and contacts.">Présentation de l'équipe, méthodes, études de cas et contacts.</p></div>
+      <div class="target-card" data-anim><div class="icon">🏫</div><h4 data-en="Schools & training centres">Écoles & formations</h4><p data-en="Programmes, online registration and dedicated contact page.">Programmes, inscription en ligne et page de contact dédiée.</p></div>
+      <div class="target-card" data-anim><div class="icon">🛒</div><h4 data-en="Local shops">Commerces locaux</h4><p data-en="Product catalogue, hours, promotions and location.">Catalogue produits, horaires, promotions et localisation.</p></div>
     </div>
   </div>
 </div>
@@ -229,9 +234,9 @@
 <!-- PAGES INCLUSES -->
 <div class="features-wrap">
   <div class="features-inner">
-    <p class="eyebrow" data-anim>Pages incluses</p>
-    <h2 class="section-title" data-anim>Jusqu'à 5 pages sur mesure.</h2>
-    <p class="section-sub" data-anim>Chaque page est optimisée pour un objectif précis. Voici les pages les plus fréquemment choisies.</p>
+    <p class="eyebrow" data-anim data-en="Included pages">Pages incluses</p>
+    <h2 class="section-title" data-anim data-en="Up to 5 custom pages.">Jusqu'à 5 pages sur mesure.</h2>
+    <p class="section-sub" data-anim data-en="Each page is optimised for a specific goal. Here are the most frequently chosen pages.">Chaque page est optimisée pour un objectif précis. Voici les pages les plus fréquemment choisies.</p>
     <div class="pages-grid">
       <div class="page-chip" data-anim><div class="p-icon">🏠</div><p>Accueil</p></div>
       <div class="page-chip" data-anim><div class="p-icon">ℹ️</div><p>À propos</p></div>
@@ -256,9 +261,9 @@
 <!-- EXAMPLES -->
 <div class="section-full">
   <div class="section">
-    <p class="eyebrow" data-anim>Exemples concrets</p>
-    <h2 class="section-title" data-anim>Sites Business typiques</h2>
-    <p class="section-sub" data-anim>Des sites multi-pages construits pour convertir des visiteurs en clients.</p>
+    <p class="eyebrow" data-anim data-en="Concrete examples">Exemples concrets</p>
+    <h2 class="section-title" data-anim data-en="Typical Business websites">Sites Business typiques</h2>
+    <p class="section-sub" data-anim data-en="Multi-page sites built to convert visitors into clients.">Des sites multi-pages construits pour convertir des visiteurs en clients.</p>
     <div class="examples-grid">
       <div class="example-card" data-anim><div class="example-mockup ex-cabinet">🏥</div><div class="example-body"><h4>Cabinet Dr. Moreau</h4><p>Accueil · Équipe · Spécialités · Prise de RDV · Contact. SEO ciblé "médecin Lausanne".</p><span class="example-tag">Médecin · Lausanne</span></div></div>
       <div class="example-card" data-anim><div class="example-mockup ex-agence">💼</div><div class="example-body"><h4>Fiduciaire Bernasconi</h4><p>Présentation · Services · Équipe · Références clients · Contact. Google Maps + formulaire qualifiant.</p><span class="example-tag">Fiduciaire · Genève</span></div></div>
@@ -270,14 +275,14 @@
 <!-- TIMELINE -->
 <div class="features-wrap">
   <div class="features-inner">
-    <p class="eyebrow" data-anim>Notre processus</p>
-    <h2 class="section-title" data-anim>De la commande à la mise en ligne en 10 jours.</h2>
+    <p class="eyebrow" data-anim data-en="Our process">Notre processus</p>
+    <h2 class="section-title" data-anim data-en="From order to launch in 10 days.">De la commande à la mise en ligne en 10 jours.</h2>
     <div class="timeline">
-      <div class="timeline-item" data-anim><div class="timeline-dot">J1</div><div class="timeline-content"><h4>Appel stratégique (45 min)</h4><p>Analyse de vos concurrents, définition des mots-clés locaux et structure du site.</p></div></div>
-      <div class="timeline-item" data-anim><div class="timeline-dot">J3</div><div class="timeline-content"><h4>Maquette & structure</h4><p>Proposition de l'arborescence et du design. Vous validez avant le développement.</p></div></div>
-      <div class="timeline-item" data-anim><div class="timeline-dot">J6</div><div class="timeline-content"><h4>Site complet livré</h4><p>Toutes les pages développées, SEO intégré, Google Maps configuré.</p></div></div>
-      <div class="timeline-item" data-anim><div class="timeline-dot">J8</div><div class="timeline-content"><h4>Révisions finales</h4><p>Ajustements selon vos retours. Textes, images, couleurs — tout peut être modifié.</p></div></div>
-      <div class="timeline-item" data-anim><div class="timeline-dot">J10</div><div class="timeline-content"><h4>Mise en ligne & suivi 🎉</h4><p>Soumission aux moteurs de recherche, vérification complète et remise des accès.</p></div></div>
+      <div class="timeline-item" data-anim><div class="timeline-dot">J1</div><div class="timeline-content"><h4 data-en="Strategic call (45 min)">Appel stratégique (45 min)</h4><p data-en="Competitor analysis, local keyword targeting and site structure.">Analyse de vos concurrents, définition des mots-clés locaux et structure du site.</p></div></div>
+      <div class="timeline-item" data-anim><div class="timeline-dot">J3</div><div class="timeline-content"><h4 data-en="Wireframe & structure">Maquette & structure</h4><p data-en="Site map and design proposal. You approve before development starts.">Proposition de l'arborescence et du design. Vous validez avant le développement.</p></div></div>
+      <div class="timeline-item" data-anim><div class="timeline-dot">J6</div><div class="timeline-content"><h4 data-en="Full site delivered">Site complet livré</h4><p data-en="All pages developed, SEO integrated, Google Maps configured.">Toutes les pages développées, SEO intégré, Google Maps configuré.</p></div></div>
+      <div class="timeline-item" data-anim><div class="timeline-dot">J8</div><div class="timeline-content"><h4 data-en="Final revisions">Révisions finales</h4><p data-en="Adjustments based on your feedback. Text, images, colours — anything can be changed.">Ajustements selon vos retours. Textes, images, couleurs — tout peut être modifié.</p></div></div>
+      <div class="timeline-item" data-anim><div class="timeline-dot">J10</div><div class="timeline-content"><h4 data-en="Launch & follow-up 🎉">Mise en ligne & suivi 🎉</h4><p data-en="Search engine submission, full verification and access handover.">Soumission aux moteurs de recherche, vérification complète et remise des accès.</p></div></div>
     </div>
   </div>
 </div>
@@ -285,8 +290,8 @@
 <!-- COMPARE TABLE -->
 <div class="section-full">
   <div class="section">
-    <p class="eyebrow" data-anim>Comparatif</p>
-    <h2 class="section-title" data-anim>Business vs les autres packs</h2>
+    <p class="eyebrow" data-anim data-en="Comparison">Comparatif</p>
+    <h2 class="section-title" data-anim data-en="Business vs other plans">Business vs les autres packs</h2>
     <div class="compare-wrap" data-anim>
       <div style="overflow-x:auto;">
       <table class="compare-table">
@@ -312,14 +317,14 @@
 </div>
 
 <section class="cta-section">
-  <p class="eyebrow">Pack Business · CHF 599</p>
-  <h2>Attirez plus de clients<br>en Romandie.</h2>
-  <p>Réponse sous 24h · Sans engagement · Livraison en 10 jours</p>
-  <a href="index.html#contact" class="cta-btn" id="cta-bottom">Demander mon devis gratuit →</a>
+  <p class="eyebrow" data-en="Business Pack · CHF 599">Pack Business · CHF 599</p>
+  <h2 data-en="Attract more clients<br>in Switzerland.">Attirez plus de clients<br>en Romandie.</h2>
+  <p data-en="Reply within 24h · No commitment · Delivered in 10 days">Réponse sous 24h · Sans engagement · Livraison en 10 jours</p>
+  <a href="index.html#contact" class="cta-btn" id="cta-bottom" data-en="Request my free quote →">Demander mon devis gratuit →</a>
 </section>
 
 <footer>
-  <p>© 2025 Romand Web · <a href="index.html">Accueil</a> · <a href="tarifs.html">Tarifs</a> · <a href="mentions-legales.html">Mentions légales</a> · <a href="tel:+41765060676">+41 76 506 06 76</a> · <a href="mailto:info@romand-web.com">info@romand-web.com</a></p>
+  <p data-en='© 2025 Romand Web · <a href="index.html">Home</a> · <a href="tarifs.html">Pricing</a> · <a href="mentions-legales.html">Legal Notice</a> · <a href="tel:+41765060676">+41 76 506 06 76</a> · <a href="mailto:info@romand-web.com">info@romand-web.com</a>'>© 2025 Romand Web · <a href="index.html">Accueil</a> · <a href="tarifs.html">Tarifs</a> · <a href="mentions-legales.html">Mentions légales</a> · <a href="tel:+41765060676">+41 76 506 06 76</a> · <a href="mailto:info@romand-web.com">info@romand-web.com</a></p>
 </footer>
 
 <script>
@@ -339,6 +344,18 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('[data-anim]').forEach(el => obs.observe(el));
+
+  function setLang(lang) {
+    localStorage.setItem('rw-lang', lang);
+    document.documentElement.lang = lang;
+    document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.querySelectorAll('[data-en]').forEach(el => {
+      if (!el.dataset.fr) el.dataset.fr = el.innerHTML;
+      el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.fr;
+    });
+  }
+  (function(){ const l = localStorage.getItem('rw-lang'); if (l === 'en') setLang('en'); })();
 </script>
 </body>
 </html>
