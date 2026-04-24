@@ -162,6 +162,22 @@
       opacity: 1 !important;
       font-weight: 500 !important;
     }
+    .lang-btn {
+      background: none;
+      border: 1.5px solid var(--divider);
+      border-radius: 8px;
+      padding: 4px 11px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--gray);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      font-family: inherit;
+      letter-spacing: 0.6px;
+      margin-left: 8px;
+    }
+    .lang-btn:hover { border-color: var(--blue); color: var(--blue); }
+    .lang-btn.active { border-color: var(--blue); color: var(--blue); background: rgba(0,113,227,0.07); }
 
     /* HERO */
     @keyframes heroBgSpin {
@@ -937,31 +953,35 @@
       <span class="logo-icon">◈</span> Romand Web
     </a>
     <div class="nav-links">
-      <a href="#services">Offres</a>
-      <a href="#why">Pourquoi nous</a>
-      <a href="tarifs.html">Tarifs</a>
+      <a href="#services" id="nl-offers">Offres</a>
+      <a href="#why" id="nl-why">Pourquoi nous</a>
+      <a href="tarifs.html" id="nl-pricing">Tarifs</a>
       <a href="#faq">FAQ</a>
-      <a href="#contact" class="nav-cta">Contact</a>
+      <a href="#contact" class="nav-cta" id="nl-contact">Contact</a>
     </div>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
   <div class="mobile-menu" id="mobile-menu">
-    <a href="#services" class="mobile-link">Offres</a>
-    <a href="#why" class="mobile-link">Pourquoi nous</a>
+    <a href="#services" class="mobile-link" id="mm-offers">Offres</a>
+    <a href="#why" class="mobile-link" id="mm-why">Pourquoi nous</a>
     <a href="#faq" class="mobile-link">FAQ</a>
-    <a href="#contact" class="mobile-link">Contact</a>
+    <a href="#contact" class="mobile-link" id="mm-contact">Contact</a>
   </div>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="eyebrow" data-anim="fade-in" data-delay="100">Agence Web · Romandie</div>
-    <h1 data-anim="fade-up" data-delay="200">Votre vitrine<br>digitale en Romandie.</h1>
-    <p data-anim="fade-up" data-delay="300">Des sites internet professionnels pour les PME locales. Simple, rapide et abordable.</p>
+    <div class="eyebrow" data-anim="fade-in" data-delay="100" id="hero-eyebrow">Agence Web · Romandie</div>
+    <h1 data-anim="fade-up" data-delay="200" id="hero-h1">Votre vitrine<br>digitale en Romandie.</h1>
+    <p data-anim="fade-up" data-delay="300" id="hero-p">Des sites internet professionnels pour les PME locales. Simple, rapide et abordable.</p>
     <div class="hero-links" data-anim="fade-up" data-delay="400">
-      <a href="#contact" class="cta-primary">Demander un devis gratuit</a>
-      <a href="#services" class="cta-secondary">Voir nos offres</a>
+      <a href="#contact" class="cta-primary" id="hero-cta1">Demander un devis gratuit</a>
+      <a href="#services" class="cta-secondary" id="hero-cta2">Voir nos offres</a>
     </div>
   </section>
 
@@ -969,35 +989,35 @@
   <div class="trust-band">
     <div class="trust-item" data-anim="fade-in" data-delay="100">
       <span class="trust-num" data-count="50" data-suffix="+">0+</span>
-      <span class="trust-label">clients satisfaits</span>
+      <span class="trust-label" id="tl-1">clients satisfaits</span>
     </div>
     <div class="trust-item" data-anim="fade-in" data-delay="200">
       <span class="trust-num" data-count-range="7,14" data-suffix="">7–14</span>
-      <span class="trust-label">jours de livraison</span>
+      <span class="trust-label" id="tl-2">jours de livraison</span>
     </div>
     <div class="trust-item" data-anim="fade-in" data-delay="300">
       <span class="trust-num" data-count="100" data-suffix="%">0%</span>
-      <span class="trust-label">local · Romandie</span>
+      <span class="trust-label" id="tl-3">local · Romandie</span>
     </div>
     <div class="trust-item" data-anim="fade-in" data-delay="400">
       <span class="trust-num" data-count="24" data-suffix="h">0h</span>
-      <span class="trust-label">réponse garantie</span>
+      <span class="trust-label" id="tl-4">réponse garantie</span>
     </div>
   </div>
 
   <!-- SERVICES -->
   <section class="section" id="services">
-    <div class="eyebrow" data-anim="fade-in">Tarifs</div>
-    <h2 data-anim="fade-up" data-delay="100">Nos offres.</h2>
-    <p class="sub" data-anim="fade-up" data-delay="200">Des forfaits clairs, sans surprise.</p>
+    <div class="eyebrow" data-anim="fade-in" id="svc-eyebrow">Tarifs</div>
+    <h2 data-anim="fade-up" data-delay="100" id="svc-h2">Nos offres.</h2>
+    <p class="sub" data-anim="fade-up" data-delay="200" id="svc-sub">Des forfaits clairs, sans surprise.</p>
     <div class="services-grid">
 
       <div class="card" data-anim="fade-up" data-delay="100">
         <span class="badge">Starter</span>
         <h3>CHF 299</h3>
-        <div class="price-note">paiement unique · mise en ligne incluse</div>
+        <div class="price-note" id="c1-note">paiement unique · mise en ligne incluse</div>
         <div class="divider"></div>
-        <ul>
+        <ul id="c1-ul">
           <li>1 page complète responsive</li>
           <li>Design professionnel sur mesure</li>
           <li>Formulaire de contact</li>
@@ -1005,15 +1025,15 @@
           <li>Livraison en 7 jours</li>
           <li>1 mois de support offert</li>
         </ul>
-        <a href="pack-starter.html" class="card-btn card-btn-pack">En savoir plus →</a>
+        <a href="pack-starter.html" class="card-btn card-btn-pack" id="c1-btn">En savoir plus →</a>
       </div>
 
       <div class="card popular" data-anim="scale-in" data-delay="200">
-        <span class="badge">⭐ Le plus populaire</span>
+        <span class="badge" id="c2-badge">⭐ Le plus populaire</span>
         <h3>CHF 599</h3>
-        <div class="price-note">Business · paiement unique</div>
+        <div class="price-note" id="c2-note">Business · paiement unique</div>
         <div class="divider"></div>
-        <ul>
+        <ul id="c2-ul">
           <li>3 à 5 pages responsive</li>
           <li>SEO local Romandie inclus</li>
           <li>Google Maps intégré</li>
@@ -1021,15 +1041,15 @@
           <li>Livraison en 10 jours</li>
           <li>3 mois de support offert</li>
         </ul>
-        <a href="pack-business.html" class="card-btn card-btn-pack">En savoir plus →</a>
+        <a href="pack-business.html" class="card-btn card-btn-pack" id="c2-btn">En savoir plus →</a>
       </div>
 
       <div class="card" data-anim="fade-up" data-delay="300">
         <span class="badge">Premium</span>
         <h3>CHF 999</h3>
-        <div class="price-note">paiement unique · formation incluse</div>
+        <div class="price-note" id="c3-note">paiement unique · formation incluse</div>
         <div class="divider"></div>
-        <ul>
+        <ul id="c3-ul">
           <li>Boutique en ligne complète</li>
           <li>Jusqu'à 10 pages</li>
           <li>Shopify ou WooCommerce</li>
@@ -1037,15 +1057,15 @@
           <li>Livraison en 14 jours</li>
           <li>Formation + 6 mois support</li>
         </ul>
-        <a href="pack-premium.html" class="card-btn card-btn-pack">En savoir plus →</a>
+        <a href="pack-premium.html" class="card-btn card-btn-pack" id="c3-btn">En savoir plus →</a>
       </div>
 
     </div>
-    <p data-anim="fade-in" data-delay="400" style="margin-top: 32px; font-size: 0.8rem; color: #aeaeb2;">* L'achat du nom de domaine est exclu de tous les tarifs.</p>
+    <p data-anim="fade-in" data-delay="400" id="svc-footnote" style="margin-top: 32px; font-size: 0.8rem; color: #aeaeb2;">* L'achat du nom de domaine est exclu de tous les tarifs.</p>
 
     <div data-anim="fade-up" data-delay="500" style="margin-top:28px;">
       <a href="tarifs.html" id="tarifs-link" style="color:var(--blue);font-size:0.95rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:opacity 0.2s;">
-        Comparer toutes les formules en détail
+        <span id="svc-compare">Comparer toutes les formules en détail</span>
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#0071e3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -1078,39 +1098,39 @@
 
   <!-- WHY US -->
   <section class="section why" id="why">
-    <div class="eyebrow" data-anim="fade-in">Nos atouts</div>
-    <h2 data-anim="fade-up" data-delay="100">Pourquoi Romand Web ?</h2>
-    <p class="sub" data-anim="fade-up" data-delay="200">Nous comprenons les besoins des entreprises locales de Romandie.</p>
+    <div class="eyebrow" data-anim="fade-in" id="why-eyebrow">Nos atouts</div>
+    <h2 data-anim="fade-up" data-delay="100" id="why-h2">Pourquoi Romand Web ?</h2>
+    <p class="sub" data-anim="fade-up" data-delay="200" id="why-sub">Nous comprenons les besoins des entreprises locales de Romandie.</p>
     <div class="why-grid">
       <div class="why-item" data-anim="slide-left" data-delay="100">
         <span class="icon">🏡</span>
-        <h4>Local & proche</h4>
-        <p>Basé en Romandie, nous parlons votre langue et connaissons votre marché.</p>
+        <h4 id="w1-h4">Local & proche</h4>
+        <p id="w1-p">Basé en Romandie, nous parlons votre langue et connaissons votre marché.</p>
       </div>
       <div class="why-item" data-anim="fade-up" data-delay="200">
         <span class="icon">⚡</span>
-        <h4>Livraison rapide</h4>
-        <p>Votre site livré en 7 à 14 jours ouvrables.</p>
+        <h4 id="w2-h4">Livraison rapide</h4>
+        <p id="w2-p">Votre site livré en 7 à 14 jours ouvrables.</p>
       </div>
       <div class="why-item" data-anim="fade-up" data-delay="300">
         <span class="icon">💰</span>
-        <h4>Prix transparent</h4>
-        <p>Pas de frais cachés. Vous savez exactement ce que vous payez.</p>
+        <h4 id="w3-h4">Prix transparent</h4>
+        <p id="w3-p">Pas de frais cachés. Vous savez exactement ce que vous payez.</p>
       </div>
       <div class="why-item" data-anim="slide-right" data-delay="400">
         <span class="icon">📱</span>
-        <h4>100% mobile</h4>
-        <p>Tous nos sites sont optimisés pour smartphones et tablettes.</p>
+        <h4 id="w4-h4">100% mobile</h4>
+        <p id="w4-p">Tous nos sites sont optimisés pour smartphones et tablettes.</p>
       </div>
     </div>
   </section>
 
   <!-- ZONE D'INTERVENTION -->
   <section class="section" id="zone" style="background: var(--white);">
-    <div class="eyebrow" data-anim="fade-in">Couverture</div>
-    <h2 data-anim="fade-up" data-delay="100">Nous intervenons dans toute la Romandie.</h2>
-    <p class="sub" data-anim="fade-up" data-delay="200">Agence 100% digitale — nous créons votre site où que vous soyez en Suisse romande.</p>
-    <p style="font-size:0.95rem; color:var(--blue); font-weight:500; margin-bottom:28px;" data-anim="fade-in" data-delay="250">📍 Agence 100% digitale — déplacement possible sur rendez-vous si besoin.</p>
+    <div class="eyebrow" data-anim="fade-in" id="zone-eyebrow">Couverture</div>
+    <h2 data-anim="fade-up" data-delay="100" id="zone-h2">Nous intervenons dans toute la Romandie.</h2>
+    <p class="sub" data-anim="fade-up" data-delay="200" id="zone-sub">Agence 100% digitale — nous créons votre site où que vous soyez en Suisse romande.</p>
+    <p style="font-size:0.95rem; color:var(--blue); font-weight:500; margin-bottom:28px;" data-anim="fade-in" data-delay="250" id="zone-note">📍 Agence 100% digitale — déplacement possible sur rendez-vous si besoin.</p>
     <div class="zone-grid" data-anim="fade-up" data-delay="300">
       <a href="geneve.html" class="zone-pill">Genève</a>
       <a href="lausanne.html" class="zone-pill">Lausanne</a>
@@ -1129,35 +1149,35 @@
 
   <!-- ÉTUDES DE CAS -->
   <section class="section" id="realisations" style="background: var(--light-gray);">
-    <div class="eyebrow" data-anim="fade-in">Réalisations</div>
-    <h2 data-anim="fade-up" data-delay="100">Ils ont fait confiance à Romand Web.</h2>
-    <p class="sub" data-anim="fade-up" data-delay="200">Des exemples concrets de PME locales que nous avons aidées à se développer en ligne.</p>
+    <div class="eyebrow" data-anim="fade-in" id="cases-eyebrow">Réalisations</div>
+    <h2 data-anim="fade-up" data-delay="100" id="cases-h2">Ils ont fait confiance à Romand Web.</h2>
+    <p class="sub" data-anim="fade-up" data-delay="200" id="cases-sub">Des exemples concrets de PME locales que nous avons aidées à se développer en ligne.</p>
     <div class="cases-grid">
       <div class="case-card" data-anim="slide-left" data-delay="100">
-        <div class="case-tag">Carrosserie · Genève</div>
-        <h3 class="case-title">Site vitrine 1 page</h3>
-        <p class="case-desc">Un artisan genevois sans présence en ligne. Résultat : site livré en 8 jours, 3 nouveaux clients le premier mois via Google.</p>
+        <div class="case-tag" id="ca1-tag">Carrosserie · Genève</div>
+        <h3 class="case-title" id="ca1-title">Site vitrine 1 page</h3>
+        <p class="case-desc" id="ca1-desc">Un artisan genevois sans présence en ligne. Résultat : site livré en 8 jours, 3 nouveaux clients le premier mois via Google.</p>
         <div class="case-stats">
-          <span>+3 clients / mois</span>
-          <span>8 jours de livraison</span>
+          <span id="ca1-s1">+3 clients / mois</span>
+          <span id="ca1-s2">8 jours de livraison</span>
         </div>
       </div>
       <div class="case-card" data-anim="fade-up" data-delay="200">
-        <div class="case-tag">Boulangerie · Lausanne</div>
-        <h3 class="case-title">Site Business 4 pages</h3>
-        <p class="case-desc">Refonte complète avec SEO local, carte Google Maps intégrée et formulaire de commande. Trafic multiplié par 4 en 3 mois.</p>
+        <div class="case-tag" id="ca2-tag">Boulangerie · Lausanne</div>
+        <h3 class="case-title" id="ca2-title">Site Business 4 pages</h3>
+        <p class="case-desc" id="ca2-desc">Refonte complète avec SEO local, carte Google Maps intégrée et formulaire de commande. Trafic multiplié par 4 en 3 mois.</p>
         <div class="case-stats">
-          <span>×4 visites organiques</span>
-          <span>Top 3 Google Local</span>
+          <span id="ca2-s1">×4 visites organiques</span>
+          <span id="ca2-s2">Top 3 Google Local</span>
         </div>
       </div>
       <div class="case-card" data-anim="slide-right" data-delay="300">
-        <div class="case-tag">Plomberie · Fribourg</div>
-        <h3 class="case-title">Site Premium + e-commerce</h3>
-        <p class="case-desc">Boutique en ligne pour vente de petites pièces et prise de rendez-vous. Première commande en ligne 48h après la mise en ligne.</p>
+        <div class="case-tag" id="ca3-tag">Plomberie · Fribourg</div>
+        <h3 class="case-title" id="ca3-title">Site Premium + e-commerce</h3>
+        <p class="case-desc" id="ca3-desc">Boutique en ligne pour vente de petites pièces et prise de rendez-vous. Première commande en ligne 48h après la mise en ligne.</p>
         <div class="case-stats">
-          <span>Première vente en 48h</span>
-          <span>Formation incluse</span>
+          <span id="ca3-s1">Première vente en 48h</span>
+          <span id="ca3-s2">Formation incluse</span>
         </div>
       </div>
     </div>
@@ -1165,40 +1185,40 @@
 
   <!-- TESTIMONIALS -->
   <section class="section" id="temoignages" style="background: var(--light-gray);">
-    <div class="eyebrow" data-anim="fade-in">Témoignages</div>
-    <h2 data-anim="fade-up" data-delay="100">Ils nous font confiance.</h2>
-    <p class="sub" data-anim="fade-up" data-delay="200">Des PME romandes satisfaites de leur vitrine digitale.</p>
+    <div class="eyebrow" data-anim="fade-in" id="testi-eyebrow">Témoignages</div>
+    <h2 data-anim="fade-up" data-delay="100" id="testi-h2">Ils nous font confiance.</h2>
+    <p class="sub" data-anim="fade-up" data-delay="200" id="testi-sub">Des PME romandes satisfaites de leur vitrine digitale.</p>
     <div class="testi-grid">
       <div class="testi-card" data-anim="fade-up" data-delay="100">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">« Romand Web a transformé notre présence en ligne en moins de 2 semaines. Nos clients trouvent maintenant facilement nos horaires et nous appellent directement depuis le site. »</p>
+        <p class="testi-text" id="t1-text">« Romand Web a transformé notre présence en ligne en moins de 2 semaines. Nos clients trouvent maintenant facilement nos horaires et nous appellent directement depuis le site. »</p>
         <div class="testi-author">
           <div class="testi-avatar">MD</div>
           <div>
             <div class="testi-name">Marc D.</div>
-            <div class="testi-role">Carrosserie Dupont, Lausanne</div>
+            <div class="testi-role" id="t1-role">Carrosserie Dupont, Lausanne</div>
           </div>
         </div>
       </div>
       <div class="testi-card" data-anim="fade-up" data-delay="200">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">« Prix honnête, livraison rapide et design vraiment professionnel. On a eu notre site en 10 jours, exactement ce qu'on voulait. Je recommande sans hésiter. »</p>
+        <p class="testi-text" id="t2-text">« Prix honnête, livraison rapide et design vraiment professionnel. On a eu notre site en 10 jours, exactement ce qu'on voulait. Je recommande sans hésiter. »</p>
         <div class="testi-author">
           <div class="testi-avatar">SM</div>
           <div>
             <div class="testi-name">Sophie M.</div>
-            <div class="testi-role">Boulangerie Müller, Fribourg</div>
+            <div class="testi-role" id="t2-role">Boulangerie Müller, Fribourg</div>
           </div>
         </div>
       </div>
       <div class="testi-card" data-anim="fade-up" data-delay="300">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">« Enfin une agence qui comprend les besoins des petites entreprises locales. Le résultat est top et les clients le voient bien sur mobile. Merci ! »</p>
+        <p class="testi-text" id="t3-text">« Enfin une agence qui comprend les besoins des petites entreprises locales. Le résultat est top et les clients le voient bien sur mobile. Merci ! »</p>
         <div class="testi-author">
           <div class="testi-avatar">JF</div>
           <div>
             <div class="testi-name">Jean-Pierre F.</div>
-            <div class="testi-role">Plomberie Favre, Genève</div>
+            <div class="testi-role" id="t3-role">Plomberie Favre, Genève</div>
           </div>
         </div>
       </div>
@@ -1207,43 +1227,43 @@
 
   <!-- FAQ -->
   <section class="section" id="faq">
-    <div class="eyebrow" data-anim="fade-in">FAQ</div>
-    <h2 data-anim="fade-up" data-delay="100">Questions fréquentes.</h2>
-    <p class="sub" data-anim="fade-up" data-delay="200">Tout ce que vous devez savoir avant de commencer.</p>
+    <div class="eyebrow" data-anim="fade-in" id="faq-eyebrow">FAQ</div>
+    <h2 data-anim="fade-up" data-delay="100" id="faq-h2">Questions fréquentes.</h2>
+    <p class="sub" data-anim="fade-up" data-delay="200" id="faq-sub">Tout ce que vous devez savoir avant de commencer.</p>
     <div class="faq-list" data-anim="fade-up" data-delay="300">
       <div class="faq-item">
-        <button class="faq-btn" aria-expanded="false">
+        <button class="faq-btn" aria-expanded="false" id="faq1-q">
           Combien de temps faut-il pour créer mon site ?
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer">
+        <div class="faq-answer" id="faq1-a">
           <p>Entre 7 et 14 jours ouvrables selon la formule choisie. Dès réception de vos contenus (textes, photos), nous nous mettons au travail immédiatement.</p>
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" aria-expanded="false">
+        <button class="faq-btn" aria-expanded="false" id="faq2-q">
           Le nom de domaine est-il inclus dans le tarif ?
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer">
+        <div class="faq-answer" id="faq2-a">
           <p>Non, l'achat du nom de domaine (ex: votre-entreprise.ch) est à votre charge. Nous vous guidons dans la démarche et pouvons l'enregistrer pour vous. Comptez environ CHF 15–30/an.</p>
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" aria-expanded="false">
+        <button class="faq-btn" aria-expanded="false" id="faq3-q">
           Puis-je modifier mon site après la livraison ?
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer">
+        <div class="faq-answer" id="faq3-a">
           <p>Oui. La formule Premium inclut une formation pour gérer vous-même le contenu. Pour les formules Starter et Business, nous vous proposons des mises à jour rapides sur demande.</p>
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" aria-expanded="false">
+        <button class="faq-btn" aria-expanded="false" id="faq4-q">
           Proposez-vous un support après la mise en ligne ?
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer">
+        <div class="faq-answer" id="faq4-a">
           <p>Oui, un support par email est inclus pendant 30 jours après la livraison. Pour un suivi mensuel, nous proposons des forfaits de maintenance à partir de CHF 49/mois.</p>
         </div>
       </div>
@@ -1252,39 +1272,39 @@
 
   <!-- CONTACT -->
   <section class="section contact" id="contact">
-    <div class="eyebrow" data-anim="fade-in">Devis gratuit</div>
-    <h2 data-anim="fade-up" data-delay="100">Travaillons ensemble.</h2>
-    <p class="sub" data-anim="fade-up" data-delay="200">Réponse sous 24h — sans engagement.</p>
+    <div class="eyebrow" data-anim="fade-in" id="ct-eyebrow">Devis gratuit</div>
+    <h2 data-anim="fade-up" data-delay="100" id="ct-h2">Travaillons ensemble.</h2>
+    <p class="sub" data-anim="fade-up" data-delay="200" id="ct-sub">Réponse sous 24h — sans engagement.</p>
     <form id="contact-form" data-anim="fade-up" data-delay="300">
-      <input type="text" name="name" placeholder="Votre nom & entreprise" required />
-      <input type="email" name="email" placeholder="Adresse email" required />
-      <input type="tel" name="phone" placeholder="Téléphone (optionnel)" />
-      <textarea name="message" placeholder="Décrivez votre projet..."></textarea>
+      <input type="text" name="name" id="inp-name" placeholder="Votre nom & entreprise" required />
+      <input type="email" name="email" id="inp-email" placeholder="Adresse email" required />
+      <input type="tel" name="phone" id="inp-phone" placeholder="Téléphone (optionnel)" />
+      <textarea name="message" id="inp-message" placeholder="Décrivez votre projet..."></textarea>
       <div class="h-captcha" data-sitekey="5be2c998-15a0-4876-9f7a-b944f43429ae" style="margin: 4px 0;"></div>
       <button type="submit" id="form-btn">Envoyer →</button>
-      <p class="form-note">Réponse garantie sous 24h ouvrables.</p>
+      <p class="form-note" id="form-note">Réponse garantie sous 24h ouvrables.</p>
     </form>
     <div id="form-success" style="display:none; margin-top: 32px; padding: 28px 32px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; max-width: 460px; margin-left: auto; margin-right: auto;">
-      <p style="font-size: 1.4rem; font-weight: 700; color: #15803d; margin-bottom: 8px;">Message envoyé ✓</p>
-      <p style="font-size: 0.95rem; color: #4b5563; line-height: 1.6;">Merci pour votre demande. Nous vous répondons sous 24h ouvrables.</p>
+      <p id="suc-title" style="font-size: 1.4rem; font-weight: 700; color: #15803d; margin-bottom: 8px;">Message envoyé ✓</p>
+      <p id="suc-text" style="font-size: 0.95rem; color: #4b5563; line-height: 1.6;">Merci pour votre demande. Nous vous répondons sous 24h ouvrables.</p>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 Romand Web — Romandie, Suisse · <a href="tel:+41765060676" style="color: inherit; text-decoration: none;">+41 76 506 06 76</a></p>
+    <p id="footer-copy">© 2026 Romand Web — Romandie, Suisse · <a href="tel:+41765060676" style="color: inherit; text-decoration: none;">+41 76 506 06 76</a></p>
     <div class="footer-links">
-      <a href="#services">Offres</a>
-      <a href="#why">Pourquoi nous</a>
+      <a href="#services" id="fl-offers">Offres</a>
+      <a href="#why" id="fl-why">Pourquoi nous</a>
       <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
-      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="#contact" id="fl-contact">Contact</a>
+      <a href="mentions-legales.html" id="fl-legal">Mentions légales</a>
     </div>
   </footer>
 
   <!-- MOBILE STICKY CTA -->
   <div class="mobile-cta-bar">
-    <a href="#contact">Demander un devis gratuit →</a>
+    <a href="#contact" id="mob-cta">Demander un devis gratuit →</a>
   </div>
 
   <script>
@@ -1410,6 +1430,159 @@
         mobileMenu.classList.remove('open');
       });
     });
+
+    // ─── TRADUCTION FR / EN ───────────────────────────────────────────
+    const T = {
+      fr: {
+        'nl-offers':'Offres', 'nl-why':'Pourquoi nous', 'nl-pricing':'Tarifs', 'nl-contact':'Contact',
+        'mm-offers':'Offres', 'mm-why':'Pourquoi nous', 'mm-contact':'Contact',
+        'hero-eyebrow':'Agence Web · Romandie',
+        'hero-h1':'Votre vitrine<br>digitale en Romandie.',
+        'hero-p':'Des sites internet professionnels pour les PME locales. Simple, rapide et abordable.',
+        'hero-cta1':'Demander un devis gratuit', 'hero-cta2':'Voir nos offres',
+        'tl-1':'clients satisfaits', 'tl-2':'jours de livraison', 'tl-3':'local · Romandie', 'tl-4':'réponse garantie',
+        'svc-eyebrow':'Tarifs', 'svc-h2':'Nos offres.', 'svc-sub':'Des forfaits clairs, sans surprise.',
+        'c1-note':'paiement unique · mise en ligne incluse',
+        'c1-ul':'<li>1 page complète responsive</li><li>Design professionnel sur mesure</li><li>Formulaire de contact</li><li>HTTPS sécurisé + mise en ligne</li><li>Livraison en 7 jours</li><li>1 mois de support offert</li>',
+        'c1-btn':'En savoir plus →',
+        'c2-badge':'⭐ Le plus populaire', 'c2-note':'Business · paiement unique',
+        'c2-ul':'<li>3 à 5 pages responsive</li><li>SEO local Romandie inclus</li><li>Google Maps intégré</li><li>Design animé personnalisé</li><li>Livraison en 10 jours</li><li>3 mois de support offert</li>',
+        'c2-btn':'En savoir plus →',
+        'c3-note':'paiement unique · formation incluse',
+        'c3-ul':'<li>Boutique en ligne complète</li><li>Jusqu\'à 10 pages</li><li>Shopify ou WooCommerce</li><li>Paiement Twint & CB intégré</li><li>Livraison en 14 jours</li><li>Formation + 6 mois support</li>',
+        'c3-btn':'En savoir plus →',
+        'svc-footnote':'* L\'achat du nom de domaine est exclu de tous les tarifs.',
+        'svc-compare':'Comparer toutes les formules en détail',
+        'why-eyebrow':'Nos atouts', 'why-h2':'Pourquoi Romand Web ?', 'why-sub':'Nous comprenons les besoins des entreprises locales de Romandie.',
+        'w1-h4':'Local & proche', 'w1-p':'Basé en Romandie, nous parlons votre langue et connaissons votre marché.',
+        'w2-h4':'Livraison rapide', 'w2-p':'Votre site livré en 7 à 14 jours ouvrables.',
+        'w3-h4':'Prix transparent', 'w3-p':'Pas de frais cachés. Vous savez exactement ce que vous payez.',
+        'w4-h4':'100% mobile', 'w4-p':'Tous nos sites sont optimisés pour smartphones et tablettes.',
+        'zone-eyebrow':'Couverture', 'zone-h2':'Nous intervenons dans toute la Romandie.',
+        'zone-sub':'Agence 100% digitale — nous créons votre site où que vous soyez en Suisse romande.',
+        'zone-note':'📍 Agence 100% digitale — déplacement possible sur rendez-vous si besoin.',
+        'cases-eyebrow':'Réalisations', 'cases-h2':'Ils ont fait confiance à Romand Web.',
+        'cases-sub':'Des exemples concrets de PME locales que nous avons aidées à se développer en ligne.',
+        'ca1-tag':'Carrosserie · Genève', 'ca1-title':'Site vitrine 1 page',
+        'ca1-desc':'Un artisan genevois sans présence en ligne. Résultat : site livré en 8 jours, 3 nouveaux clients le premier mois via Google.',
+        'ca1-s1':'+3 clients / mois', 'ca1-s2':'8 jours de livraison',
+        'ca2-tag':'Boulangerie · Lausanne', 'ca2-title':'Site Business 4 pages',
+        'ca2-desc':'Refonte complète avec SEO local, carte Google Maps intégrée et formulaire de commande. Trafic multiplié par 4 en 3 mois.',
+        'ca2-s1':'×4 visites organiques', 'ca2-s2':'Top 3 Google Local',
+        'ca3-tag':'Plomberie · Fribourg', 'ca3-title':'Site Premium + e-commerce',
+        'ca3-desc':'Boutique en ligne pour vente de petites pièces et prise de rendez-vous. Première commande en ligne 48h après la mise en ligne.',
+        'ca3-s1':'Première vente en 48h', 'ca3-s2':'Formation incluse',
+        'testi-eyebrow':'Témoignages', 'testi-h2':'Ils nous font confiance.', 'testi-sub':'Des PME romandes satisfaites de leur vitrine digitale.',
+        't1-text':'« Romand Web a transformé notre présence en ligne en moins de 2 semaines. Nos clients trouvent maintenant facilement nos horaires et nous appellent directement depuis le site. »',
+        't1-role':'Carrosserie Dupont, Lausanne',
+        't2-text':'« Prix honnête, livraison rapide et design vraiment professionnel. On a eu notre site en 10 jours, exactement ce qu\'on voulait. Je recommande sans hésiter. »',
+        't2-role':'Boulangerie Müller, Fribourg',
+        't3-text':'« Enfin une agence qui comprend les besoins des petites entreprises locales. Le résultat est top et les clients le voient bien sur mobile. Merci ! »',
+        't3-role':'Plomberie Favre, Genève',
+        'faq-eyebrow':'FAQ', 'faq-h2':'Questions fréquentes.', 'faq-sub':'Tout ce que vous devez savoir avant de commencer.',
+        'faq1-q':'Combien de temps faut-il pour créer mon site ? <span class="faq-icon">+</span>',
+        'faq1-a':'<p>Entre 7 et 14 jours ouvrables selon la formule choisie. Dès réception de vos contenus (textes, photos), nous nous mettons au travail immédiatement.</p>',
+        'faq2-q':'Le nom de domaine est-il inclus dans le tarif ? <span class="faq-icon">+</span>',
+        'faq2-a':'<p>Non, l\'achat du nom de domaine (ex: votre-entreprise.ch) est à votre charge. Nous vous guidons dans la démarche et pouvons l\'enregistrer pour vous. Comptez environ CHF 15–30/an.</p>',
+        'faq3-q':'Puis-je modifier mon site après la livraison ? <span class="faq-icon">+</span>',
+        'faq3-a':'<p>Oui. La formule Premium inclut une formation pour gérer vous-même le contenu. Pour les formules Starter et Business, nous vous proposons des mises à jour rapides sur demande.</p>',
+        'faq4-q':'Proposez-vous un support après la mise en ligne ? <span class="faq-icon">+</span>',
+        'faq4-a':'<p>Oui, un support par email est inclus pendant 30 jours après la livraison. Pour un suivi mensuel, nous proposons des forfaits de maintenance à partir de CHF 49/mois.</p>',
+        'ct-eyebrow':'Devis gratuit', 'ct-h2':'Travaillons ensemble.', 'ct-sub':'Réponse sous 24h — sans engagement.',
+        'form-btn':'Envoyer →', 'form-note':'Réponse garantie sous 24h ouvrables.',
+        'suc-title':'Message envoyé ✓', 'suc-text':'Merci pour votre demande. Nous vous répondons sous 24h ouvrables.',
+        'footer-copy':'© 2026 Romand Web — Romandie, Suisse · <a href="tel:+41765060676" style="color:inherit;text-decoration:none;">+41 76 506 06 76</a>',
+        'fl-offers':'Offres', 'fl-why':'Pourquoi nous', 'fl-contact':'Contact', 'fl-legal':'Mentions légales',
+        'mob-cta':'Demander un devis gratuit →',
+        'inp-name':'Votre nom & entreprise', 'inp-email':'Adresse email', 'inp-phone':'Téléphone (optionnel)', 'inp-message':'Décrivez votre projet...'
+      },
+      en: {
+        'nl-offers':'Services', 'nl-why':'Why us', 'nl-pricing':'Pricing', 'nl-contact':'Contact',
+        'mm-offers':'Services', 'mm-why':'Why us', 'mm-contact':'Contact',
+        'hero-eyebrow':'Web Agency · Switzerland',
+        'hero-h1':'Your digital<br>showcase in Switzerland.',
+        'hero-p':'Professional websites for local SMEs. Simple, fast and affordable.',
+        'hero-cta1':'Get a free quote', 'hero-cta2':'See our offers',
+        'tl-1':'satisfied clients', 'tl-2':'days delivery', 'tl-3':'local · Switzerland', 'tl-4':'response guaranteed',
+        'svc-eyebrow':'Pricing', 'svc-h2':'Our offers.', 'svc-sub':'Clear packages, no surprises.',
+        'c1-note':'one-time payment · hosting included',
+        'c1-ul':'<li>1 full responsive page</li><li>Custom professional design</li><li>Contact form</li><li>Secure HTTPS + hosting</li><li>Delivered in 7 days</li><li>1 month support included</li>',
+        'c1-btn':'Learn more →',
+        'c2-badge':'⭐ Most popular', 'c2-note':'Business · one-time payment',
+        'c2-ul':'<li>3 to 5 responsive pages</li><li>Local SEO included</li><li>Google Maps integrated</li><li>Custom animated design</li><li>Delivered in 10 days</li><li>3 months support included</li>',
+        'c2-btn':'Learn more →',
+        'c3-note':'one-time payment · training included',
+        'c3-ul':'<li>Full online store</li><li>Up to 10 pages</li><li>Shopify or WooCommerce</li><li>Twint & card payment</li><li>Delivered in 14 days</li><li>Training + 6 months support</li>',
+        'c3-btn':'Learn more →',
+        'svc-footnote':'* Domain name purchase (~CHF 15/yr) is not included.',
+        'svc-compare':'Compare all packages in detail',
+        'why-eyebrow':'Our strengths', 'why-h2':'Why Romand Web?', 'why-sub':'We understand the needs of local businesses in French Switzerland.',
+        'w1-h4':'Local & close', 'w1-p':'Based in French Switzerland, we speak your language and know your market.',
+        'w2-h4':'Fast delivery', 'w2-p':'Your website delivered in 7 to 14 working days.',
+        'w3-h4':'Transparent pricing', 'w3-p':'No hidden fees. You know exactly what you pay.',
+        'w4-h4':'100% mobile', 'w4-p':'All our sites are optimized for smartphones and tablets.',
+        'zone-eyebrow':'Coverage', 'zone-h2':'We operate across all of French Switzerland.',
+        'zone-sub':'100% digital agency — we build your site wherever you are in Switzerland.',
+        'zone-note':'📍 100% digital agency — on-site visit available by appointment.',
+        'cases-eyebrow':'Case studies', 'cases-h2':'They trusted Romand Web.',
+        'cases-sub':'Real examples of local SMEs we helped grow online.',
+        'ca1-tag':'Auto body shop · Geneva', 'ca1-title':'1-page showcase site',
+        'ca1-desc':'A Geneva craftsman with no online presence. Result: site delivered in 8 days, 3 new clients in the first month via Google.',
+        'ca1-s1':'+3 clients / month', 'ca1-s2':'8 days delivery',
+        'ca2-tag':'Bakery · Lausanne', 'ca2-title':'Business site 4 pages',
+        'ca2-desc':'Full redesign with local SEO, Google Maps and order form. Organic traffic multiplied by 4 in 3 months.',
+        'ca2-s1':'×4 organic visits', 'ca2-s2':'Top 3 Google Local',
+        'ca3-tag':'Plumbing · Fribourg', 'ca3-title':'Premium site + e-commerce',
+        'ca3-desc':'Online store for spare parts and appointment booking. First online order within 48h of launch.',
+        'ca3-s1':'First sale in 48h', 'ca3-s2':'Training included',
+        'testi-eyebrow':'Reviews', 'testi-h2':'They trust us.', 'testi-sub':'Swiss SMEs happy with their digital presence.',
+        't1-text':'"Romand Web transformed our online presence in less than 2 weeks. Our clients now easily find our hours and call us directly from the site."',
+        't1-role':'Dupont Auto Body, Lausanne',
+        't2-text':'"Fair price, fast delivery and truly professional design. We had our site in 10 days, exactly what we wanted. Highly recommended."',
+        't2-role':'Müller Bakery, Fribourg',
+        't3-text':'"Finally an agency that understands the needs of small local businesses. The result is great and clients can clearly see it on mobile. Thank you!"',
+        't3-role':'Favre Plumbing, Geneva',
+        'faq-eyebrow':'FAQ', 'faq-h2':'Frequently asked questions.', 'faq-sub':'Everything you need to know before getting started.',
+        'faq1-q':'How long does it take to build my website? <span class="faq-icon">+</span>',
+        'faq1-a':'<p>Between 7 and 14 working days depending on the chosen package. Once we receive your content (text, photos), we start immediately.</p>',
+        'faq2-q':'Is the domain name included in the price? <span class="faq-icon">+</span>',
+        'faq2-a':'<p>No, the domain name purchase (e.g. your-company.ch) is your responsibility. We guide you through the process and can register it for you. Expect around CHF 15–30/year.</p>',
+        'faq3-q':'Can I update my site after delivery? <span class="faq-icon">+</span>',
+        'faq3-a':'<p>Yes. The Premium package includes training so you can manage content yourself. For Starter and Business, we offer quick updates on request.</p>',
+        'faq4-q':'Do you offer support after launch? <span class="faq-icon">+</span>',
+        'faq4-a':'<p>Yes, email support is included for 30 days after delivery. For monthly follow-up, we offer maintenance packages from CHF 49/month.</p>',
+        'ct-eyebrow':'Free quote', 'ct-h2':'Let\'s work together.', 'ct-sub':'Reply within 24h — no commitment.',
+        'form-btn':'Send →', 'form-note':'Reply guaranteed within 24 working hours.',
+        'suc-title':'Message sent ✓', 'suc-text':'Thank you for your request. We\'ll reply within 24 working hours.',
+        'footer-copy':'© 2026 Romand Web — French Switzerland · <a href="tel:+41765060676" style="color:inherit;text-decoration:none;">+41 76 506 06 76</a>',
+        'fl-offers':'Services', 'fl-why':'Why us', 'fl-contact':'Contact', 'fl-legal':'Legal notice',
+        'mob-cta':'Get a free quote →',
+        'inp-name':'Your name & company', 'inp-email':'Email address', 'inp-phone':'Phone (optional)', 'inp-message':'Describe your project...'
+      }
+    };
+
+    const placeholderIds = ['inp-name','inp-email','inp-phone','inp-message'];
+
+    function setLang(lang) {
+      document.documentElement.lang = lang === 'en' ? 'en' : 'fr';
+      localStorage.setItem('rw-lang', lang);
+      document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      const dict = T[lang];
+      Object.keys(dict).forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (placeholderIds.includes(id)) {
+          el.placeholder = dict[id];
+        } else {
+          el.innerHTML = dict[id];
+        }
+      });
+    }
+
+    // Init language on load
+    const savedLang = localStorage.getItem('rw-lang') || 'fr';
+    if (savedLang === 'en') setLang('en');
 
     // ─── 1. SCROLL PROGRESS BAR ───────────────────────────────────────
     const progressBar = document.createElement('div');
