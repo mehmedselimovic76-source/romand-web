@@ -59,6 +59,10 @@
       font-weight: 500; display: flex; align-items: center; gap: 4px;
     }
     nav .back:hover { opacity: 0.7; }
+    .lang-btn { background:none; border:1.5px solid var(--divider); border-radius:8px; padding:4px 11px; font-size:.78rem; font-weight:700; color:var(--gray); cursor:pointer; transition:border-color .2s,color .2s,background .2s; font-family:inherit; letter-spacing:.6px; margin-left:8px; }
+    .lang-btn:hover { border-color:var(--blue); color:var(--blue); }
+    .lang-btn.active { border-color:var(--blue); color:var(--blue); background:rgba(0,113,227,0.07); }
+    .nav-right { display:flex; align-items:center; gap:4px; }
 
     .page-hero {
       background: var(--light-gray);
@@ -205,103 +209,191 @@
     <a href="index.html" class="logo">
       <span class="logo-icon">◈</span> Romand Web
     </a>
-    <a href="index.html" class="back">‹ Retour</a>
+    <div class="nav-right">
+      <a href="index.html" class="back" id="ml-back">‹ Retour</a>
+      <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
   </nav>
 
   <div class="page-hero">
-    <div class="eyebrow">Informations légales</div>
-    <h1>Mentions légales</h1>
-    <p>Dernière mise à jour : avril 2026</p>
+    <div class="eyebrow" id="ml-eyebrow">Informations légales</div>
+    <h1 id="ml-h1">Mentions légales</h1>
+    <p id="ml-date">Dernière mise à jour : avril 2026</p>
   </div>
 
   <div class="content">
 
     <!-- 1. Éditeur -->
     <div class="section-block">
-      <h2>1. Éditeur du site</h2>
-      <p>Le site <strong>romand-web.com</strong> est édité par <strong>Romand Web</strong>, entreprise individuelle établie en Romandie, Suisse.</p>
-      <ul>
-        <li>Forme juridique : entreprise individuelle</li>
-        <li>Région : Romandie, Suisse</li>
-        <li>Email : <a href="mailto:info@romand-web.com" style="color: var(--blue); text-decoration: none;">info@romand-web.com</a></li>
-        <li>Téléphone : <a href="tel:+41765060676" style="color: var(--blue); text-decoration: none;">+41 76 506 06 76</a></li>
-      </ul>
+      <h2 id="ml-s1h">1. Éditeur du site</h2>
+      <div id="ml-s1c">
+        <p>Le site <strong>romand-web.ch</strong> est édité par <strong>Romand Web</strong>, entreprise individuelle établie en Romandie, Suisse.</p>
+        <ul>
+          <li>Forme juridique : entreprise individuelle</li>
+          <li>Région : Romandie, Suisse</li>
+          <li>Email : <a href="mailto:info@romand-web.com" style="color: var(--blue); text-decoration: none;">info@romand-web.com</a></li>
+          <li>Téléphone : <a href="tel:+41765060676" style="color: var(--blue); text-decoration: none;">+41 76 506 06 76</a></li>
+        </ul>
+      </div>
     </div>
 
     <!-- 2. Hébergement -->
     <div class="section-block">
-      <h2>2. Hébergement</h2>
-      <p>Le site est hébergé par <strong>GitHub Pages</strong>, service de GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, États-Unis.</p>
+      <h2 id="ml-s2h">2. Hébergement</h2>
+      <p id="ml-s2c">Le site est hébergé par <strong>GitHub Pages</strong>, service de GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, États-Unis.</p>
     </div>
 
     <!-- 3. Propriété intellectuelle -->
     <div class="section-block">
-      <h2>3. Propriété intellectuelle</h2>
-      <p>L'ensemble des éléments constituant le site romand-web.com (textes, graphismes, logotypes, icônes, images, animations) est la propriété exclusive de Romand Web et est protégé par les lois suisses et internationales relatives à la propriété intellectuelle.</p>
-      <p>Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site est interdite sans autorisation écrite préalable de Romand Web.</p>
+      <h2 id="ml-s3h">3. Propriété intellectuelle</h2>
+      <div id="ml-s3c">
+        <p>L'ensemble des éléments constituant le site romand-web.ch (textes, graphismes, logotypes, icônes, images, animations) est la propriété exclusive de Romand Web et est protégé par les lois suisses et internationales relatives à la propriété intellectuelle.</p>
+        <p>Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site est interdite sans autorisation écrite préalable de Romand Web.</p>
+      </div>
     </div>
 
     <!-- 4. Responsabilité -->
     <div class="section-block">
-      <h2>4. Limitation de responsabilité</h2>
-      <p>Romand Web s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur le site. Toutefois, Romand Web ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition sur ce site.</p>
-      <p>Romand Web décline toute responsabilité pour tout dommage résultant d'une intrusion frauduleuse d'un tiers ayant entraîné une modification des informations mises à disposition sur le site.</p>
+      <h2 id="ml-s4h">4. Limitation de responsabilité</h2>
+      <div id="ml-s4c">
+        <p>Romand Web s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur le site. Toutefois, Romand Web ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition sur ce site.</p>
+        <p>Romand Web décline toute responsabilité pour tout dommage résultant d'une intrusion frauduleuse d'un tiers ayant entraîné une modification des informations mises à disposition sur le site.</p>
+      </div>
     </div>
 
     <!-- 5. Données personnelles -->
     <div class="section-block">
-      <h2>5. Protection des données personnelles</h2>
-      <p>Conformément à la Loi fédérale sur la protection des données (LPD) en vigueur en Suisse, les données personnelles collectées via le formulaire de contact (nom, email, téléphone) sont utilisées exclusivement dans le cadre de la relation commerciale avec Romand Web.</p>
-      <ul>
-        <li>Aucune donnée n'est vendue ou transmise à des tiers</li>
-        <li>Les données sont conservées pour une durée maximale de 3 ans</li>
-        <li>Vous disposez d'un droit d'accès, de rectification et de suppression</li>
-      </ul>
-      <p>Pour exercer vos droits, contactez-nous à : <a href="mailto:info@romand-web.com" style="color: var(--blue); text-decoration: none;">info@romand-web.com</a></p>
+      <h2 id="ml-s5h">5. Protection des données personnelles</h2>
+      <div id="ml-s5c">
+        <p>Conformément à la Loi fédérale sur la protection des données (LPD) en vigueur en Suisse, les données personnelles collectées via le formulaire de contact (nom, email, téléphone) sont utilisées exclusivement dans le cadre de la relation commerciale avec Romand Web.</p>
+        <ul>
+          <li>Aucune donnée n'est vendue ou transmise à des tiers</li>
+          <li>Les données sont conservées pour une durée maximale de 3 ans</li>
+          <li>Vous disposez d'un droit d'accès, de rectification et de suppression</li>
+        </ul>
+        <p>Pour exercer vos droits, contactez-nous à : <a href="mailto:info@romand-web.com" style="color: var(--blue); text-decoration: none;">info@romand-web.com</a></p>
+      </div>
     </div>
 
     <!-- 6. Cookies -->
     <div class="section-block">
-      <h2>6. Cookies</h2>
-      <p>Le site romand-web.com n'utilise pas de cookies de suivi ou de profilage. Les seuls cookies potentiellement déposés sont ceux liés au service hCaptcha (protection anti-spam du formulaire de contact), nécessaires au bon fonctionnement du site.</p>
+      <h2 id="ml-s6h">6. Cookies</h2>
+      <p id="ml-s6c">Le site romand-web.ch n'utilise pas de cookies de suivi ou de profilage. Les seuls cookies potentiellement déposés sont ceux liés au service hCaptcha (protection anti-spam du formulaire de contact), nécessaires au bon fonctionnement du site.</p>
     </div>
 
     <!-- 7. Conditions commerciales -->
     <div class="section-block">
-      <h2>7. Conditions commerciales</h2>
-
-      <p><strong>Validité des devis</strong></p>
-      <div class="highlight-box">
-        <p>Tout devis émis par Romand Web est valable <strong>7 jours calendaires</strong> à compter de sa date d'émission. Passé ce délai, Romand Web se réserve le droit de réviser les tarifs proposés.</p>
+      <h2 id="ml-s7h">7. Conditions commerciales</h2>
+      <div id="ml-s7c">
+        <p><strong id="ml-s7t1">Validité des devis</strong></p>
+        <div class="highlight-box">
+          <p id="ml-s7p1">Tout devis émis par Romand Web est valable <strong>7 jours calendaires</strong> à compter de sa date d'émission. Passé ce délai, Romand Web se réserve le droit de réviser les tarifs proposés.</p>
+        </div>
+        <p style="margin-top: 20px;"><strong id="ml-s7t2">Acceptation et démarrage de la prestation</strong></p>
+        <div class="highlight-box">
+          <p id="ml-s7p2">L'acceptation du devis par le client vaut bon de commande ferme et engage les deux parties. Dès acceptation, le client s'engage à verser <strong>l'intégralité du montant convenu</strong> selon les modalités de paiement précisées dans le devis (acompte ou paiement complet selon la formule choisie).</p>
+        </div>
+        <p style="margin-top: 20px;"><strong id="ml-s7t3">Conditions d'annulation</strong></p>
+        <div class="warning-box">
+          <p id="ml-s7p3">En cas d'annulation par le client <strong>après acceptation du devis</strong>, une indemnité forfaitaire correspondant à <strong>50 % du montant total TTC</strong> du devis sera due à Romand Web, à titre de compensation pour les travaux engagés et le manque à gagner. Cette indemnité est exigible dans un délai de 30 jours suivant la notification d'annulation.</p>
+        </div>
+        <p id="ml-s7p4">En cas de non-paiement, Romand Web se réserve le droit de suspendre la prestation, de retirer le site en ligne et d'engager toute procédure de recouvrement nécessaire conformément au droit suisse.</p>
       </div>
-
-      <p style="margin-top: 20px;"><strong>Acceptation et démarrage de la prestation</strong></p>
-      <div class="highlight-box">
-        <p>L'acceptation du devis par le client vaut bon de commande ferme et engage les deux parties. Dès acceptation, le client s'engage à verser <strong>l'intégralité du montant convenu</strong> selon les modalités de paiement précisées dans le devis (acompte ou paiement complet selon la formule choisie).</p>
-      </div>
-
-      <p style="margin-top: 20px;"><strong>Conditions d'annulation</strong></p>
-      <div class="warning-box">
-        <p>En cas d'annulation par le client <strong>après acceptation du devis</strong>, une indemnité forfaitaire correspondant à <strong>50 % du montant total TTC</strong> du devis sera due à Romand Web, à titre de compensation pour les travaux engagés et le manque à gagner. Cette indemnité est exigible dans un délai de 30 jours suivant la notification d'annulation.</p>
-      </div>
-
-      <p>En cas de non-paiement, Romand Web se réserve le droit de suspendre la prestation, de retirer le site en ligne et d'engager toute procédure de recouvrement nécessaire conformément au droit suisse.</p>
     </div>
 
     <!-- 8. Droit applicable -->
     <div class="section-block">
-      <h2>8. Droit applicable et juridiction compétente</h2>
-      <p>Les présentes mentions légales et conditions générales sont soumises au <strong>droit suisse</strong>. En cas de litige, et à défaut de règlement amiable, les tribunaux suisses seront seuls compétents.</p>
+      <h2 id="ml-s8h">8. Droit applicable et juridiction compétente</h2>
+      <p id="ml-s8c">Les présentes mentions légales et conditions générales sont soumises au <strong>droit suisse</strong>. En cas de litige, et à défaut de règlement amiable, les tribunaux suisses seront seuls compétents.</p>
     </div>
 
-    <p class="update-date">Document mis à jour en avril 2026 — Romand Web, Romandie, Suisse</p>
+    <p class="update-date" id="ml-update">Document mis à jour en avril 2026 — Romand Web, Romandie, Suisse</p>
 
   </div>
 
   <footer>
-    <p>© 2026 Romand Web — Romandie, Suisse</p>
-    <a href="index.html">← Retour au site</a>
+    <p id="ml-fcopy">© 2026 Romand Web — Romandie, Suisse</p>
+    <a href="index.html" id="ml-fback">← Retour au site</a>
   </footer>
 
+  <script>
+    const T = {
+      fr: {
+        'ml-back':'‹ Retour',
+        'ml-eyebrow':'Informations légales','ml-h1':'Mentions légales',
+        'ml-date':'Dernière mise à jour : avril 2026',
+        'ml-s1h':'1. Éditeur du site',
+        'ml-s1c':'<p>Le site <strong>romand-web.ch</strong> est édité par <strong>Romand Web</strong>, entreprise individuelle établie en Romandie, Suisse.</p><ul><li>Forme juridique : entreprise individuelle</li><li>Région : Romandie, Suisse</li><li>Email : <a href="mailto:info@romand-web.com" style="color:var(--blue);text-decoration:none;">info@romand-web.com</a></li><li>Téléphone : <a href="tel:+41765060676" style="color:var(--blue);text-decoration:none;">+41 76 506 06 76</a></li></ul>',
+        'ml-s2h':'2. Hébergement',
+        'ml-s2c':'Le site est hébergé par <strong>GitHub Pages</strong>, service de GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, États-Unis.',
+        'ml-s3h':'3. Propriété intellectuelle',
+        'ml-s3c':'<p>L\'ensemble des éléments constituant le site romand-web.ch (textes, graphismes, logotypes, icônes, images, animations) est la propriété exclusive de Romand Web et est protégé par les lois suisses et internationales relatives à la propriété intellectuelle.</p><p>Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site est interdite sans autorisation écrite préalable de Romand Web.</p>',
+        'ml-s4h':'4. Limitation de responsabilité',
+        'ml-s4c':'<p>Romand Web s\'efforce d\'assurer l\'exactitude et la mise à jour des informations diffusées sur le site. Toutefois, Romand Web ne peut garantir l\'exactitude, la précision ou l\'exhaustivité des informations mises à disposition sur ce site.</p><p>Romand Web décline toute responsabilité pour tout dommage résultant d\'une intrusion frauduleuse d\'un tiers ayant entraîné une modification des informations mises à disposition sur le site.</p>',
+        'ml-s5h':'5. Protection des données personnelles',
+        'ml-s5c':'<p>Conformément à la Loi fédérale sur la protection des données (LPD) en vigueur en Suisse, les données personnelles collectées via le formulaire de contact (nom, email, téléphone) sont utilisées exclusivement dans le cadre de la relation commerciale avec Romand Web.</p><ul><li>Aucune donnée n\'est vendue ou transmise à des tiers</li><li>Les données sont conservées pour une durée maximale de 3 ans</li><li>Vous disposez d\'un droit d\'accès, de rectification et de suppression</li></ul><p>Pour exercer vos droits, contactez-nous à : <a href="mailto:info@romand-web.com" style="color:var(--blue);text-decoration:none;">info@romand-web.com</a></p>',
+        'ml-s6h':'6. Cookies',
+        'ml-s6c':'Le site romand-web.ch n\'utilise pas de cookies de suivi ou de profilage. Les seuls cookies potentiellement déposés sont ceux liés au service hCaptcha (protection anti-spam du formulaire de contact), nécessaires au bon fonctionnement du site.',
+        'ml-s7h':'7. Conditions commerciales',
+        'ml-s7t1':'Validité des devis',
+        'ml-s7p1':'Tout devis émis par Romand Web est valable <strong>7 jours calendaires</strong> à compter de sa date d\'émission. Passé ce délai, Romand Web se réserve le droit de réviser les tarifs proposés.',
+        'ml-s7t2':'Acceptation et démarrage de la prestation',
+        'ml-s7p2':'L\'acceptation du devis par le client vaut bon de commande ferme et engage les deux parties. Dès acceptation, le client s\'engage à verser <strong>l\'intégralité du montant convenu</strong> selon les modalités de paiement précisées dans le devis (acompte ou paiement complet selon la formule choisie).',
+        'ml-s7t3':'Conditions d\'annulation',
+        'ml-s7p3':'En cas d\'annulation par le client <strong>après acceptation du devis</strong>, une indemnité forfaitaire correspondant à <strong>50 % du montant total TTC</strong> du devis sera due à Romand Web, à titre de compensation pour les travaux engagés et le manque à gagner. Cette indemnité est exigible dans un délai de 30 jours suivant la notification d\'annulation.',
+        'ml-s7p4':'En cas de non-paiement, Romand Web se réserve le droit de suspendre la prestation, de retirer le site en ligne et d\'engager toute procédure de recouvrement nécessaire conformément au droit suisse.',
+        'ml-s8h':'8. Droit applicable et juridiction compétente',
+        'ml-s8c':'Les présentes mentions légales et conditions générales sont soumises au <strong>droit suisse</strong>. En cas de litige, et à défaut de règlement amiable, les tribunaux suisses seront seuls compétents.',
+        'ml-update':'Document mis à jour en avril 2026 — Romand Web, Romandie, Suisse',
+        'ml-fcopy':'© 2026 Romand Web — Romandie, Suisse',
+        'ml-fback':'← Retour au site'
+      },
+      en: {
+        'ml-back':'‹ Back',
+        'ml-eyebrow':'Legal information','ml-h1':'Legal Notice',
+        'ml-date':'Last updated: April 2026',
+        'ml-s1h':'1. Website publisher',
+        'ml-s1c':'<p>The website <strong>romand-web.ch</strong> is published by <strong>Romand Web</strong>, a sole trader established in French-speaking Switzerland.</p><ul><li>Legal form: sole trader</li><li>Region: Romandie, Switzerland</li><li>Email: <a href="mailto:info@romand-web.com" style="color:var(--blue);text-decoration:none;">info@romand-web.com</a></li><li>Phone: <a href="tel:+41765060676" style="color:var(--blue);text-decoration:none;">+41 76 506 06 76</a></li></ul>',
+        'ml-s2h':'2. Hosting',
+        'ml-s2c':'This website is hosted by <strong>GitHub Pages</strong>, a service of GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, United States.',
+        'ml-s3h':'3. Intellectual property',
+        'ml-s3c':'<p>All elements of the romand-web.ch website (texts, graphics, logos, icons, images, animations) are the exclusive property of Romand Web and are protected by Swiss and international intellectual property laws.</p><p>Any reproduction, representation, modification, publication or adaptation of any part of the website\'s content is prohibited without prior written authorisation from Romand Web.</p>',
+        'ml-s4h':'4. Limitation of liability',
+        'ml-s4c':'<p>Romand Web strives to ensure the accuracy and currency of the information published on this website. However, Romand Web cannot guarantee the accuracy, completeness or relevance of the information made available.</p><p>Romand Web disclaims all liability for any damage resulting from a fraudulent third-party intrusion that leads to the modification of information published on the website.</p>',
+        'ml-s5h':'5. Personal data protection',
+        'ml-s5c':'<p>In accordance with the Swiss Federal Act on Data Protection (FADP), personal data collected via the contact form (name, email, phone) is used exclusively in the context of the commercial relationship with Romand Web.</p><ul><li>No data is sold or transmitted to third parties</li><li>Data is retained for a maximum of 3 years</li><li>You have the right to access, rectify and delete your data</li></ul><p>To exercise your rights, contact us at: <a href="mailto:info@romand-web.com" style="color:var(--blue);text-decoration:none;">info@romand-web.com</a></p>',
+        'ml-s6h':'6. Cookies',
+        'ml-s6c':'The romand-web.ch website does not use tracking or profiling cookies. The only cookies potentially set are those related to the hCaptcha service (anti-spam protection for the contact form), which are necessary for the proper functioning of the website.',
+        'ml-s7h':'7. Commercial terms',
+        'ml-s7t1':'Quote validity',
+        'ml-s7p1':'Any quote issued by Romand Web is valid for <strong>7 calendar days</strong> from its issue date. After this period, Romand Web reserves the right to revise the quoted prices.',
+        'ml-s7t2':'Acceptance and commencement of service',
+        'ml-s7p2':'The client\'s acceptance of a quote constitutes a firm purchase order binding both parties. Upon acceptance, the client agrees to pay <strong>the full agreed amount</strong> according to the payment terms specified in the quote (deposit or full payment depending on the chosen package).',
+        'ml-s7t3':'Cancellation conditions',
+        'ml-s7p3':'In the event of cancellation by the client <strong>after acceptance of the quote</strong>, a flat-rate compensation equal to <strong>50% of the total amount (VAT included)</strong> of the quote will be owed to Romand Web, as compensation for work undertaken and loss of earnings. This amount is payable within 30 days of the cancellation notice.',
+        'ml-s7p4':'In the event of non-payment, Romand Web reserves the right to suspend the service, take the website offline and initiate any recovery proceedings necessary under Swiss law.',
+        'ml-s8h':'8. Applicable law and jurisdiction',
+        'ml-s8c':'These legal notices and general terms are governed by <strong>Swiss law</strong>. In the event of a dispute, and in the absence of an amicable resolution, Swiss courts shall have exclusive jurisdiction.',
+        'ml-update':'Document updated April 2026 — Romand Web, French-speaking Switzerland',
+        'ml-fcopy':'© 2026 Romand Web — French-speaking Switzerland',
+        'ml-fback':'← Back to website'
+      }
+    };
+
+    function setLang(lang) {
+      document.documentElement.lang = lang === 'en' ? 'en' : 'fr';
+      localStorage.setItem('rw-lang', lang);
+      document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      const dict = T[lang];
+      Object.keys(dict).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = dict[id];
+      });
+    }
+    const savedLang = localStorage.getItem('rw-lang') || 'fr';
+    if (savedLang === 'en') setLang('en');
+  </script>
 </body>
 </html>

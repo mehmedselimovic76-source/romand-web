@@ -132,6 +132,9 @@
       .nav-links.open { display: flex; }
       .hamburger { display: block; }
     }
+    .lang-btn { background:none; border:1.5px solid var(--divider); border-radius:8px; padding:4px 11px; font-size:.78rem; font-weight:700; color:var(--gray); cursor:pointer; transition:border-color .2s,color .2s,background .2s; font-family:inherit; letter-spacing:.6px; margin-left:8px; }
+    .lang-btn:hover { border-color:var(--blue); color:var(--blue); }
+    .lang-btn.active { border-color:var(--blue); color:var(--blue); background:rgba(0,113,227,0.07); }
 
     /* HERO */
     @keyframes heroBgSpin {
@@ -567,10 +570,12 @@
     Romand Web
   </a>
   <div class="nav-links" id="navLinks">
-    <a href="index.html">Accueil</a>
-    <a href="index.html#services">Services</a>
-    <a href="tarifs.html" class="active">Tarifs</a>
-    <a href="index.html#contact" class="nav-cta">Devis gratuit</a>
+    <a href="index.html" id="tn-home">Accueil</a>
+    <a href="index.html#services" id="tn-services">Services</a>
+    <a href="tarifs.html" class="active" id="tn-pricing">Tarifs</a>
+    <a href="index.html#contact" class="nav-cta" id="tn-contact">Devis gratuit</a>
+    <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -579,9 +584,9 @@
 
 <!-- HERO -->
 <section class="hero">
-  <p class="eyebrow">Tarifs transparents</p>
-  <h1>Votre site.<br>Votre budget.</h1>
-  <p>Pas de surprise. Pas d'abonnement caché. Un prix fixe, une livraison rapide.</p>
+  <p class="eyebrow" id="th-eyebrow">Tarifs transparents</p>
+  <h1 id="th-h1">Votre site.<br>Votre budget.</h1>
+  <p id="th-p">Pas de surprise. Pas d'abonnement caché. Un prix fixe, une livraison rapide.</p>
 </section>
 
 <!-- PRICING -->
@@ -592,14 +597,14 @@
     <!-- STARTER -->
     <div class="plan-card" style="cursor:pointer;" onclick="smoothGo('pack-starter.html')">
       <span class="plan-badge">Starter</span>
-      <p class="plan-name">Site vitrine</p>
-      <p class="plan-desc">L'essentiel pour exister en ligne. Idéal pour les indépendants et petites entreprises.</p>
+      <p class="plan-name" id="ts-name">Site vitrine</p>
+      <p class="plan-desc" id="ts-desc">L'essentiel pour exister en ligne. Idéal pour les indépendants et petites entreprises.</p>
       <div class="plan-price">
         <span class="currency">CHF</span><span class="amount">299</span>
       </div>
-      <p class="plan-note">Paiement unique · domaine exclu</p>
+      <p class="plan-note" id="ts-note">Paiement unique · domaine exclu</p>
       <div class="plan-divider"></div>
-      <ul class="plan-features">
+      <ul class="plan-features" id="ts-feat">
         <li><span class="check">✓</span><span class="feat-text"><strong>1 page</strong> responsive (mobile + desktop)</span></li>
         <li><span class="check">✓</span><span class="feat-text">Design professionnel sur mesure</span></li>
         <li><span class="check">✓</span><span class="feat-text">Formulaire de contact</span></li>
@@ -608,20 +613,20 @@
         <li><span class="check">✓</span><span class="feat-text">1 mois de support offert</span></li>
         <li><span class="check" style="color:#34c759;">☁</span><span class="feat-text" style="color:#34c759;font-weight:600;">Hébergement GitHub 100% gratuit</span></li>
       </ul>
-      <span class="plan-cta" style="display:block;text-align:center;padding:14px 24px;border-radius:980px;font-size:.95rem;font-weight:600;background:var(--blue);color:white;cursor:pointer;">Découvrir ce pack →</span>
+      <span class="plan-cta" id="ts-cta" style="display:block;text-align:center;padding:14px 24px;border-radius:980px;font-size:.95rem;font-weight:600;background:var(--blue);color:white;cursor:pointer;">Découvrir ce pack →</span>
     </div>
 
     <!-- BUSINESS (featured) -->
     <div class="plan-card featured" style="cursor:pointer;" onclick="smoothGo('pack-business.html')">
-      <span class="plan-badge popular">⭐ Le plus populaire</span>
-      <p class="plan-name">Business</p>
-      <p class="plan-desc">Site multi-pages avec SEO local. La solution complète pour attirer des clients en Romandie.</p>
+      <span class="plan-badge popular" id="tb-badge">⭐ Le plus populaire</span>
+      <p class="plan-name" id="tb-name">Business</p>
+      <p class="plan-desc" id="tb-desc">Site multi-pages avec SEO local. La solution complète pour attirer des clients en Romandie.</p>
       <div class="plan-price">
         <span class="currency">CHF</span><span class="amount">599</span>
       </div>
-      <p class="plan-note">Paiement unique · domaine exclu</p>
+      <p class="plan-note" id="tb-note">Paiement unique · domaine exclu</p>
       <div class="plan-divider"></div>
-      <ul class="plan-features">
+      <ul class="plan-features" id="tb-feat">
         <li><span class="check">✓</span><span class="feat-text"><strong>3 à 5 pages</strong> responsive</span></li>
         <li><span class="check">✓</span><span class="feat-text">SEO local Romandie inclus</span></li>
         <li><span class="check">✓</span><span class="feat-text">Google Maps intégré</span></li>
@@ -631,20 +636,20 @@
         <li><span class="check">✓</span><span class="feat-text">3 mois de support offert</span></li>
         <li><span class="check" style="color:#34c759;">☁</span><span class="feat-text" style="color:#34c759;font-weight:600;">Hébergement GitHub 100% gratuit</span></li>
       </ul>
-      <span class="plan-cta" style="display:block;text-align:center;padding:14px 24px;border-radius:980px;font-size:.95rem;font-weight:600;background:white;color:var(--black);cursor:pointer;">Découvrir ce pack →</span>
+      <span class="plan-cta" id="tb-cta" style="display:block;text-align:center;padding:14px 24px;border-radius:980px;font-size:.95rem;font-weight:600;background:white;color:var(--black);cursor:pointer;">Découvrir ce pack →</span>
     </div>
 
     <!-- PREMIUM -->
     <div class="plan-card" style="cursor:pointer;" onclick="smoothGo('pack-premium.html')">
       <span class="plan-badge">Premium</span>
-      <p class="plan-name">E-commerce</p>
-      <p class="plan-desc">Boutique en ligne complète pour vendre vos produits ou services 24h/24 en Suisse.</p>
+      <p class="plan-name" id="tp-name">E-commerce</p>
+      <p class="plan-desc" id="tp-desc">Boutique en ligne complète pour vendre vos produits ou services 24h/24 en Suisse.</p>
       <div class="plan-price">
         <span class="currency">CHF</span><span class="amount">999</span>
       </div>
-      <p class="plan-note">Paiement unique · domaine exclu</p>
+      <p class="plan-note" id="tp-note">Paiement unique · domaine exclu</p>
       <div class="plan-divider"></div>
-      <ul class="plan-features">
+      <ul class="plan-features" id="tp-feat">
         <li><span class="check">✓</span><span class="feat-text"><strong>Jusqu'à 10 pages</strong></span></li>
         <li><span class="check">✓</span><span class="feat-text">Boutique en ligne (Shopify / WooCommerce)</span></li>
         <li><span class="check">✓</span><span class="feat-text">Paiement en ligne sécurisé</span></li>
@@ -654,12 +659,12 @@
         <li><span class="check">✓</span><span class="feat-text">6 mois de support offert</span></li>
         <li><span class="check" style="color:#ff9f0a;">⚠</span><span class="feat-text" style="color:#ff9f0a;font-size:.83rem;">Frais de plateforme mensuel à la charge du client</span></li>
       </ul>
-      <span class="plan-cta" style="display:block;text-align:center;padding:14px 24px;border-radius:980px;font-size:.95rem;font-weight:600;background:var(--blue);color:white;cursor:pointer;">Découvrir ce pack →</span>
+      <span class="plan-cta" id="tp-cta" style="display:block;text-align:center;padding:14px 24px;border-radius:980px;font-size:.95rem;font-weight:600;background:var(--blue);color:white;cursor:pointer;">Découvrir ce pack →</span>
     </div>
 
   </div>
 
-  <p style="text-align:center;font-size:0.82rem;color:var(--gray);margin-top:24px;">
+  <p id="t-footnote" style="text-align:center;font-size:0.82rem;color:var(--gray);margin-top:24px;">
     * L'achat du nom de domaine (~CHF 15/an) est exclu de tous les tarifs. Pour les packs Starter &amp; Business, l'hébergement GitHub est 100% gratuit. Pour le pack Premium (e-commerce), les frais de plateforme mensuel (Shopify/WooCommerce) sont à la charge du client.
   </p>
 
@@ -667,12 +672,12 @@
 
 <!-- COMPARISON TABLE -->
 <div class="compare-section">
-  <h2 class="compare-title">Comparer les formules</h2>
+  <h2 class="compare-title" id="tc-title">Comparer les formules</h2>
   <div style="overflow-x:auto;">
   <table class="compare-table">
     <thead>
       <tr>
-        <th>Fonctionnalité</th>
+        <th id="tc-hfeat">Fonctionnalité</th>
         <th>Starter</th>
         <th class="highlight">Business</th>
         <th>Premium</th>
@@ -680,67 +685,67 @@
     </thead>
     <tbody>
       <tr>
-        <td>Nombre de pages</td>
+        <td id="tc-r1">Nombre de pages</td>
         <td>1</td>
         <td class="highlight">3–5</td>
-        <td>Jusqu'à 10</td>
+        <td id="tc-r1p">Jusqu'à 10</td>
       </tr>
       <tr>
-        <td>Design responsive mobile</td>
+        <td id="tc-r2">Design responsive mobile</td>
         <td><span class="yes">✓</span></td>
         <td class="highlight"><span class="yes">✓</span></td>
         <td><span class="yes">✓</span></td>
       </tr>
       <tr>
-        <td>Formulaire de contact</td>
+        <td id="tc-r3">Formulaire de contact</td>
         <td><span class="yes">✓</span></td>
         <td class="highlight"><span class="yes">✓</span></td>
         <td><span class="yes">✓</span></td>
       </tr>
       <tr>
-        <td>SEO local Romandie</td>
+        <td id="tc-r4">SEO local Romandie</td>
         <td><span class="no">–</span></td>
         <td class="highlight"><span class="yes">✓</span></td>
         <td><span class="yes">✓</span></td>
       </tr>
       <tr>
-        <td>Google Maps intégré</td>
+        <td id="tc-r5">Google Maps intégré</td>
         <td><span class="no">–</span></td>
         <td class="highlight"><span class="yes">✓</span></td>
         <td><span class="yes">✓</span></td>
       </tr>
       <tr>
-        <td>Boutique en ligne</td>
+        <td id="tc-r6">Boutique en ligne</td>
         <td><span class="no">–</span></td>
         <td class="highlight"><span class="no">–</span></td>
         <td><span class="yes">✓</span></td>
       </tr>
       <tr>
-        <td>Paiement en ligne</td>
+        <td id="tc-r7">Paiement en ligne</td>
         <td><span class="no">–</span></td>
         <td class="highlight"><span class="no">–</span></td>
         <td><span class="yes">✓</span></td>
       </tr>
       <tr>
-        <td>Formation incluse</td>
+        <td id="tc-r8">Formation incluse</td>
         <td><span class="no">–</span></td>
         <td class="highlight"><span class="no">–</span></td>
         <td><span class="yes">✓</span></td>
       </tr>
       <tr>
-        <td>Délai de livraison</td>
-        <td>7 jours</td>
-        <td class="highlight">10 jours</td>
-        <td>14 jours</td>
+        <td id="tc-r9">Délai de livraison</td>
+        <td id="tc-r9s">7 jours</td>
+        <td class="highlight" id="tc-r9b">10 jours</td>
+        <td id="tc-r9p">14 jours</td>
       </tr>
       <tr>
-        <td>Support offert</td>
-        <td>1 mois</td>
-        <td class="highlight">3 mois</td>
-        <td>6 mois</td>
+        <td id="tc-r10">Support offert</td>
+        <td id="tc-r10s">1 mois</td>
+        <td class="highlight" id="tc-r10b">3 mois</td>
+        <td id="tc-r10p">6 mois</td>
       </tr>
       <tr>
-        <td style="font-weight:700;color:var(--black);">Prix</td>
+        <td id="tc-r11" style="font-weight:700;color:var(--black);">Prix</td>
         <td style="font-weight:700;">CHF 299</td>
         <td class="highlight" style="font-weight:700;">CHF 599</td>
         <td style="font-weight:700;">CHF 999</td>
@@ -752,46 +757,46 @@
 
 <!-- FAQ -->
 <div class="faq-section">
-  <h2 class="faq-title">Questions fréquentes</h2>
+  <h2 class="faq-title" id="tfq-title">Questions fréquentes</h2>
 
   <div class="faq-item">
-    <button class="faq-q">Qu'est-ce qui n'est pas inclus dans le tarif ? <span class="faq-icon">+</span></button>
-    <div class="faq-a">Le nom de domaine (~CHF 15/an) est exclu de tous les tarifs. Pour les packs Starter et Business, l'hébergement est assuré via GitHub Pages — <strong>100% gratuit</strong>. Pour le pack Premium (e-commerce), les frais de plateforme mensuel Shopify (~CHF 29/mois) ou l'hébergement WooCommerce sont à la charge du client. Nous vous guidons dans ces démarches gratuitement.</div>
+    <button class="faq-q" id="tfq-1q">Qu'est-ce qui n'est pas inclus dans le tarif ? <span class="faq-icon">+</span></button>
+    <div class="faq-a" id="tfq-1a">Le nom de domaine (~CHF 15/an) est exclu de tous les tarifs. Pour les packs Starter et Business, l'hébergement est assuré via GitHub Pages — <strong>100% gratuit</strong>. Pour le pack Premium (e-commerce), les frais de plateforme mensuel Shopify (~CHF 29/mois) ou l'hébergement WooCommerce sont à la charge du client. Nous vous guidons dans ces démarches gratuitement.</div>
   </div>
 
   <div class="faq-item">
-    <button class="faq-q">Puis-je modifier mon site après livraison ? <span class="faq-icon">+</span></button>
-    <div class="faq-a">Oui. Pendant la période de support incluse, les petites modifications sont gratuites. Au-delà, nous proposons des retouches à CHF 49/heure ou un forfait maintenance mensuel.</div>
+    <button class="faq-q" id="tfq-2q">Puis-je modifier mon site après livraison ? <span class="faq-icon">+</span></button>
+    <div class="faq-a" id="tfq-2a">Oui. Pendant la période de support incluse, les petites modifications sont gratuites. Au-delà, nous proposons des retouches à CHF 49/heure ou un forfait maintenance mensuel.</div>
   </div>
 
   <div class="faq-item">
-    <button class="faq-q">Comment se passe le paiement ? <span class="faq-icon">+</span></button>
-    <div class="faq-a">50% à la commande pour lancer le projet, 50% à la livraison. Paiement par virement bancaire ou Twint. Aucune carte de crédit requise.</div>
+    <button class="faq-q" id="tfq-3q">Comment se passe le paiement ? <span class="faq-icon">+</span></button>
+    <div class="faq-a" id="tfq-3a">50% à la commande pour lancer le projet, 50% à la livraison. Paiement par virement bancaire ou Twint. Aucune carte de crédit requise.</div>
   </div>
 
   <div class="faq-item">
-    <button class="faq-q">Vous déplacez-vous pour les réunions ? <span class="faq-icon">+</span></button>
-    <div class="faq-a">Oui, déplacement possible sur toute la Romandie (Genève, Lausanne, Fribourg, Neuchâtel, Sion, et plus). La première consultation est toujours gratuite, en personne ou en visio.</div>
+    <button class="faq-q" id="tfq-4q">Vous déplacez-vous pour les réunions ? <span class="faq-icon">+</span></button>
+    <div class="faq-a" id="tfq-4a">Oui, déplacement possible sur toute la Romandie (Genève, Lausanne, Fribourg, Neuchâtel, Sion, et plus). La première consultation est toujours gratuite, en personne ou en visio.</div>
   </div>
 
   <div class="faq-item">
-    <button class="faq-q">Que se passe-t-il si je ne suis pas satisfait ? <span class="faq-icon">+</span></button>
-    <div class="faq-a">Nous travaillons avec vous jusqu'à ce que le résultat soit à votre goût. Les révisions sont incluses jusqu'à validation finale. Votre satisfaction est notre priorité.</div>
+    <button class="faq-q" id="tfq-5q">Que se passe-t-il si je ne suis pas satisfait ? <span class="faq-icon">+</span></button>
+    <div class="faq-a" id="tfq-5a">Nous travaillons avec vous jusqu'à ce que le résultat soit à votre goût. Les révisions sont incluses jusqu'à validation finale. Votre satisfaction est notre priorité.</div>
   </div>
 
 </div>
 
 <!-- CTA -->
 <section class="cta-section">
-  <p class="eyebrow">Prêt à vous lancer ?</p>
-  <h2>Demandez votre<br>devis gratuit</h2>
-  <p>Réponse sous 24h ouvrables · Sans engagement</p>
-  <a href="index.html#contact" class="cta-btn">Obtenir mon devis →</a>
+  <p class="eyebrow" id="tcs-eyebrow">Prêt à vous lancer ?</p>
+  <h2 id="tcs-h2">Demandez votre<br>devis gratuit</h2>
+  <p id="tcs-p">Réponse sous 24h ouvrables · Sans engagement</p>
+  <a href="index.html#contact" class="cta-btn" id="tcs-btn">Obtenir mon devis →</a>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>
+  <p id="tft">
     © 2025 Romand Web ·
     <a href="index.html">Accueil</a> ·
     <a href="mentions-legales.html">Mentions légales</a> ·
@@ -831,6 +836,106 @@
       if (!isOpen) item.classList.add('open');
     });
   });
+
+  // ── TRADUCTION FR / EN ──
+  const T = {
+    fr: {
+      'tn-home':'Accueil','tn-services':'Services','tn-pricing':'Tarifs','tn-contact':'Devis gratuit',
+      'th-eyebrow':'Tarifs transparents','th-h1':'Votre site.<br>Votre budget.',
+      'th-p':'Pas de surprise. Pas d\'abonnement caché. Un prix fixe, une livraison rapide.',
+      'ts-name':'Site vitrine','ts-desc':'L\'essentiel pour exister en ligne. Idéal pour les indépendants et petites entreprises.',
+      'ts-note':'Paiement unique · domaine exclu',
+      'ts-feat':'<li><span class="check">✓</span><span class="feat-text"><strong>1 page</strong> responsive (mobile + desktop)</span></li><li><span class="check">✓</span><span class="feat-text">Design professionnel sur mesure</span></li><li><span class="check">✓</span><span class="feat-text">Formulaire de contact</span></li><li><span class="check">✓</span><span class="feat-text">Mise en ligne incluse</span></li><li><span class="check">✓</span><span class="feat-text">Livraison en <strong>7 jours</strong></span></li><li><span class="check">✓</span><span class="feat-text">1 mois de support offert</span></li><li><span class="check" style="color:#34c759;">☁</span><span class="feat-text" style="color:#34c759;font-weight:600;">Hébergement GitHub 100% gratuit</span></li>',
+      'ts-cta':'Découvrir ce pack →',
+      'tb-badge':'⭐ Le plus populaire','tb-name':'Business',
+      'tb-desc':'Site multi-pages avec SEO local. La solution complète pour attirer des clients en Romandie.',
+      'tb-note':'Paiement unique · domaine exclu',
+      'tb-feat':'<li><span class="check">✓</span><span class="feat-text"><strong>3 à 5 pages</strong> responsive</span></li><li><span class="check">✓</span><span class="feat-text">SEO local Romandie inclus</span></li><li><span class="check">✓</span><span class="feat-text">Google Maps intégré</span></li><li><span class="check">✓</span><span class="feat-text">Design personnalisé + animations</span></li><li><span class="check">✓</span><span class="feat-text">Formulaire de contact avancé</span></li><li><span class="check">✓</span><span class="feat-text">Livraison en <strong>10 jours</strong></span></li><li><span class="check">✓</span><span class="feat-text">3 mois de support offert</span></li><li><span class="check" style="color:#34c759;">☁</span><span class="feat-text" style="color:#34c759;font-weight:600;">Hébergement GitHub 100% gratuit</span></li>',
+      'tb-cta':'Découvrir ce pack →',
+      'tp-name':'E-commerce','tp-desc':'Boutique en ligne complète pour vendre vos produits ou services 24h/24 en Suisse.',
+      'tp-note':'Paiement unique · domaine exclu',
+      'tp-feat':'<li><span class="check">✓</span><span class="feat-text"><strong>Jusqu\'à 10 pages</strong></span></li><li><span class="check">✓</span><span class="feat-text">Boutique en ligne (Shopify / WooCommerce)</span></li><li><span class="check">✓</span><span class="feat-text">Paiement en ligne sécurisé</span></li><li><span class="check">✓</span><span class="feat-text">SEO avancé + Google Shopping</span></li><li><span class="check">✓</span><span class="feat-text">Formation à l\'utilisation incluse</span></li><li><span class="check">✓</span><span class="feat-text">Livraison en <strong>14 jours</strong></span></li><li><span class="check">✓</span><span class="feat-text">6 mois de support offert</span></li><li><span class="check" style="color:#ff9f0a;">⚠</span><span class="feat-text" style="color:#ff9f0a;font-size:.83rem;">Frais de plateforme mensuel à la charge du client</span></li>',
+      'tp-cta':'Découvrir ce pack →',
+      't-footnote':'* L\'achat du nom de domaine (~CHF 15/an) est exclu de tous les tarifs. Pour les packs Starter &amp; Business, l\'hébergement GitHub est 100% gratuit. Pour le pack Premium (e-commerce), les frais de plateforme mensuel (Shopify/WooCommerce) sont à la charge du client.',
+      'tc-title':'Comparer les formules','tc-hfeat':'Fonctionnalité',
+      'tc-r1':'Nombre de pages','tc-r1p':'Jusqu\'à 10',
+      'tc-r2':'Design responsive mobile','tc-r3':'Formulaire de contact',
+      'tc-r4':'SEO local Romandie','tc-r5':'Google Maps intégré',
+      'tc-r6':'Boutique en ligne','tc-r7':'Paiement en ligne','tc-r8':'Formation incluse',
+      'tc-r9':'Délai de livraison','tc-r9s':'7 jours','tc-r9b':'10 jours','tc-r9p':'14 jours',
+      'tc-r10':'Support offert','tc-r10s':'1 mois','tc-r10b':'3 mois','tc-r10p':'6 mois',
+      'tc-r11':'Prix',
+      'tfq-title':'Questions fréquentes',
+      'tfq-1q':'Qu\'est-ce qui n\'est pas inclus dans le tarif ? <span class="faq-icon">+</span>',
+      'tfq-1a':'Le nom de domaine (~CHF 15/an) est exclu de tous les tarifs. Pour les packs Starter et Business, l\'hébergement est assuré via GitHub Pages — <strong>100% gratuit</strong>. Pour le pack Premium (e-commerce), les frais de plateforme mensuel Shopify (~CHF 29/mois) ou l\'hébergement WooCommerce sont à la charge du client. Nous vous guidons dans ces démarches gratuitement.',
+      'tfq-2q':'Puis-je modifier mon site après livraison ? <span class="faq-icon">+</span>',
+      'tfq-2a':'Oui. Pendant la période de support incluse, les petites modifications sont gratuites. Au-delà, nous proposons des retouches à CHF 49/heure ou un forfait maintenance mensuel.',
+      'tfq-3q':'Comment se passe le paiement ? <span class="faq-icon">+</span>',
+      'tfq-3a':'50% à la commande pour lancer le projet, 50% à la livraison. Paiement par virement bancaire ou Twint. Aucune carte de crédit requise.',
+      'tfq-4q':'Vous déplacez-vous pour les réunions ? <span class="faq-icon">+</span>',
+      'tfq-4a':'Oui, déplacement possible sur toute la Romandie (Genève, Lausanne, Fribourg, Neuchâtel, Sion, et plus). La première consultation est toujours gratuite, en personne ou en visio.',
+      'tfq-5q':'Que se passe-t-il si je ne suis pas satisfait ? <span class="faq-icon">+</span>',
+      'tfq-5a':'Nous travaillons avec vous jusqu\'à ce que le résultat soit à votre goût. Les révisions sont incluses jusqu\'à validation finale. Votre satisfaction est notre priorité.',
+      'tcs-eyebrow':'Prêt à vous lancer ?','tcs-h2':'Demandez votre<br>devis gratuit',
+      'tcs-p':'Réponse sous 24h ouvrables · Sans engagement','tcs-btn':'Obtenir mon devis →',
+      'tft':'© 2025 Romand Web · <a href="index.html">Accueil</a> · <a href="mentions-legales.html">Mentions légales</a> · <a href="tel:+41765060676">+41 76 506 06 76</a> · <a href="mailto:info@romand-web.com">info@romand-web.com</a>'
+    },
+    en: {
+      'tn-home':'Home','tn-services':'Services','tn-pricing':'Pricing','tn-contact':'Free quote',
+      'th-eyebrow':'Transparent pricing','th-h1':'Your website.<br>Your budget.',
+      'th-p':'No surprises. No hidden subscription. One fixed price, fast delivery.',
+      'ts-name':'Showcase website','ts-desc':'Everything you need to exist online. Ideal for freelancers and small businesses.',
+      'ts-note':'One-time payment · domain excluded',
+      'ts-feat':'<li><span class="check">✓</span><span class="feat-text"><strong>1 page</strong> responsive (mobile + desktop)</span></li><li><span class="check">✓</span><span class="feat-text">Custom professional design</span></li><li><span class="check">✓</span><span class="feat-text">Contact form</span></li><li><span class="check">✓</span><span class="feat-text">Hosting &amp; deployment included</span></li><li><span class="check">✓</span><span class="feat-text">Delivered in <strong>7 days</strong></span></li><li><span class="check">✓</span><span class="feat-text">1 month support included</span></li><li><span class="check" style="color:#34c759;">☁</span><span class="feat-text" style="color:#34c759;font-weight:600;">GitHub hosting 100% free</span></li>',
+      'ts-cta':'Discover this pack →',
+      'tb-badge':'⭐ Most popular','tb-name':'Business',
+      'tb-desc':'Multi-page website with local SEO. The complete solution to attract clients in Switzerland.',
+      'tb-note':'One-time payment · domain excluded',
+      'tb-feat':'<li><span class="check">✓</span><span class="feat-text"><strong>3 to 5 pages</strong> responsive</span></li><li><span class="check">✓</span><span class="feat-text">Local SEO Switzerland included</span></li><li><span class="check">✓</span><span class="feat-text">Google Maps integrated</span></li><li><span class="check">✓</span><span class="feat-text">Custom design + animations</span></li><li><span class="check">✓</span><span class="feat-text">Advanced contact form</span></li><li><span class="check">✓</span><span class="feat-text">Delivered in <strong>10 days</strong></span></li><li><span class="check">✓</span><span class="feat-text">3 months support included</span></li><li><span class="check" style="color:#34c759;">☁</span><span class="feat-text" style="color:#34c759;font-weight:600;">GitHub hosting 100% free</span></li>',
+      'tb-cta':'Discover this pack →',
+      'tp-name':'E-commerce','tp-desc':'Full online store to sell your products or services 24/7 in Switzerland.',
+      'tp-note':'One-time payment · domain excluded',
+      'tp-feat':'<li><span class="check">✓</span><span class="feat-text"><strong>Up to 10 pages</strong></span></li><li><span class="check">✓</span><span class="feat-text">Online store (Shopify / WooCommerce)</span></li><li><span class="check">✓</span><span class="feat-text">Secure online payment</span></li><li><span class="check">✓</span><span class="feat-text">Advanced SEO + Google Shopping</span></li><li><span class="check">✓</span><span class="feat-text">Training included</span></li><li><span class="check">✓</span><span class="feat-text">Delivered in <strong>14 days</strong></span></li><li><span class="check">✓</span><span class="feat-text">6 months support included</span></li><li><span class="check" style="color:#ff9f0a;">⚠</span><span class="feat-text" style="color:#ff9f0a;font-size:.83rem;">Monthly platform fees at client\'s expense</span></li>',
+      'tp-cta':'Discover this pack →',
+      't-footnote':'* Domain name (~CHF 15/yr) is excluded from all packages. For Starter &amp; Business, GitHub hosting is 100% free. For Premium (e-commerce), monthly platform fees (Shopify/WooCommerce) are at the client\'s expense.',
+      'tc-title':'Compare plans','tc-hfeat':'Feature',
+      'tc-r1':'Number of pages','tc-r1p':'Up to 10',
+      'tc-r2':'Mobile responsive design','tc-r3':'Contact form',
+      'tc-r4':'Local SEO Switzerland','tc-r5':'Google Maps integrated',
+      'tc-r6':'Online store','tc-r7':'Online payment','tc-r8':'Training included',
+      'tc-r9':'Delivery time','tc-r9s':'7 days','tc-r9b':'10 days','tc-r9p':'14 days',
+      'tc-r10':'Included support','tc-r10s':'1 month','tc-r10b':'3 months','tc-r10p':'6 months',
+      'tc-r11':'Price',
+      'tfq-title':'Frequently asked questions',
+      'tfq-1q':'What is not included in the price? <span class="faq-icon">+</span>',
+      'tfq-1a':'The domain name (~CHF 15/yr) is excluded from all packages. For Starter and Business, hosting is provided via GitHub Pages — <strong>100% free</strong>. For the Premium pack (e-commerce), monthly Shopify fees (~CHF 29/month) or WooCommerce hosting are at the client\'s expense. We guide you through these steps free of charge.',
+      'tfq-2q':'Can I update my website after delivery? <span class="faq-icon">+</span>',
+      'tfq-2a':'Yes. During the included support period, small changes are free. Beyond that, we offer updates at CHF 49/hour or a monthly maintenance plan.',
+      'tfq-3q':'How does payment work? <span class="faq-icon">+</span>',
+      'tfq-3a':'50% upfront to start the project, 50% on delivery. Payment by bank transfer or Twint. No credit card required.',
+      'tfq-4q':'Do you travel for meetings? <span class="faq-icon">+</span>',
+      'tfq-4a':'Yes, we travel anywhere in French-speaking Switzerland (Geneva, Lausanne, Fribourg, Neuchâtel, Sion, and more). The first consultation is always free, in person or by video call.',
+      'tfq-5q':'What if I\'m not satisfied? <span class="faq-icon">+</span>',
+      'tfq-5a':'We work with you until the result is exactly what you want. Revisions are included until final approval. Your satisfaction is our priority.',
+      'tcs-eyebrow':'Ready to get started?','tcs-h2':'Request your<br>free quote',
+      'tcs-p':'Reply within 24 business hours · No commitment','tcs-btn':'Get my quote →',
+      'tft':'© 2025 Romand Web · <a href="index.html">Home</a> · <a href="mentions-legales.html">Legal Notice</a> · <a href="tel:+41765060676">+41 76 506 06 76</a> · <a href="mailto:info@romand-web.com">info@romand-web.com</a>'
+    }
+  };
+
+  function setLang(lang) {
+    document.documentElement.lang = lang === 'en' ? 'en' : 'fr';
+    localStorage.setItem('rw-lang', lang);
+    document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    const dict = T[lang];
+    Object.keys(dict).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = dict[id];
+    });
+  }
+  const savedLang = localStorage.getItem('rw-lang') || 'fr';
+  if (savedLang === 'en') setLang('en');
 </script>
 </body>
 </html>
