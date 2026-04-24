@@ -927,12 +927,14 @@
         <div class="price-note">paiement unique · mise en ligne incluse</div>
         <div class="divider"></div>
         <ul>
-          <li>1 page complète</li>
-          <li>Design responsive</li>
+          <li>1 page complète responsive</li>
+          <li>Design professionnel sur mesure</li>
           <li>Formulaire de contact</li>
-          <li>Mise en ligne incluse</li>
+          <li>HTTPS sécurisé + mise en ligne</li>
+          <li>Livraison en 7 jours</li>
+          <li>1 mois de support offert</li>
         </ul>
-        <a href="#contact" class="card-btn">Choisir Starter</a>
+        <a href="pack-starter.html" class="card-btn card-btn-pack">En savoir plus →</a>
       </div>
 
       <div class="card popular" data-anim="scale-in" data-delay="200">
@@ -941,12 +943,14 @@
         <div class="price-note">Business · paiement unique</div>
         <div class="divider"></div>
         <ul>
-          <li>3 à 5 pages</li>
-          <li>Optimisation SEO de base</li>
-          <li>Intégration Google Maps</li>
-          <li>Design personnalisé</li>
+          <li>3 à 5 pages responsive</li>
+          <li>SEO local Romandie inclus</li>
+          <li>Google Maps intégré</li>
+          <li>Design animé personnalisé</li>
+          <li>Livraison en 10 jours</li>
+          <li>3 mois de support offert</li>
         </ul>
-        <a href="#contact" class="card-btn">Choisir Business</a>
+        <a href="pack-business.html" class="card-btn card-btn-pack">En savoir plus →</a>
       </div>
 
       <div class="card" data-anim="fade-up" data-delay="300">
@@ -958,32 +962,41 @@
           <li>Boutique en ligne complète</li>
           <li>Jusqu'à 10 pages</li>
           <li>Shopify ou WooCommerce</li>
-          <li>Formation incluse</li>
+          <li>Paiement Twint & CB intégré</li>
+          <li>Livraison en 14 jours</li>
+          <li>Formation + 6 mois support</li>
         </ul>
-        <a href="#contact" class="card-btn">Choisir Premium</a>
+        <a href="pack-premium.html" class="card-btn card-btn-pack">En savoir plus →</a>
       </div>
 
     </div>
     <p data-anim="fade-in" data-delay="400" style="margin-top: 32px; font-size: 0.8rem; color: #aeaeb2;">* L'achat du nom de domaine est exclu de tous les tarifs.</p>
 
-    <div data-anim="fade-up" data-delay="500" style="margin-top:36px;">
-      <a href="tarifs.html" id="tarifs-link" style="display:inline-flex;align-items:center;gap:8px;background:var(--black);color:white;padding:15px 32px;border-radius:980px;text-decoration:none;font-size:1rem;font-weight:600;transition:background 0.2s,transform 0.2s;letter-spacing:0.1px;">
-        Voir le détail complet des formules
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div data-anim="fade-up" data-delay="500" style="margin-top:28px;">
+      <a href="tarifs.html" id="tarifs-link" style="color:var(--blue);font-size:0.95rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:opacity 0.2s;">
+        Comparer toutes les formules en détail
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#0071e3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
   </section>
 
   <style>
-    #tarifs-link:hover { background: #333; transform: scale(1.03); }
+    #tarifs-link:hover { opacity: 0.7; }
+    .card-btn-pack { transition: background 0.2s, transform 0.2s; }
+    .card-btn-pack:hover { transform: scale(1.02); }
   </style>
 
   <script>
-    document.getElementById('tarifs-link').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.body.style.transition = 'opacity 0.35s ease';
+    function smoothNavTo(href) {
+      document.body.style.transition = 'opacity 0.3s ease';
       document.body.style.opacity = '0';
-      setTimeout(() => { window.location.href = this.href; }, 350);
+      setTimeout(() => { window.location.href = href; }, 300);
+    }
+    document.querySelectorAll('.card-btn-pack').forEach(function(el) {
+      el.addEventListener('click', function(e) { e.preventDefault(); smoothNavTo(this.href); });
+    });
+    document.getElementById('tarifs-link').addEventListener('click', function(e) {
+      e.preventDefault(); smoothNavTo(this.href);
     });
     window.addEventListener('pageshow', function() {
       document.body.style.transition = 'opacity 0.35s ease';
