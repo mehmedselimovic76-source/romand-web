@@ -41,31 +41,123 @@
   <meta name="twitter:description" content="Des sites internet professionnels pour les PME locales. Simple, rapide et abordable." />
   <meta name="twitter:image" content="https://romand-web.com/og-image.jpg" />
 
-  <!-- Schema.org LocalBusiness (remplace GMB pour SEO local sans adresse physique) -->
+  <!-- Schema.org — LocalBusiness + ProfessionalService + WebSite (@graph) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Romand Web",
-    "description": "Agence web spécialisée dans la création de sites internet professionnels pour les PME de Romandie. Design moderne, livraison rapide, prix transparent.",
-    "url": "https://romand-web.com",
-    "telephone": "+41765060676",
-    "email": "info@romand-web.com",
-    "image": "https://romand-web.com/og-image.jpg",
-    "priceRange": "CHF 299 – CHF 999",
-    "currenciesAccepted": "CHF",
-    "paymentAccepted": "Virement bancaire, Twint",
-    "areaServed": [
-      { "@type": "City", "name": "Genève" },
-      { "@type": "City", "name": "Lausanne" },
-      { "@type": "City", "name": "Fribourg" },
-      { "@type": "City", "name": "Neuchâtel" },
-      { "@type": "City", "name": "Sion" },
-      { "@type": "City", "name": "Delémont" },
-      { "@type": "State", "name": "Romandie" }
-    ],
-    "serviceType": ["Création de site internet", "Site vitrine", "Boutique en ligne", "Refonte de site web", "SEO local"],
-    "sameAs": ["https://github.com/mehmedselimovic76-source/romand-web"]
+    "@graph": [
+      {
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": "https://romand-web.com/#business",
+        "name": "Romand Web",
+        "legalName": "Romand Web",
+        "description": "Agence web spécialisée dans la création de sites internet rapides et abordables pour les PME locales en Romandie.",
+        "url": "https://romand-web.com",
+        "telephone": "+41765060676",
+        "email": "info@romand-web.com",
+        "image": "https://romand-web.com/og-image.jpg",
+        "logo": "https://romand-web.com/logo.svg",
+        "priceRange": "CHF 299 – CHF 999",
+        "currenciesAccepted": "CHF",
+        "paymentAccepted": "Virement bancaire, TWINT, PayPal",
+        "foundingDate": "2025",
+        "founder": {
+          "@type": "Person",
+          "name": "Mehmed Selimovic"
+        },
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": "Suisse romande",
+          "containsPlace": [
+            { "@type": "City", "name": "Genève" },
+            { "@type": "City", "name": "Lausanne" },
+            { "@type": "City", "name": "Fribourg" },
+            { "@type": "City", "name": "Neuchâtel" },
+            { "@type": "City", "name": "Sion" },
+            { "@type": "City", "name": "Delémont" },
+            { "@type": "City", "name": "Yverdon-les-Bains" },
+            { "@type": "City", "name": "Morges" },
+            { "@type": "City", "name": "Nyon" },
+            { "@type": "City", "name": "La Chaux-de-Fonds" },
+            { "@type": "City", "name": "Bulle" },
+            { "@type": "City", "name": "Sierre" }
+          ]
+        },
+        "knowsLanguage": ["fr", "fr-CH"],
+        "serviceType": [
+          "Création de site web",
+          "Site vitrine",
+          "Boutique en ligne",
+          "Refonte de site web",
+          "SEO local Romandie"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Forfaits création de site web",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Pack Starter",
+              "description": "Site vitrine 1 page responsive, formulaire de contact, hébergement GitHub 100% gratuit, livraison en 7 jours.",
+              "price": "299",
+              "priceCurrency": "CHF",
+              "url": "https://romand-web.com/pack-starter.html"
+            },
+            {
+              "@type": "Offer",
+              "name": "Pack Business",
+              "description": "Site multi-pages 3 à 5 pages, SEO local Romandie, Google Maps intégré, livraison en 10 jours.",
+              "price": "599",
+              "priceCurrency": "CHF",
+              "url": "https://romand-web.com/pack-business.html"
+            },
+            {
+              "@type": "Offer",
+              "name": "Pack Premium",
+              "description": "Boutique e-commerce Shopify ou WooCommerce, paiement en ligne sécurisé, SEO avancé, formation incluse, livraison en 14 jours.",
+              "price": "999",
+              "priceCurrency": "CHF",
+              "url": "https://romand-web.com/pack-premium.html"
+            }
+          ]
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+41765060676",
+          "email": "info@romand-web.com",
+          "contactType": "customer service",
+          "availableLanguage": "French",
+          "hoursAvailable": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "08:00",
+            "closes": "18:30"
+          }
+        },
+        "sameAs": [
+          "https://github.com/mehmedselimovic76-source/romand-web"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://romand-web.com/#website",
+        "url": "https://romand-web.com",
+        "name": "Romand Web",
+        "description": "Agence web spécialisée dans la création de sites internet rapides et abordables pour les PME locales en Romandie.",
+        "inLanguage": "fr-CH",
+        "publisher": {
+          "@id": "https://romand-web.com/#business"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://romand-web.com/?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      }
+    ]
   }
   </script>
 
