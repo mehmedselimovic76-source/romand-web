@@ -2,12 +2,17 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  <!-- Google Tag Manager — chargé après idle pour réduire TBT -->
+  <script>
+  window.dataLayer=window.dataLayer||[];
+  function loadGTM(){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-TVF29FFT');</script>
+  })(window,document,'script','dataLayer','GTM-TVF29FFT');}
+  if(typeof requestIdleCallback!=='undefined'){requestIdleCallback(loadGTM);}
+  else{window.addEventListener('load',function(){setTimeout(loadGTM,200);});}
+  </script>
   <!-- End Google Tag Manager -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Romand Web – Sites Internet pour PME de Romandie</title>
@@ -41,37 +46,122 @@
   <meta name="twitter:description" content="Des sites internet professionnels pour les PME locales. Simple, rapide et abordable." />
   <meta name="twitter:image" content="https://romand-web.com/og-image.jpg" />
 
-  <!-- Schema.org LocalBusiness (remplace GMB pour SEO local sans adresse physique) -->
+  <!-- Schema.org — LocalBusiness + ProfessionalService + WebSite (@graph) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Romand Web",
-    "description": "Agence web spécialisée dans la création de sites internet professionnels pour les PME de Romandie. Design moderne, livraison rapide, prix transparent.",
-    "url": "https://romand-web.com",
-    "telephone": "+41765060676",
-    "email": "info@romand-web.com",
-    "image": "https://romand-web.com/og-image.jpg",
-    "priceRange": "CHF 299 – CHF 999",
-    "currenciesAccepted": "CHF",
-    "paymentAccepted": "Virement bancaire, Twint",
-    "areaServed": [
-      { "@type": "City", "name": "Genève" },
-      { "@type": "City", "name": "Lausanne" },
-      { "@type": "City", "name": "Fribourg" },
-      { "@type": "City", "name": "Neuchâtel" },
-      { "@type": "City", "name": "Sion" },
-      { "@type": "City", "name": "Delémont" },
-      { "@type": "State", "name": "Romandie" }
-    ],
-    "serviceType": ["Création de site internet", "Site vitrine", "Boutique en ligne", "Refonte de site web", "SEO local"],
-    "sameAs": ["https://github.com/mehmedselimovic76-source/romand-web"]
+    "@graph": [
+      {
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": "https://romand-web.com/#business",
+        "name": "Romand Web",
+        "legalName": "Romand Web",
+        "description": "Agence web spécialisée dans la création de sites internet rapides et abordables pour les PME locales en Romandie.",
+        "url": "https://romand-web.com",
+        "telephone": "+41765060676",
+        "email": "info@romand-web.com",
+        "image": "https://romand-web.com/og-image.jpg",
+        "logo": "https://romand-web.com/logo.svg",
+        "priceRange": "CHF 299 – CHF 999",
+        "currenciesAccepted": "CHF",
+        "paymentAccepted": "Virement bancaire, TWINT, PayPal",
+        "foundingDate": "2025",
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": "Suisse romande",
+          "containsPlace": [
+            { "@type": "City", "name": "Genève" },
+            { "@type": "City", "name": "Lausanne" },
+            { "@type": "City", "name": "Fribourg" },
+            { "@type": "City", "name": "Neuchâtel" },
+            { "@type": "City", "name": "Sion" },
+            { "@type": "City", "name": "Delémont" },
+            { "@type": "City", "name": "Yverdon-les-Bains" },
+            { "@type": "City", "name": "Morges" },
+            { "@type": "City", "name": "Nyon" },
+            { "@type": "City", "name": "La Chaux-de-Fonds" },
+            { "@type": "City", "name": "Bulle" },
+            { "@type": "City", "name": "Sierre" }
+          ]
+        },
+        "knowsLanguage": ["fr", "fr-CH"],
+        "serviceType": [
+          "Création de site web",
+          "Site vitrine",
+          "Boutique en ligne",
+          "Refonte de site web",
+          "SEO local Romandie"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Forfaits création de site web",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Pack Starter",
+              "description": "Site vitrine 1 page responsive, formulaire de contact, hébergement GitHub 100% gratuit, livraison en 7 jours.",
+              "price": "299",
+              "priceCurrency": "CHF",
+              "url": "https://romand-web.com/pack-starter.html"
+            },
+            {
+              "@type": "Offer",
+              "name": "Pack Business",
+              "description": "Site multi-pages 3 à 5 pages, SEO local Romandie, Google Maps intégré, livraison en 10 jours.",
+              "price": "599",
+              "priceCurrency": "CHF",
+              "url": "https://romand-web.com/pack-business.html"
+            },
+            {
+              "@type": "Offer",
+              "name": "Pack Premium",
+              "description": "Boutique e-commerce Shopify ou WooCommerce, paiement en ligne sécurisé, SEO avancé, formation incluse, livraison en 14 jours.",
+              "price": "999",
+              "priceCurrency": "CHF",
+              "url": "https://romand-web.com/pack-premium.html"
+            }
+          ]
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+41765060676",
+          "email": "info@romand-web.com",
+          "contactType": "customer service",
+          "availableLanguage": "French",
+          "hoursAvailable": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "08:00",
+            "closes": "18:30"
+          }
+        },
+        "sameAs": [
+          "https://github.com/mehmedselimovic76-source/romand-web"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://romand-web.com/#website",
+        "url": "https://romand-web.com",
+        "name": "Romand Web",
+        "description": "Agence web spécialisée dans la création de sites internet rapides et abordables pour les PME locales en Romandie.",
+        "inLanguage": "fr-CH",
+        "publisher": {
+          "@id": "https://romand-web.com/#business"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://romand-web.com/?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      }
+    ]
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -80,15 +170,15 @@
       --black: #1d1d1f;
       --gray: #6e6e73;
       --light-gray: #f5f5f7;
-      --blue: #0071e3;
-      --blue-hover: #0077ed;
+      --blue: #0060cc;
+      --blue-hover: #0068d6;
       --white: #ffffff;
       --divider: rgba(0,0,0,0.08);
     }
 
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
       color: var(--black);
       background: var(--white);
       -webkit-font-smoothing: antialiased;
@@ -486,7 +576,7 @@
     .why-item:nth-child(2):hover .icon { animation: iconPulse 0.5s ease forwards; }
     .why-item:nth-child(3):hover .icon { animation: iconShake 0.5s ease forwards; }
     .why-item:nth-child(4):hover .icon { animation: iconSpin 0.6s cubic-bezier(0.4,0,0.2,1) forwards; }
-    .why-item h4 {
+    .why-item h3 {
       font-size: 1.1rem;
       font-weight: 600;
       letter-spacing: -0.2px;
@@ -494,7 +584,7 @@
       color: var(--black);
       transition: color 0.2s;
     }
-    .why-item:hover h4 { color: var(--blue); }
+    .why-item:hover h3 { color: var(--blue); }
     .why-item p {
       color: var(--gray);
       font-size: 0.95rem;
@@ -562,9 +652,9 @@
       flex-wrap: wrap;
       gap: 10px;
     }
-    footer p { font-size: 0.78rem; color: #aeaeb2; }
+    footer p { font-size: 0.78rem; color: #636369; }
     footer .footer-links { display: flex; gap: 20px; }
-    footer .footer-links a { font-size: 0.78rem; color: #aeaeb2; text-decoration: none; }
+    footer .footer-links a { font-size: 0.78rem; color: #636369; text-decoration: none; }
     footer .footer-links a:hover { color: var(--gray); }
 
     /* SUCCESS OVERLAY */
@@ -1038,7 +1128,7 @@
   <!-- HERO -->
   <section class="hero">
     <div class="eyebrow" data-anim="fade-in" data-delay="100" id="hero-eyebrow">Agence Web · Romandie</div>
-    <h1 data-anim="fade-up" data-delay="200" id="hero-h1">Votre vitrine<br>digitale en Romandie.</h1>
+    <h1 data-anim="fade-up" data-delay="200" id="hero-h1">Votre vitrine <br>digitale en Romandie.</h1>
     <p data-anim="fade-up" data-delay="300" id="hero-p">Des sites internet professionnels pour les PME locales. Simple, rapide et abordable.</p>
     <div class="hero-links" data-anim="fade-up" data-delay="400">
       <a href="#contact" class="cta-primary" id="hero-cta1">Demander un devis gratuit</a>
@@ -1382,20 +1472,32 @@
 
     function quizShowResult() {
       var a1 = quizAnswers.step1, a2 = quizAnswers.step2, a3 = quizAnswers.step3;
-      var pack = 'starter';
 
-      // Logic: sell or shop → premium; local or sme + not low → business; else starter
-      if (a1 === 'sell' || a2 === 'shop' || a3 === 'high' && a1 !== 'visible') {
-        pack = 'premium';
-      } else if (a1 === 'local' || a2 === 'sme' || a3 === 'mid') {
-        pack = 'business';
-      } else {
-        pack = 'starter';
-      }
-      // Override: if budget is low, max starter
-      if (a3 === 'low') pack = 'starter';
-      // Override: if sell/shop intent always premium regardless of budget label
-      if (a1 === 'sell' || a2 === 'shop') pack = 'premium';
+      // Scoring — chaque réponse apporte des points à un pack
+      var score = { starter: 0, business: 0, premium: 0 };
+
+      // Q1 — Objectif
+      if (a1 === 'visible') score.starter  += 3;
+      if (a1 === 'local')   score.business += 3;
+      if (a1 === 'sell')    score.premium  += 3;
+
+      // Q2 — Situation
+      if (a2 === 'freelance') score.starter  += 2;
+      if (a2 === 'sme')       score.business += 3;
+      if (a2 === 'shop')    { score.premium  += 3; score.business += 1; }
+
+      // Q3 — Budget
+      if (a3 === 'low')  score.starter  += 3;
+      if (a3 === 'mid')  score.business += 2;
+      if (a3 === 'high') { score.business += 1; score.premium += 1; }
+
+      // Plafonds budget stricts — on ne recommande jamais ce que le client ne peut pas payer
+      if (a3 === 'low') { score.business = 0; score.premium = 0; }
+      if (a3 === 'mid') { score.premium  = 0; }
+
+      // Gagnant — en cas d'égalité, on préfère le pack supérieur
+      var max = Math.max(score.starter, score.business, score.premium);
+      var pack = ['premium', 'business', 'starter'].find(function(p) { return score[p] === max; });
 
       var lang = localStorage.getItem('rw-lang') || 'fr';
       var data = quizPacks[lang][pack];
@@ -1444,22 +1546,22 @@
     <div class="why-grid">
       <div class="why-item" data-anim="slide-left" data-delay="100">
         <span class="icon">🏡</span>
-        <h4 id="w1-h4">Local & proche</h4>
+        <h3 id="w1-h4">Local & proche</h3>
         <p id="w1-p">Basé en Romandie, nous parlons votre langue et connaissons votre marché.</p>
       </div>
       <div class="why-item" data-anim="fade-up" data-delay="200">
         <span class="icon">⚡</span>
-        <h4 id="w2-h4">Livraison rapide</h4>
+        <h3 id="w2-h4">Livraison rapide</h3>
         <p id="w2-p">Votre site livré en 7 à 14 jours ouvrables.</p>
       </div>
       <div class="why-item" data-anim="fade-up" data-delay="300">
         <span class="icon">💰</span>
-        <h4 id="w3-h4">Prix transparent</h4>
+        <h3 id="w3-h4">Prix transparent</h3>
         <p id="w3-p">Pas de frais cachés. Vous savez exactement ce que vous payez.</p>
       </div>
       <div class="why-item" data-anim="slide-right" data-delay="400">
         <span class="icon">📱</span>
-        <h4 id="w4-h4">100% mobile</h4>
+        <h3 id="w4-h4">100% mobile</h3>
         <p id="w4-p">Tous nos sites sont optimisés pour smartphones et tablettes.</p>
       </div>
     </div>
@@ -1655,166 +1757,85 @@
   </div>
 
   <script>
-    // AJAX form submission — no Formspree redirect
-    const form = document.getElementById('contact-form');
-    const btn  = document.getElementById('form-btn');
-    const overlay = document.getElementById('success-overlay');
+    // ── CRITICAL (synchronous, minimal) ──────────────────────────────────
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      // Vérification hCaptcha
-      const captchaRes = form.querySelector('[name="h-captcha-response"]');
-      if (!captchaRes || !captchaRes.value) {
-        alert('Veuillez compléter le CAPTCHA.');
-        return;
-      }
-
-      btn.textContent = 'Envoi en cours…';
-      btn.disabled = true;
-
-      const res = await fetch('https://formspree.io/f/xqewdqjp', {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
+    // Form submit
+    var _form = document.getElementById('contact-form');
+    var _formBtn = document.getElementById('form-btn');
+    var _overlay = document.getElementById('success-overlay');
+    if (_form) {
+      _form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var captchaRes = _form.querySelector('[name="h-captcha-response"]');
+        if (!captchaRes || !captchaRes.value) { alert('Veuillez compléter le CAPTCHA.'); return; }
+        _formBtn.textContent = 'Envoi en cours…'; _formBtn.disabled = true;
+        var res = await fetch('https://formspree.io/f/xqewdqjp', {
+          method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(_form)
+        });
+        if (res.ok) {
+          _form.style.display = 'none'; _overlay.classList.add('show');
+          setTimeout(function() { window.location.href = 'index.html'; }, 5400);
+        } else { _formBtn.textContent = 'Erreur — réessayez'; _formBtn.disabled = false; }
       });
-
-      if (res.ok) {
-        form.style.display = 'none';
-        overlay.classList.add('show');
-        setTimeout(() => { window.location.href = 'index.html'; }, 5400);
-      } else {
-        btn.textContent = 'Erreur — réessayez';
-        btn.disabled = false;
-      }
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('[data-anim]').forEach(el => observer.observe(el));
-
-    // Counter animation
-    function animateCount(el) {
-      if (el.dataset.animated) return;
-      el.dataset.animated = '1';
-
-      if (el.dataset.countRange) {
-        const [from, to] = el.dataset.countRange.split(',').map(Number);
-        const duration = 1200;
-        const start = performance.now();
-        const step = ts => {
-          const p = Math.min((ts - start) / duration, 1);
-          const ease = 1 - Math.pow(1 - p, 3);
-          const vFrom = Math.round(from + (from * ease));
-          const vTo   = Math.round(to * ease);
-          el.textContent = (vFrom > from ? vFrom : from) + '–' + (vTo < to ? vTo : to);
-          if (p < 1) requestAnimationFrame(step);
-          else el.textContent = from + '–' + to;
-        };
-        requestAnimationFrame(step);
-        return;
-      }
-
-      const target = parseInt(el.dataset.count);
-      const suffix = el.dataset.suffix || '';
-      const duration = target >= 50 ? 1400 : 1000;
-      const start = performance.now();
-      const step = ts => {
-        const p = Math.min((ts - start) / duration, 1);
-        const ease = 1 - Math.pow(1 - p, 3);
-        el.textContent = Math.round(target * ease) + suffix;
-        if (p < 1) requestAnimationFrame(step);
-        else el.textContent = target + suffix;
-      };
-      requestAnimationFrame(step);
     }
 
-    const counterObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const nums = entry.target.querySelectorAll('[data-count], [data-count-range]');
-          nums.forEach(n => setTimeout(() => animateCount(n), parseInt(n.closest('[data-delay]')?.dataset.delay || 0)));
-          if (nums.length) counterObserver.unobserve(entry.target);
-        }
+    // Hamburger
+    var _hamburger = document.getElementById('hamburger');
+    var _mobileMenu = document.getElementById('mobile-menu');
+    if (_hamburger) {
+      _hamburger.addEventListener('click', function() {
+        _hamburger.classList.toggle('open'); _mobileMenu.classList.toggle('open');
       });
-    }, { threshold: 0.4 });
-
-    document.querySelector('.trust-band') && counterObserver.observe(document.querySelector('.trust-band'));
-
-    // FAQ accordéon
-    document.querySelectorAll('.faq-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.parentElement;
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item.open').forEach(i => {
-          i.classList.remove('open');
-          i.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
-        });
-        if (!isOpen) {
-          item.classList.add('open');
-          btn.setAttribute('aria-expanded', 'true');
-        }
+      document.querySelectorAll('.mobile-link').forEach(function(l) {
+        l.addEventListener('click', function() { _hamburger.classList.remove('open'); _mobileMenu.classList.remove('open'); });
       });
-    });
+    }
 
-    // Hamburger menu
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-    });
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-      });
-    });
+    // ── TRANSLATION (lazy object creation + chunked DOM updates) ─────────
+    var _dictCache = null;
+    var _placeholderIds = ['inp-name','inp-email','inp-phone','inp-message'];
 
-    // ─── TRADUCTION FR / EN ───────────────────────────────────────────
-    const T = {
-      fr: {
-        'nl-offers':'Offres', 'nl-why':'Pourquoi nous', 'nl-pricing':'Tarifs', 'nl-contact':'Contact',
-        'mm-offers':'Offres', 'mm-why':'Pourquoi nous', 'mm-contact':'Contact',
-        'hero-eyebrow':'Agence Web · Romandie',
-        'hero-h1':'Votre vitrine<br>digitale en Romandie.',
-        'hero-p':'Des sites internet professionnels pour les PME locales. Simple, rapide et abordable.',
-        'hero-cta1':'Demander un devis gratuit', 'hero-cta2':'Voir nos offres',
-        'tl-1':'clients satisfaits', 'tl-2':'jours de livraison', 'tl-3':'local · Romandie', 'tl-4':'réponse garantie',
-        'svc-eyebrow':'Tarifs', 'svc-h2':'Nos offres.', 'svc-sub':'Des forfaits clairs, sans surprise.',
-        'c1-note':'paiement unique · mise en ligne incluse',
-        'c1-ul':'<li>1 page complète responsive</li><li>Design professionnel sur mesure</li><li>Formulaire de contact</li><li>HTTPS sécurisé + mise en ligne</li><li>Livraison en 7 jours</li><li>1 mois de support offert</li><li style="color:#34c759;font-weight:600;">☁ Hébergement GitHub 100% gratuit</li>',
-        'c1-btn':'En savoir plus →',
-        'c2-badge':'⭐ Le plus populaire', 'c2-note':'Business · paiement unique',
-        'c2-ul':'<li>3 à 5 pages responsive</li><li>SEO local Romandie inclus</li><li>Google Maps intégré</li><li>Design animé personnalisé</li><li>Livraison en 10 jours</li><li>3 mois de support offert</li><li style="color:#34c759;font-weight:600;">☁ Hébergement GitHub 100% gratuit</li>',
-        'c2-btn':'En savoir plus →',
-        'c3-note':'paiement unique · formation incluse',
-        'c3-ul':'<li>Boutique en ligne complète</li><li>Jusqu\'à 10 pages</li><li>Shopify ou WooCommerce</li><li>Paiement Twint & CB intégré</li><li>Livraison en 14 jours</li><li>Formation + 6 mois support</li><li style="color:#ff9f0a;font-size:.82rem;margin-top:4px;">⚠ Frais de plateforme mensuel à la charge du client</li>',
-        'c3-btn':'En savoir plus →',
-        'svc-footnote':'* L\'achat du nom de domaine est exclu de tous les tarifs.',
-        'svc-compare':'Comparer toutes les formules en détail',
-        'quiz-eyebrow':'Aide au choix', 'quiz-h2':'Quel pack est fait pour vous ?', 'quiz-sub':'3 questions · 30 secondes · résultat personnalisé.',
-        'qq1':'Quel est votre principal objectif ?', 'qo1a':'Être visible en ligne', 'qo1b':'Attirer des clients locaux', 'qo1c':'Vendre des produits en ligne',
-        'qq2':'Quelle est votre situation ?', 'qo2a':'Indépendant / Auto-entrepreneur', 'qo2b':'PME / Commerce local', 'qo2c':'Boutique / Marque e-commerce',
-        'qq3':'Quel est votre budget ?', 'qo3a':'Jusqu\'à CHF 400', 'qo3b':'Jusqu\'à CHF 700', 'qo3c':'Pas de limite — meilleur résultat',
-        'quiz-contact-btn':'Demander un devis', 'quiz-restart':'Recommencer',
-        'why-eyebrow':'Nos atouts', 'why-h2':'Pourquoi Romand Web ?', 'why-sub':'Nous comprenons les besoins des entreprises locales de Romandie.',
-        'w1-h4':'Local & proche', 'w1-p':'Basé en Romandie, nous parlons votre langue et connaissons votre marché.',
-        'w2-h4':'Livraison rapide', 'w2-p':'Votre site livré en 7 à 14 jours ouvrables.',
-        'w3-h4':'Prix transparent', 'w3-p':'Pas de frais cachés. Vous savez exactement ce que vous payez.',
-        'w4-h4':'100% mobile', 'w4-p':'Tous nos sites sont optimisés pour smartphones et tablettes.',
-        'zone-eyebrow':'Couverture', 'zone-h2':'Nous intervenons dans toute la Romandie.',
-        'zone-sub':'Agence 100% digitale — nous créons votre site où que vous soyez en Suisse romande.',
-        'zone-note':'📍 Agence 100% digitale — déplacement possible sur rendez-vous si besoin.',
-        'cases-eyebrow':'Réalisations', 'cases-h2':'Ils ont fait confiance à Romand Web.',
-        'cases-sub':'Des exemples concrets de PME locales que nous avons aidées à se développer en ligne.',
+    function setLang(lang) {
+      document.documentElement.lang = lang === 'en' ? 'en' : 'fr';
+      localStorage.setItem('rw-lang', lang);
+      document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      if (!_dictCache) _dictCache = {
+        fr: {
+          'nl-offers':'Offres', 'nl-why':'Pourquoi nous', 'nl-pricing':'Tarifs', 'nl-contact':'Contact',
+          'mm-offers':'Offres', 'mm-why':'Pourquoi nous', 'mm-contact':'Contact',
+          'hero-eyebrow':'Agence Web · Romandie',
+          'hero-h1':'Votre vitrine <br>digitale en Romandie.',
+          'hero-p':'Des sites internet professionnels pour les PME locales. Simple, rapide et abordable.',
+          'hero-cta1':'Demander un devis gratuit', 'hero-cta2':'Voir nos offres',
+          'tl-1':'clients satisfaits', 'tl-2':'jours de livraison', 'tl-3':'local · Romandie', 'tl-4':'réponse garantie',
+          'svc-eyebrow':'Tarifs', 'svc-h2':'Nos offres.', 'svc-sub':'Des forfaits clairs, sans surprise.',
+          'c1-note':'paiement unique · mise en ligne incluse',
+          'c1-ul':'<li>1 page complète responsive</li><li>Design professionnel sur mesure</li><li>Formulaire de contact</li><li>HTTPS sécurisé + mise en ligne</li><li>Livraison en 7 jours</li><li>1 mois de support offert</li><li style="color:#34c759;font-weight:600;">☁ Hébergement GitHub 100% gratuit</li>',
+          'c1-btn':'En savoir plus →',
+          'c2-badge':'⭐ Le plus populaire', 'c2-note':'Business · paiement unique',
+          'c2-ul':'<li>3 à 5 pages responsive</li><li>SEO local Romandie inclus</li><li>Google Maps intégré</li><li>Design animé personnalisé</li><li>Livraison en 10 jours</li><li>3 mois de support offert</li><li style="color:#34c759;font-weight:600;">☁ Hébergement GitHub 100% gratuit</li>',
+          'c2-btn':'En savoir plus →',
+          'c3-note':'paiement unique · formation incluse',
+          'c3-ul':'<li>Boutique en ligne complète</li><li>Jusqu\'à 10 pages</li><li>Shopify ou WooCommerce</li><li>Paiement Twint & CB intégré</li><li>Livraison en 14 jours</li><li>Formation + 6 mois support</li><li style="color:#ff9f0a;font-size:.82rem;margin-top:4px;">⚠ Frais de plateforme mensuel à la charge du client</li>',
+          'c3-btn':'En savoir plus →',
+          'svc-footnote':'* L\'achat du nom de domaine est exclu de tous les tarifs.',
+          'svc-compare':'Comparer toutes les formules en détail',
+          'quiz-eyebrow':'Aide au choix', 'quiz-h2':'Quel pack est fait pour vous ?', 'quiz-sub':'3 questions · 30 secondes · résultat personnalisé.',
+          'qq1':'Quel est votre principal objectif ?', 'qo1a':'Être visible en ligne', 'qo1b':'Attirer des clients locaux', 'qo1c':'Vendre des produits en ligne',
+          'qq2':'Quelle est votre situation ?', 'qo2a':'Indépendant / Auto-entrepreneur', 'qo2b':'PME / Commerce local', 'qo2c':'Boutique / Marque e-commerce',
+          'qq3':'Quel est votre budget ?', 'qo3a':'Jusqu\'à CHF 400', 'qo3b':'Jusqu\'à CHF 700', 'qo3c':'Pas de limite — meilleur résultat',
+          'quiz-contact-btn':'Demander un devis', 'quiz-restart':'Recommencer',
+          'why-eyebrow':'Nos atouts', 'why-h2':'Pourquoi Romand Web ?', 'why-sub':'Nous comprenons les besoins des entreprises locales de Romandie.',
+          'w1-h4':'Local & proche', 'w1-p':'Basé en Romandie, nous parlons votre langue et connaissons votre marché.',
+          'w2-h4':'Livraison rapide', 'w2-p':'Votre site livré en 7 à 14 jours ouvrables.',
+          'w3-h4':'Prix transparent', 'w3-p':'Pas de frais cachés. Vous savez exactement ce que vous payez.',
+          'w4-h4':'100% mobile', 'w4-p':'Tous nos sites sont optimisés pour smartphones et tablettes.',
+          'zone-eyebrow':'Couverture', 'zone-h2':'Nous intervenons dans toute la Romandie.',
+          'zone-sub':'Agence 100% digitale — nous créons votre site où que vous soyez en Suisse romande.',
+          'zone-note':'📍 Agence 100% digitale — déplacement possible sur rendez-vous si besoin.',
+          'cases-eyebrow':'Réalisations', 'cases-h2':'Ils ont fait confiance à Romand Web.',
+          'cases-sub':'Des exemples concrets de PME locales que nous avons aidées à se développer en ligne.',
         'ca1-tag':'Carrosserie · Genève', 'ca1-title':'Site vitrine 1 page',
         'ca1-desc':'Un artisan genevois sans présence en ligne. Résultat : site livré en 8 jours, 3 nouveaux clients le premier mois via Google.',
         'ca1-s1':'+3 clients / mois', 'ca1-s2':'8 jours de livraison',
@@ -1917,128 +1938,494 @@
         'fl-offers':'Services', 'fl-why':'Why us', 'fl-contact':'Contact', 'fl-legal':'Legal notice',
         'mob-cta':'Get a free quote →',
         'inp-name':'Your name & company', 'inp-email':'Email address', 'inp-phone':'Phone (optional)', 'inp-message':'Describe your project...'
+        }
+      };
+      var dict = _dictCache[lang];
+      var ids = Object.keys(dict);
+      var i = 0;
+      function _chunk() {
+        var end = Math.min(i + 15, ids.length);
+        for (; i < end; i++) {
+          var el = document.getElementById(ids[i]);
+          if (!el) continue;
+          if (_placeholderIds.indexOf(ids[i]) !== -1) el.placeholder = dict[ids[i]];
+          else el.innerHTML = dict[ids[i]];
+        }
+        if (i < ids.length) setTimeout(_chunk, 0);
       }
-    };
-
-    const placeholderIds = ['inp-name','inp-email','inp-phone','inp-message'];
-
-    function setLang(lang) {
-      document.documentElement.lang = lang === 'en' ? 'en' : 'fr';
-      localStorage.setItem('rw-lang', lang);
-      document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
-      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-      const dict = T[lang];
-      Object.keys(dict).forEach(id => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        if (placeholderIds.includes(id)) {
-          el.placeholder = dict[id];
-        } else {
-          el.innerHTML = dict[id];
-        }
-      });
+      _chunk();
     }
+    window.setLang = setLang;
 
-    // Init language on load
-    const savedLang = localStorage.getItem('rw-lang') || 'fr';
-    if (savedLang === 'en') setLang('en');
+    // Init lang — only call for EN (FR is already in HTML, no DOM work needed)
+    var _savedLang = localStorage.getItem('rw-lang') || 'fr';
+    if (_savedLang === 'en') setLang('en');
 
-    // ─── 1. SCROLL PROGRESS BAR ───────────────────────────────────────
-    const progressBar = document.createElement('div');
-    progressBar.id = 'scroll-progress';
-    document.body.prepend(progressBar);
-    window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-      progressBar.style.width = (scrolled * 100) + '%';
-    }, { passive: true });
+    // ── DEFERRED NON-CRITICAL INIT ────────────────────────────────────
+    var _isTouch = !matchMedia('(hover: hover) and (pointer: fine)').matches;
+    function _yield() { return new Promise(function(r) { setTimeout(r, 0); }); }
 
-    // ─── 2. CURSOR GLOW ───────────────────────────────────────────────
-    const glow = document.createElement('div');
-    glow.id = 'cursor-glow';
-    document.body.appendChild(glow);
-    let mx = -200, my = -200, glowX = -200, glowY = -200;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-    (function animGlow() {
-      glowX += (mx - glowX) * 0.08;
-      glowY += (my - glowY) * 0.08;
-      glow.style.transform = `translate(${glowX - 180}px, ${glowY - 180}px)`;
-      requestAnimationFrame(animGlow);
-    })();
+    async function _deferredInit() {
+      // 1. Scroll animations observer
+      var animObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) { entry.target.classList.add('visible'); animObs.unobserve(entry.target); }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('[data-anim]').forEach(function(el) { animObs.observe(el); });
 
-    // ─── 3. 3D TILT ON CARDS ──────────────────────────────────────────
-    document.querySelectorAll('.card, .case-card').forEach(card => {
-      card.addEventListener('mousemove', e => {
-        const r = card.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width  - 0.5;
-        const y = (e.clientY - r.top)  / r.height - 0.5;
-        card.style.transform = `perspective(600px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateZ(6px)`;
-        card.style.transition = 'transform 0.1s';
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-        card.style.transition = 'transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s';
-      });
-    });
+      await _yield();
 
-    // ─── 4. MAGNETIC CTA BUTTON ───────────────────────────────────────
-    document.querySelectorAll('.cta-primary').forEach(btn => {
-      btn.addEventListener('mousemove', e => {
-        const r = btn.getBoundingClientRect();
-        const x = (e.clientX - r.left - r.width  / 2) * 0.35;
-        const y = (e.clientY - r.top  - r.height / 2) * 0.35;
-        btn.style.transform = `translate(${x}px, ${y}px)`;
-        btn.style.transition = 'transform 0.15s';
-      });
-      btn.addEventListener('mouseleave', () => {
-        btn.style.transform = '';
-        btn.style.transition = 'transform 0.5s cubic-bezier(0.22,1,0.36,1)';
-      });
-    });
-
-    // ─── 5. RIPPLE ON BUTTONS ─────────────────────────────────────────
-    document.querySelectorAll('.cta-primary, .card a.card-btn').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        const r = this.getBoundingClientRect();
-        const ripple = document.createElement('span');
-        ripple.className = 'ripple';
-        ripple.style.cssText = `left:${e.clientX - r.left}px;top:${e.clientY - r.top}px`;
-        this.style.position = 'relative';
-        this.style.overflow = 'hidden';
-        this.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 600);
-      });
-    });
-
-    // ─── 6. FLOATING DIAMONDS IN HERO ────────────────────────────────
-    const heroEl = document.querySelector('.hero');
-    for (let i = 0; i < 8; i++) {
-      const d = document.createElement('span');
-      d.className = 'hero-float';
-      d.textContent = '◈';
-      d.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;font-size:${0.6 + Math.random()*1.2}rem;animation-delay:${Math.random()*6}s;animation-duration:${5 + Math.random()*5}s;opacity:${0.04 + Math.random()*0.08}`;
-      heroEl.appendChild(d);
-    }
-
-    // ─── 7. ZONE PILLS STAGGER ────────────────────────────────────────
-    const pillObs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.zone-pill').forEach((pill, i) => {
-            pill.style.opacity = '0';
-            pill.style.transform = 'translateY(12px)';
-            setTimeout(() => {
-              pill.style.transition = 'opacity 0.4s ease, transform 0.4s cubic-bezier(0.22,1,0.36,1)';
-              pill.style.opacity = '1';
-              pill.style.transform = 'translateY(0)';
-            }, i * 60);
+      // 2. FAQ accordion
+      document.querySelectorAll('.faq-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var item = btn.parentElement, isOpen = item.classList.contains('open');
+          document.querySelectorAll('.faq-item.open').forEach(function(i) {
+            i.classList.remove('open'); i.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
           });
-          pillObs.unobserve(entry.target);
-        }
+          if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+        });
       });
-    }, { threshold: 0.2 });
-    const zoneGrid = document.querySelector('.zone-grid');
-    if (zoneGrid) pillObs.observe(zoneGrid);
 
+      await _yield();
+
+      // 3. Counter animation (triggered by scroll)
+      function animateCount(el) {
+        if (el.dataset.animated) return;
+        el.dataset.animated = '1';
+        if (el.dataset.countRange) {
+          var pts = el.dataset.countRange.split(',').map(Number), from = pts[0], to = pts[1];
+          var dur = 1200, t0 = performance.now();
+          var step = function(ts) {
+            var p = Math.min((ts - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.round(from + from * e) + '–' + Math.round(to * e);
+            if (p < 1) requestAnimationFrame(step); else el.textContent = from + '–' + to;
+          };
+          requestAnimationFrame(step); return;
+        }
+        var target = parseInt(el.dataset.count), sfx = el.dataset.suffix || '';
+        var dur = target >= 50 ? 1400 : 1000, t0 = performance.now();
+        var step = function(ts) {
+          var p = Math.min((ts - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * e) + sfx;
+          if (p < 1) requestAnimationFrame(step); else el.textContent = target + sfx;
+        };
+        requestAnimationFrame(step);
+      }
+      var cntObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var nums = entry.target.querySelectorAll('[data-count], [data-count-range]');
+            nums.forEach(function(n) {
+              var delay = 0;
+              var dp = n.closest('[data-delay]');
+              if (dp) delay = parseInt(dp.dataset.delay) || 0;
+              setTimeout(function() { animateCount(n); }, delay);
+            });
+            if (nums.length) cntObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      var tb = document.querySelector('.trust-band');
+      if (tb) cntObs.observe(tb);
+
+      await _yield();
+
+      // 4. Scroll progress bar
+      var pb = document.createElement('div');
+      pb.id = 'scroll-progress';
+      document.body.prepend(pb);
+      window.addEventListener('scroll', function() {
+        pb.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+      }, { passive: true });
+
+      await _yield();
+
+      // 5. Zone pills stagger
+      var pillObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('.zone-pill').forEach(function(pill, i) {
+              pill.style.opacity = '0'; pill.style.transform = 'translateY(12px)';
+              setTimeout(function() {
+                pill.style.transition = 'opacity 0.4s ease, transform 0.4s cubic-bezier(0.22,1,0.36,1)';
+                pill.style.opacity = '1'; pill.style.transform = 'translateY(0)';
+              }, i * 60);
+            });
+            pillObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      var zoneGrid = document.querySelector('.zone-grid');
+      if (zoneGrid) pillObs.observe(zoneGrid);
+
+      await _yield();
+
+      // 6. Ripple on buttons
+      document.querySelectorAll('.cta-primary, .card a.card-btn').forEach(function(b) {
+        b.addEventListener('click', function(e) {
+          var r = this.getBoundingClientRect();
+          var rp = document.createElement('span');
+          rp.className = 'ripple';
+          rp.style.cssText = 'left:' + (e.clientX - r.left) + 'px;top:' + (e.clientY - r.top) + 'px';
+          this.style.position = 'relative'; this.style.overflow = 'hidden';
+          this.appendChild(rp); setTimeout(function() { rp.remove(); }, 600);
+        });
+      });
+
+      // 7. Desktop-only effects (not on mobile/touch)
+      if (!_isTouch) {
+        await _yield();
+
+        // Cursor glow
+        var glow = document.createElement('div');
+        glow.id = 'cursor-glow'; document.body.appendChild(glow);
+        var mx = -200, my = -200, glowX = -200, glowY = -200;
+        document.addEventListener('mousemove', function(e) { mx = e.clientX; my = e.clientY; });
+        (function animGlow() {
+          glowX += (mx - glowX) * 0.08; glowY += (my - glowY) * 0.08;
+          glow.style.transform = 'translate(' + (glowX - 180) + 'px,' + (glowY - 180) + 'px)';
+          requestAnimationFrame(animGlow);
+        })();
+
+        await _yield();
+
+        // 3D tilt on cards
+        document.querySelectorAll('.card, .case-card').forEach(function(card) {
+          card.addEventListener('mousemove', function(e) {
+            var r = card.getBoundingClientRect();
+            var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+            card.style.transform = 'perspective(600px) rotateY(' + (x*10) + 'deg) rotateX(' + (-y*10) + 'deg) translateZ(6px)';
+            card.style.transition = 'transform 0.1s';
+          });
+          card.addEventListener('mouseleave', function() {
+            card.style.transform = ''; card.style.transition = 'transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s';
+          });
+        });
+
+        await _yield();
+
+        // Magnetic CTA
+        document.querySelectorAll('.cta-primary').forEach(function(b) {
+          b.addEventListener('mousemove', function(e) {
+            var r = b.getBoundingClientRect();
+            var x = (e.clientX - r.left - r.width/2) * 0.35, y = (e.clientY - r.top - r.height/2) * 0.35;
+            b.style.transform = 'translate(' + x + 'px,' + y + 'px)'; b.style.transition = 'transform 0.15s';
+          });
+          b.addEventListener('mouseleave', function() {
+            b.style.transform = ''; b.style.transition = 'transform 0.5s cubic-bezier(0.22,1,0.36,1)';
+          });
+        });
+
+        await _yield();
+
+        // Floating diamonds (desktop only, decorative)
+        var heroEl = document.querySelector('.hero');
+        if (heroEl) {
+          var frag = document.createDocumentFragment();
+          for (var i = 0; i < 8; i++) {
+            var d = document.createElement('span');
+            d.className = 'hero-float'; d.textContent = '◈';
+            d.style.cssText = 'left:' + (Math.random()*100) + '%;top:' + (Math.random()*100) + '%;font-size:' + (0.6+Math.random()*1.2) + 'rem;animation-delay:' + (Math.random()*6) + 's;animation-duration:' + (5+Math.random()*5) + 's;opacity:' + (0.04+Math.random()*0.08);
+            frag.appendChild(d);
+          }
+          heroEl.appendChild(frag);
+        }
+      }
+    }
+
+    setTimeout(_deferredInit, 0);
   </script>
+
+  <!-- ═══════════════════════════════════════════════════
+       COOKIE BANNER — nLPD/RGPD conforme
+  ════════════════════════════════════════════════════════ -->
+  <style>
+    /* BANNER */
+    #cookie-banner {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      width: calc(100% - 40px); max-width: 720px;
+      background: rgba(29,29,31,0.96);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px;
+      padding: 20px 24px;
+      z-index: 99999;
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.4s cubic-bezier(0.22,1,0.36,1), transform 0.4s cubic-bezier(0.22,1,0.36,1);
+      transform: translateX(-50%) translateY(12px);
+    }
+    #cookie-banner.show {
+      opacity: 1; pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+    .ck-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .ck-text { flex: 1; min-width: 200px; }
+    .ck-text p {
+      font-size: 0.82rem; color: rgba(255,255,255,0.75);
+      line-height: 1.55; margin: 0;
+    }
+    .ck-text a {
+      color: #64b5f6; text-decoration: underline;
+    }
+    .ck-text strong { color: white; font-weight: 600; }
+    .ck-actions { display: flex; gap: 8px; flex-shrink: 0; flex-wrap: wrap; }
+    .ck-btn {
+      padding: 9px 18px; border-radius: 980px;
+      font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; font-family: inherit; border: none;
+      transition: opacity 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .ck-btn:hover { opacity: 0.85; transform: scale(1.02); }
+    .ck-accept  { background: #0071e3; color: white; }
+    .ck-refuse  { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); }
+    .ck-custom  { background: none; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.15) !important; }
+
+    /* PANEL PERSONNALISATION */
+    #cookie-panel {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(12px);
+      width: calc(100% - 40px); max-width: 480px;
+      background: rgba(29,29,31,0.98);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px; padding: 24px;
+      z-index: 100000;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.22,1,0.36,1);
+    }
+    #cookie-panel.show {
+      opacity: 1; pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+    .ck-panel-title {
+      font-size: 1rem; font-weight: 700; color: white;
+      margin-bottom: 4px;
+    }
+    .ck-panel-sub {
+      font-size: 0.78rem; color: rgba(255,255,255,0.5);
+      margin-bottom: 18px; line-height: 1.5;
+    }
+    .ck-toggle-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .ck-toggle-row:last-of-type { border-bottom: none; margin-bottom: 18px; }
+    .ck-toggle-info .ck-toggle-name {
+      font-size: 0.85rem; font-weight: 600; color: white; margin-bottom: 2px;
+    }
+    .ck-toggle-info .ck-toggle-desc {
+      font-size: 0.75rem; color: rgba(255,255,255,0.45); line-height: 1.4;
+    }
+    /* SWITCH */
+    .ck-switch { position: relative; width: 40px; height: 22px; flex-shrink: 0; }
+    .ck-switch input { opacity: 0; width: 0; height: 0; }
+    .ck-switch-track {
+      position: absolute; inset: 0; border-radius: 11px;
+      background: rgba(255,255,255,0.15);
+      transition: background 0.25s; cursor: pointer;
+    }
+    .ck-switch input:checked + .ck-switch-track { background: #0071e3; }
+    .ck-switch-track::after {
+      content: ''; position: absolute; top: 3px; left: 3px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: white; transition: transform 0.25s;
+    }
+    .ck-switch input:checked + .ck-switch-track::after { transform: translateX(18px); }
+    .ck-switch-track.locked { background: rgba(255,255,255,0.25); cursor: not-allowed; }
+    .ck-panel-btns { display: flex; gap: 8px; }
+    .ck-panel-btns .ck-btn { flex: 1; text-align: center; }
+
+    @media (max-width: 520px) {
+      #cookie-banner { padding: 16px 18px; bottom: 16px; }
+      .ck-actions { width: 100%; }
+      .ck-btn { flex: 1; text-align: center; }
+    }
+  </style>
+
+  <!-- BANNER HTML -->
+  <div id="cookie-banner" role="dialog" aria-label="Consentement cookies">
+    <span class="ck-icon">🍪</span>
+    <div class="ck-text">
+      <p id="ck-msg">
+        <strong>Nous utilisons des cookies</strong> pour mesurer l'audience et améliorer votre expérience.
+        Conformément à la <strong>nLPD suisse</strong> et au <strong>RGPD</strong>,
+        votre consentement est requis. <a href="mentions-legales.html" id="ck-link">En savoir plus →</a>
+      </p>
+    </div>
+    <div class="ck-actions">
+      <button class="ck-btn ck-custom" onclick="openCookiePanel()" id="ck-btn-custom">Personnaliser</button>
+      <button class="ck-btn ck-refuse" onclick="setCookieConsent('refused')" id="ck-btn-refuse">Refuser</button>
+      <button class="ck-btn ck-accept" onclick="setCookieConsent('all')" id="ck-btn-accept">Tout accepter</button>
+    </div>
+  </div>
+
+  <!-- PANEL HTML -->
+  <div id="cookie-panel" role="dialog" aria-label="Paramètres cookies">
+    <p class="ck-panel-title" id="ckp-title">Paramètres des cookies</p>
+    <p class="ck-panel-sub" id="ckp-sub">Choisissez les catégories de cookies que vous acceptez. Vous pouvez modifier ces préférences à tout moment.</p>
+
+    <div class="ck-toggle-row">
+      <div class="ck-toggle-info">
+        <div class="ck-toggle-name" id="ckp-ess-name">Essentiels</div>
+        <div class="ck-toggle-desc" id="ckp-ess-desc">Navigation, sécurité, formulaire de contact. Toujours actifs.</div>
+      </div>
+      <label class="ck-switch">
+        <input type="checkbox" checked disabled>
+        <span class="ck-switch-track locked"></span>
+      </label>
+    </div>
+
+    <div class="ck-toggle-row">
+      <div class="ck-toggle-info">
+        <div class="ck-toggle-name" id="ckp-ana-name">Analytiques</div>
+        <div class="ck-toggle-desc" id="ckp-ana-desc">Google Analytics — mesure d'audience anonymisée.</div>
+      </div>
+      <label class="ck-switch">
+        <input type="checkbox" id="ck-analytics" checked aria-labelledby="ckp-ana-name ckp-ana-desc">
+        <span class="ck-switch-track"></span>
+      </label>
+    </div>
+
+    <div class="ck-toggle-row">
+      <div class="ck-toggle-info">
+        <div class="ck-toggle-name" id="ckp-mkt-name">Marketing</div>
+        <div class="ck-toggle-desc" id="ckp-mkt-desc">Google Tag Manager — suivi des conversions et remarketing.</div>
+      </div>
+      <label class="ck-switch">
+        <input type="checkbox" id="ck-marketing" checked aria-labelledby="ckp-mkt-name ckp-mkt-desc">
+        <span class="ck-switch-track"></span>
+      </label>
+    </div>
+
+    <div class="ck-panel-btns">
+      <button class="ck-btn ck-refuse" onclick="closeCookiePanel()" id="ckp-back">← Retour</button>
+      <button class="ck-btn ck-accept" onclick="saveCookieCustom()" id="ckp-save">Enregistrer</button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var COOKIE_KEY = 'rw-cookie-consent';
+
+      // Show banner if no consent stored
+      function initCookieBanner() {
+        if (!localStorage.getItem(COOKIE_KEY)) {
+          setTimeout(function() {
+            document.getElementById('cookie-banner').classList.add('show');
+          }, 800);
+        }
+      }
+
+      window.setCookieConsent = function(type) {
+        var prefs = {
+          choice: type,
+          analytics: type === 'all',
+          marketing: type === 'all',
+          date: new Date().toISOString()
+        };
+        localStorage.setItem(COOKIE_KEY, JSON.stringify(prefs));
+        hideBanner();
+        // Disable GTM/GA if refused
+        if (type === 'refused') {
+          window['ga-disable-G-XXXXXXXX'] = true;
+        }
+      };
+
+      window.saveCookieCustom = function() {
+        var prefs = {
+          choice: 'custom',
+          analytics: document.getElementById('ck-analytics').checked,
+          marketing: document.getElementById('ck-marketing').checked,
+          date: new Date().toISOString()
+        };
+        localStorage.setItem(COOKIE_KEY, JSON.stringify(prefs));
+        document.getElementById('cookie-panel').classList.remove('show');
+        hideBanner();
+        if (!prefs.analytics) window['ga-disable-G-XXXXXXXX'] = true;
+      };
+
+      window.openCookiePanel = function() {
+        document.getElementById('cookie-banner').classList.remove('show');
+        setTimeout(function() {
+          document.getElementById('cookie-panel').classList.add('show');
+        }, 200);
+      };
+
+      window.closeCookiePanel = function() {
+        document.getElementById('cookie-panel').classList.remove('show');
+        setTimeout(function() {
+          document.getElementById('cookie-banner').classList.add('show');
+        }, 200);
+      };
+
+      function hideBanner() {
+        document.getElementById('cookie-banner').classList.remove('show');
+        document.getElementById('cookie-panel').classList.remove('show');
+      }
+
+      // Language sync with site setLang
+      var _origSetLang = window.setLang;
+      window.setLang = function(lang) {
+        if (_origSetLang) _origSetLang(lang);
+        updateCookieLang(lang);
+      };
+
+      function updateCookieLang(lang) {
+        var t = {
+          fr: {
+            msg: '<strong>Nous utilisons des cookies</strong> pour mesurer l\'audience et améliorer votre expérience. Conformément à la <strong>nLPD suisse</strong> et au <strong>RGPD</strong>, votre consentement est requis. <a href="mentions-legales.html" id="ck-link">En savoir plus →</a>',
+            custom: 'Personnaliser', refuse: 'Refuser', accept: 'Tout accepter',
+            title: 'Paramètres des cookies',
+            sub: 'Choisissez les catégories de cookies que vous acceptez. Vous pouvez modifier ces préférences à tout moment.',
+            essName: 'Essentiels', essDesc: 'Navigation, sécurité, formulaire de contact. Toujours actifs.',
+            anaName: 'Analytiques', anaDesc: 'Google Analytics — mesure d\'audience anonymisée.',
+            mktName: 'Marketing', mktDesc: 'Google Tag Manager — suivi des conversions et remarketing.',
+            back: '← Retour', save: 'Enregistrer'
+          },
+          en: {
+            msg: '<strong>We use cookies</strong> to measure traffic and improve your experience. Under the <strong>Swiss nFADP</strong> and <strong>GDPR</strong>, your consent is required. <a href="mentions-legales.html" id="ck-link">Learn more →</a>',
+            custom: 'Customize', refuse: 'Decline', accept: 'Accept all',
+            title: 'Cookie settings',
+            sub: 'Choose the cookie categories you accept. You can change these preferences at any time.',
+            essName: 'Essential', essDesc: 'Navigation, security, contact form. Always active.',
+            anaName: 'Analytics', anaDesc: 'Google Analytics — anonymised audience measurement.',
+            mktName: 'Marketing', mktDesc: 'Google Tag Manager — conversion tracking and remarketing.',
+            back: '← Back', save: 'Save'
+          }
+        };
+        var l = t[lang] || t.fr;
+        var el = function(id) { return document.getElementById(id); };
+        el('ck-msg').innerHTML       = l.msg;
+        el('ck-btn-custom').textContent = l.custom;
+        el('ck-btn-refuse').textContent  = l.refuse;
+        el('ck-btn-accept').textContent  = l.accept;
+        el('ckp-title').textContent  = l.title;
+        el('ckp-sub').textContent    = l.sub;
+        el('ckp-ess-name').textContent = l.essName;
+        el('ckp-ess-desc').textContent = l.essDesc;
+        el('ckp-ana-name').textContent = l.anaName;
+        el('ckp-ana-desc').textContent = l.anaDesc;
+        el('ckp-mkt-name').textContent = l.mktName;
+        el('ckp-mkt-desc').textContent = l.mktDesc;
+        el('ckp-back').textContent   = l.back;
+        el('ckp-save').textContent   = l.save;
+      }
+
+      // Sync on load with current lang
+      var currentLang = localStorage.getItem('rw-lang') || 'fr';
+      updateCookieLang(currentLang);
+
+      // Defer banner init to avoid blocking TTI
+      (typeof requestIdleCallback !== 'undefined')
+        ? requestIdleCallback(initCookieBanner, { timeout: 3000 })
+        : setTimeout(initCookieBanner, 1000);
+    })();
+  </script>
+
 </body>
 </html>
