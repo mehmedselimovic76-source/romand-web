@@ -1382,20 +1382,32 @@
 
     function quizShowResult() {
       var a1 = quizAnswers.step1, a2 = quizAnswers.step2, a3 = quizAnswers.step3;
-      var pack = 'starter';
 
-      // Logic: sell or shop → premium; local or sme + not low → business; else starter
-      if (a1 === 'sell' || a2 === 'shop' || a3 === 'high' && a1 !== 'visible') {
-        pack = 'premium';
-      } else if (a1 === 'local' || a2 === 'sme' || a3 === 'mid') {
-        pack = 'business';
-      } else {
-        pack = 'starter';
-      }
-      // Override: if budget is low, max starter
-      if (a3 === 'low') pack = 'starter';
-      // Override: if sell/shop intent always premium regardless of budget label
-      if (a1 === 'sell' || a2 === 'shop') pack = 'premium';
+      // Scoring — chaque réponse apporte des points à un pack
+      var score = { starter: 0, business: 0, premium: 0 };
+
+      // Q1 — Objectif
+      if (a1 === 'visible') score.starter  += 3;
+      if (a1 === 'local')   score.business += 3;
+      if (a1 === 'sell')    score.premium  += 3;
+
+      // Q2 — Situation
+      if (a2 === 'freelance') score.starter  += 2;
+      if (a2 === 'sme')       score.business += 3;
+      if (a2 === 'shop')    { score.premium  += 3; score.business += 1; }
+
+      // Q3 — Budget
+      if (a3 === 'low')  score.starter  += 3;
+      if (a3 === 'mid')  score.business += 2;
+      if (a3 === 'high') { score.business += 1; score.premium += 1; }
+
+      // Plafonds budget stricts — on ne recommande jamais ce que le client ne peut pas payer
+      if (a3 === 'low') { score.business = 0; score.premium = 0; }
+      if (a3 === 'mid') { score.premium  = 0; }
+
+      // Gagnant — en cas d'égalité, on préfère le pack supérieur
+      var max = Math.max(score.starter, score.business, score.premium);
+      var pack = ['premium', 'business', 'starter'].find(function(p) { return score[p] === max; });
 
       var lang = localStorage.getItem('rw-lang') || 'fr';
       var data = quizPacks[lang][pack];
