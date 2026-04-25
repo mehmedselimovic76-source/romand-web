@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conditions Générales de Vente – Romand Web</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #0071e3;
+      --black: #1d1d1f;
+      --gray: #6e6e73;
+      --light: #f5f5f7;
+      --border: #d2d2d7;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 10pt;
+      line-height: 1.65;
+      color: var(--black);
+      background: white;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 40px 48px;
+    }
+
+    /* HEADER */
+    .doc-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--black);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+    .brand-name {
+      font-size: 22pt;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--black);
+    }
+    .brand-sub {
+      font-size: 8pt;
+      color: var(--gray);
+      margin-top: 2px;
+      letter-spacing: 0.3px;
+    }
+    .doc-meta {
+      text-align: right;
+      font-size: 8.5pt;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+    .doc-meta strong {
+      display: block;
+      font-size: 14pt;
+      font-weight: 700;
+      color: var(--black);
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+
+    /* TITLE */
+    .doc-title-block {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .doc-title-block h1 {
+      font-size: 18pt;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      margin-bottom: 6px;
+    }
+    .doc-title-block p {
+      font-size: 9pt;
+      color: var(--gray);
+    }
+
+    /* ARTICLE */
+    .article {
+      margin-bottom: 22px;
+    }
+    .article h2 {
+      font-size: 11pt;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 8px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--border);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .article p {
+      margin-bottom: 8px;
+      font-size: 9.5pt;
+    }
+    .article ul, .article ol {
+      padding-left: 20px;
+      margin-bottom: 8px;
+    }
+    .article li {
+      margin-bottom: 4px;
+      font-size: 9.5pt;
+    }
+    .article h3 {
+      font-size: 9.5pt;
+      font-weight: 700;
+      margin: 10px 0 4px;
+    }
+
+    /* TABLE */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+      font-size: 9pt;
+    }
+    th {
+      background: var(--black);
+      color: white;
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: 600;
+    }
+    td {
+      padding: 7px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    tr:nth-child(even) td { background: var(--light); }
+
+    /* HIGHLIGHT BOX */
+    .info-box {
+      background: #eff6ff;
+      border-left: 3px solid var(--blue);
+      padding: 10px 14px;
+      margin: 10px 0;
+      font-size: 9pt;
+    }
+    .warn-box {
+      background: #fff7ed;
+      border-left: 3px solid #ff9f0a;
+      padding: 10px 14px;
+      margin: 10px 0;
+      font-size: 9pt;
+    }
+
+    /* FOOTER */
+    .doc-footer {
+      margin-top: 40px;
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 8pt;
+      color: var(--gray);
+    }
+
+    /* PRINT */
+    @media print {
+      body { padding: 20px 28px; font-size: 9pt; }
+      .article h2 { color: #0055aa; }
+      .no-print { display: none; }
+      a { color: inherit; text-decoration: none; }
+      .page-break { page-break-before: always; }
+      @page {
+        size: A4;
+        margin: 18mm 16mm;
+      }
+    }
+
+    /* SCREEN PRINT BUTTON */
+    .print-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--blue);
+      color: white;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 980px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      box-shadow: 0 4px 14px rgba(0,113,227,0.3);
+    }
+    .print-btn:hover { background: #0077ed; }
+  </style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">⬇ Exporter en PDF</button>
+
+<!-- HEADER -->
+<div class="doc-header">
+  <div>
+    <div class="brand-name">Romand Web</div>
+    <div class="brand-sub">Agence web — Romandie, Suisse</div>
+    <div style="margin-top:8px; font-size:8.5pt; color:var(--gray); line-height:1.6;">
+      Mehmed Selimovic<br>
+      Romandie, Suisse<br>
+      <a href="tel:+41765060676" style="color:inherit;">+41 76 506 06 76</a><br>
+      contact@romand-web.com
+    </div>
+  </div>
+  <div class="doc-meta">
+    <strong>CGV</strong>
+    Version du 25 avril 2026<br>
+    Applicable à toutes commandes<br>
+    Droit applicable : droit suisse
+  </div>
+</div>
+
+<!-- TITLE -->
+<div class="doc-title-block">
+  <h1>Conditions Générales de Vente</h1>
+  <p>Romand Web · Mehmed Selimovic · Romandie, Suisse</p>
+</div>
+
+<!-- ART 1 -->
+<div class="article">
+  <h2>Article 1 — Définitions</h2>
+  <p>Dans les présentes CGV, les termes suivants s'entendent comme suit :</p>
+  <ul>
+    <li><strong>Prestataire</strong> : Romand Web, représenté par Mehmed Selimovic, dont le contact est disponible sur romand-web.com.</li>
+    <li><strong>Client</strong> : toute personne physique ou morale ayant passé commande auprès du Prestataire.</li>
+    <li><strong>Commande</strong> : tout bon de commande, contrat ou devis signé par le Client.</li>
+    <li><strong>Livrable</strong> : tout site web, fichier, code source ou document remis au Client.</li>
+    <li><strong>CGV</strong> : les présentes Conditions Générales de Vente.</li>
+  </ul>
+</div>
+
+<!-- ART 2 -->
+<div class="article">
+  <h2>Article 2 — Objet et champ d'application</h2>
+  <p>Les présentes CGV régissent les relations commerciales entre le Prestataire et le Client pour la conception, le développement et la livraison de sites web et services associés. Elles priment sur toute condition générale d'achat du Client, sauf accord écrit contraire.</p>
+  <p>Toute commande implique l'acceptation sans réserve des présentes CGV. Le Client déclare en avoir pris connaissance avant validation de la commande.</p>
+</div>
+
+<!-- ART 3 -->
+<div class="article">
+  <h2>Article 3 — Formation du contrat</h2>
+  <p>Le contrat est formé à la date de signature du bon de commande ou du contrat spécifique au pack choisi, accompagné du versement de l'acompte prévu. Aucun travail ne commence avant réception de cet acompte.</p>
+  <p>Toute modification substantielle du projet demandée après le démarrage des travaux fera l'objet d'un avenant tarifaire écrit.</p>
+</div>
+
+<!-- ART 4 -->
+<div class="article">
+  <h2>Article 4 — Prix et modalités de paiement</h2>
+  <table>
+    <thead>
+      <tr><th>Pack</th><th>Montant</th><th>Acompte (50%)</th><th>Solde (50%)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Starter</td><td>CHF 299</td><td>CHF 150 (à la commande)</td><td>CHF 149 (à la livraison)</td></tr>
+      <tr><td>Business</td><td>CHF 599</td><td>CHF 300 (à la commande)</td><td>CHF 299 (à la livraison)</td></tr>
+      <tr><td>Premium</td><td>CHF 999</td><td>CHF 500 (à la commande)</td><td>CHF 499 (à la livraison)</td></tr>
+    </tbody>
+  </table>
+  <p>Tous les prix sont indiqués en francs suisses (CHF), TVA non applicable (article 10 al. 2 let. a LTVA — chiffre d'affaires inférieur au seuil d'assujettissement).</p>
+  <p>Le paiement s'effectue par virement bancaire, TWINT ou PayPal. En cas de retard de paiement, un intérêt moratoire de 5% l'an est applicable de plein droit.</p>
+  <div class="warn-box"><strong>Frais exclus :</strong> le nom de domaine (~CHF 15/an), les frais de plateforme e-commerce (Shopify ~CHF 29/mois, WooCommerce ~CHF 5–15/mois) et tout service tiers sont à la charge exclusive du Client.</div>
+</div>
+
+<!-- ART 5 -->
+<div class="article">
+  <h2>Article 5 — Délais de livraison</h2>
+  <table>
+    <thead>
+      <tr><th>Pack</th><th>Délai de livraison</th><th>Point de départ</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Starter</td><td>7 jours ouvrables</td><td>Réception acompte + tous documents</td></tr>
+      <tr><td>Business</td><td>10 jours ouvrables</td><td>Réception acompte + tous documents</td></tr>
+      <tr><td>Premium</td><td>14 jours ouvrables</td><td>Réception acompte + tous documents</td></tr>
+    </tbody>
+  </table>
+  <p>Le délai ne commence à courir qu'à la réception de l'intégralité des documents et contenus requis (cf. Article 6). Tout retard imputable au Client suspend automatiquement le délai de livraison.</p>
+</div>
+
+<!-- ART 6 -->
+<div class="article">
+  <h2>Article 6 — Documents et contenus requis par le Client</h2>
+  <p>Le Client s'engage à fournir dans les <strong>5 jours ouvrables</strong> suivant la signature du contrat les éléments suivants :</p>
+  <ul>
+    <li>Logo en haute résolution (format SVG ou PNG transparent, fond blanc interdit)</li>
+    <li>Charte graphique ou préférences visuelles (couleurs, typographies)</li>
+    <li>Textes et contenus rédigés (présentation, services, À propos, mentions légales)</li>
+    <li>Photos et visuels libres de droits ou appartenant au Client (format JPG/PNG, min. 1200px)</li>
+    <li>Informations légales complètes (raison sociale, UID/numéro IDE, adresse, email, téléphone)</li>
+    <li>Nom de domaine souhaité ou accès registrar si domaine existant</li>
+    <li>Identifiants de réseaux sociaux (Instagram, Facebook, LinkedIn, etc.) si applicable</li>
+    <li>Pour le pack Premium : choix de la plateforme e-commerce (Shopify ou WooCommerce) et liste des produits/catégories</li>
+  </ul>
+  <div class="info-box">Le non-envoi des documents dans le délai imparti dégage le Prestataire de toute responsabilité quant au respect des délais de livraison.</div>
+</div>
+
+<!-- ART 7 -->
+<div class="article">
+  <h2>Article 7 — Propriété intellectuelle</h2>
+  <p><strong>7.1 Cession des droits.</strong> À complet paiement du solde, le Prestataire cède au Client l'intégralité des droits d'exploitation du livrable (droit de reproduction, d'adaptation, de diffusion). Le code source devient propriété du Client.</p>
+  <p><strong>7.2 Droits réservés.</strong> Le Client garantit être titulaire ou avoir obtenu les droits d'utilisation de tous contenus transmis (textes, images, logos). Il dégage le Prestataire de toute réclamation de tiers à ce titre.</p>
+  <p><strong>7.3 Référence commerciale.</strong> Le Prestataire se réserve le droit de mentionner le projet dans son portfolio et sur ses supports de communication, sauf opposition écrite du Client dans les 30 jours suivant la livraison.</p>
+</div>
+
+<!-- ART 8 -->
+<div class="article">
+  <h2>Article 8 — Garanties et support après livraison</h2>
+  <table>
+    <thead>
+      <tr><th>Pack</th><th>Support inclus</th><th>Couverture</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Starter</td><td>1 mois</td><td>Corrections de bugs, ajustements mineurs</td></tr>
+      <tr><td>Business</td><td>3 mois</td><td>Corrections de bugs, modifications de contenu</td></tr>
+      <tr><td>Premium</td><td>6 mois</td><td>Corrections, modifications, formation complémentaire</td></tr>
+    </tbody>
+  </table>
+  <p>Le support est limité aux défauts imputables au Prestataire. Les modifications de fond, ajouts de pages ou nouvelles fonctionnalités font l'objet d'une facturation séparée (CHF 80/heure).</p>
+</div>
+
+<!-- ART 9 -->
+<div class="article">
+  <h2>Article 9 — Hébergement</h2>
+  <p><strong>Packs Starter & Business :</strong> le site est hébergé sur GitHub Pages (service gratuit de Microsoft/GitHub). Le Prestataire ne saurait être tenu responsable des interruptions ou modifications de ce service tiers. Le Client peut à tout moment migrer son site vers un autre hébergeur.</p>
+  <p><strong>Pack Premium :</strong> l'hébergement dépend de la plateforme choisie (Shopify ou WooCommerce/hébergeur tiers). Les frais mensuels correspondants sont intégralement à la charge du Client et facturés directement par la plateforme.</p>
+</div>
+
+<!-- ART 10 — ANNULATION -->
+<div class="article">
+  <h2>Article 10 — Conditions d'annulation et résiliation</h2>
+  <h3>10.1 Annulation à l'initiative du Client</h3>
+  <table>
+    <thead>
+      <tr><th>Moment de l'annulation</th><th>Indemnité due au Prestataire</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Dans les 48h suivant la signature (aucun travail commencé)</td><td><strong>Aucune</strong> — remboursement intégral de l'acompte</td></tr>
+      <tr><td>Après 48h, avant démarrage effectif des travaux</td><td><strong>20%</strong> du montant total (frais de réservation)</td></tr>
+      <tr><td>Après démarrage, moins de 50% du projet réalisé</td><td><strong>50%</strong> du montant total</td></tr>
+      <tr><td>Plus de 50% du projet réalisé</td><td><strong>75%</strong> du montant total</td></tr>
+      <tr><td>Livrable remis (livraison effectuée)</td><td><strong>100%</strong> du montant total — aucun remboursement</td></tr>
+    </tbody>
+  </table>
+  <p>L'annulation doit être notifiée par écrit (email à contact@romand-web.com). La date retenue est la date de réception de l'email.</p>
+
+  <h3>10.2 Annulation à l'initiative du Prestataire</h3>
+  <p>Le Prestataire peut résilier le contrat en cas de :</p>
+  <ul>
+    <li>Non-paiement de l'acompte dans les 7 jours suivant la signature ;</li>
+    <li>Non-fourniture des documents requis dans les 15 jours suivant la signature ;</li>
+    <li>Comportement abusif ou communication répétée en dehors des heures ouvrables sans motif d'urgence.</li>
+  </ul>
+  <p>Dans ce cas, l'acompte versé est remboursé déduction faite des frais engagés, justifiés sur facture.</p>
+
+  <h3>10.3 Force majeure</h3>
+  <p>En cas de force majeure (maladie grave, catastrophe naturelle, etc.), le Prestataire notifie le Client dans les 48h. Le contrat est suspendu jusqu'à la levée de l'obstacle. Si la suspension excède 30 jours, les deux parties peuvent résilier sans indemnité.</p>
+</div>
+
+<!-- ART 11 -->
+<div class="article">
+  <h2>Article 11 — Limitation de responsabilité</h2>
+  <p>La responsabilité du Prestataire est limitée au montant effectivement encaissé pour la prestation concernée. Le Prestataire ne peut être tenu responsable des pertes de chiffre d'affaires, manques à gagner ou préjudices indirects du Client.</p>
+  <p>Le Prestataire ne garantit pas de résultats spécifiques en matière de référencement naturel (SEO), la position dans les moteurs de recherche relevant d'algorithmes tiers indépendants de sa volonté.</p>
+</div>
+
+<!-- ART 12 -->
+<div class="article">
+  <h2>Article 12 — Protection des données personnelles (LPD/RGPD)</h2>
+  <p>Les données personnelles collectées lors de la commande (nom, email, téléphone, adresse) sont traitées conformément à la Loi fédérale sur la protection des données (nLPD, en vigueur depuis le 1er septembre 2023) et au RGPD européen.</p>
+  <p>Ces données sont utilisées exclusivement pour l'exécution du contrat et la communication relative au projet. Elles ne sont pas transmises à des tiers non impliqués dans la prestation. Le Client dispose d'un droit d'accès, de rectification et de suppression à l'adresse contact@romand-web.com.</p>
+</div>
+
+<!-- ART 13 -->
+<div class="article">
+  <h2>Article 13 — Droit applicable et for juridique</h2>
+  <p>Les présentes CGV sont soumises au droit suisse, notamment au Code des Obligations (CO). En cas de litige, les parties s'engagent à rechercher une solution amiable dans les 30 jours suivant la notification du différend.</p>
+  <p>À défaut de résolution amiable, le for juridique exclusif est fixé au siège du Prestataire, sous réserve des règles impératives applicables aux consommateurs.</p>
+</div>
+
+<!-- ART 14 -->
+<div class="article">
+  <h2>Article 14 — Modifications des CGV</h2>
+  <p>Le Prestataire se réserve le droit de modifier les présentes CGV à tout moment. La version applicable est celle en vigueur à la date de signature du contrat. Les modifications ultérieures ne s'appliquent pas aux contrats déjà conclus.</p>
+</div>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <span>Romand Web · romand-web.com · +41 76 506 06 76</span>
+  <span>CGV — Version du 25 avril 2026 · Droit suisse</span>
+</div>
+
+</body>
+</html>
