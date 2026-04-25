@@ -2052,5 +2052,293 @@
     if (zoneGrid) pillObs.observe(zoneGrid);
 
   </script>
+
+  <!-- ═══════════════════════════════════════════════════
+       COOKIE BANNER — nLPD/RGPD conforme
+  ════════════════════════════════════════════════════════ -->
+  <style>
+    /* BANNER */
+    #cookie-banner {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      width: calc(100% - 40px); max-width: 720px;
+      background: rgba(29,29,31,0.96);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px;
+      padding: 20px 24px;
+      z-index: 99999;
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.4s cubic-bezier(0.22,1,0.36,1), transform 0.4s cubic-bezier(0.22,1,0.36,1);
+      transform: translateX(-50%) translateY(12px);
+    }
+    #cookie-banner.show {
+      opacity: 1; pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+    .ck-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .ck-text { flex: 1; min-width: 200px; }
+    .ck-text p {
+      font-size: 0.82rem; color: rgba(255,255,255,0.75);
+      line-height: 1.55; margin: 0;
+    }
+    .ck-text a {
+      color: #64b5f6; text-decoration: underline;
+    }
+    .ck-text strong { color: white; font-weight: 600; }
+    .ck-actions { display: flex; gap: 8px; flex-shrink: 0; flex-wrap: wrap; }
+    .ck-btn {
+      padding: 9px 18px; border-radius: 980px;
+      font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; font-family: inherit; border: none;
+      transition: opacity 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .ck-btn:hover { opacity: 0.85; transform: scale(1.02); }
+    .ck-accept  { background: #0071e3; color: white; }
+    .ck-refuse  { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); }
+    .ck-custom  { background: none; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.15) !important; }
+
+    /* PANEL PERSONNALISATION */
+    #cookie-panel {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(12px);
+      width: calc(100% - 40px); max-width: 480px;
+      background: rgba(29,29,31,0.98);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px; padding: 24px;
+      z-index: 100000;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.22,1,0.36,1);
+    }
+    #cookie-panel.show {
+      opacity: 1; pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+    .ck-panel-title {
+      font-size: 1rem; font-weight: 700; color: white;
+      margin-bottom: 4px;
+    }
+    .ck-panel-sub {
+      font-size: 0.78rem; color: rgba(255,255,255,0.5);
+      margin-bottom: 18px; line-height: 1.5;
+    }
+    .ck-toggle-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .ck-toggle-row:last-of-type { border-bottom: none; margin-bottom: 18px; }
+    .ck-toggle-info .ck-toggle-name {
+      font-size: 0.85rem; font-weight: 600; color: white; margin-bottom: 2px;
+    }
+    .ck-toggle-info .ck-toggle-desc {
+      font-size: 0.75rem; color: rgba(255,255,255,0.45); line-height: 1.4;
+    }
+    /* SWITCH */
+    .ck-switch { position: relative; width: 40px; height: 22px; flex-shrink: 0; }
+    .ck-switch input { opacity: 0; width: 0; height: 0; }
+    .ck-switch-track {
+      position: absolute; inset: 0; border-radius: 11px;
+      background: rgba(255,255,255,0.15);
+      transition: background 0.25s; cursor: pointer;
+    }
+    .ck-switch input:checked + .ck-switch-track { background: #0071e3; }
+    .ck-switch-track::after {
+      content: ''; position: absolute; top: 3px; left: 3px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: white; transition: transform 0.25s;
+    }
+    .ck-switch input:checked + .ck-switch-track::after { transform: translateX(18px); }
+    .ck-switch-track.locked { background: rgba(255,255,255,0.25); cursor: not-allowed; }
+    .ck-panel-btns { display: flex; gap: 8px; }
+    .ck-panel-btns .ck-btn { flex: 1; text-align: center; }
+
+    @media (max-width: 520px) {
+      #cookie-banner { padding: 16px 18px; bottom: 16px; }
+      .ck-actions { width: 100%; }
+      .ck-btn { flex: 1; text-align: center; }
+    }
+  </style>
+
+  <!-- BANNER HTML -->
+  <div id="cookie-banner" role="dialog" aria-label="Consentement cookies">
+    <span class="ck-icon">🍪</span>
+    <div class="ck-text">
+      <p id="ck-msg">
+        <strong>Nous utilisons des cookies</strong> pour mesurer l'audience et améliorer votre expérience.
+        Conformément à la <strong>nLPD suisse</strong> et au <strong>RGPD</strong>,
+        votre consentement est requis. <a href="mentions-legales.html" id="ck-link">En savoir plus →</a>
+      </p>
+    </div>
+    <div class="ck-actions">
+      <button class="ck-btn ck-custom" onclick="openCookiePanel()" id="ck-btn-custom">Personnaliser</button>
+      <button class="ck-btn ck-refuse" onclick="setCookieConsent('refused')" id="ck-btn-refuse">Refuser</button>
+      <button class="ck-btn ck-accept" onclick="setCookieConsent('all')" id="ck-btn-accept">Tout accepter</button>
+    </div>
+  </div>
+
+  <!-- PANEL HTML -->
+  <div id="cookie-panel" role="dialog" aria-label="Paramètres cookies">
+    <p class="ck-panel-title" id="ckp-title">Paramètres des cookies</p>
+    <p class="ck-panel-sub" id="ckp-sub">Choisissez les catégories de cookies que vous acceptez. Vous pouvez modifier ces préférences à tout moment.</p>
+
+    <div class="ck-toggle-row">
+      <div class="ck-toggle-info">
+        <div class="ck-toggle-name" id="ckp-ess-name">Essentiels</div>
+        <div class="ck-toggle-desc" id="ckp-ess-desc">Navigation, sécurité, formulaire de contact. Toujours actifs.</div>
+      </div>
+      <label class="ck-switch">
+        <input type="checkbox" checked disabled>
+        <span class="ck-switch-track locked"></span>
+      </label>
+    </div>
+
+    <div class="ck-toggle-row">
+      <div class="ck-toggle-info">
+        <div class="ck-toggle-name" id="ckp-ana-name">Analytiques</div>
+        <div class="ck-toggle-desc" id="ckp-ana-desc">Google Analytics — mesure d'audience anonymisée.</div>
+      </div>
+      <label class="ck-switch">
+        <input type="checkbox" id="ck-analytics" checked>
+        <span class="ck-switch-track"></span>
+      </label>
+    </div>
+
+    <div class="ck-toggle-row">
+      <div class="ck-toggle-info">
+        <div class="ck-toggle-name" id="ckp-mkt-name">Marketing</div>
+        <div class="ck-toggle-desc" id="ckp-mkt-desc">Google Tag Manager — suivi des conversions et remarketing.</div>
+      </div>
+      <label class="ck-switch">
+        <input type="checkbox" id="ck-marketing" checked>
+        <span class="ck-switch-track"></span>
+      </label>
+    </div>
+
+    <div class="ck-panel-btns">
+      <button class="ck-btn ck-refuse" onclick="closeCookiePanel()" id="ckp-back">← Retour</button>
+      <button class="ck-btn ck-accept" onclick="saveCookieCustom()" id="ckp-save">Enregistrer</button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var COOKIE_KEY = 'rw-cookie-consent';
+
+      // Show banner if no consent stored
+      function initCookieBanner() {
+        if (!localStorage.getItem(COOKIE_KEY)) {
+          setTimeout(function() {
+            document.getElementById('cookie-banner').classList.add('show');
+          }, 800);
+        }
+      }
+
+      window.setCookieConsent = function(type) {
+        var prefs = {
+          choice: type,
+          analytics: type === 'all',
+          marketing: type === 'all',
+          date: new Date().toISOString()
+        };
+        localStorage.setItem(COOKIE_KEY, JSON.stringify(prefs));
+        hideBanner();
+        // Disable GTM/GA if refused
+        if (type === 'refused') {
+          window['ga-disable-G-XXXXXXXX'] = true;
+        }
+      };
+
+      window.saveCookieCustom = function() {
+        var prefs = {
+          choice: 'custom',
+          analytics: document.getElementById('ck-analytics').checked,
+          marketing: document.getElementById('ck-marketing').checked,
+          date: new Date().toISOString()
+        };
+        localStorage.setItem(COOKIE_KEY, JSON.stringify(prefs));
+        document.getElementById('cookie-panel').classList.remove('show');
+        hideBanner();
+        if (!prefs.analytics) window['ga-disable-G-XXXXXXXX'] = true;
+      };
+
+      window.openCookiePanel = function() {
+        document.getElementById('cookie-banner').classList.remove('show');
+        setTimeout(function() {
+          document.getElementById('cookie-panel').classList.add('show');
+        }, 200);
+      };
+
+      window.closeCookiePanel = function() {
+        document.getElementById('cookie-panel').classList.remove('show');
+        setTimeout(function() {
+          document.getElementById('cookie-banner').classList.add('show');
+        }, 200);
+      };
+
+      function hideBanner() {
+        document.getElementById('cookie-banner').classList.remove('show');
+        document.getElementById('cookie-panel').classList.remove('show');
+      }
+
+      // Language sync with site setLang
+      var _origSetLang = window.setLang;
+      window.setLang = function(lang) {
+        if (_origSetLang) _origSetLang(lang);
+        updateCookieLang(lang);
+      };
+
+      function updateCookieLang(lang) {
+        var t = {
+          fr: {
+            msg: '<strong>Nous utilisons des cookies</strong> pour mesurer l\'audience et améliorer votre expérience. Conformément à la <strong>nLPD suisse</strong> et au <strong>RGPD</strong>, votre consentement est requis. <a href="mentions-legales.html" id="ck-link">En savoir plus →</a>',
+            custom: 'Personnaliser', refuse: 'Refuser', accept: 'Tout accepter',
+            title: 'Paramètres des cookies',
+            sub: 'Choisissez les catégories de cookies que vous acceptez. Vous pouvez modifier ces préférences à tout moment.',
+            essName: 'Essentiels', essDesc: 'Navigation, sécurité, formulaire de contact. Toujours actifs.',
+            anaName: 'Analytiques', anaDesc: 'Google Analytics — mesure d\'audience anonymisée.',
+            mktName: 'Marketing', mktDesc: 'Google Tag Manager — suivi des conversions et remarketing.',
+            back: '← Retour', save: 'Enregistrer'
+          },
+          en: {
+            msg: '<strong>We use cookies</strong> to measure traffic and improve your experience. Under the <strong>Swiss nFADP</strong> and <strong>GDPR</strong>, your consent is required. <a href="mentions-legales.html" id="ck-link">Learn more →</a>',
+            custom: 'Customize', refuse: 'Decline', accept: 'Accept all',
+            title: 'Cookie settings',
+            sub: 'Choose the cookie categories you accept. You can change these preferences at any time.',
+            essName: 'Essential', essDesc: 'Navigation, security, contact form. Always active.',
+            anaName: 'Analytics', anaDesc: 'Google Analytics — anonymised audience measurement.',
+            mktName: 'Marketing', mktDesc: 'Google Tag Manager — conversion tracking and remarketing.',
+            back: '← Back', save: 'Save'
+          }
+        };
+        var l = t[lang] || t.fr;
+        var el = function(id) { return document.getElementById(id); };
+        el('ck-msg').innerHTML       = l.msg;
+        el('ck-btn-custom').textContent = l.custom;
+        el('ck-btn-refuse').textContent  = l.refuse;
+        el('ck-btn-accept').textContent  = l.accept;
+        el('ckp-title').textContent  = l.title;
+        el('ckp-sub').textContent    = l.sub;
+        el('ckp-ess-name').textContent = l.essName;
+        el('ckp-ess-desc').textContent = l.essDesc;
+        el('ckp-ana-name').textContent = l.anaName;
+        el('ckp-ana-desc').textContent = l.anaDesc;
+        el('ckp-mkt-name').textContent = l.mktName;
+        el('ckp-mkt-desc').textContent = l.mktDesc;
+        el('ckp-back').textContent   = l.back;
+        el('ckp-save').textContent   = l.save;
+      }
+
+      // Sync on load with current lang
+      var currentLang = localStorage.getItem('rw-lang') || 'fr';
+      updateCookieLang(currentLang);
+
+      initCookieBanner();
+    })();
+  </script>
+
 </body>
 </html>
