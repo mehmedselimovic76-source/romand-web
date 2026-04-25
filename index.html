@@ -1160,6 +1160,282 @@
     document.body.style.opacity = '1';
   </script>
 
+  <!-- QUIZ -->
+  <section class="section" id="quiz" style="background:var(--light-gray);">
+    <div class="eyebrow" data-anim="fade-in" id="quiz-eyebrow">Aide au choix</div>
+    <h2 data-anim="fade-up" data-delay="100" id="quiz-h2">Quel pack est fait pour vous ?</h2>
+    <p class="sub" data-anim="fade-up" data-delay="200" id="quiz-sub">3 questions · 30 secondes · résultat personnalisé.</p>
+
+    <div id="quiz-widget" data-anim="fade-up" data-delay="300" style="max-width:640px;margin:0 auto;">
+
+      <!-- PROGRESS BAR -->
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;">
+        <div style="flex:1;height:4px;background:var(--divider);border-radius:2px;overflow:hidden;">
+          <div id="quiz-progress" style="height:100%;background:var(--blue);border-radius:2px;transition:width 0.4s cubic-bezier(0.22,1,0.36,1);width:0%;"></div>
+        </div>
+        <span id="quiz-step-label" style="font-size:0.8rem;font-weight:600;color:var(--gray);white-space:nowrap;">Étape 1/3</span>
+      </div>
+
+      <!-- STEPS -->
+      <div id="quiz-steps">
+
+        <!-- STEP 1 -->
+        <div class="quiz-step" id="qstep-1">
+          <p class="quiz-q" id="qq1">Quel est votre principal objectif ?</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-step="1" data-val="visible" data-en="Be visible online" onclick="quizPick(this)">
+              <span class="quiz-opt-icon">🌐</span>
+              <span class="quiz-opt-text" id="qo1a">Être visible en ligne</span>
+            </button>
+            <button class="quiz-opt" data-step="1" data-val="local" data-en="Attract local clients" onclick="quizPick(this)">
+              <span class="quiz-opt-icon">📍</span>
+              <span class="quiz-opt-text" id="qo1b">Attirer des clients locaux</span>
+            </button>
+            <button class="quiz-opt" data-step="1" data-val="sell" data-en="Sell products online" onclick="quizPick(this)">
+              <span class="quiz-opt-icon">🛒</span>
+              <span class="quiz-opt-text" id="qo1c">Vendre des produits en ligne</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="quiz-step" id="qstep-2" style="display:none;">
+          <p class="quiz-q" id="qq2">Quelle est votre situation ?</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-step="2" data-val="freelance" data-en="Freelancer / self-employed" onclick="quizPick(this)">
+              <span class="quiz-opt-icon">👤</span>
+              <span class="quiz-opt-text" id="qo2a">Indépendant / Auto-entrepreneur</span>
+            </button>
+            <button class="quiz-opt" data-step="2" data-val="sme" data-en="SME / local business" onclick="quizPick(this)">
+              <span class="quiz-opt-icon">🏢</span>
+              <span class="quiz-opt-text" id="qo2b">PME / Commerce local</span>
+            </button>
+            <button class="quiz-opt" data-step="2" data-val="shop" data-en="Shop / e-commerce brand" onclick="quizPick(this)">
+              <span class="quiz-opt-icon">🏪</span>
+              <span class="quiz-opt-text" id="qo2c">Boutique / Marque e-commerce</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="quiz-step" id="qstep-3" style="display:none;">
+          <p class="quiz-q" id="qq3">Quel est votre budget ?</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-step="3" data-val="low" data-en="Up to CHF 400" onclick="quizPick(this)">
+              <span class="quiz-opt-icon">💰</span>
+              <span class="quiz-opt-text" id="qo3a">Jusqu'à CHF 400</span>
+            </button>
+            <button class="quiz-opt" data-step="3" data-val="mid" data-en="Up to CHF 700" onclick="quizPick(this)">
+              <span class="quiz-opt-icon">💰💰</span>
+              <span class="quiz-opt-text" id="qo3b">Jusqu'à CHF 700</span>
+            </button>
+            <button class="quiz-opt" data-step="3" data-val="high" data-en="No limit — best result" onclick="quizPick(this)">
+              <span class="quiz-opt-icon">💰💰💰</span>
+              <span class="quiz-opt-text" id="qo3c">Pas de limite — meilleur résultat</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- RESULT -->
+        <div class="quiz-step" id="qstep-result" style="display:none;">
+          <div id="quiz-result-card" style="text-align:center;padding:32px 24px;background:white;border-radius:20px;border:1.5px solid var(--divider);">
+            <div id="quiz-result-icon" style="font-size:3rem;margin-bottom:12px;"></div>
+            <p id="quiz-result-label" style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--blue);margin-bottom:6px;"></p>
+            <h3 id="quiz-result-pack" style="font-size:2rem;font-weight:800;letter-spacing:-0.8px;margin-bottom:8px;"></h3>
+            <p id="quiz-result-price" style="font-size:1.1rem;font-weight:600;color:var(--blue);margin-bottom:10px;"></p>
+            <p id="quiz-result-desc" style="font-size:0.9rem;color:var(--gray);line-height:1.6;margin-bottom:24px;max-width:400px;margin-left:auto;margin-right:auto;"></p>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+              <a id="quiz-result-link" href="#" style="background:var(--blue);color:white;padding:12px 26px;border-radius:980px;font-size:0.9rem;font-weight:600;text-decoration:none;transition:background 0.2s;">Découvrir ce pack →</a>
+              <a href="#contact" style="background:var(--light-gray);color:var(--black);padding:12px 26px;border-radius:980px;font-size:0.9rem;font-weight:600;text-decoration:none;" id="quiz-contact-btn">Demander un devis</a>
+            </div>
+            <button onclick="quizReset()" style="display:block;margin:18px auto 0;background:none;border:none;font-size:0.82rem;color:var(--gray);cursor:pointer;text-decoration:underline;font-family:inherit;" id="quiz-restart">Recommencer</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .quiz-q {
+      font-size: 1.2rem; font-weight: 700; letter-spacing: -0.4px;
+      text-align: center; margin-bottom: 22px; color: var(--black);
+    }
+    .quiz-options {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .quiz-opt {
+      display: flex; align-items: center; gap: 14px;
+      background: white; border: 1.5px solid var(--divider);
+      border-radius: 14px; padding: 14px 18px;
+      font-size: 0.95rem; font-weight: 500; color: var(--black);
+      cursor: pointer; text-align: left; font-family: inherit;
+      transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .quiz-opt:hover {
+      border-color: var(--blue); transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(0,113,227,0.1);
+    }
+    .quiz-opt.selected {
+      border-color: var(--blue); background: #eff6ff;
+    }
+    .quiz-opt-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .quiz-opt-text { font-weight: 600; }
+    @media (min-width: 500px) {
+      .quiz-options { flex-direction: row; }
+      .quiz-opt { flex: 1; flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+  </style>
+
+  <script>
+    var quizAnswers = {};
+    var quizCurrentStep = 1;
+
+    var quizPacks = {
+      fr: {
+        starter: {
+          icon: '🚀',
+          label: 'Notre recommandation',
+          pack: 'Pack Starter',
+          price: 'CHF 299 — paiement unique',
+          desc: 'Idéal pour démarrer en ligne rapidement. 1 page responsive, formulaire de contact, hébergement GitHub 100% gratuit et livraison en 7 jours.',
+          link: 'pack-starter.html'
+        },
+        business: {
+          icon: '⭐',
+          label: 'Notre recommandation',
+          pack: 'Pack Business',
+          price: 'CHF 599 — paiement unique',
+          desc: 'La solution complète pour attirer des clients locaux. Site multi-pages, SEO Romandie, Google Maps et 3 mois de support offert.',
+          link: 'pack-business.html'
+        },
+        premium: {
+          icon: '✦',
+          label: 'Notre recommandation',
+          pack: 'Pack Premium',
+          price: 'CHF 999 — paiement unique',
+          desc: 'Boutique en ligne complète (Shopify ou WooCommerce), paiement sécurisé, SEO avancé et formation à la gestion incluse.',
+          link: 'pack-premium.html'
+        }
+      },
+      en: {
+        starter: {
+          icon: '🚀',
+          label: 'Our recommendation',
+          pack: 'Starter Pack',
+          price: 'CHF 299 — one-time payment',
+          desc: 'Perfect to get online fast. 1 responsive page, contact form, free GitHub hosting and delivery in 7 days.',
+          link: 'pack-starter.html'
+        },
+        business: {
+          icon: '⭐',
+          label: 'Our recommendation',
+          pack: 'Business Pack',
+          price: 'CHF 599 — one-time payment',
+          desc: 'The complete solution to attract local clients. Multi-page site, local SEO, Google Maps and 3 months support included.',
+          link: 'pack-business.html'
+        },
+        premium: {
+          icon: '✦',
+          label: 'Our recommendation',
+          pack: 'Premium Pack',
+          price: 'CHF 999 — one-time payment',
+          desc: 'Full e-commerce store (Shopify or WooCommerce), secure payments, advanced SEO and training included.',
+          link: 'pack-premium.html'
+        }
+      }
+    };
+
+    function quizPick(btn) {
+      var step = parseInt(btn.dataset.step);
+      quizAnswers['step' + step] = btn.dataset.val;
+
+      // highlight selected
+      btn.closest('.quiz-options').querySelectorAll('.quiz-opt').forEach(function(b) { b.classList.remove('selected'); });
+      btn.classList.add('selected');
+
+      setTimeout(function() {
+        if (step < 3) {
+          quizGoTo(step + 1);
+        } else {
+          quizShowResult();
+        }
+      }, 280);
+    }
+
+    function quizGoTo(step) {
+      document.getElementById('qstep-' + quizCurrentStep).style.display = 'none';
+      quizCurrentStep = step;
+      var el = document.getElementById('qstep-' + step);
+      el.style.display = 'block';
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(12px)';
+      requestAnimationFrame(function() {
+        el.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      });
+      document.getElementById('quiz-progress').style.width = ((step - 1) / 3 * 100) + '%';
+      var lang = localStorage.getItem('rw-lang') || 'fr';
+      document.getElementById('quiz-step-label').textContent = lang === 'en' ? 'Step ' + step + '/3' : 'Étape ' + step + '/3';
+    }
+
+    function quizShowResult() {
+      var a1 = quizAnswers.step1, a2 = quizAnswers.step2, a3 = quizAnswers.step3;
+      var pack = 'starter';
+
+      // Logic: sell or shop → premium; local or sme + not low → business; else starter
+      if (a1 === 'sell' || a2 === 'shop' || a3 === 'high' && a1 !== 'visible') {
+        pack = 'premium';
+      } else if (a1 === 'local' || a2 === 'sme' || a3 === 'mid') {
+        pack = 'business';
+      } else {
+        pack = 'starter';
+      }
+      // Override: if budget is low, max starter
+      if (a3 === 'low') pack = 'starter';
+      // Override: if sell/shop intent always premium regardless of budget label
+      if (a1 === 'sell' || a2 === 'shop') pack = 'premium';
+
+      var lang = localStorage.getItem('rw-lang') || 'fr';
+      var data = quizPacks[lang][pack];
+
+      document.getElementById('quiz-result-icon').textContent = data.icon;
+      document.getElementById('quiz-result-label').textContent = data.label;
+      document.getElementById('quiz-result-pack').textContent = data.pack;
+      document.getElementById('quiz-result-price').textContent = data.price;
+      document.getElementById('quiz-result-desc').textContent = data.desc;
+      document.getElementById('quiz-result-link').href = data.link;
+
+      document.getElementById('qstep-3').style.display = 'none';
+      var res = document.getElementById('qstep-result');
+      res.style.display = 'block';
+      res.style.opacity = '0';
+      res.style.transform = 'translateY(14px)';
+      requestAnimationFrame(function() {
+        res.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        res.style.opacity = '1';
+        res.style.transform = 'translateY(0)';
+      });
+      document.getElementById('quiz-progress').style.width = '100%';
+      document.getElementById('quiz-step-label').textContent = lang === 'en' ? 'Result ✓' : 'Résultat ✓';
+    }
+
+    function quizReset() {
+      quizAnswers = {};
+      quizCurrentStep = 1;
+      ['qstep-2','qstep-3','qstep-result'].forEach(function(id) { document.getElementById(id).style.display = 'none'; });
+      document.querySelectorAll('.quiz-opt').forEach(function(b) { b.classList.remove('selected'); });
+      var s1 = document.getElementById('qstep-1');
+      s1.style.display = 'block';
+      s1.style.opacity = '1';
+      s1.style.transform = 'none';
+      document.getElementById('quiz-progress').style.width = '0%';
+      var lang = localStorage.getItem('rw-lang') || 'fr';
+      document.getElementById('quiz-step-label').textContent = lang === 'en' ? 'Step 1/3' : 'Étape 1/3';
+    }
+  </script>
+
   <!-- WHY US -->
   <section class="section why" id="why">
     <div class="eyebrow" data-anim="fade-in" id="why-eyebrow">Nos atouts</div>
@@ -1524,6 +1800,11 @@
         'c3-btn':'En savoir plus →',
         'svc-footnote':'* L\'achat du nom de domaine est exclu de tous les tarifs.',
         'svc-compare':'Comparer toutes les formules en détail',
+        'quiz-eyebrow':'Aide au choix', 'quiz-h2':'Quel pack est fait pour vous ?', 'quiz-sub':'3 questions · 30 secondes · résultat personnalisé.',
+        'qq1':'Quel est votre principal objectif ?', 'qo1a':'Être visible en ligne', 'qo1b':'Attirer des clients locaux', 'qo1c':'Vendre des produits en ligne',
+        'qq2':'Quelle est votre situation ?', 'qo2a':'Indépendant / Auto-entrepreneur', 'qo2b':'PME / Commerce local', 'qo2c':'Boutique / Marque e-commerce',
+        'qq3':'Quel est votre budget ?', 'qo3a':'Jusqu\'à CHF 400', 'qo3b':'Jusqu\'à CHF 700', 'qo3c':'Pas de limite — meilleur résultat',
+        'quiz-contact-btn':'Demander un devis', 'quiz-restart':'Recommencer',
         'why-eyebrow':'Nos atouts', 'why-h2':'Pourquoi Romand Web ?', 'why-sub':'Nous comprenons les besoins des entreprises locales de Romandie.',
         'w1-h4':'Local & proche', 'w1-p':'Basé en Romandie, nous parlons votre langue et connaissons votre marché.',
         'w2-h4':'Livraison rapide', 'w2-p':'Votre site livré en 7 à 14 jours ouvrables.',
@@ -1588,6 +1869,11 @@
         'c3-btn':'Learn more →',
         'svc-footnote':'* Domain name purchase (~CHF 15/yr) is not included.',
         'svc-compare':'Compare all packages in detail',
+        'quiz-eyebrow':'Find your pack', 'quiz-h2':'Which pack is right for you?', 'quiz-sub':'3 questions · 30 seconds · personalised result.',
+        'qq1':'What is your main goal?', 'qo1a':'Be visible online', 'qo1b':'Attract local clients', 'qo1c':'Sell products online',
+        'qq2':'What is your situation?', 'qo2a':'Freelancer / Self-employed', 'qo2b':'SME / Local business', 'qo2c':'Shop / E-commerce brand',
+        'qq3':'What is your budget?', 'qo3a':'Up to CHF 400', 'qo3b':'Up to CHF 700', 'qo3c':'No limit — best result',
+        'quiz-contact-btn':'Request a quote', 'quiz-restart':'Start over',
         'why-eyebrow':'Our strengths', 'why-h2':'Why Romand Web?', 'why-sub':'We understand the needs of local businesses in French Switzerland.',
         'w1-h4':'Local & close', 'w1-p':'Based in French Switzerland, we speak your language and know your market.',
         'w2-h4':'Fast delivery', 'w2-p':'Your website delivered in 7 to 14 working days.',
