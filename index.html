@@ -1375,18 +1375,19 @@
     }
     .quiz-opt {
       display: flex; align-items: center; gap: 14px;
-      background: white; border: 1.5px solid var(--divider);
+      background: #ffffff; border: 1.5px solid #d2d2d7;
       border-radius: 14px; padding: 14px 18px;
-      font-size: 0.95rem; font-weight: 500; color: var(--black);
+      font-size: 0.95rem; font-weight: 500; color: #1d1d1f;
       cursor: pointer; text-align: left; font-family: inherit;
       transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+      color-scheme: light;
     }
     .quiz-opt:hover {
       border-color: var(--blue); transform: translateY(-1px);
       box-shadow: 0 4px 16px rgba(0,113,227,0.1);
     }
     .quiz-opt.selected {
-      border-color: var(--blue); background: #eff6ff;
+      border-color: var(--blue); background: #eff6ff; color: #1d1d1f;
     }
     .quiz-opt-icon { font-size: 1.4rem; flex-shrink: 0; }
     .quiz-opt-text { font-weight: 600; }
