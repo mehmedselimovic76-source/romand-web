@@ -162,7 +162,6 @@
   }
   </script>
 
-  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -1777,6 +1776,31 @@
 
   <script>
     // ── CRITICAL (synchronous, minimal) ──────────────────────────────────
+
+    // Lazy-load hCaptcha only when contact section enters viewport
+    (function() {
+      var _captchaLoaded = false;
+      var _contactSection = document.getElementById('contact');
+      if (_contactSection && 'IntersectionObserver' in window) {
+        var _obs = new IntersectionObserver(function(entries) {
+          if (entries[0].isIntersecting && !_captchaLoaded) {
+            _captchaLoaded = true;
+            var s = document.createElement('script');
+            s.src = 'https://js.hcaptcha.com/1/api.js';
+            s.async = true; s.defer = true;
+            document.head.appendChild(s);
+            _obs.disconnect();
+          }
+        }, { rootMargin: '200px' });
+        _obs.observe(_contactSection);
+      } else if (_contactSection) {
+        // Fallback si IntersectionObserver non supporté
+        var s = document.createElement('script');
+        s.src = 'https://js.hcaptcha.com/1/api.js';
+        s.async = true; s.defer = true;
+        document.head.appendChild(s);
+      }
+    })();
 
     // Form submit
     var _form = document.getElementById('contact-form');
