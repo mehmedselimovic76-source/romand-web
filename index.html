@@ -157,10 +157,6 @@
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -176,7 +172,7 @@
 
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
       color: var(--black);
       background: var(--white);
       -webkit-font-smoothing: antialiased;
@@ -2047,10 +2043,18 @@
     const progressBar = document.createElement('div');
     progressBar.id = 'scroll-progress';
     document.body.prepend(progressBar);
+    let _docH = document.body.scrollHeight - window.innerHeight;
+    let _pbRaf = false;
     window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-      progressBar.style.width = (scrolled * 100) + '%';
+      if (!_pbRaf) {
+        _pbRaf = true;
+        requestAnimationFrame(() => {
+          progressBar.style.width = (window.scrollY / (_docH || 1) * 100) + '%';
+          _pbRaf = false;
+        });
+      }
     }, { passive: true });
+    window.addEventListener('resize', () => { _docH = document.body.scrollHeight - window.innerHeight; }, { passive: true });
 
     // ─── 2. CURSOR GLOW ───────────────────────────────────────────────
     const glow = document.createElement('div');
@@ -2097,13 +2101,12 @@
 
     // ─── 5. RIPPLE ON BUTTONS ─────────────────────────────────────────
     document.querySelectorAll('.cta-primary, .card a.card-btn').forEach(btn => {
+      btn.style.position = 'relative'; btn.style.overflow = 'hidden';
       btn.addEventListener('click', function(e) {
         const r = this.getBoundingClientRect();
         const ripple = document.createElement('span');
         ripple.className = 'ripple';
         ripple.style.cssText = `left:${e.clientX - r.left}px;top:${e.clientY - r.top}px`;
-        this.style.position = 'relative';
-        this.style.overflow = 'hidden';
         this.appendChild(ripple);
         setTimeout(() => ripple.remove(), 600);
       });
@@ -2138,6 +2141,30 @@
     }, { threshold: 0.2 });
     const zoneGrid = document.querySelector('.zone-grid');
     if (zoneGrid) pillObs.observe(zoneGrid);
+
+    // ─── 8. LAZY-LOAD hCaptcha (only when contact section visible) ────
+    (function() {
+      let _captchaLoaded = false;
+      const _contactSection = document.getElementById('contact');
+      if (_contactSection && 'IntersectionObserver' in window) {
+        const _obs = new IntersectionObserver(entries => {
+          if (entries[0].isIntersecting && !_captchaLoaded) {
+            _captchaLoaded = true;
+            const s = document.createElement('script');
+            s.src = 'https://js.hcaptcha.com/1/api.js';
+            s.async = true; s.defer = true;
+            document.head.appendChild(s);
+            _obs.disconnect();
+          }
+        }, { rootMargin: '200px' });
+        _obs.observe(_contactSection);
+      } else if (_contactSection) {
+        const s = document.createElement('script');
+        s.src = 'https://js.hcaptcha.com/1/api.js';
+        s.async = true; s.defer = true;
+        document.head.appendChild(s);
+      }
+    })();
 
   </script>
 
