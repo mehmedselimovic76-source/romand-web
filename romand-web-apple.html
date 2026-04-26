@@ -2078,8 +2078,20 @@
       var pb = document.createElement('div');
       pb.id = 'scroll-progress';
       document.body.prepend(pb);
+      // Cache page height to avoid forced reflow (read scrollHeight after writing width)
+      var _docH = document.body.scrollHeight - window.innerHeight;
+      var _pbRaf = false;
       window.addEventListener('scroll', function() {
-        pb.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+        if (!_pbRaf) {
+          _pbRaf = true;
+          requestAnimationFrame(function() {
+            pb.style.width = (window.scrollY / (_docH || 1) * 100) + '%';
+            _pbRaf = false;
+          });
+        }
+      }, { passive: true });
+      window.addEventListener('resize', function() {
+        _docH = document.body.scrollHeight - window.innerHeight;
       }, { passive: true });
 
       await _yield();
@@ -2104,14 +2116,14 @@
 
       await _yield();
 
-      // 6. Ripple on buttons
+      // 6. Ripple on buttons — pre-apply position:relative at init to avoid write→read reflow on click
       document.querySelectorAll('.cta-primary, .card a.card-btn').forEach(function(b) {
+        b.style.position = 'relative'; b.style.overflow = 'hidden';
         b.addEventListener('click', function(e) {
           var r = this.getBoundingClientRect();
           var rp = document.createElement('span');
           rp.className = 'ripple';
           rp.style.cssText = 'left:' + (e.clientX - r.left) + 'px;top:' + (e.clientY - r.top) + 'px';
-          this.style.position = 'relative'; this.style.overflow = 'hidden';
           this.appendChild(rp); setTimeout(function() { rp.remove(); }, 600);
         });
       });
