@@ -102,23 +102,22 @@
 
     /* FALLBACK */
     .fallback {
-      display: none;
       text-align: center;
-      padding: 40px 20px;
+      padding: 24px 20px 0;
     }
     .fallback p {
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 20px;
-      font-size: 0.95rem;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 14px;
+      font-size: 0.82rem;
     }
     .btn-rdv {
       display: inline-block;
       background: var(--blue);
       color: white;
       text-decoration: none;
-      padding: 14px 32px;
+      padding: 13px 30px;
       border-radius: 980px;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 600;
     }
     .btn-rdv:hover { background: #0077ed; }
@@ -183,8 +182,8 @@
     allowfullscreen
   ></iframe>
 
-  <div class="fallback" id="fallback">
-    <p>Si le calendrier ne s'affiche pas, ouvrez directement la page de réservation :</p>
+  <div class="fallback">
+    <p>Le calendrier ne s'affiche pas ? Ouvrez directement :</p>
     <a href="https://calendar.app.google/zvr1Yw6xU7BmZ62e8" target="_blank" rel="noopener" class="btn-rdv">
       Réserver un créneau →
     </a>
@@ -200,22 +199,6 @@
 
 <footer>© 2026 Romand Web · Romandie, Suisse</footer>
 
-<script>
-  // Show fallback if iframe fails to load after 5s
-  var frame = document.getElementById('cal-frame');
-  var fb = document.getElementById('fallback');
-  var timer = setTimeout(function() {
-    try {
-      if (!frame.contentDocument && !frame.contentWindow) {
-        frame.style.display = 'none';
-        fb.style.display = 'block';
-      }
-    } catch(e) {
-      // cross-origin — iframe loaded normally
-    }
-  }, 5000);
-  frame.addEventListener('load', function() { clearTimeout(timer); });
-</script>
 
 </body>
 </html>
