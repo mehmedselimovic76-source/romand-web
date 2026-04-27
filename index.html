@@ -2560,6 +2560,26 @@
     }
     .rw-msg.typing { color: rgba(255,255,255,0.4); font-style: italic; }
 
+    /* SUGGESTIONS */
+    #rw-suggestions {
+      display: flex; flex-wrap: wrap; gap: 7px;
+      padding: 4px 0 6px;
+    }
+    .rw-chip {
+      background: rgba(0,113,227,0.12);
+      border: 1px solid rgba(0,113,227,0.3);
+      color: #6ab4ff;
+      border-radius: 980px;
+      padding: 6px 12px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+    .rw-chip:hover { background: rgba(0,113,227,0.25); color: #90c8ff; }
+
     /* INPUT */
     #rw-chat-footer {
       display: flex; align-items: center; gap: 8px;
@@ -2604,6 +2624,16 @@
     </div>
     <div id="rw-chat-messages">
       <div class="rw-msg bot">Bonjour 👋 Je suis l'assistant de Romand Web. Comment puis-je vous aider ?</div>
+      <div id="rw-suggestions">
+        <button class="rw-chip" onclick="rwQuick('Quels sont vos packs et tarifs ?')">💼 Packs & tarifs</button>
+        <button class="rw-chip" onclick="rwQuick('Quelles sont vos options de design ?')">🎨 Design & logo</button>
+        <button class="rw-chip" onclick="rwQuick('Quelles fonctionnalités supplémentaires proposez-vous ?')">⚙️ Fonctionnalités</button>
+        <button class="rw-chip" onclick="rwQuick('Quelles sont vos options SEO et marketing ?')">📈 SEO & Marketing</button>
+        <button class="rw-chip" onclick="rwQuick('Proposez-vous des options e-commerce ?')">🛒 E-commerce</button>
+        <button class="rw-chip" onclick="rwQuick('Quelles sont vos options de traduction ?')">🌍 Traduction</button>
+        <button class="rw-chip" onclick="rwQuick('Quelles sont vos offres de maintenance ?')">🔧 Maintenance</button>
+        <button class="rw-chip" onclick="rwQuick('Comment prendre rendez-vous ?')">📅 Prendre RDV</button>
+      </div>
     </div>
     <div id="rw-chat-footer">
       <input id="rw-chat-input" type="text" placeholder="Posez votre question…" onkeydown="if(event.key==='Enter')rwSend()">
@@ -2635,6 +2665,13 @@
           panel.classList.remove('open');
           bubble.innerHTML = '💬';
         }
+      };
+
+      window.rwQuick = function(text) {
+        var sugg = document.getElementById('rw-suggestions');
+        if (sugg) sugg.style.display = 'none';
+        document.getElementById('rw-chat-input').value = text;
+        window.rwSend();
       };
 
       window.rwSend = async function() {
