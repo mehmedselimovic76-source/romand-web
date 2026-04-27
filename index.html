@@ -2603,9 +2603,24 @@
     #rw-chat-send:hover { background: #0077ed; }
     #rw-chat-send:disabled { background: #3a3a3c; cursor: default; }
 
-    @media (max-width: 400px) {
-      #rw-chat-panel { width: calc(100vw - 16px); right: 8px; bottom: 80px; }
-      #rw-chat-bubble { bottom: 16px; right: 16px; }
+    @media (max-width: 768px) {
+      #rw-chat-bubble {
+        bottom: calc(16px + env(safe-area-inset-bottom));
+        right: 16px;
+        width: 50px; height: 50px; font-size: 20px;
+      }
+      #rw-chat-panel {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        width: 100%; max-height: 100%;
+        border-radius: 0;
+        z-index: 10000;
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+      #rw-chat-messages {
+        max-height: none;
+        flex: 1;
+      }
     }
   </style>
 
