@@ -7,16 +7,10 @@
   <meta name="description" content="Réservez un rendez-vous gratuit avec Romand Web. Discutons de votre projet web en Romandie.">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --blue: #0071e3;
-      --black: #1d1d1f;
-      --gray: #6e6e73;
-      --light: #f5f5f7;
-      --bg: #000;
-    }
+    :root { --blue: #0071e3; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-      background: var(--bg);
+      background: #000;
       color: #f5f5f7;
       min-height: 100vh;
       display: flex;
@@ -45,15 +39,14 @@
     }
     .nav-back {
       font-size: 0.85rem; color: rgba(255,255,255,0.55);
-      text-decoration: none; display: flex; align-items: center; gap: 5px;
-      transition: color 0.2s;
+      text-decoration: none; transition: color 0.2s;
     }
     .nav-back:hover { color: #f5f5f7; }
 
     /* HERO */
     .hero {
       text-align: center;
-      padding: 56px 20px 40px;
+      padding: 48px 20px 32px;
     }
     .badge {
       display: inline-block;
@@ -72,55 +65,30 @@
       font-weight: 800;
       letter-spacing: -1.5px;
       line-height: 1.15;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     h1 span { color: var(--blue); }
     .subtitle {
       font-size: 1rem;
       color: rgba(255,255,255,0.55);
       max-width: 480px;
-      margin: 0 auto 36px;
+      margin: 0 auto;
       line-height: 1.6;
     }
 
-    /* IFRAME WRAPPER */
-    .calendar-wrap {
+    /* CALENDLY */
+    .calendly-wrap {
       flex: 1;
       width: 100%;
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 0 16px 48px;
+      padding: 24px 16px 40px;
     }
-    .calendar-frame {
-      width: 100%;
-      height: 700px;
-      border: none;
+    .calendly-inline-widget {
       border-radius: 18px;
-      background: white;
+      overflow: hidden;
       box-shadow: 0 20px 60px rgba(0,0,0,0.4);
     }
-
-    /* FALLBACK */
-    .fallback {
-      text-align: center;
-      padding: 24px 20px 0;
-    }
-    .fallback p {
-      color: rgba(255,255,255,0.35);
-      margin-bottom: 14px;
-      font-size: 0.82rem;
-    }
-    .btn-rdv {
-      display: inline-block;
-      background: var(--blue);
-      color: white;
-      text-decoration: none;
-      padding: 13px 30px;
-      border-radius: 980px;
-      font-size: 0.95rem;
-      font-weight: 600;
-    }
-    .btn-rdv:hover { background: #0077ed; }
 
     /* INFOS */
     .infos {
@@ -128,7 +96,7 @@
       justify-content: center;
       gap: 32px;
       flex-wrap: wrap;
-      padding: 0 20px 56px;
+      padding: 0 20px 48px;
       max-width: 720px;
       margin: 0 auto;
     }
@@ -152,8 +120,8 @@
 
     @media (max-width: 600px) {
       nav { padding: 0 16px; }
-      .calendar-frame { height: 580px; border-radius: 12px; }
-      .hero { padding: 40px 16px 28px; }
+      .hero { padding: 36px 16px 24px; }
+      .calendly-inline-widget { border-radius: 12px; }
     }
   </style>
 </head>
@@ -167,26 +135,15 @@
 </nav>
 
 <div class="hero">
-  <div class="badge">Consultation gratuite</div>
+  <div class="badge">Consultation gratuite · Sans engagement</div>
   <h1>Prenez <span>rendez-vous</span></h1>
   <p class="subtitle">Choisissez un créneau qui vous convient. Nous discuterons de votre projet web en 30 minutes.</p>
 </div>
 
-<div class="calendar-wrap">
-  <iframe
-    id="cal-frame"
-    class="calendar-frame"
-    src="https://calendar.app.google/zvr1Yw6xU7BmZ62e8"
-    loading="lazy"
-    title="Prise de rendez-vous Romand Web"
-    allowfullscreen
-  ></iframe>
-
-  <div class="fallback">
-    <p>Le calendrier ne s'affiche pas ? Ouvrez directement :</p>
-    <a href="https://calendar.app.google/zvr1Yw6xU7BmZ62e8" target="_blank" rel="noopener" class="btn-rdv">
-      Réserver un créneau →
-    </a>
+<div class="calendly-wrap">
+  <div class="calendly-inline-widget"
+       data-url="https://calendly.com/romand-web-info?hide_gdpr_banner=1&background_color=000000&text_color=f5f5f7&primary_color=0071e3"
+       style="min-width:320px;height:700px;">
   </div>
 </div>
 
@@ -199,6 +156,7 @@
 
 <footer>© 2026 Romand Web · Romandie, Suisse</footer>
 
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 </body>
 </html>
