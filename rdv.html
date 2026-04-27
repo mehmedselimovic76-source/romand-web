@@ -16,8 +16,6 @@
       display: flex;
       flex-direction: column;
     }
-
-    /* NAV */
     nav {
       position: sticky; top: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -37,87 +35,36 @@
       border-radius: 7px; display: flex; align-items: center;
       justify-content: center; font-size: 14px; font-weight: 900; color: white;
     }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
     .nav-back {
       font-size: 0.85rem; color: rgba(255,255,255,0.55);
       text-decoration: none; transition: color 0.2s;
     }
     .nav-back:hover { color: #f5f5f7; }
-
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 48px 20px 32px;
+    .lang-btn {
+      background: none; border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.45); border-radius: 7px;
+      padding: 4px 10px; font-size: 0.78rem; font-weight: 700;
+      cursor: pointer; font-family: inherit; transition: all 0.15s;
     }
+    .lang-btn.active { background: var(--blue); border-color: var(--blue); color: white; }
+    .hero { text-align: center; padding: 48px 20px 32px; }
     .badge {
       display: inline-block;
-      background: rgba(0,113,227,0.15);
-      color: var(--blue);
-      border: 1px solid rgba(0,113,227,0.3);
-      border-radius: 980px;
-      padding: 6px 16px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-      margin-bottom: 20px;
+      background: rgba(0,113,227,0.15); color: var(--blue);
+      border: 1px solid rgba(0,113,227,0.3); border-radius: 980px;
+      padding: 6px 16px; font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.3px; margin-bottom: 20px;
     }
-    h1 {
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      line-height: 1.15;
-      margin-bottom: 12px;
-    }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 12px; }
     h1 span { color: var(--blue); }
-    .subtitle {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.55);
-      max-width: 480px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    /* CALENDLY */
-    .calendly-wrap {
-      flex: 1;
-      width: 100%;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 24px 16px 40px;
-    }
-    .calendly-inline-widget {
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-    }
-
-    /* INFOS */
-    .infos {
-      display: flex;
-      justify-content: center;
-      gap: 32px;
-      flex-wrap: wrap;
-      padding: 0 20px 48px;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-    .info-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.45);
-    }
+    .subtitle { font-size: 1rem; color: rgba(255,255,255,0.55); max-width: 480px; margin: 0 auto; line-height: 1.6; }
+    .calendly-wrap { flex: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding: 24px 16px 40px; }
+    .calendly-inline-widget { border-radius: 18px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+    .infos { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; padding: 0 20px 48px; max-width: 720px; margin: 0 auto; }
+    .info-item { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: rgba(255,255,255,0.45); }
     .info-item strong { color: rgba(255,255,255,0.75); }
-
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.25);
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-
+    footer { text-align: center; padding: 20px; font-size: 0.75rem; color: rgba(255,255,255,0.25); border-top: 1px solid rgba(255,255,255,0.06); }
     @media (max-width: 600px) {
       nav { padding: 0 16px; }
       .hero { padding: 36px 16px 24px; }
@@ -131,13 +78,17 @@
   <a href="index.html" class="logo">
     <span class="logo-icon">◈</span> Romand Web
   </a>
-  <a href="index.html" class="nav-back">← Retour au site</a>
+  <div class="nav-right">
+    <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    <a href="index.html" class="nav-back" id="nav-back">← Retour au site</a>
+  </div>
 </nav>
 
 <div class="hero">
-  <div class="badge">Consultation gratuite · Sans engagement</div>
-  <h1>Prenez <span>rendez-vous</span></h1>
-  <p class="subtitle">Choisissez un créneau qui vous convient. Nous discuterons de votre projet web en 30 minutes.</p>
+  <div class="badge" id="rdv-badge">Consultation gratuite · Sans engagement</div>
+  <h1 id="rdv-h1">Prenez <span id="rdv-h1-span">rendez-vous</span></h1>
+  <p class="subtitle" id="rdv-sub">Choisissez un créneau qui vous convient. Nous discuterons de votre projet web en 30 minutes.</p>
 </div>
 
 <div class="calendly-wrap">
@@ -148,15 +99,62 @@
 </div>
 
 <div class="infos">
-  <div class="info-item">📅 <span><strong>Durée</strong> · 30 min</span></div>
-  <div class="info-item">💻 <span><strong>Format</strong> · Appel vidéo ou téléphone</span></div>
-  <div class="info-item">🎯 <span><strong>Objectif</strong> · Devis gratuit</span></div>
-  <div class="info-item">📍 <span><strong>Zone</strong> · Romandie, Suisse</span></div>
+  <div class="info-item">📅 <span><strong id="i-dur-label">Durée</strong> · <span id="i-dur">30 min</span></span></div>
+  <div class="info-item">💻 <span><strong id="i-fmt-label">Format</strong> · <span id="i-fmt">Appel vidéo ou téléphone</span></span></div>
+  <div class="info-item">🎯 <span><strong id="i-obj-label">Objectif</strong> · <span id="i-obj">Devis gratuit</span></span></div>
+  <div class="info-item">📍 <span><strong id="i-zone-label">Zone</strong> · <span id="i-zone">Romandie, Suisse</span></span></div>
 </div>
 
-<footer>© 2026 Romand Web · Romandie, Suisse</footer>
+<footer id="rdv-footer">© 2026 Romand Web · Romandie, Suisse</footer>
 
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+  var T = {
+    fr: {
+      badge: 'Consultation gratuite · Sans engagement',
+      h1: 'Prenez ', span: 'rendez-vous',
+      sub: 'Choisissez un créneau qui vous convient. Nous discuterons de votre projet web en 30 minutes.',
+      back: '← Retour au site',
+      dur: 'Durée', durVal: '30 min',
+      fmt: 'Format', fmtVal: 'Appel vidéo ou téléphone',
+      obj: 'Objectif', objVal: 'Devis gratuit',
+      zone: 'Zone', zoneVal: 'Romandie, Suisse',
+      footer: '© 2026 Romand Web · Romandie, Suisse'
+    },
+    en: {
+      badge: 'Free consultation · No commitment',
+      h1: 'Book an ', span: 'appointment',
+      sub: 'Choose a time that suits you. We will discuss your web project in 30 minutes.',
+      back: '← Back to site',
+      dur: 'Duration', durVal: '30 min',
+      fmt: 'Format', fmtVal: 'Video call or phone',
+      obj: 'Goal', objVal: 'Free quote',
+      zone: 'Area', zoneVal: 'Romandie, Switzerland',
+      footer: '© 2026 Romand Web · Romandie, Switzerland'
+    }
+  };
+
+  function setLang(l) {
+    var t = T[l];
+    document.documentElement.lang = l;
+    document.getElementById('btn-fr').classList.toggle('active', l === 'fr');
+    document.getElementById('btn-en').classList.toggle('active', l === 'en');
+    document.getElementById('rdv-badge').textContent = t.badge;
+    document.getElementById('rdv-h1').childNodes[0].textContent = t.h1;
+    document.getElementById('rdv-h1-span').textContent = t.span;
+    document.getElementById('rdv-sub').textContent = t.sub;
+    document.getElementById('nav-back').textContent = t.back;
+    document.getElementById('i-dur-label').textContent = t.dur;
+    document.getElementById('i-dur').textContent = t.durVal;
+    document.getElementById('i-fmt-label').textContent = t.fmt;
+    document.getElementById('i-fmt').textContent = t.fmtVal;
+    document.getElementById('i-obj-label').textContent = t.obj;
+    document.getElementById('i-obj').textContent = t.objVal;
+    document.getElementById('i-zone-label').textContent = t.zone;
+    document.getElementById('i-zone').textContent = t.zoneVal;
+    document.getElementById('rdv-footer').textContent = t.footer;
+  }
+</script>
 
 </body>
 </html>
