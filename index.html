@@ -2492,5 +2492,220 @@
     })();
   </script>
 
+  <!-- ══════════════════════════════════════
+       CHATBOT ROMAND WEB — Gemini Flash
+  ══════════════════════════════════════════ -->
+  <style>
+    /* BUBBLE */
+    #rw-chat-bubble {
+      position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--blue); color: white;
+      border: none; cursor: pointer; font-size: 24px;
+      box-shadow: 0 4px 20px rgba(0,113,227,0.45);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    #rw-chat-bubble:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(0,113,227,0.55); }
+
+    /* PANEL */
+    #rw-chat-panel {
+      position: fixed; bottom: 92px; right: 24px; z-index: 9998;
+      width: 360px; max-height: 520px;
+      background: #1c1c1e; border-radius: 20px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+      display: none; flex-direction: column; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    }
+    #rw-chat-panel.open { display: flex; }
+
+    /* HEADER */
+    #rw-chat-header {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 16px; background: #2c2c2e;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    #rw-chat-header .rw-avatar {
+      width: 36px; height: 36px; background: var(--blue);
+      border-radius: 10px; display: flex; align-items: center;
+      justify-content: center; font-size: 16px; font-weight: 900; color: white; flex-shrink: 0;
+    }
+    #rw-chat-header .rw-info { flex: 1; }
+    #rw-chat-header .rw-name { font-size: 0.88rem; font-weight: 700; color: #f5f5f7; }
+    #rw-chat-header .rw-status { font-size: 0.72rem; color: #34c759; margin-top: 1px; }
+    #rw-chat-close {
+      background: none; border: none; color: rgba(255,255,255,0.4);
+      font-size: 20px; cursor: pointer; line-height: 1; padding: 4px;
+    }
+    #rw-chat-close:hover { color: #f5f5f7; }
+
+    /* MESSAGES */
+    #rw-chat-messages {
+      flex: 1; overflow-y: auto; padding: 16px 14px;
+      display: flex; flex-direction: column; gap: 10px;
+      scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.1) transparent;
+    }
+    .rw-msg {
+      max-width: 82%; padding: 10px 13px;
+      border-radius: 16px; font-size: 0.85rem; line-height: 1.5; word-break: break-word;
+    }
+    .rw-msg.bot {
+      background: #2c2c2e; color: #f5f5f7;
+      border-bottom-left-radius: 4px; align-self: flex-start;
+    }
+    .rw-msg.user {
+      background: var(--blue); color: white;
+      border-bottom-right-radius: 4px; align-self: flex-end;
+    }
+    .rw-msg.typing { color: rgba(255,255,255,0.4); font-style: italic; }
+
+    /* INPUT */
+    #rw-chat-footer {
+      display: flex; align-items: center; gap: 8px;
+      padding: 12px 14px; border-top: 1px solid rgba(255,255,255,0.06);
+      background: #1c1c1e;
+    }
+    #rw-chat-input {
+      flex: 1; background: #2c2c2e; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 980px; padding: 9px 14px;
+      color: #f5f5f7; font-size: 0.85rem; font-family: inherit; outline: none;
+      transition: border-color 0.2s;
+    }
+    #rw-chat-input::placeholder { color: rgba(255,255,255,0.3); }
+    #rw-chat-input:focus { border-color: var(--blue); }
+    #rw-chat-send {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--blue); border: none; cursor: pointer;
+      color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: background 0.2s;
+    }
+    #rw-chat-send:hover { background: #0077ed; }
+    #rw-chat-send:disabled { background: #3a3a3c; cursor: default; }
+
+    @media (max-width: 400px) {
+      #rw-chat-panel { width: calc(100vw - 16px); right: 8px; bottom: 80px; }
+      #rw-chat-bubble { bottom: 16px; right: 16px; }
+    }
+  </style>
+
+  <!-- Chat bubble -->
+  <button id="rw-chat-bubble" aria-label="Chat" onclick="rwToggleChat()">💬</button>
+
+  <!-- Chat panel -->
+  <div id="rw-chat-panel">
+    <div id="rw-chat-header">
+      <div class="rw-avatar">◈</div>
+      <div class="rw-info">
+        <div class="rw-name">Assistant Romand Web</div>
+        <div class="rw-status">● En ligne</div>
+      </div>
+      <button id="rw-chat-close" onclick="rwToggleChat()" aria-label="Fermer">×</button>
+    </div>
+    <div id="rw-chat-messages">
+      <div class="rw-msg bot">Bonjour 👋 Je suis l'assistant de Romand Web. Comment puis-je vous aider ?</div>
+    </div>
+    <div id="rw-chat-footer">
+      <input id="rw-chat-input" type="text" placeholder="Posez votre question…" onkeydown="if(event.key==='Enter')rwSend()">
+      <button id="rw-chat-send" onclick="rwSend()" aria-label="Envoyer">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8l12-6-5 6 5 6-12-6z" fill="white"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var RW_KEY = 'AIzaSyARLBGZWa9kPbIJisRfDwpcOWJgt3tIVSo';
+      var RW_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + RW_KEY;
+      var RW_SYSTEM = `Tu es l'assistant virtuel de Romand Web, une agence web en Romandie, Suisse. Réponds en français (ou anglais si l'utilisateur écrit en anglais). Sois professionnel, chaleureux et concis (max 3 phrases par réponse).
+
+Romand Web — infos clés :
+- Fondateur : Mehmed Selimovic
+- Contact : info@romand-web.com | +41 76 506 06 76
+- Zone : Romandie (Genève, Lausanne, Fribourg, Neuchâtel, Sion, Yverdon, Bulle, Morges, Nyon, Sierre, Delémont, La Chaux-de-Fonds)
+
+Offres :
+• Pack Starter CHF 299 — site vitrine 1 page, livraison 5 jours, hébergement 1 an inclus
+• Pack Business CHF 599 — site multi-pages, blog, formulaire, SEO local, livraison 10 jours
+• Pack Premium CHF 999 — boutique e-commerce, jusqu'à 50 produits, paiement en ligne, livraison 15 jours
+- Paiements acceptés : Virement, TWINT, PayPal, Espèces, Bitcoin, Revolut
+- TVA non applicable
+
+Liens utiles :
+- Rendez-vous : romand-web.com/rdv.html
+- Tarifs détaillés : romand-web.com/tarifs.html
+
+Si tu ne sais pas, invite à contacter info@romand-web.com ou +41 76 506 06 76. Ne réponds qu'aux sujets liés à Romand Web ou à la création de sites web.`;
+
+      var history = [];
+      var isOpen = false;
+
+      window.rwToggleChat = function() {
+        isOpen = !isOpen;
+        var panel = document.getElementById('rw-chat-panel');
+        var bubble = document.getElementById('rw-chat-bubble');
+        if (isOpen) {
+          panel.classList.add('open');
+          bubble.innerHTML = '×';
+          document.getElementById('rw-chat-input').focus();
+        } else {
+          panel.classList.remove('open');
+          bubble.innerHTML = '💬';
+        }
+      };
+
+      window.rwSend = async function() {
+        var input = document.getElementById('rw-chat-input');
+        var text = input.value.trim();
+        if (!text) return;
+
+        input.value = '';
+        document.getElementById('rw-chat-send').disabled = true;
+        rwAddMsg(text, 'user');
+
+        var typing = rwAddMsg('…', 'bot typing');
+        history.push({ role: 'user', parts: [{ text: text }] });
+
+        try {
+          var res = await fetch(RW_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              system_instruction: { parts: [{ text: RW_SYSTEM }] },
+              contents: history
+            })
+          });
+          var data = await res.json();
+          var reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Désolé, une erreur est survenue. Contactez-nous à info@romand-web.com';
+          history.push({ role: 'model', parts: [{ text: reply }] });
+          typing.className = 'rw-msg bot';
+          typing.textContent = reply;
+        } catch(e) {
+          typing.className = 'rw-msg bot';
+          typing.textContent = 'Erreur de connexion. Contactez-nous à info@romand-web.com ou +41 76 506 06 76.';
+        }
+
+        document.getElementById('rw-chat-send').disabled = false;
+        document.getElementById('rw-chat-input').focus();
+        rwScroll();
+      };
+
+      function rwAddMsg(text, cls) {
+        var msgs = document.getElementById('rw-chat-messages');
+        var div = document.createElement('div');
+        div.className = 'rw-msg ' + cls;
+        div.textContent = text;
+        msgs.appendChild(div);
+        rwScroll();
+        return div;
+      }
+
+      function rwScroll() {
+        var msgs = document.getElementById('rw-chat-messages');
+        msgs.scrollTop = msgs.scrollHeight;
+      }
+    })();
+  </script>
+
 </body>
 </html>
