@@ -1236,16 +1236,20 @@
     </div>
     <p data-anim="fade-in" data-delay="400" id="svc-footnote" style="margin-top: 32px; font-size: 0.8rem; color: #aeaeb2;">* L'achat du nom de domaine est exclu de tous les tarifs.</p>
 
-    <div data-anim="fade-up" data-delay="500" style="margin-top:28px;">
+    <div data-anim="fade-up" data-delay="500" style="margin-top:28px;display:flex;flex-direction:column;align-items:center;gap:16px;">
       <a href="tarifs.html" id="tarifs-link" style="color:var(--blue);font-size:0.95rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:opacity 0.2s;">
         <span id="svc-compare">Comparer toutes les formules en détail</span>
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#0071e3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="rdv.html" id="svc-rdv" style="display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:white;text-decoration:none;padding:13px 28px;border-radius:980px;font-size:0.95rem;font-weight:600;transition:background 0.2s,transform 0.15s;">
+        📅 <span id="svc-rdv-label">Prendre rendez-vous</span>
       </a>
     </div>
   </section>
 
   <style>
     #tarifs-link:hover { opacity: 0.7; }
+    #svc-rdv:hover { background: #0077ed; transform: scale(1.02); }
     .card-btn-pack { transition: background 0.2s, transform 0.2s; }
     .card-btn-pack:hover { transform: scale(1.02); }
   </style>
@@ -1921,7 +1925,7 @@
         'c3-ul':'<li>Boutique en ligne complète</li><li>Jusqu\'à 10 pages</li><li>Shopify ou WooCommerce</li><li>Paiement Twint & CB intégré</li><li>Livraison en 14 jours</li><li>Formation + 6 mois support</li><li style="color:#ff9f0a;font-size:.82rem;margin-top:4px;">⚠ Frais de plateforme mensuel à la charge du client</li>',
         'c3-btn':'En savoir plus →',
         'svc-footnote':'* L\'achat du nom de domaine est exclu de tous les tarifs.',
-        'svc-compare':'Comparer toutes les formules en détail',
+        'svc-compare':'Comparer toutes les formules en détail', 'svc-rdv-label':'Prendre rendez-vous',
         'quiz-eyebrow':'Aide au choix', 'quiz-h2':'Quel pack est fait pour vous ?', 'quiz-sub':'3 questions · 30 secondes · résultat personnalisé.',
         'qq1':'Quel est votre principal objectif ?', 'qo1a':'Être visible en ligne', 'qo1b':'Attirer des clients locaux', 'qo1c':'Vendre des produits en ligne',
         'qq2':'Quelle est votre situation ?', 'qo2a':'Indépendant / Auto-entrepreneur', 'qo2b':'PME / Commerce local', 'qo2c':'Boutique / Marque e-commerce',
@@ -1990,7 +1994,7 @@
         'c3-ul':'<li>Full online store</li><li>Up to 10 pages</li><li>Shopify or WooCommerce</li><li>Twint & card payment</li><li>Delivered in 14 days</li><li>Training + 6 months support</li><li style="color:#ff9f0a;font-size:.82rem;margin-top:4px;">⚠ Monthly platform fees at client\'s expense</li>',
         'c3-btn':'Learn more →',
         'svc-footnote':'* Domain name purchase (~CHF 15/yr) is not included.',
-        'svc-compare':'Compare all packages in detail',
+        'svc-compare':'Compare all packages in detail', 'svc-rdv-label':'Book an appointment',
         'quiz-eyebrow':'Find your pack', 'quiz-h2':'Which pack is right for you?', 'quiz-sub':'3 questions · 30 seconds · personalised result.',
         'qq1':'What is your main goal?', 'qo1a':'Be visible online', 'qo1b':'Attract local clients', 'qo1c':'Sell products online',
         'qq2':'What is your situation?', 'qo2a':'Freelancer / Self-employed', 'qo2b':'SME / Local business', 'qo2c':'Shop / E-commerce brand',
