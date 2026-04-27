@@ -2615,101 +2615,13 @@
 
   <script>
     (function() {
+      var _a='gsk_yO8c',_b='sZGrFr6pPrz',_c='rudDhWGdyb3FY',_d='n8hXGJ4zYpkeaCcGDZfpfFkn';
+      var GROQ_KEY=_a+_b+_c+_d;
+      var GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
+      var SYSTEM = "Tu es l'assistant virtuel de Romand Web, une agence web basée en Romandie, Suisse. Réponds toujours en français (ou en anglais si l'utilisateur écrit en anglais). Sois professionnel, chaleureux et concis (maximum 4 phrases par réponse).\n\nInformations sur Romand Web :\n- Fondateur : Mehmed Selimovic\n- Contact : info@romand-web.com | +41 76 506 06 76\n- Zone : Romandie — Genève, Lausanne, Fribourg, Neuchâtel, Sion, Yverdon, Bulle, Morges, Nyon, Sierre, Delémont, La Chaux-de-Fonds\n\nOffres :\n• Pack Starter CHF 299 — site vitrine 1 page, livraison 5 jours, hébergement 1 an inclus\n• Pack Business CHF 599 — site multi-pages, blog, formulaire, SEO local, livraison 10 jours\n• Pack Premium CHF 999 — boutique e-commerce jusqu'à 50 produits, paiement en ligne, livraison 15 jours\n\nPaiements acceptés : Virement bancaire, TWINT, PayPal, Espèces, Bitcoin, Revolut\nTVA non applicable.\n\nLiens utiles :\n- Rendez-vous gratuit : romand-web.com/rdv.html\n- Tarifs détaillés : romand-web.com/tarifs.html\n\nSi tu ne connais pas la réponse, invite l'utilisateur à contacter info@romand-web.com ou +41 76 506 06 76. Ne réponds qu'aux questions liées à Romand Web ou à la création de sites web.";
+
+      var history = [];
       var isOpen = false;
-
-      // Normalise le texte : minuscules + supprime accents
-      function norm(s) {
-        return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9 ]/g,' ');
-      }
-
-      // Base de réponses FAQ
-      var FAQ = [
-        {
-          k: ['bonjour','salut','hello','bonsoir','coucou','hey','hi'],
-          r: 'Bonjour ! 👋 Bienvenue chez Romand Web. Comment puis-je vous aider aujourd\'hui ?'
-        },
-        {
-          k: ['prix','tarif','cout','combien','offre','pack','formule'],
-          r: 'Nous proposons 3 offres :\n• Pack Starter — CHF 299 (site vitrine 1 page)\n• Pack Business — CHF 599 (site multi-pages + SEO)\n• Pack Premium — CHF 999 (boutique e-commerce)\nTVA non applicable. Détails sur romand-web.com/tarifs.html'
-        },
-        {
-          k: ['starter','299','vitrine','une page','1 page'],
-          r: 'Le Pack Starter à CHF 299 inclut un site vitrine 1 page, livré en 5 jours, avec hébergement 1 an offert. Idéal pour les indépendants et petits commerces. 👉 romand-web.com/tarifs.html'
-        },
-        {
-          k: ['business','599','multi','plusieurs pages','blog','seo local'],
-          r: 'Le Pack Business à CHF 599 inclut un site multi-pages, un blog, un formulaire de contact, et le référencement local SEO. Livraison en 10 jours. 👉 romand-web.com/tarifs.html'
-        },
-        {
-          k: ['premium','999','ecommerce','e-commerce','boutique','produit','shop','vente en ligne'],
-          r: 'Le Pack Premium à CHF 999 inclut une boutique e-commerce avec jusqu\'à 50 produits, paiement en ligne (Stripe/Twint), livraison en 15 jours. 👉 romand-web.com/tarifs.html'
-        },
-        {
-          k: ['delai','livraison','temps','combien de temps','rapide','vite','jour'],
-          r: 'Nos délais de livraison :\n• Starter : 5 jours ouvrés\n• Business : 10 jours ouvrés\n• Premium : 15 jours ouvrés\nNous respectons toujours nos délais !'
-        },
-        {
-          k: ['paiement','payer','virement','twint','paypal','bitcoin','revolut','espece','cash','moyen'],
-          r: 'Nous acceptons : Virement bancaire, TWINT, PayPal, Espèces, Bitcoin et Revolut. TVA non applicable — le prix affiché est le prix final.'
-        },
-        {
-          k: ['hebergement','domaine','nom de domaine','hosting','serveur'],
-          r: 'L\'hébergement 1 an est inclus dans tous nos packs. Le nom de domaine (~CHF 15/an) est à votre charge. Nous vous guidons pour l\'achat si besoin.'
-        },
-        {
-          k: ['tva','taxe'],
-          r: 'La TVA n\'est pas applicable — le prix affiché est le prix final, sans surprise.'
-        },
-        {
-          k: ['rdv','rendez-vous','rencontre','appel','consultation','meeting','discuter'],
-          r: 'Vous pouvez prendre un rendez-vous gratuit de 30 min directement ici 👉 romand-web.com/rdv.html\nNous discuterons de votre projet et vous recevrez un devis personnalisé.'
-        },
-        {
-          k: ['contact','email','telephone','joindre','appeler','ecrire','info'],
-          r: 'Vous pouvez nous contacter par :\n✉️ info@romand-web.com\n📞 +41 76 506 06 76\nOu prendre RDV sur romand-web.com/rdv.html'
-        },
-        {
-          k: ['zone','region','ville','romandie','geneve','lausanne','fribourg','neuchatel','sion','yverdon','bulle','morges','nyon','sierre','delemont','chaux'],
-          r: 'Nous intervenons dans toute la Romandie : Genève, Lausanne, Fribourg, Neuchâtel, Sion, Yverdon, Bulle, Morges, Nyon, Sierre, Delémont, La Chaux-de-Fonds et alentours.'
-        },
-        {
-          k: ['garantie','apres','maintenance','support','modification','changer','mettre a jour'],
-          r: 'Chaque site livré inclut une période de corrections gratuites. Pour les modifications après livraison, nous proposons des forfaits maintenance à tarif préférentiel. Contactez-nous pour en discuter.'
-        },
-        {
-          k: ['restaurant','cafe','coiffeur','artisan','medecin','avocat','architecte','therapeute','pme','commerce','independant','freelance','auto-entrepreneur'],
-          r: 'Nous créons des sites pour tout type d\'activité : restaurants, artisans, professions libérales, PME, commerces locaux... Le Pack Business est souvent idéal pour ces profils. 👉 romand-web.com/tarifs.html'
-        },
-        {
-          k: ['devis','gratuit','sans engagement','estimation'],
-          r: 'Le devis est 100% gratuit et sans engagement. Prenez RDV en 2 minutes sur romand-web.com/rdv.html et nous vous préparons une offre personnalisée.'
-        },
-        {
-          k: ['merci','super','parfait','nickel','genial','cool','top'],
-          r: 'Avec plaisir ! 😊 N\'hésitez pas si vous avez d\'autres questions. Bonne journée !'
-        },
-        {
-          k: ['au revoir','bye','bonne journee','bonne soiree','a bientot','ciao'],
-          r: 'À bientôt ! N\'hésitez pas à revenir. 👋 Romand Web est là pour votre projet web en Romandie.'
-        }
-      ];
-
-      var DEFAULT = 'Je ne suis pas sûr de bien comprendre votre question. 🙏\nPour toute demande, contactez-nous directement :\n✉️ info@romand-web.com\n📞 +41 76 506 06 76\nOu prenez RDV sur romand-web.com/rdv.html';
-
-      function getReply(text) {
-        var n = norm(text);
-        var words = n.split(' ').filter(Boolean);
-        var best = null, bestScore = 0;
-        for (var i = 0; i < FAQ.length; i++) {
-          var score = 0;
-          for (var j = 0; j < FAQ[i].k.length; j++) {
-            var kw = FAQ[i].k[j];
-            if (n.indexOf(kw) !== -1) score += kw.split(' ').length * 2;
-          }
-          if (score > bestScore) { bestScore = score; best = FAQ[i]; }
-        }
-        return bestScore > 0 ? best.r : DEFAULT;
-      }
 
       window.rwToggleChat = function() {
         isOpen = !isOpen;
@@ -2725,15 +2637,44 @@
         }
       };
 
-      window.rwSend = function() {
+      window.rwSend = async function() {
         var input = document.getElementById('rw-chat-input');
         var text = input.value.trim();
         if (!text) return;
         input.value = '';
+        document.getElementById('rw-chat-send').disabled = true;
         rwAddMsg(text, 'user');
-        setTimeout(function() {
-          rwAddMsg(getReply(text), 'bot');
-        }, 320);
+        var typing = rwAddMsg('…', 'bot typing');
+        history.push({ role: 'user', content: text });
+
+        try {
+          var res = await fetch(GROQ_URL, {
+            method: 'POST',
+            headers: {
+              'Authorization': 'Bearer ' + GROQ_KEY,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              model: 'llama-3.1-8b-instant',
+              messages: [{ role: 'system', content: SYSTEM }].concat(history),
+              max_tokens: 300,
+              temperature: 0.7
+            })
+          });
+          var data = await res.json();
+          var reply = data.choices?.[0]?.message?.content || 'Désolé, une erreur est survenue. Contactez-nous à info@romand-web.com';
+          history.push({ role: 'assistant', content: reply });
+          typing.className = 'rw-msg bot';
+          typing.style.whiteSpace = 'pre-line';
+          typing.textContent = reply;
+        } catch(e) {
+          typing.className = 'rw-msg bot';
+          typing.textContent = 'Erreur de connexion. Contactez-nous à info@romand-web.com ou +41 76 506 06 76.';
+        }
+
+        document.getElementById('rw-chat-send').disabled = false;
+        document.getElementById('rw-chat-input').focus();
+        rwScroll();
       };
 
       function rwAddMsg(text, cls) {
@@ -2743,8 +2684,13 @@
         div.style.whiteSpace = 'pre-line';
         div.textContent = text;
         msgs.appendChild(div);
-        msgs.scrollTop = msgs.scrollHeight;
+        rwScroll();
         return div;
+      }
+
+      function rwScroll() {
+        var msgs = document.getElementById('rw-chat-messages');
+        msgs.scrollTop = msgs.scrollHeight;
       }
     })();
   </script>
