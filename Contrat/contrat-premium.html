@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contrat Pack Premium – Romand Web</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --blue:#0071e3; --black:#1d1d1f; --gray:#6e6e73; --light:#f5f5f7; --border:#d2d2d7; --green:#34c759; --orange:#ff9f0a; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 10pt; line-height: 1.65; color: var(--black);
+      background: white; max-width: 820px; margin: 0 auto; padding: 40px 48px;
+    }
+    .doc-header { display:flex; align-items:flex-start; justify-content:space-between; border-bottom:2px solid var(--black); padding-bottom:20px; margin-bottom:24px; }
+    .brand-logo { display:flex; align-items:center; gap:10px; margin-bottom:4px; }
+    .brand-name { font-size:22pt; font-weight:800; letter-spacing:-1px; }
+    .brand-sub { font-size:8pt; color:var(--gray); margin-top:2px; }
+    .brand-contact { margin-top:8px; font-size:8.5pt; color:var(--gray); line-height:1.6; }
+    .doc-meta { text-align:right; font-size:8.5pt; color:var(--gray); line-height:1.6; }
+    .doc-meta .pack-badge { display:inline-block; background:linear-gradient(135deg,#ff9f0a,#ff6b00); color:white; padding:4px 14px; border-radius:980px; font-size:9pt; font-weight:700; letter-spacing:0.3px; margin-bottom:6px; }
+    .parties-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px; }
+    .party-box { border:1px solid var(--border); border-radius:10px; padding:14px 16px; }
+    .party-box h3 { font-size:8pt; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:var(--gray); margin-bottom:10px; }
+    .field-row { display:flex; align-items:baseline; gap:6px; margin-bottom:7px; font-size:9pt; }
+    .field-label { font-weight:600; white-space:nowrap; min-width:90px; }
+    .field-line { flex:1; border-bottom:1px solid var(--border); min-height:14px; }
+    .section { margin-bottom:20px; }
+    .section h2 { font-size:10pt; font-weight:700; color:var(--blue); text-transform:uppercase; letter-spacing:0.4px; border-bottom:1px solid var(--border); padding-bottom:4px; margin-bottom:10px; }
+    .section p { font-size:9.5pt; margin-bottom:6px; }
+    .section ul, .section ol { padding-left:18px; }
+    .section li { font-size:9.5pt; margin-bottom:4px; }
+    table { width:100%; border-collapse:collapse; margin:8px 0; font-size:9pt; }
+    th { background:var(--black); color:white; padding:8px 12px; text-align:left; font-weight:600; }
+    td { padding:7px 12px; border-bottom:1px solid var(--border); vertical-align:top; }
+    tr:nth-child(even) td { background:var(--light); }
+    .price-box { border:2px solid var(--orange); border-radius:12px; padding:18px 20px; margin:12px 0; display:flex; justify-content:space-between; align-items:center; }
+    .price-label { font-size:9.5pt; color:var(--gray); }
+    .price-amount { font-size:24pt; font-weight:800; letter-spacing:-1px; color:var(--orange); }
+    .price-note { font-size:8pt; color:var(--gray); margin-top:2px; }
+    .payment-steps { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:10px 0; }
+    .step-card { border:1px solid var(--border); border-radius:10px; padding:12px 14px; }
+    .step-card .step-num { font-size:8pt; font-weight:700; color:var(--blue); text-transform:uppercase; letter-spacing:0.5px; }
+    .step-card .step-amount { font-size:15pt; font-weight:800; letter-spacing:-0.5px; margin:4px 0; }
+    .step-card .step-when { font-size:8.5pt; color:var(--gray); }
+    .cancel-table td:first-child { font-weight:600; }
+    .cancel-table td:last-child { color:var(--blue); font-weight:700; }
+    .info-box { background:#eff6ff; border-left:3px solid var(--blue); padding:9px 13px; margin:8px 0; font-size:9pt; }
+    .warn-box { background:#fff7ed; border-left:3px solid var(--orange); padding:9px 13px; margin:8px 0; font-size:9pt; }
+    .green-box { background:#f0fdf4; border-left:3px solid var(--green); padding:9px 13px; margin:8px 0; font-size:9pt; }
+    .checklist { list-style:none; padding:0; }
+    .checklist li { display:flex; align-items:baseline; gap:8px; padding:5px 0; border-bottom:1px solid var(--border); font-size:9.5pt; }
+    .checklist li:last-child { border-bottom:none; }
+    .checklist li::before { content:'☐'; font-size:11pt; color:var(--blue); flex-shrink:0; }
+
+    /* PLATFORM CHOICE */
+    .platform-choice { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:10px 0; }
+    .platform-card { border:2px solid var(--border); border-radius:10px; padding:14px 16px; cursor:pointer; }
+    .platform-card.selected { border-color:var(--blue); background:#eff6ff; }
+    .platform-card h4 { font-size:10pt; font-weight:700; margin-bottom:4px; }
+    .platform-card p { font-size:8.5pt; color:var(--gray); margin-bottom:6px; }
+    .platform-card .platform-cost { font-size:9pt; font-weight:700; color:var(--orange); }
+    .platform-select-row { display:flex; align-items:center; gap:8px; margin-top:6px; font-size:9pt; }
+    .platform-checkbox { width:16px; height:16px; border:2px solid var(--border); border-radius:4px; display:inline-block; }
+
+    .sig-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:10px; }
+    .sig-box { border:1px solid var(--border); border-radius:10px; padding:14px 16px; }
+    .sig-box h3 { font-size:8pt; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:var(--gray); margin-bottom:14px; }
+    .sig-line { border-bottom:1px solid var(--black); height:40px; margin-bottom:8px; }
+    .sig-label { font-size:8pt; color:var(--gray); }
+    .sig-date-row { display:flex; align-items:baseline; gap:6px; margin-top:10px; font-size:9pt; }
+    .sig-date-line { flex:1; border-bottom:1px solid var(--border); }
+    .doc-footer { margin-top:32px; border-top:1px solid var(--border); padding-top:12px; display:flex; justify-content:space-between; font-size:8pt; color:var(--gray); }
+    /* RABAIS */
+    .rabais-box { border:1.5px dashed var(--border); border-radius:10px; padding:12px 16px; margin:10px 0; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+    .rabais-title { font-size:9pt; font-weight:700; white-space:nowrap; }
+    .rabais-type { display:flex; border:1.5px solid var(--border); border-radius:8px; overflow:hidden; }
+    .rabais-type button { background:none; border:none; padding:5px 13px; font-size:8.5pt; font-weight:700; cursor:pointer; font-family:inherit; transition:background 0.15s; }
+    .rabais-type button.active { background:var(--blue); color:white; }
+    .rabais-input { width:80px; border:1.5px solid var(--border); border-radius:8px; padding:5px 10px; font-size:10pt; font-family:inherit; text-align:right; font-weight:700; }
+    .rabais-input:focus { outline:none; border-color:var(--blue); }
+    .rabais-reason { flex:1; min-width:130px; border:1.5px solid var(--border); border-radius:8px; padding:5px 10px; font-size:8.5pt; font-family:inherit; }
+    .rabais-reason:focus { outline:none; border-color:var(--blue); }
+    .rabais-result { font-size:9pt; font-weight:700; color:#ff3b30; white-space:nowrap; }
+    .rabais-print { border:1px solid var(--border); border-radius:8px; padding:8px 12px; margin:8px 0; font-size:9pt; display:none; }
+    .print-btn { position:fixed; top:20px; right:20px; background:var(--orange); color:white; border:none; padding:10px 22px; border-radius:980px; font-size:0.85rem; font-weight:600; cursor:pointer; font-family:inherit; box-shadow:0 4px 14px rgba(255,159,10,0.35); }
+    .print-btn:hover { background:#e8900a; }
+    .field-input { flex:1; min-width:0; border:none; border-bottom:1.5px solid var(--border); outline:none; background:transparent; font-size:9pt; font-family:inherit; color:var(--black); padding:0 4px 1px; transition:border-color 0.15s; }
+    .field-input:focus { border-bottom-color:var(--blue); background:rgba(0,113,227,0.03); }
+    .meta-input { border:none; border-bottom:1px solid var(--border); outline:none; background:transparent; font-size:8.5pt; font-family:inherit; color:var(--gray); width:130px; }
+    .sig-date-input { flex:1; border:none; border-bottom:1px solid var(--border); outline:none; background:transparent; font-size:9pt; font-family:inherit; color:var(--black); padding:0 4px 1px; }
+    @media print {
+      body { padding:16px 24px; font-size:9pt; }
+      .no-print { display:none; }
+      a { color:inherit; text-decoration:none; }
+      .page-break { page-break-before:always; }
+      @page { size:A4; margin:15mm 14mm; }
+      .field-input::placeholder, .meta-input::placeholder, .sig-date-input::placeholder { color:transparent; }
+      .field-input, .sig-date-input { border-bottom-color:#bbb; }
+      /* Anti-coupure */
+      .section, .party-box, .price-box, .step-card,
+      .payment-steps, .sig-box, .sig-grid,
+      tr, .field-row, .checklist li, .info-box, .warn-box, .green-box {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .section h2, h3 { break-after: avoid; page-break-after: avoid; }
+      .doc-header { break-inside: avoid; page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">⬇ Exporter en PDF</button>
+
+<!-- HEADER -->
+<div class="doc-header">
+  <div>
+    <div class="brand-logo">
+      <svg width="42" height="42" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+        <rect width="72" height="72" rx="14" fill="#0071e3"/>
+        <polygon points="36,8 64,36 36,64 8,36" fill="white"/>
+        <polygon points="36,22 50,36 36,50 22,36" fill="#0071e3"/>
+      </svg>
+      <div class="brand-name">Romand Web</div>
+    </div>
+    <div class="brand-sub">Agence web — Romandie, Suisse</div>
+    <div class="brand-contact">
+      Mehmed Selimovic · Romandie, Suisse<br>
+      +41 76 506 06 76 · info@romand-web.com<br>
+      romand-web.com
+    </div>
+  </div>
+  <div class="doc-meta">
+    <span class="pack-badge">✦ Pack Premium — E-commerce</span><br>
+    N° contrat : <input class="meta-input" placeholder="RW-2026-001"><br>
+    Date : <input class="meta-input" placeholder="JJ/MM/2026"><br>
+    Valable 30 jours
+  </div>
+</div>
+
+<!-- PARTIES -->
+<div class="section">
+  <h2>Parties au contrat</h2>
+  <div class="parties-grid">
+    <div class="party-box">
+      <h3>Prestataire</h3>
+      <div class="field-row"><span class="field-label">Raison sociale</span><span>Romand Web</span></div>
+      <div class="field-row"><span class="field-label">Représentant</span><span>Mehmed Selimovic</span></div>
+      <div class="field-row"><span class="field-label">Téléphone</span><span>+41 76 506 06 76</span></div>
+      <div class="field-row"><span class="field-label">Email</span><span>info@romand-web.com</span></div>
+      <div class="field-row"><span class="field-label">Site web</span><span>romand-web.com</span></div>
+    </div>
+    <div class="party-box">
+      <h3>Client</h3>
+      <div class="field-row"><span class="field-label">Nom / Société</span><input class="field-input" placeholder="Raison sociale ou nom complet"></div>
+      <div class="field-row"><span class="field-label">Représentant</span><input class="field-input" placeholder="Prénom Nom"></div>
+      <div class="field-row"><span class="field-label">Adresse</span><input class="field-input" placeholder="Rue, NPA Ville"></div>
+      <div class="field-row"><span class="field-label">Téléphone</span><input class="field-input" placeholder="+41 XX XXX XX XX"></div>
+      <div class="field-row"><span class="field-label">Email</span><input class="field-input" placeholder="email@exemple.ch"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PLATEFORME -->
+<div class="section">
+  <h2>Choix de la plateforme e-commerce</h2>
+  <p>Le Client choisit l'une des deux plateformes ci-dessous. Ce choix est définitif à la signature du contrat.</p>
+  <div class="platform-choice">
+    <div class="platform-card">
+      <h4>Shopify</h4>
+      <p>Solution hébergée clé-en-main. Idéale pour démarrer rapidement. Tableau de bord simplifié.</p>
+      <div class="platform-cost">⚠ ~CHF 29–79/mois à la charge du Client</div>
+      <div class="platform-select-row">
+        <span class="platform-checkbox"></span>
+        <span>Sélectionner Shopify</span>
+      </div>
+    </div>
+    <div class="platform-card">
+      <h4>WooCommerce</h4>
+      <p>Solution open-source sur WordPress. Plus de flexibilité, hébergement indépendant.</p>
+      <div class="platform-cost">⚠ ~CHF 5–15/mois (hébergement) à la charge du Client</div>
+      <div class="platform-select-row">
+        <span class="platform-checkbox"></span>
+        <span>Sélectionner WooCommerce</span>
+      </div>
+    </div>
+  </div>
+  <div class="warn-box"><strong>Important :</strong> les frais mensuels de plateforme sont facturés <strong>directement au Client</strong> par Shopify ou l'hébergeur. Romand Web n'est pas intermédiaire pour ces paiements.</div>
+</div>
+
+<!-- LIVRABLES -->
+<div class="section">
+  <h2>Prestations incluses</h2>
+  <table>
+    <thead><tr><th>Livrable</th><th>Détail</th><th>Inclus</th></tr></thead>
+    <tbody>
+      <tr><td>Boutique en ligne complète</td><td>Jusqu'à 10 pages — Shopify ou WooCommerce</td><td style="color:var(--green);font-weight:700;">✓</td></tr>
+      <tr><td>Catalogue produits</td><td>Jusqu'à 20 produits configurés au lancement</td><td style="color:var(--green);font-weight:700;">✓</td></tr>
+      <tr><td>Paiement en ligne sécurisé</td><td>Stripe, PayPal, Twint (selon plateforme)</td><td style="color:var(--green);font-weight:700;">✓</td></tr>
+      <tr><td>SEO avancé</td><td>Balises, schema.org produit, sitemap, Google Shopping</td><td style="color:var(--green);font-weight:700;">✓</td></tr>
+      <tr><td>Design responsive sur mesure</td><td>Mobile + desktop + tablette, animations</td><td style="color:var(--green);font-weight:700;">✓</td></tr>
+      <tr><td>Mentions légales & CGV boutique</td><td>Template rédigé adapté à la plateforme choisie</td><td style="color:var(--green);font-weight:700;">✓</td></tr>
+      <tr><td>Formation à l'utilisation</td><td>Session de 1–2h (visio ou présentiel) pour gérer la boutique</td><td style="color:var(--green);font-weight:700;">✓</td></tr>
+      <tr><td>Mise en ligne</td><td>Déploiement et configuration complète</td><td style="color:var(--green);font-weight:700;">✓</td></tr>
+      <tr><td>Support post-livraison</td><td>6 mois de corrections, modifications, questions</td><td style="color:var(--green);font-weight:700;">✓</td></tr>
+      <tr><td>Délai de livraison</td><td>14 jours ouvrables (dès réception acompte + documents)</td><td style="color:var(--green);font-weight:700;">✓</td></tr>
+      <tr><td>Nom de domaine</td><td>~CHF 15/an — à la charge du Client</td><td style="color:var(--orange);font-weight:700;">Exclu</td></tr>
+      <tr><td>Frais plateforme mensuel</td><td>Shopify ~CHF 29–79/mois ou WordPress ~CHF 5–15/mois</td><td style="color:var(--orange);font-weight:700;">Exclu</td></tr>
+      <tr><td>Produits supplémentaires</td><td>Au-delà de 20 produits : CHF 5/produit</td><td style="color:var(--orange);font-weight:700;">Sur devis</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- PRODUITS -->
+<div class="section">
+  <h2>Périmètre boutique (à compléter)</h2>
+  <table>
+    <thead><tr><th>Information</th><th>Valeur</th></tr></thead>
+    <tbody>
+      <tr><td>Nombre de catégories</td><td><input type="text" style="border:none;border-bottom:1px solid var(--border);width:200px;background:transparent;font-size:9pt;font-family:inherit;outline:none;padding:0 4px;" placeholder="ex. 5"></td></tr>
+      <tr><td>Nombre de produits au lancement</td><td><input type="text" style="border:none;border-bottom:1px solid var(--border);width:200px;background:transparent;font-size:9pt;font-family:inherit;outline:none;padding:0 4px;" placeholder="ex. 20"></td></tr>
+      <tr><td>Devise de vente</td><td>CHF — Francs suisses</td></tr>
+      <tr><td>Livraison (zones)</td><td><input type="text" style="border:none;border-bottom:1px solid var(--border);width:200px;background:transparent;font-size:9pt;font-family:inherit;outline:none;padding:0 4px;" placeholder="ex. Suisse, France"></td></tr>
+      <tr><td>Mode de paiement souhaité</td><td><input type="text" style="border:none;border-bottom:1px solid var(--border);width:200px;background:transparent;font-size:9pt;font-family:inherit;outline:none;padding:0 4px;" placeholder="ex. Stripe, Twint, PayPal"></td></tr>
+      <tr><td>Langue(s) de la boutique</td><td><input type="text" style="border:none;border-bottom:1px solid var(--border);width:200px;background:transparent;font-size:9pt;font-family:inherit;outline:none;padding:0 4px;" placeholder="ex. Français, Allemand"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- PRIX -->
+<div class="section">
+  <h2>Prix et paiement</h2>
+  <div class="price-box">
+    <div>
+      <div class="price-label">Prix total du projet</div>
+      <div class="price-note">Paiement unique · Hors frais de plateforme mensuels · TVA non applicable</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="price-amount" id="p-total">CHF 999</div>
+    </div>
+  </div>
+
+  <!-- RABAIS -->
+  <div class="rabais-box no-print">
+    <span class="rabais-title">🏷 Rabais</span>
+    <div class="rabais-type">
+      <button id="rb-pct" class="active" onclick="setRabaisType('pct')">%</button>
+      <button id="rb-chf" onclick="setRabaisType('chf')">CHF</button>
+    </div>
+    <input type="number" class="rabais-input" id="rabais-val" min="0" placeholder="0" oninput="calcRabais()">
+    <input type="text" class="rabais-reason" id="rabais-reason" placeholder="Motif : fidélité, parrainage…" oninput="calcRabais()">
+    <span class="rabais-result" id="rabais-result"></span>
+  </div>
+  <div class="rabais-print" id="rabais-print">
+    <strong>Rabais accordé :</strong> <span id="rp-amount"></span>
+    &nbsp;·&nbsp; <em id="rp-reason"></em>
+  </div>
+
+  <div class="payment-steps">
+    <div class="step-card">
+      <div class="step-num">Acompte — À la signature</div>
+      <div class="step-amount" id="p-deposit">CHF 500</div>
+      <div class="step-when">Démarrage des travaux après réception</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">Solde — À la livraison</div>
+      <div class="step-amount" id="p-balance">CHF 499</div>
+      <div class="step-when">Avant remise des accès administrateur</div>
+    </div>
+  </div>
+  <p style="margin-top:8px;">Paiement par : <strong>Virement bancaire · TWINT · PayPal · Espèces · Bitcoin · Revolut</strong></p>
+
+<script>
+  var BASE_PRICE = 999;
+  var rabaisType = 'pct';
+  function setRabaisType(t) {
+    rabaisType = t;
+    document.getElementById('rb-pct').classList.toggle('active', t === 'pct');
+    document.getElementById('rb-chf').classList.toggle('active', t === 'chf');
+    calcRabais();
+  }
+  function calcRabais() {
+    var val      = parseFloat(document.getElementById('rabais-val').value) || 0;
+    var reason   = document.getElementById('rabais-reason').value;
+    var discount = rabaisType === 'pct' ? Math.round(BASE_PRICE * val / 100) : Math.min(val, BASE_PRICE);
+    var net      = Math.max(0, BASE_PRICE - discount);
+    var deposit  = Math.round(net / 2);
+    var balance  = net - deposit;
+    document.getElementById('p-total').textContent   = 'CHF ' + net;
+    document.getElementById('p-deposit').textContent = 'CHF ' + deposit;
+    document.getElementById('p-balance').textContent = 'CHF ' + balance;
+    var rp = document.getElementById('rabais-print');
+    if (discount > 0) {
+      document.getElementById('rabais-result').textContent = '−CHF ' + discount + '  →  Net : CHF ' + net;
+      document.getElementById('rp-amount').textContent = '−CHF ' + discount;
+      document.getElementById('rp-reason').textContent = reason || 'Non spécifié';
+      rp.style.display = 'block';
+    } else {
+      document.getElementById('rabais-result').textContent = '';
+      rp.style.display = 'none';
+    }
+  }
+</script>
+</div>
+
+<!-- DOCUMENTS -->
+<div class="section">
+  <h2>Documents requis du Client</h2>
+  <p>Le Client s'engage à fournir les éléments suivants dans les <strong>5 jours ouvrables</strong> suivant la signature :</p>
+  <ul class="checklist">
+    <li>Logo en haute résolution (SVG ou PNG transparent)</li>
+    <li>Textes et contenus rédigés pour chaque page de la boutique</li>
+    <li>Photos produits (fond blanc ou neutre, min. 1000×1000px, libres de droits)</li>
+    <li>Descriptions et prix de chaque produit (fichier Excel/CSV accepté)</li>
+    <li>Informations légales complètes (raison sociale, UID/IDE, adresse, email, téléphone)</li>
+    <li>Politique de retour et conditions générales de vente propres à l'activité</li>
+    <li>Numéro TVA suisse (si assujetti)</li>
+    <li>Tarifs et zones de livraison (poids, délais, frais)</li>
+    <li>Nom de domaine souhaité ou accès registrar si domaine existant</li>
+    <li>Accès compte Shopify créé ou accès hébergeur WordPress si existant</li>
+    <li>Préférences visuelles (couleurs, exemples de boutiques appréciées)</li>
+    <li>Liens et identifiants réseaux sociaux</li>
+  </ul>
+  <div class="warn-box">Le délai de livraison de 14 jours ne commence à courir qu'à la réception de <strong>l'intégralité</strong> de ces documents. Tout retard imputable au Client suspend le délai.</div>
+</div>
+
+<!-- ANNULATION -->
+<div class="section">
+  <h2>Conditions d'annulation</h2>
+  <table class="cancel-table">
+    <thead><tr><th>Moment de l'annulation</th><th>Indemnité due</th></tr></thead>
+    <tbody>
+      <tr><td>Dans les 48h (aucun travail commencé)</td><td>Aucune — remboursement intégral</td></tr>
+      <tr><td>Après 48h, avant démarrage</td><td>CHF 200 (20%) — frais de réservation</td></tr>
+      <tr><td>Travaux démarrés, moins de 50% réalisé</td><td>CHF 500 (50%)</td></tr>
+      <tr><td>Plus de 50% du projet réalisé</td><td>CHF 749 (75%)</td></tr>
+      <tr><td>Livrable remis (boutique livrée)</td><td>CHF 999 (100%) — aucun remboursement</td></tr>
+    </tbody>
+  </table>
+  <div class="info-box" style="margin-top:8px;">
+    <strong>Note spécifique Pack Premium :</strong> les frais de plateforme (Shopify/WooCommerce) engagés par le Client auprès de tiers avant annulation ne sont pas remboursables par Romand Web.
+  </div>
+  <p style="margin-top:8px; font-size:9pt; color:var(--gray);">Annulation à notifier par écrit à info@romand-web.com. Date retenue : réception de l'email.</p>
+</div>
+
+<!-- CGV -->
+<div class="section">
+  <h2>Conditions générales</h2>
+  <p>Le présent contrat est régi par les <strong>Conditions Générales de Vente (CGV)</strong> de Romand Web, disponibles sur romand-web.com/cgv.html et remises au Client avec le présent document. Le Client reconnaît en avoir pris connaissance et les accepter sans réserve.</p>
+  <p>Droit applicable : <strong>droit suisse (Code des Obligations)</strong>. For juridique : siège du Prestataire.</p>
+</div>
+
+<!-- SIGNATURES -->
+<div class="section page-break" style="margin-top:28px;">
+  <h2>Signatures</h2>
+  <p style="margin-bottom:14px; font-size:9pt;">En signant le présent contrat, les deux parties reconnaissent avoir pris connaissance et accepter l'ensemble des conditions ci-dessus ainsi que les CGV de Romand Web.</p>
+  <div class="sig-grid">
+    <div class="sig-box">
+      <h3>Le Prestataire</h3>
+      <p style="font-size:9pt; margin-bottom:12px;"><strong>Romand Web</strong> — Mehmed Selimovic</p>
+      <div class="sig-line"></div>
+      <div class="sig-label">Signature</div>
+      <div class="sig-date-row"><span>Date :</span><input class="sig-date-input" placeholder="JJ/MM/AAAA"></div>
+    </div>
+    <div class="sig-box">
+      <h3>Le Client</h3>
+      <p style="font-size:9pt; margin-bottom:12px; border-bottom:1px solid var(--border); padding-bottom:12px;"><input class="field-input" placeholder="Nom & prénom / Raison sociale" style="width:100%"></p>
+      <div class="sig-line"></div>
+      <div class="sig-label">Signature + tampon (si applicable)</div>
+      <div class="sig-date-row"><span>Date :</span><input class="sig-date-input" placeholder="JJ/MM/AAAA"></div>
+    </div>
+  </div>
+  <div class="info-box" style="margin-top:14px;">
+    <strong>Mention manuscrite obligatoire</strong> : le Client appose la mention <em>"Lu et approuvé — Bon pour accord"</em> avant sa signature.
+  </div>
+  <div class="warn-box" style="margin-top:10px;">
+    <strong>Plateforme choisie (à cocher et parapher) :</strong> &nbsp;
+    ☐ Shopify (~CHF 29–79/mois) &nbsp;&nbsp; ☐ WooCommerce (~CHF 5–15/mois)
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <span>Romand Web · romand-web.com · +41 76 506 06 76</span>
+  <span>Contrat Pack Premium — E-commerce · CHF 999 · Droit suisse</span>
+</div>
+
+</body>
+</html>
