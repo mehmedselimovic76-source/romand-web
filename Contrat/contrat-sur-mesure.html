@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contrat Sur Mesure – Romand Web</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:#0071e3; --black:#1d1d1f; --gray:#6e6e73;
+      --light:#f5f5f7; --border:#d2d2d7; --green:#34c759; --orange:#ff9f0a;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 10pt; line-height: 1.65; color: var(--black);
+      background: white; max-width: 860px; margin: 0 auto; padding: 40px 48px;
+    }
+
+    /* ── PRINT BUTTON ── */
+    .print-btn {
+      position: fixed; top: 20px; right: 20px;
+      background: var(--blue); color: white; border: none;
+      padding: 10px 22px; border-radius: 980px; font-size: 0.85rem;
+      font-weight: 600; cursor: pointer; font-family: inherit;
+      box-shadow: 0 4px 14px rgba(0,113,227,0.3);
+    }
+    .print-btn:hover { background: #0077ed; }
+
+    /* ── HEADER ── */
+    .doc-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      border-bottom: 2px solid var(--black); padding-bottom: 20px; margin-bottom: 24px;
+    }
+    .brand-logo { display:flex; align-items:center; gap:10px; margin-bottom:4px; }
+    .brand-name { font-size: 22pt; font-weight: 800; letter-spacing: -1px; }
+    .brand-sub  { font-size: 8pt; color: var(--gray); margin-top: 2px; }
+    .brand-contact { margin-top: 8px; font-size: 8.5pt; color: var(--gray); line-height: 1.6; }
+    .doc-meta { text-align: right; font-size: 8.5pt; color: var(--gray); line-height: 1.6; }
+    .pack-badge {
+      display: inline-block; background: linear-gradient(135deg,#a855f7,#6366f1);
+      color: white; padding: 4px 14px; border-radius: 980px;
+      font-size: 9pt; font-weight: 700; letter-spacing: 0.3px; margin-bottom: 6px;
+    }
+
+    /* ── SECTION ── */
+    .section { margin-bottom: 22px; }
+    .section h2 {
+      font-size: 10pt; font-weight: 700; color: var(--blue); text-transform: uppercase;
+      letter-spacing: 0.4px; border-bottom: 1px solid var(--border);
+      padding-bottom: 4px; margin-bottom: 12px;
+    }
+    .section p { font-size: 9.5pt; margin-bottom: 6px; }
+
+    /* ── PARTIES ── */
+    .parties-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .party-box { border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+    .party-box h3 { font-size: 8pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray); margin-bottom: 10px; }
+    .field-row { display: flex; align-items: baseline; gap: 6px; margin-bottom: 7px; font-size: 9pt; }
+    .field-label { font-weight: 600; white-space: nowrap; min-width: 90px; }
+    .field-line { flex: 1; border-bottom: 1px solid var(--border); min-height: 14px; }
+
+    /* ── BASE PACK SELECTOR ── */
+    .base-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin: 10px 0; }
+    .base-card {
+      border: 2px solid var(--border); border-radius: 12px; padding: 12px 10px;
+      text-align: center; cursor: pointer; transition: all 0.18s;
+      user-select: none;
+    }
+    .base-card:hover { border-color: var(--blue); }
+    .base-card.selected { border-color: var(--blue); background: #eff6ff; }
+    .base-card input[type="radio"] { display: none; }
+    .base-card .bc-name { font-size: 10pt; font-weight: 700; margin-bottom: 3px; }
+    .base-card .bc-price { font-size: 13pt; font-weight: 800; color: var(--blue); }
+    .base-card .bc-note { font-size: 7.5pt; color: var(--gray); margin-top: 2px; }
+    .base-card.none-card .bc-price { color: var(--gray); }
+
+    /* ── OPTIONS TABLE ── */
+    .options-group { margin-bottom: 18px; }
+    .options-group h3 {
+      font-size: 8.5pt; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.4px; color: var(--gray); margin-bottom: 8px;
+      padding-bottom: 4px; border-bottom: 1px solid var(--border);
+    }
+    .opt-row {
+      display: grid; grid-template-columns: 22px 1fr 80px 70px;
+      align-items: center; gap: 8px;
+      padding: 6px 0; border-bottom: 1px solid #f0f0f2; font-size: 9pt;
+    }
+    .opt-row:last-child { border-bottom: none; }
+    .opt-row input[type="checkbox"] { width: 14px; height: 14px; cursor: pointer; accent-color: var(--blue); }
+    .opt-label { font-weight: 500; color: var(--black); }
+    .opt-desc  { font-size: 8pt; color: var(--gray); }
+    .opt-price { font-weight: 700; color: var(--blue); text-align: right; white-space: nowrap; }
+    .opt-qty-wrap { display: flex; align-items: center; gap: 4px; justify-content: flex-end; }
+    .opt-qty {
+      width: 44px; border: 1px solid var(--border); border-radius: 6px;
+      padding: 2px 6px; font-size: 8.5pt; text-align: center; font-family: inherit;
+      display: none;
+    }
+    .opt-qty.visible { display: inline-block; }
+    .opt-qty-label { font-size: 8pt; color: var(--gray); white-space: nowrap; }
+
+    /* ── CUSTOM OPTION ROWS ── */
+    .custom-section { margin-top: 10px; }
+    .custom-row {
+      display: grid; grid-template-columns: 1fr 100px 36px;
+      gap: 8px; margin-bottom: 6px; align-items: center;
+    }
+    .custom-input {
+      border: 1px solid var(--border); border-radius: 6px;
+      padding: 5px 9px; font-size: 9pt; font-family: inherit; width: 100%;
+    }
+    .custom-input:focus { outline: none; border-color: var(--blue); }
+    .custom-price {
+      border: 1px solid var(--border); border-radius: 6px;
+      padding: 5px 9px; font-size: 9pt; font-family: inherit;
+      text-align: right; width: 100%;
+    }
+    .btn-remove {
+      background: none; border: 1px solid var(--border); border-radius: 6px;
+      color: var(--gray); font-size: 14pt; cursor: pointer; line-height: 1;
+      padding: 2px 8px; transition: color 0.15s, border-color 0.15s;
+    }
+    .btn-remove:hover { color: #ff3b30; border-color: #ff3b30; }
+    .btn-add-custom {
+      background: none; border: 1px dashed var(--blue); border-radius: 8px;
+      color: var(--blue); font-size: 8.5pt; font-weight: 600; cursor: pointer;
+      padding: 6px 14px; margin-top: 6px; font-family: inherit; transition: background 0.15s;
+    }
+    .btn-add-custom:hover { background: #eff6ff; }
+
+    /* ── TOTALS ── */
+    .totals-box {
+      border: 2px solid var(--black); border-radius: 14px;
+      overflow: hidden; margin: 14px 0;
+    }
+    .total-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 9px 16px; font-size: 9.5pt; border-bottom: 1px solid var(--border);
+    }
+    .total-row:last-child { border-bottom: none; }
+    .total-row.subtotal { color: var(--gray); }
+    .total-row.grand { background: var(--black); color: white; font-size: 12pt; font-weight: 800; }
+    .total-row.grand span:last-child { font-size: 16pt; letter-spacing: -0.5px; }
+    .total-row.deposit { color: var(--blue); font-weight: 700; }
+    .total-row.balance { color: var(--gray); }
+
+    /* ── PAYMENT ── */
+    .payment-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 10px 0; }
+    .step-card { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+    .step-num { font-size: 8pt; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 0.5px; }
+    .step-amount { font-size: 15pt; font-weight: 800; letter-spacing: -0.5px; margin: 4px 0; }
+    .step-when { font-size: 8.5pt; color: var(--gray); }
+
+    /* ── INFO BOXES ── */
+    .info-box  { background: #eff6ff; border-left: 3px solid var(--blue); padding: 9px 13px; margin: 8px 0; font-size: 9pt; }
+    .warn-box  { background: #fff7ed; border-left: 3px solid var(--orange); padding: 9px 13px; margin: 8px 0; font-size: 9pt; }
+    .green-box { background: #f0fdf4; border-left: 3px solid var(--green); padding: 9px 13px; margin: 8px 0; font-size: 9pt; }
+
+    /* ── CANCEL TABLE ── */
+    table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 9pt; }
+    th { background: var(--black); color: white; padding: 8px 12px; text-align: left; font-weight: 600; }
+    td { padding: 7px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    tr:nth-child(even) td { background: var(--light); }
+    .cancel-table td:first-child { font-weight: 600; }
+    .cancel-table td:last-child { color: var(--blue); font-weight: 700; }
+
+    /* ── TIMELINE ── */
+    .field-row-inline { display: flex; align-items: baseline; gap: 6px; margin-bottom: 7px; font-size: 9pt; }
+    .field-label-sm { font-weight: 600; min-width: 130px; white-space: nowrap; }
+    .field-line-sm { flex: 1; border-bottom: 1px solid var(--border); min-height: 14px; }
+
+    /* ── SIGNATURES ── */
+    .sig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 10px; }
+    .sig-box { border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+    .sig-box h3 { font-size: 8pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray); margin-bottom: 14px; }
+    .sig-line { border-bottom: 1px solid var(--black); height: 40px; margin-bottom: 8px; }
+    .sig-label { font-size: 8pt; color: var(--gray); }
+    .sig-date-row { display: flex; align-items: baseline; gap: 6px; margin-top: 10px; font-size: 9pt; }
+    .sig-date-line { flex: 1; border-bottom: 1px solid var(--border); }
+
+    /* ── FOOTER ── */
+    .doc-footer { margin-top: 32px; border-top: 1px solid var(--border); padding-top: 12px; display: flex; justify-content: space-between; font-size: 8pt; color: var(--gray); }
+
+    /* ── RABAIS ── */
+    .rabais-type { display:flex; border:1.5px solid var(--border); border-radius:8px; overflow:hidden; }
+    .rabais-type button { background:none; border:none; padding:5px 13px; font-size:8.5pt; font-weight:700; cursor:pointer; font-family:inherit; transition:background 0.15s; }
+    .rabais-type button.active { background:var(--blue); color:white; }
+    .rabais-input { width:80px; border:1.5px solid var(--border); border-radius:8px; padding:5px 10px; font-size:10pt; font-family:inherit; text-align:right; font-weight:700; }
+    .rabais-input:focus { outline:none; border-color:var(--blue); }
+    .rabais-reason { border:1.5px solid var(--border); border-radius:8px; padding:5px 10px; font-size:8.5pt; font-family:inherit; }
+    .rabais-reason:focus { outline:none; border-color:var(--blue); }
+    .rabais-print { border:1px solid var(--border); border-radius:8px; padding:8px 12px; margin:8px 0; font-size:9pt; display:none; }
+
+    .field-input { flex:1; min-width:0; border:none; border-bottom:1.5px solid var(--border); outline:none; background:transparent; font-size:9pt; font-family:inherit; color:var(--black); padding:0 4px 1px; transition:border-color 0.15s; }
+    .field-input:focus { border-bottom-color:var(--blue); background:rgba(0,113,227,0.03); }
+    .meta-input { border:none; border-bottom:1px solid var(--border); outline:none; background:transparent; font-size:8.5pt; font-family:inherit; color:var(--gray); width:130px; }
+    .sig-date-input { flex:1; border:none; border-bottom:1px solid var(--border); outline:none; background:transparent; font-size:9pt; font-family:inherit; color:var(--black); padding:0 4px 1px; }
+
+    /* ── PRINT ── */
+    @media print {
+      body { padding: 16px 24px; font-size: 9pt; }
+      .no-print { display: none !important; }
+      .base-card { border-width: 1px; }
+      .base-card.selected { background: #f0f6ff; }
+      .opt-row input[type="checkbox"] { display: inline; }
+      a { color: inherit; text-decoration: none; }
+      .page-break { page-break-before: always; }
+      @page { size: A4; margin: 14mm 13mm; }
+      .field-input::placeholder, .meta-input::placeholder, .sig-date-input::placeholder { color: transparent; }
+      .field-input, .sig-date-input { border-bottom-color: #bbb; }
+      /* Anti-coupure */
+      .section, .party-box, .price-box, .step-card,
+      .payment-steps, .sig-box, .sig-grid,
+      tr, .field-row, .checklist li, .info-box, .warn-box, .green-box {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .opt-row, .options-group, .base-card, .totals-box, .rabais-box {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .section h2, h3 { break-after: avoid; page-break-after: avoid; }
+      .options-group h3 { break-after: avoid; page-break-after: avoid; }
+      .doc-header { break-inside: avoid; page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">⬇ Exporter en PDF</button>
+
+<!-- ── HEADER ── -->
+<div class="doc-header">
+  <div>
+    <div class="brand-logo">
+      <svg width="42" height="42" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+        <rect width="72" height="72" rx="14" fill="#0071e3"/>
+        <polygon points="36,8 64,36 36,64 8,36" fill="white"/>
+        <polygon points="36,22 50,36 36,50 22,36" fill="#0071e3"/>
+      </svg>
+      <div class="brand-name">Romand Web</div>
+    </div>
+    <div class="brand-sub">Agence web — Romandie, Suisse</div>
+    <div class="brand-contact">
+      Mehmed Selimovic · Romandie, Suisse<br>
+      +41 76 506 06 76 · info@romand-web.com<br>
+      romand-web.com
+    </div>
+  </div>
+  <div class="doc-meta">
+    <span class="pack-badge">✦ Sur Mesure</span><br>
+    N° contrat : <input class="meta-input" placeholder="RW-2026-001"><br>
+    Date : <input class="meta-input" placeholder="JJ/MM/2026"><br>
+    Valable 30 jours
+  </div>
+</div>
+
+<!-- ── PARTIES ── -->
+<div class="section">
+  <h2>Parties au contrat</h2>
+  <div class="parties-grid">
+    <div class="party-box">
+      <h3>Prestataire</h3>
+      <div class="field-row"><span class="field-label">Raison sociale</span><span>Romand Web</span></div>
+      <div class="field-row"><span class="field-label">Représentant</span><span>Mehmed Selimovic</span></div>
+      <div class="field-row"><span class="field-label">Téléphone</span><span>+41 76 506 06 76</span></div>
+      <div class="field-row"><span class="field-label">Email</span><span>info@romand-web.com</span></div>
+    </div>
+    <div class="party-box">
+      <h3>Client</h3>
+      <div class="field-row"><span class="field-label">Nom / Société</span><input class="field-input" placeholder="Raison sociale ou nom complet"></div>
+      <div class="field-row"><span class="field-label">Représentant</span><input class="field-input" placeholder="Prénom Nom"></div>
+      <div class="field-row"><span class="field-label">Adresse</span><input class="field-input" placeholder="Rue, NPA Ville"></div>
+      <div class="field-row"><span class="field-label">Téléphone</span><input class="field-input" placeholder="+41 XX XXX XX XX"></div>
+      <div class="field-row"><span class="field-label">Email</span><input class="field-input" placeholder="email@exemple.ch"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BASE PACK ── -->
+<div class="section">
+  <h2>Base du projet</h2>
+  <p>Sélectionnez le pack de base sur lequel s'appuie ce devis sur mesure :</p>
+  <div class="base-grid">
+
+    <label class="base-card none-card" id="bc-none" onclick="selectBase('none',0)">
+      <input type="radio" name="base" value="none">
+      <div class="bc-name">Aucune base</div>
+      <div class="bc-price">CHF 0</div>
+      <div class="bc-note">100% sur mesure</div>
+    </label>
+
+    <label class="base-card" id="bc-starter" onclick="selectBase('starter',299)">
+      <input type="radio" name="base" value="starter">
+      <div class="bc-name">Starter</div>
+      <div class="bc-price">CHF 299</div>
+      <div class="bc-note">1 page · 7 jours</div>
+    </label>
+
+    <label class="base-card" id="bc-business" onclick="selectBase('business',599)">
+      <input type="radio" name="base" value="business">
+      <div class="bc-name">Business</div>
+      <div class="bc-price">CHF 599</div>
+      <div class="bc-note">3–5 pages · SEO</div>
+    </label>
+
+    <label class="base-card" id="bc-premium" onclick="selectBase('premium',999)">
+      <input type="radio" name="base" value="premium">
+      <div class="bc-name">Premium</div>
+      <div class="bc-price">CHF 999</div>
+      <div class="bc-note">E-commerce</div>
+    </label>
+
+  </div>
+</div>
+
+<!-- ── OPTIONS ── -->
+<div class="section">
+  <h2>Options & prestations supplémentaires</h2>
+
+  <!-- DESIGN -->
+  <div class="options-group">
+    <h3>Design & Identité visuelle</h3>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-logo" data-price="150" onchange="calcTotal()">
+      <div><div class="opt-label">Création de logo</div><div class="opt-desc">Logo vectoriel (SVG) livré en plusieurs variantes</div></div>
+      <div class="opt-price">CHF 150</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-logo-refonte" data-price="80" onchange="calcTotal()">
+      <div><div class="opt-label">Refonte de logo existant</div><div class="opt-desc">Modernisation, vectorisation, déclinaisons</div></div>
+      <div class="opt-price">CHF 80</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-charte" data-price="200" onchange="calcTotal()">
+      <div><div class="opt-label">Charte graphique complète</div><div class="opt-desc">Couleurs, typographies, usage logo — fichier PDF livré</div></div>
+      <div class="opt-price">CHF 200</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-banniere" data-price="60" onchange="calcTotal()">
+      <div><div class="opt-label">Bannières réseaux sociaux</div><div class="opt-desc">Formats Instagram, Facebook, LinkedIn (3 visuels)</div></div>
+      <div class="opt-price">CHF 60</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+  </div>
+
+  <!-- PAGES -->
+  <div class="options-group">
+    <h3>Pages supplémentaires</h3>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-page" data-price="90" data-qty="true" onchange="calcTotal()">
+      <div><div class="opt-label">Page supplémentaire</div><div class="opt-desc">Design responsive, contenu fourni par le client</div></div>
+      <div class="opt-price">CHF 90 / page</div>
+      <div class="opt-qty-wrap">
+        <input type="number" class="opt-qty" id="qty-page" min="1" max="20" value="1" onchange="calcTotal()">
+        <span class="opt-qty-label">pages</span>
+      </div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-blog" data-price="120" onchange="calcTotal()">
+      <div><div class="opt-label">Blog / Actualités</div><div class="opt-desc">Système de publication d'articles (jusqu'à 5 articles initiaux)</div></div>
+      <div class="opt-price">CHF 120</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-galerie" data-price="80" onchange="calcTotal()">
+      <div><div class="opt-label">Galerie photos avancée</div><div class="opt-desc">Lightbox, filtres par catégorie, zoom</div></div>
+      <div class="opt-price">CHF 80</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-faq" data-price="60" onchange="calcTotal()">
+      <div><div class="opt-label">Section FAQ interactive</div><div class="opt-desc">Accordéon animé, jusqu'à 10 questions</div></div>
+      <div class="opt-price">CHF 60</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+  </div>
+
+  <!-- FONCTIONNALITÉS -->
+  <div class="options-group">
+    <h3>Fonctionnalités avancées</h3>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-resa" data-price="150" onchange="calcTotal()">
+      <div><div class="opt-label">Système de réservation en ligne</div><div class="opt-desc">Calendly ou Simplybook intégré</div></div>
+      <div class="opt-price">CHF 150</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-devis" data-price="120" onchange="calcTotal()">
+      <div><div class="opt-label">Formulaire de devis en ligne</div><div class="opt-desc">Multi-étapes, calcul automatique de prix</div></div>
+      <div class="opt-price">CHF 120</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-newsletter" data-price="100" onchange="calcTotal()">
+      <div><div class="opt-label">Intégration newsletter</div><div class="opt-desc">Mailchimp ou Brevo — formulaire d'inscription</div></div>
+      <div class="opt-price">CHF 100</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-video" data-price="100" onchange="calcTotal()">
+      <div><div class="opt-label">Vidéo de fond (hero section)</div><div class="opt-desc">Intégration vidéo optimisée, lecture auto silencieuse</div></div>
+      <div class="opt-price">CHF 100</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-anim" data-price="150" onchange="calcTotal()">
+      <div><div class="opt-label">Animations personnalisées</div><div class="opt-desc">Effets de défilement, micro-interactions sur mesure</div></div>
+      <div class="opt-price">CHF 150</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-membre" data-price="300" onchange="calcTotal()">
+      <div><div class="opt-label">Espace membre / login</div><div class="opt-desc">Inscription, connexion, espace personnel sécurisé</div></div>
+      <div class="opt-price">CHF 300</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-api" data-price="200" onchange="calcTotal()">
+      <div><div class="opt-label">Intégration API tierce</div><div class="opt-desc">CRM, ERP, logiciel métier — sur devis confirmé</div></div>
+      <div class="opt-price">CHF 200</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+  </div>
+
+  <!-- SEO & MARKETING -->
+  <div class="options-group">
+    <h3>SEO & Marketing</h3>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-seo" data-price="200" onchange="calcTotal()">
+      <div><div class="opt-label">SEO avancé (hors pack)</div><div class="opt-desc">Audit, optimisation on-page, netlinking initial</div></div>
+      <div class="opt-price">CHF 200</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-gmb" data-price="80" onchange="calcTotal()">
+      <div><div class="opt-label">Création / optimisation Google Business</div><div class="opt-desc">Fiche Google Maps complète avec photos et horaires</div></div>
+      <div class="opt-price">CHF 80</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-analytics" data-price="80" onchange="calcTotal()">
+      <div><div class="opt-label">Google Analytics 4 + Search Console</div><div class="opt-desc">Installation, configuration, tableau de bord de base</div></div>
+      <div class="opt-price">CHF 80</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-ads" data-price="150" onchange="calcTotal()">
+      <div><div class="opt-label">Mise en place campagne Google Ads</div><div class="opt-desc">Structure, mots-clés, annonces — budget publicitaire exclu</div></div>
+      <div class="opt-price">CHF 150</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+  </div>
+
+  <!-- MULTILINGUE -->
+  <div class="options-group">
+    <h3>Traduction & Accessibilité</h3>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-bilingual" data-price="150" onchange="calcTotal()">
+      <div><div class="opt-label">Traduction bilingue (FR/EN)</div><div class="opt-desc">Bouton bascule FR/EN intégré, traduction par le client</div></div>
+      <div class="opt-price">CHF 150</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-trilingual" data-price="250" onchange="calcTotal()">
+      <div><div class="opt-label">Traduction trilingue (FR/EN/DE)</div><div class="opt-desc">3 langues avec bascule, traduction fournie par le client</div></div>
+      <div class="opt-price">CHF 250</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-rgpd" data-price="60" onchange="calcTotal()">
+      <div><div class="opt-label">Bandeau cookies RGPD/LPD</div><div class="opt-desc">Consentement conforme nLPD, personnalisable</div></div>
+      <div class="opt-price">CHF 60</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+  </div>
+
+  <!-- E-COMMERCE -->
+  <div class="options-group">
+    <h3>E-commerce (ajout à un pack non-Premium)</h3>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-shopify" data-price="400" onchange="calcTotal()">
+      <div><div class="opt-label">Ajout boutique Shopify</div><div class="opt-desc">Jusqu'à 10 produits, paiement Stripe/Twint</div></div>
+      <div class="opt-price">CHF 400</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-produits" data-price="5" data-qty="true" onchange="calcTotal()">
+      <div><div class="opt-label">Produits supplémentaires</div><div class="opt-desc">Au-delà de 20 produits inclus (fiche produit + photos)</div></div>
+      <div class="opt-price">CHF 5 / produit</div>
+      <div class="opt-qty-wrap">
+        <input type="number" class="opt-qty" id="qty-produits" min="1" max="500" value="1" onchange="calcTotal()">
+        <span class="opt-qty-label">produits</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUPPORT -->
+  <div class="options-group">
+    <h3>Support & Maintenance</h3>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-sup3" data-price="120" onchange="calcTotal()">
+      <div><div class="opt-label">Extension support +3 mois</div><div class="opt-desc">Corrections, modifications de contenu</div></div>
+      <div class="opt-price">CHF 120</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-sup6" data-price="200" onchange="calcTotal()">
+      <div><div class="opt-label">Extension support +6 mois</div><div class="opt-desc">Corrections, modifications, 1 appel mensuel</div></div>
+      <div class="opt-price">CHF 200</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-maint" data-price="49" data-qty="true" onchange="calcTotal()">
+      <div><div class="opt-label">Maintenance mensuelle</div><div class="opt-desc">Mises à jour, sauvegardes, petites modifications</div></div>
+      <div class="opt-price">CHF 49 / mois</div>
+      <div class="opt-qty-wrap">
+        <input type="number" class="opt-qty" id="qty-maint" min="1" max="24" value="1" onchange="calcTotal()">
+        <span class="opt-qty-label">mois</span>
+      </div>
+    </div>
+    <div class="opt-row">
+      <input type="checkbox" id="opt-formation" data-price="100" onchange="calcTotal()">
+      <div><div class="opt-label">Formation supplémentaire</div><div class="opt-desc">Session 1h supplémentaire (visio ou présentiel)</div></div>
+      <div class="opt-price">CHF 100</div>
+      <div class="opt-qty-wrap"></div>
+    </div>
+  </div>
+
+  <!-- CUSTOM OPTIONS -->
+  <div class="options-group custom-section no-print" id="custom-section">
+    <h3>Prestations personnalisées</h3>
+    <div id="custom-rows"></div>
+    <button class="btn-add-custom" onclick="addCustomRow()">+ Ajouter une prestation</button>
+  </div>
+
+  <!-- CUSTOM (print version — hidden on screen) -->
+  <div class="options-group" id="custom-print" style="display:none;">
+    <h3>Prestations personnalisées</h3>
+    <table>
+      <thead><tr><th>Description</th><th style="text-align:right;">Prix CHF</th></tr></thead>
+      <tbody id="custom-print-body"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- ── TOTAUX ── -->
+<div class="section">
+  <h2>Récapitulatif financier</h2>
+  <div class="totals-box">
+    <div class="total-row subtotal">
+      <span>Base pack sélectionné</span>
+      <span id="tot-base">CHF 0</span>
+    </div>
+    <div class="total-row subtotal">
+      <span>Options & prestations supplémentaires</span>
+      <span id="tot-options">CHF 0</span>
+    </div>
+    <div class="total-row subtotal">
+      <span>Prestations personnalisées</span>
+      <span id="tot-custom">CHF 0</span>
+    </div>
+    <div class="total-row grand">
+      <span>Total projet</span>
+      <span id="tot-grand">CHF 0</span>
+    </div>
+    <div class="total-row" style="background:#fff7ed; border-bottom:1px solid var(--border);">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;width:100%;">
+        <span style="font-size:9pt;font-weight:700;white-space:nowrap;">🏷 Rabais</span>
+        <div class="rabais-type no-print">
+          <button id="rb-pct" class="active" onclick="setRabaisType('pct')">%</button>
+          <button id="rb-chf" onclick="setRabaisType('chf')">CHF</button>
+        </div>
+        <input type="number" class="rabais-input no-print" id="rabais-val" min="0" placeholder="0" oninput="calcTotal()">
+        <input type="text" class="rabais-reason no-print" id="rabais-reason" placeholder="Motif : fidélité, parrainage…" oninput="calcTotal()" style="flex:1;min-width:130px;">
+        <span style="font-size:9pt;font-weight:700;color:#ff3b30;white-space:nowrap;" id="rabais-result" class="no-print"></span>
+        <span style="margin-left:auto;font-weight:700;color:#ff3b30;" id="tot-rabais">CHF 0</span>
+      </div>
+    </div>
+    <div class="total-row" style="background:#f0fdf4;">
+      <span style="font-weight:700;">Total net après rabais</span>
+      <span id="tot-net" style="font-weight:800;font-size:11pt;">CHF 0</span>
+    </div>
+    <div class="total-row deposit">
+      <span>Acompte à la signature (50%)</span>
+      <span id="tot-deposit">CHF 0</span>
+    </div>
+    <div class="total-row balance">
+      <span>Solde à la livraison (50%)</span>
+      <span id="tot-balance">CHF 0</span>
+    </div>
+  </div>
+
+  <!-- Rabais print summary -->
+  <div class="rabais-print" id="rabais-print" style="display:none;">
+    <strong>Rabais accordé :</strong> <span id="rp-amount"></span>
+    &nbsp;·&nbsp; <em id="rp-reason"></em>
+  </div>
+  <p style="font-size:8pt; color:var(--gray);">TVA non applicable · Paiement par virement, TWINT, PayPal, Espèces, Bitcoin ou Revolut</p>
+</div>
+
+<!-- ── DÉLAI & LIVRAISON ── -->
+<div class="section">
+  <h2>Délai de livraison estimé</h2>
+  <div class="field-row-inline"><span class="field-label-sm">Délai estimé :</span><input class="field-input" placeholder="ex. 14"><span style="font-size:8.5pt;color:var(--gray);margin-left:6px;">jours ouvrables</span></div>
+  <div class="field-row-inline"><span class="field-label-sm">Date de démarrage :</span><input class="field-input" placeholder="JJ/MM/AAAA"></div>
+  <div class="field-row-inline"><span class="field-label-sm">Livraison estimée :</span><input class="field-input" placeholder="JJ/MM/AAAA"></div>
+  <div class="field-row-inline"><span class="field-label-sm">Nom de domaine :</span><input class="field-input" placeholder="exemple.ch"></div>
+  <div class="warn-box">Le délai court à compter de la réception de l'acompte <strong>et</strong> de l'intégralité des documents requis.</div>
+</div>
+
+<!-- ── ANNULATION ── -->
+<div class="section">
+  <h2>Conditions d'annulation</h2>
+  <table class="cancel-table">
+    <thead><tr><th>Moment de l'annulation</th><th>Indemnité due</th></tr></thead>
+    <tbody>
+      <tr><td>Dans les 48h (aucun travail commencé)</td><td>Aucune — remboursement intégral</td></tr>
+      <tr><td>Après 48h, avant démarrage</td><td>20% du total — frais de réservation</td></tr>
+      <tr><td>Travaux démarrés, moins de 50% réalisé</td><td>50% du total</td></tr>
+      <tr><td>Plus de 50% du projet réalisé</td><td>75% du total</td></tr>
+      <tr><td>Livrable remis</td><td>100% — aucun remboursement</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:8px; font-size:9pt; color:var(--gray);">Annulation à notifier par écrit à info@romand-web.com.</p>
+</div>
+
+<!-- ── CGV ── -->
+<div class="section">
+  <h2>Conditions générales</h2>
+  <p>Le présent contrat est régi par les <strong>CGV de Romand Web</strong> (romand-web.com/cgv.html), remises au Client. Droit applicable : <strong>droit suisse (CO)</strong>. For : siège du Prestataire.</p>
+</div>
+
+<!-- ── SIGNATURES ── -->
+<div class="section page-break">
+  <h2>Signatures</h2>
+  <p style="margin-bottom:14px; font-size:9pt;">Les deux parties reconnaissent avoir pris connaissance et accepter l'ensemble des conditions ci-dessus ainsi que les CGV de Romand Web.</p>
+  <div class="sig-grid">
+    <div class="sig-box">
+      <h3>Le Prestataire</h3>
+      <p style="font-size:9pt;margin-bottom:12px;"><strong>Romand Web</strong> — Mehmed Selimovic</p>
+      <div class="sig-line"></div>
+      <div class="sig-label">Signature</div>
+      <div class="sig-date-row"><span>Date :</span><input class="sig-date-input" placeholder="JJ/MM/AAAA"></div>
+    </div>
+    <div class="sig-box">
+      <h3>Le Client</h3>
+      <p style="font-size:9pt;margin-bottom:12px;border-bottom:1px solid var(--border);padding-bottom:12px;"><input class="field-input" placeholder="Nom & prénom / Raison sociale" style="width:100%"></p>
+      <div class="sig-line"></div>
+      <div class="sig-label">Signature + tampon (si applicable)</div>
+      <div class="sig-date-row"><span>Date :</span><input class="sig-date-input" placeholder="JJ/MM/AAAA"></div>
+    </div>
+  </div>
+  <div class="info-box" style="margin-top:14px;">
+    <strong>Mention manuscrite obligatoire :</strong> <em>"Lu et approuvé — Bon pour accord"</em>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<div class="doc-footer">
+  <span>Romand Web · romand-web.com · +41 76 506 06 76</span>
+  <span>Contrat Sur Mesure · Total : <span id="footer-total">CHF 0</span> · Droit suisse</span>
+</div>
+
+<!-- ── SCRIPT ── -->
+<script>
+  var basePrice = 0;
+  var customRows = [];
+  var rabaisType = 'pct';
+
+  function setRabaisType(t) {
+    rabaisType = t;
+    document.getElementById('rb-pct').classList.toggle('active', t === 'pct');
+    document.getElementById('rb-chf').classList.toggle('active', t === 'chf');
+    calcTotal();
+  }
+
+  function selectBase(id, price) {
+    basePrice = price;
+    ['none','starter','business','premium'].forEach(function(b) {
+      document.getElementById('bc-' + b).classList.remove('selected');
+    });
+    document.getElementById('bc-' + id).classList.add('selected');
+    calcTotal();
+  }
+
+  function calcTotal() {
+    // Options standard
+    var optTotal = 0;
+    document.querySelectorAll('.opt-row input[type="checkbox"]').forEach(function(cb) {
+      if (cb.checked) {
+        var price = parseFloat(cb.dataset.price) || 0;
+        if (cb.dataset.qty === 'true') {
+          var qtyId = 'qty-' + cb.id.replace('opt-','');
+          var qtyEl = document.getElementById(qtyId);
+          if (qtyEl) {
+            qtyEl.classList.add('visible');
+            price *= (parseInt(qtyEl.value) || 1);
+          }
+        }
+        optTotal += price;
+      } else {
+        if (cb.dataset.qty === 'true') {
+          var qtyId2 = 'qty-' + cb.id.replace('opt-','');
+          var qtyEl2 = document.getElementById(qtyId2);
+          if (qtyEl2) qtyEl2.classList.remove('visible');
+        }
+      }
+    });
+
+    // Custom rows
+    var custTotal = 0;
+    document.querySelectorAll('.custom-price-input').forEach(function(inp) {
+      custTotal += parseFloat(inp.value) || 0;
+    });
+
+    var grand = basePrice + optTotal + custTotal;
+    var deposit = Math.round(grand / 2);
+    var balance = grand - deposit;
+
+    document.getElementById('tot-base').textContent    = 'CHF ' + basePrice;
+    // Rabais
+    var rbVal    = parseFloat(document.getElementById('rabais-val').value) || 0;
+    var reason   = document.getElementById('rabais-reason').value;
+    var discount = rabaisType === 'pct' ? Math.round(grand * rbVal / 100) : Math.min(rbVal, grand);
+    var net      = Math.max(0, grand - discount);
+    var deposit  = Math.round(net / 2);
+    var balance  = net - deposit;
+
+    document.getElementById('tot-base').textContent    = 'CHF ' + basePrice;
+    document.getElementById('tot-options').textContent = 'CHF ' + optTotal;
+    document.getElementById('tot-custom').textContent  = 'CHF ' + custTotal;
+    document.getElementById('tot-grand').textContent   = 'CHF ' + grand;
+    document.getElementById('tot-rabais').textContent  = discount > 0 ? '−CHF ' + discount : 'CHF 0';
+    document.getElementById('tot-net').textContent     = 'CHF ' + net;
+    document.getElementById('tot-deposit').textContent = 'CHF ' + deposit;
+    document.getElementById('tot-balance').textContent = 'CHF ' + balance;
+    document.getElementById('footer-total').textContent = 'CHF ' + net;
+
+    var rp = document.getElementById('rabais-print');
+    if (discount > 0) {
+      document.getElementById('rabais-result').textContent = '−CHF ' + discount + '  →  Net : CHF ' + net;
+      document.getElementById('rp-amount').textContent = '−CHF ' + discount;
+      document.getElementById('rp-reason').textContent = reason || 'Non spécifié';
+      rp.style.display = 'block';
+    } else {
+      document.getElementById('rabais-result').textContent = '';
+      rp.style.display = 'none';
+    }
+  }
+
+  function addCustomRow() {
+    var id = Date.now();
+    var div = document.createElement('div');
+    div.className = 'custom-row';
+    div.id = 'cr-' + id;
+    div.innerHTML =
+      '<input type="text" class="custom-input" placeholder="Description de la prestation…">' +
+      '<input type="number" class="custom-price custom-price-input" placeholder="CHF" min="0" onchange="calcTotal()">' +
+      '<button class="btn-remove" onclick="removeCustomRow(' + id + ')">×</button>';
+    document.getElementById('custom-rows').appendChild(div);
+  }
+
+  function removeCustomRow(id) {
+    var el = document.getElementById('cr-' + id);
+    if (el) { el.remove(); calcTotal(); }
+  }
+
+  // Before print: sync custom rows to print table
+  window.addEventListener('beforeprint', function() {
+    var tbody = document.getElementById('custom-print-body');
+    tbody.innerHTML = '';
+    var rows = document.querySelectorAll('#custom-rows .custom-row');
+    if (rows.length > 0) {
+      document.getElementById('custom-print').style.display = 'block';
+      rows.forEach(function(row) {
+        var desc  = row.querySelector('.custom-input').value || '—';
+        var price = parseFloat(row.querySelector('.custom-price-input').value) || 0;
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td>' + desc + '</td><td style="text-align:right;font-weight:700;">CHF ' + price + '</td>';
+        tbody.appendChild(tr);
+      });
+    }
+  });
+  window.addEventListener('afterprint', function() {
+    document.getElementById('custom-print').style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
