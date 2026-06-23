@@ -1,0 +1,1927 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Application iOS/Android – Réservation mobile pour salons | Romand Web</title>
+  <meta name="description" content="App de réservation iOS & Android sur mesure pour barbershops, salons de coiffure et instituts de beauté en Suisse. Fidélité, paiement, notifications push. Dès CHF 1'990." />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="canonical" href="https://romand-web.com/app-booking.html" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- OG -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://romand-web.com/app-booking.html" />
+  <meta property="og:title" content="Application iOS/Android – Réservation mobile pour salons | Romand Web" />
+  <meta property="og:description" content="App de réservation iOS & Android sur mesure. Fidélité, paiement, notifications push. Dès CHF 1'990." />
+  <meta property="og:image" content="https://romand-web.com/og-image.jpg" />
+  <meta property="og:locale" content="fr_CH" />
+
+  <!-- DONNÉES STRUCTURÉES -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": "https://romand-web.com/app-booking.html#service",
+        "name": "Application de réservation iOS & Android pour salons",
+        "serviceType": "Développement d'application mobile de réservation",
+        "description": "Application mobile de réservation sur mesure pour barbershops, salons de coiffure, instituts de beauté, ongleries, spas et tatoueurs en Suisse. Paiement unique, zéro commission sur les réservations, programme de fidélité, paiement en ligne et notifications push.",
+        "url": "https://romand-web.com/app-booking.html",
+        "inLanguage": "fr-CH",
+        "provider": { "@id": "https://romand-web.com/#business" },
+        "areaServed": { "@type": "Country", "name": "Suisse" },
+        "audience": {
+          "@type": "BusinessAudience",
+          "name": "Barbershops, salons de coiffure, instituts de beauté, ongleries, spas, tatoueurs"
+        },
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "CHF",
+          "lowPrice": "1990",
+          "highPrice": "1990",
+          "offerCount": "2",
+          "description": "Solo Pro : CHF 1'990 (paiement unique) + CHF 290/an de maintenance. Signature : sur devis pour chaînes et franchises multi-salons."
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://romand-web.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Application iOS/Android", "item": "https://romand-web.com/app-booking.html" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://romand-web.com/app-booking.html#faq",
+        "inLanguage": "fr-CH",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Combien de temps pour livrer l'application de réservation ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "En général 3 à 6 semaines, selon la complexité de votre charte graphique et le nombre de services à configurer. La publication sur l'App Store peut prendre 1 à 3 jours supplémentaires pour la validation Apple."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Puis-je avoir plusieurs salons sur la même application ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui. L'architecture est multi-salons par défaut. L'offre Signature est pensée pour les chaînes et franchises avec plusieurs établissements et un branding centralisé."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Y a-t-il une commission sur mes réservations ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Aucune commission. Les apps de réservation à commission prennent 15 à 20 % sur chaque rendez-vous, à vie. Avec Romand Web, vous payez uniquement le tarif initial de CHF 1'990 plus la maintenance annuelle de CHF 290. Vos revenus restent à 100 % à vous."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Que couvre la maintenance annuelle de l'application ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "La maintenance annuelle (CHF 290/an) couvre les mises à jour de l'app pour la compatibilité iOS et Android, l'hébergement du backend (base de données et API) et le support technique par email."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Combien coûte une application de réservation pour mon salon ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "L'offre Solo Pro coûte CHF 1'990 en paiement unique, plus CHF 290 par an de maintenance, sans aucune commission sur les réservations. Pour les chaînes et franchises multi-salons, l'offre Signature est sur devis."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- GTM -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+    function _loadGTM() {
+      var f = document.getElementsByTagName('script')[0];
+      var j = document.createElement('script'); j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-TVF29FFT';
+      f.parentNode.insertBefore(j, f);
+    }
+    'requestIdleCallback' in window ? requestIdleCallback(_loadGTM, {timeout:4000}) : window.addEventListener('load', function(){ setTimeout(_loadGTM,1000); });
+  </script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg:         #08091a;
+      --surface:    #0d0e24;
+      --card:       #111228;
+      --card-hover: #16172e;
+      --gold:       #c9a84c;
+      --gold-light: #e2be6e;
+      --gold-glow:  rgba(201,168,76,0.15);
+      --text:       #eceae2;
+      --text-muted: #7a7a9a;
+      --text-dim:   #4a4a6a;
+      --divider:    rgba(255,255,255,0.07);
+      --red:        #e05252;
+      --green:      #52c87a;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      background: rgba(8,9,26,0.88);
+      backdrop-filter: saturate(180%) blur(24px);
+      -webkit-backdrop-filter: saturate(180%) blur(24px);
+      border-bottom: 1px solid var(--divider);
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 201;
+    }
+    @keyframes logoSpin {
+      0%   { transform: rotate(0deg) scale(1); }
+      25%  { transform: rotate(90deg) scale(1.15); }
+      50%  { transform: rotate(180deg) scale(1); }
+      75%  { transform: rotate(270deg) scale(1.15); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+    nav .logo {
+      font-size: 1.15rem; font-weight: 700; color: var(--text);
+      letter-spacing: -0.3px; text-decoration: none;
+      display: flex; align-items: center; gap: 8px;
+    }
+    nav .logo-icon {
+      color: var(--gold); font-size: 1.4rem;
+      animation: logoSpin 6s cubic-bezier(0.4,0,0.2,1) infinite;
+    }
+    nav .nav-links { display: flex; align-items: center; gap: 28px; }
+    nav .nav-links a {
+      text-decoration: none; color: var(--text-muted); font-size: 0.88rem;
+      font-weight: 400; transition: color 0.2s;
+    }
+    nav .nav-links a:hover { color: var(--text); }
+    nav .nav-links a.active { color: var(--gold); font-weight: 600; }
+    nav .nav-cta { color: var(--gold) !important; font-weight: 500 !important; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 6px;
+      cursor: pointer; padding: 8px 4px; background: none; border: none;
+      position: relative; z-index: 201;
+    }
+    .hamburger span {
+      display: block; height: 1.5px; border-radius: 2px;
+      background: var(--text);
+      transition: transform 0.45s cubic-bezier(0.22,1,0.36,1),
+                  opacity 0.3s ease,
+                  width 0.4s cubic-bezier(0.22,1,0.36,1),
+                  background 0.3s;
+    }
+    .hamburger span:nth-child(1) { width: 26px; }
+    .hamburger span:nth-child(2) { width: 18px; }
+    .hamburger span:nth-child(3) { width: 22px; }
+    .hamburger.open span { background: var(--gold); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); width: 24px; }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); width: 24px; }
+
+    /* MENU OVERLAY PLEIN ÉCRAN */
+    .mobile-menu {
+      display: flex;
+      position: fixed; inset: 0; z-index: 200;
+      background: var(--bg);
+      flex-direction: column;
+      justify-content: center; align-items: flex-start;
+      padding: 0 40px;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity 0.5s cubic-bezier(0.22,1,0.36,1),
+                  visibility 0.5s cubic-bezier(0.22,1,0.36,1);
+      overflow: hidden;
+    }
+    .mobile-menu::before {
+      content: '◈';
+      position: absolute; right: -10vw; bottom: -10vw;
+      font-size: 72vw; line-height: 1;
+      color: rgba(201,168,76,0.04);
+      pointer-events: none; user-select: none;
+    }
+    .mobile-menu.open { opacity: 1; visibility: visible; pointer-events: all; }
+    .mobile-menu a {
+      display: block;
+      font-size: clamp(2rem, 9vw, 2.8rem); font-weight: 800;
+      letter-spacing: -1.5px; line-height: 1.1;
+      color: var(--text); text-decoration: none;
+      padding: 14px 0;
+      position: relative;
+      opacity: 0; transform: translateX(-24px);
+      transition: color 0.25s ease,
+                  opacity 0.55s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.55s cubic-bezier(0.22,1,0.36,1);
+    }
+    .mobile-menu a::after {
+      content: '';
+      position: absolute; left: 0; bottom: 10px;
+      height: 2px; width: 0;
+      background: var(--gold);
+      transition: width 0.35s cubic-bezier(0.22,1,0.36,1);
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu a:hover::after { width: 100%; }
+    .mobile-menu .menu-cta {
+      margin-top: 32px;
+      display: inline-block;
+      font-size: 0.88rem !important; font-weight: 700 !important;
+      letter-spacing: 0.5px !important;
+      color: #0a0814 !important; background: var(--gold);
+      padding: 14px 32px; border-radius: 980px;
+    }
+    .mobile-menu .menu-cta::after { display: none; }
+    .mobile-menu .menu-cta:hover { background: var(--gold-light); color: #0a0814 !important; }
+    /* Stagger à l'ouverture (child 4 = .menu-divider, pas un a) */
+    .mobile-menu.open a:nth-child(1) { opacity: 1; transform: translateX(0); transition-delay: 0.07s; }
+    .mobile-menu.open a:nth-child(2) { opacity: 1; transform: translateX(0); transition-delay: 0.13s; }
+    .mobile-menu.open a:nth-child(3) { opacity: 1; transform: translateX(0); transition-delay: 0.19s; }
+    .mobile-menu.open a:nth-child(5) { opacity: 1; transform: translateX(0); transition-delay: 0.25s; }
+    .mobile-menu.open a:nth-child(6) { opacity: 1; transform: translateX(0); transition-delay: 0.31s; }
+    /* Séparateur décoratif */
+    .mobile-menu .menu-divider {
+      width: 48px; height: 1px; background: var(--divider);
+      margin: 8px 0 20px; opacity: 0;
+      transition: opacity 0.5s 0.1s;
+    }
+    .mobile-menu.open .menu-divider { opacity: 1; }
+
+    /* HERO */
+    .hero {
+      background: var(--bg);
+      text-align: center;
+      padding: 0 24px;
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 55% at 50% 100%, rgba(201,168,76,0.18) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+    .hero::after {
+      content: '◈';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%) rotate(0deg);
+      font-size: 52vw; color: rgba(201,168,76,0.04);
+      animation: heroBgSpin 32s linear infinite;
+      pointer-events: none; user-select: none; line-height: 1; z-index: 0;
+    }
+    @keyframes heroBgSpin {
+      from { transform: translate(-50%,-50%) rotate(0deg); }
+      to   { transform: translate(-50%,-50%) rotate(360deg); }
+    }
+    .hero > * { position: relative; z-index: 1; }
+    .hero .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 6px 16px; border-radius: 980px;
+      background: rgba(201,168,76,0.06);
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 800; letter-spacing: -3px;
+      line-height: 1.02; color: var(--text);
+      margin-bottom: 24px; max-width: 820px; margin-left: auto; margin-right: auto;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero p {
+      font-size: 1.2rem; color: var(--text-muted); max-width: 480px;
+      margin: 0 auto 44px; line-height: 1.7; font-weight: 300;
+    }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: #0a0814; padding: 15px 32px;
+      border-radius: 980px; text-decoration: none; font-size: 1rem;
+      font-weight: 700; transition: background 0.2s, transform 0.2s;
+      letter-spacing: 0.2px;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-secondary {
+      color: var(--text-muted); text-decoration: none; font-size: 1rem;
+      font-weight: 500; padding: 15px 8px; display: inline-flex;
+      align-items: center; transition: color 0.2s;
+      border: 1px solid var(--divider); border-radius: 980px; padding: 15px 24px;
+    }
+    .btn-secondary:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+    .btn-secondary::after { content: ' ›'; }
+
+    /* MÉTIERS */
+    .verticals {
+      background: var(--surface);
+      border-top: 1px solid var(--divider);
+      border-bottom: 1px solid var(--divider);
+      padding: 20px 32px;
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 8px;
+    }
+    .vert-pill {
+      padding: 7px 18px; border-radius: 980px;
+      border: 1px solid rgba(201,168,76,0.2);
+      background: rgba(201,168,76,0.06);
+      font-size: 0.84rem; color: var(--text-muted);
+      transition: background 0.2s, color 0.2s;
+    }
+    .vert-pill:hover { background: rgba(201,168,76,0.12); color: var(--gold-light); }
+
+    /* SECTIONS */
+    .section {
+      padding: 96px 40px; text-align: center;
+      border-bottom: 1px solid var(--divider);
+      background: var(--bg);
+    }
+    .section.alt { background: var(--surface); }
+    .section .eyebrow {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+    }
+    .section h2 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; letter-spacing: -1.5px;
+      color: var(--text); margin-bottom: 16px; line-height: 1.06;
+    }
+    .section p.sub {
+      font-size: 1.08rem; color: var(--text-muted); max-width: 460px;
+      margin: 0 auto 56px; line-height: 1.7; font-weight: 300;
+    }
+
+    /* FEATURES GRID */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--divider);
+      border: 1px solid var(--divider);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .feat-cell {
+      background: var(--card);
+      padding: 36px 28px;
+      text-align: left;
+      transition: background 0.25s;
+      position: relative;
+    }
+    .feat-cell::after {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: 0;
+      box-shadow: inset 0 0 0 1px rgba(201,168,76,0);
+      transition: box-shadow 0.25s;
+      pointer-events: none;
+    }
+    .feat-cell:hover { background: var(--card-hover); }
+    .feat-cell:hover::after { box-shadow: inset 0 0 0 1px rgba(201,168,76,0.2); }
+    .feat-cell .fc-icon { font-size: 1.5rem; margin-bottom: 14px; display: block; color: var(--gold); }
+    .feat-cell h4 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .feat-cell p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+
+    /* HOW IT WORKS */
+    .steps { background: var(--surface) !important; }
+    .steps-row {
+      display: flex; justify-content: center; gap: 0;
+      max-width: 900px; margin: 0 auto;
+      position: relative;
+    }
+    .steps-row::before {
+      content: '';
+      position: absolute;
+      top: 28px; left: calc(16.66% + 14px); right: calc(16.66% + 14px);
+      height: 1px; background: var(--divider); z-index: 0;
+    }
+    .step {
+      flex: 1; text-align: center; padding: 0 16px;
+      position: relative; z-index: 1;
+    }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: transparent; border: 1.5px solid rgba(201,168,76,0.35);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 18px;
+      font-size: 1rem; font-weight: 700; color: var(--gold);
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .step:hover .step-num { background: var(--gold); color: #0a0814; border-color: var(--gold); }
+    .step h4 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .step p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+
+    /* PRICING */
+    .pricing-grid {
+      display: flex; justify-content: center; gap: 20px;
+      flex-wrap: wrap; max-width: 840px; margin: 0 auto;
+    }
+    .p-card {
+      background: var(--card); border: 1px solid var(--divider);
+      border-radius: 20px; padding: 40px 32px;
+      text-align: left; transition: border-color 0.3s, box-shadow 0.3s;
+      flex: 1; min-width: 260px;
+    }
+    .p-card:hover { border-color: rgba(201,168,76,0.25); box-shadow: 0 0 40px rgba(201,168,76,0.06); }
+    .p-card.popular {
+      background: linear-gradient(145deg, #131428 0%, #0f1022 100%);
+      border: 1px solid rgba(201,168,76,0.45);
+      box-shadow: 0 0 60px rgba(201,168,76,0.1), inset 0 1px 0 rgba(201,168,76,0.15);
+    }
+    .p-card .badge {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block;
+    }
+    .p-card h3 { font-size: 1.5rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .p-card .price {
+      font-size: 3.2rem; font-weight: 800; letter-spacing: -2px;
+      color: var(--text); line-height: 1; margin: 14px 0 4px;
+    }
+    .p-card.popular .price { color: var(--gold); }
+    .p-card .price-note { font-size: 0.78rem; color: var(--text-dim); margin-bottom: 24px; }
+    .p-card .divider { height: 1px; background: var(--divider); margin-bottom: 22px; }
+    .p-card ul { list-style: none; margin-bottom: 32px; }
+    .p-card ul li {
+      padding: 5px 0; font-size: 0.92rem; color: var(--text-muted);
+      display: flex; align-items: flex-start; gap: 9px; line-height: 1.5;
+    }
+    .p-card ul li::before { content: '✓'; color: var(--gold); font-weight: 700; font-size: 0.8rem; margin-top: 1px; flex-shrink: 0; }
+    .p-card a.p-btn {
+      display: block; text-align: center; padding: 14px;
+      border-radius: 980px; text-decoration: none; font-size: 0.95rem;
+      font-weight: 600; background: rgba(201,168,76,0.1); color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.25);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .p-card a.p-btn:hover { background: rgba(201,168,76,0.18); border-color: rgba(201,168,76,0.5); }
+    .p-card.popular a.p-btn { background: var(--gold); color: #0a0814; border-color: transparent; font-weight: 700; }
+    .p-card.popular a.p-btn:hover { background: var(--gold-light); }
+    .p-card.enterprise { background: var(--surface); border-color: var(--divider); }
+    .p-card.enterprise .price { font-size: 2rem; color: var(--text); }
+
+    /* COMPARISON TABLE */
+    .compare-wrap {
+      overflow-x: auto;
+      margin-top: 48px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .compare-table {
+      width: 100%;
+      max-width: 780px;
+      margin: 0 auto;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      border: 1px solid var(--divider);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .compare-table thead th {
+      padding: 18px 20px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-bottom: 1px solid var(--divider);
+      color: var(--text-muted);
+      background: var(--surface);
+    }
+    .compare-table thead th:first-child { text-align: left; }
+    .compare-table thead th.col-popular {
+      background: rgba(201,168,76,0.08);
+      color: var(--gold);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .compare-table tbody tr { border-bottom: 1px solid var(--divider); }
+    .compare-table tbody tr:last-child { border-bottom: none; }
+    .compare-table tbody td {
+      padding: 14px 20px;
+      text-align: center;
+      color: var(--text-muted);
+      vertical-align: middle;
+      background: var(--card);
+    }
+    .compare-table tbody td:first-child {
+      text-align: left;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .compare-table tbody td.col-popular {
+      background: rgba(201,168,76,0.04);
+    }
+    .compare-table .check { color: var(--green); font-size: 1.05rem; font-weight: 700; }
+    .compare-table .cross { color: var(--text-dim); font-size: 1.05rem; }
+    .compare-table .cat-row td {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--gold);
+      padding-top: 18px; padding-bottom: 6px;
+      border-bottom: none; background: var(--surface);
+    }
+    .compare-table .cat-row td.col-popular { background: rgba(201,168,76,0.05); }
+
+    /* FAQ */
+    .faq-list { max-width: 680px; margin: 0 auto; text-align: left; }
+    .faq-item {
+      border-bottom: 1px solid var(--divider);
+      border-radius: 0;
+    }
+    .faq-item:first-child { border-top: 1px solid var(--divider); }
+    .faq-btn {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 4px; font-family: inherit; font-size: 1rem; font-weight: 500;
+      color: var(--text); text-align: left; gap: 16px; transition: color 0.2s;
+    }
+    .faq-btn:hover { color: var(--gold); }
+    .faq-icon { font-size: 1.3rem; color: var(--gold); flex-shrink: 0; transition: transform 0.3s cubic-bezier(0.22,1,0.36,1); }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.22,1,0.36,1), padding 0.3s; padding: 0 4px; }
+    .faq-item.open .faq-answer { max-height: 220px; padding-bottom: 20px; }
+    .faq-answer p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; font-weight: 300; }
+
+    /* CTA BAND */
+    .cta-band {
+      position: relative;
+      background: var(--surface);
+      padding: 130px 40px 110px;
+      text-align: center;
+      overflow: hidden;
+      border-top: 1px solid var(--divider);
+    }
+    .cta-band::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 120%, rgba(201,168,76,0.22) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 30% at 20% -10%, rgba(201,168,76,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cta-band .cta-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .cta-band h2 {
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-weight: 800; letter-spacing: -2.5px;
+      color: var(--text); margin-bottom: 20px; line-height: 1.03;
+    }
+    .cta-band h2 span { color: var(--gold); }
+    .cta-band p {
+      font-size: 1.1rem; color: var(--text-muted); margin-bottom: 52px;
+      font-weight: 300; max-width: 480px; margin-left: auto; margin-right: auto;
+      line-height: 1.7;
+    }
+    .cta-band .cta-stats {
+      display: flex; justify-content: center; gap: 56px;
+      margin-bottom: 52px; flex-wrap: wrap;
+    }
+    .cta-band .cta-stat { text-align: center; }
+    .cta-band .cta-stat strong {
+      display: block; font-size: 2.1rem; font-weight: 800;
+      color: var(--gold); letter-spacing: -1px; line-height: 1;
+    }
+    .cta-band .cta-stat span { font-size: 0.78rem; color: var(--text-dim); margin-top: 5px; display: block; }
+    .cta-band .btn-primary { font-size: 1.05rem; padding: 18px 42px; }
+    .cta-band-btns {
+      display: flex; gap: 14px; justify-content: center;
+      align-items: center; flex-wrap: wrap;
+    }
+    .btn-call {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--text);
+      padding: 17px 36px; border-radius: 980px;
+      text-decoration: none; font-size: 1rem; font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.18);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-call:hover { border-color: rgba(201,168,76,0.5); background: rgba(201,168,76,0.06); }
+    /* FOOTER */
+    footer {
+      background: #050612; border-top: 1px solid var(--divider);
+      padding: 24px 40px; display: flex;
+      justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+    }
+    footer p { font-size: 0.78rem; color: var(--text-dim); }
+    footer .footer-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    footer .footer-links a {
+      font-size: 0.78rem; color: var(--text-dim); text-decoration: none;
+      padding: 10px 8px; min-height: 44px; display: inline-flex; align-items: center;
+      transition: color 0.2s;
+    }
+    footer .footer-links a:hover { color: var(--text-muted); }
+
+    /* SCROLL ANIM */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes scaleIn { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: scale(1); } }
+    /* Les éléments sont cachés uniquement quand JS a chargé (classe anim-js sur body) */
+    body.anim-js [data-anim]:not(.visible) { opacity: 0; }
+    [data-anim].visible {
+      animation-fill-mode: both;
+      animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+      animation-duration: 0.7s;
+    }
+    [data-anim="fade-up"].visible  { animation-name: fadeUp; }
+    [data-anim="fade-in"].visible  { animation-name: fadeIn; }
+    [data-anim="scale-in"].visible { animation-name: scaleIn; }
+    [data-delay="100"].visible { animation-delay: 0.1s; }
+    [data-delay="200"].visible { animation-delay: 0.2s; }
+    [data-delay="300"].visible { animation-delay: 0.3s; }
+    [data-delay="400"].visible { animation-delay: 0.4s; }
+    [data-delay="500"].visible { animation-delay: 0.5s; }
+
+    /* DIFF BAND */
+    .diff-band {
+      background: var(--surface);
+      border-bottom: 1px solid var(--divider);
+      padding: 18px 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    /* Ticker — transparent sur desktop, animé sur mobile */
+    .diff-ticker { display: contents; }
+    .diff-ticker [aria-hidden="true"] { display: none; }
+    @keyframes ticker-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .diff-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 28px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .diff-item strong { color: var(--text); }
+    .diff-highlight strong { color: var(--green); }
+    .diff-icon {
+      font-size: 1rem;
+      color: var(--green);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .diff-icon.diff-cross { color: var(--red); }
+    .diff-sep {
+      width: 1px;
+      height: 28px;
+      background: var(--divider);
+    }
+    /* ROI CALCULATOR */
+    .roi-section {
+      padding: 96px 40px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--divider);
+      text-align: center;
+    }
+    .roi-section .eyebrow {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+    }
+    .roi-section h2 {
+      font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -1.5px;
+      color: var(--text); margin-bottom: 14px; line-height: 1.06;
+    }
+    .roi-section p.sub {
+      font-size: 1.05rem; color: var(--text-muted); max-width: 440px;
+      margin: 0 auto 52px; line-height: 1.7; font-weight: 300;
+    }
+    .roi-widget {
+      max-width: 780px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--divider);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 0 60px rgba(201,168,76,0.06);
+    }
+    .roi-inputs {
+      padding: 36px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      border-bottom: 1px solid var(--divider);
+    }
+    .roi-input-group { text-align: left; }
+    .roi-input-group label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .roi-input-group input[type="range"] {
+      width: 100%;
+      accent-color: var(--gold);
+      cursor: pointer;
+      height: 4px;
+    }
+    .roi-input-group .range-val {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      margin-top: 8px;
+    }
+    .roi-results {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--divider);
+    }
+    .roi-result-cell {
+      background: var(--card);
+      padding: 26px 20px;
+      text-align: center;
+    }
+    .roi-result-cell .r-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+    .roi-result-cell .r-value {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--text);
+      line-height: 1;
+    }
+    .roi-result-cell .r-note {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      margin-top: 5px;
+      line-height: 1.4;
+    }
+    .roi-result-cell.good .r-value { color: var(--green); }
+    .roi-result-cell.bad  .r-value { color: var(--red); }
+    .roi-disclaimer {
+      padding: 14px 32px;
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      background: var(--surface);
+      text-align: center;
+      border-top: 1px solid var(--divider);
+    }
+
+
+    /* ══════════════════════════════════════
+       DÉMO INTERACTIVE
+    ══════════════════════════════════════ */
+    .demo-section { background: var(--surface) !important; }
+    .demo-section h2 em { color: var(--gold); font-style: normal; }
+
+    .demo-wrap {
+      display: flex; align-items: center; gap: 80px;
+      max-width: 900px; margin: 0 auto; text-align: left;
+    }
+
+    /* ── Colonne gauche ── */
+    .demo-left { flex: 1; min-width: 0; }
+    .demo-label {
+      display: block; font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.2px;
+      color: var(--text-muted); margin-bottom: 10px;
+    }
+    .demo-input-group { position: relative; margin-bottom: 24px; }
+    .demo-input {
+      width: 100%; background: var(--card);
+      border: 1px solid var(--divider); border-radius: 14px;
+      padding: 16px 20px; font-size: 1.1rem; font-weight: 600;
+      color: var(--text); outline: none;
+      font-family: inherit; transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .demo-input::placeholder { color: var(--text-dim); font-weight: 400; }
+    .demo-input:focus {
+      border-color: rgba(201,168,76,0.5);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.08);
+    }
+    .demo-char {
+      position: absolute; bottom: -20px; right: 0;
+      font-size: 0.68rem; color: var(--text-dim);
+    }
+    .demo-perks {
+      list-style: none; margin-bottom: 36px; display: flex;
+      flex-direction: column; gap: 12px;
+    }
+    .demo-perks li {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.92rem; color: var(--text-muted);
+    }
+    .dp-icon { color: var(--gold); font-size: 1rem; width: 20px; flex-shrink: 0; }
+    .demo-cta { display: inline-block; }
+
+    /* ── Mockup téléphone ── */
+    .demo-right { flex-shrink: 0; }
+    .phone-mockup { position: relative; width: 230px; }
+    .phone-frame {
+      width: 230px; height: 480px;
+      background: #060714;
+      border-radius: 38px;
+      border: 7px solid #141528;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.07),
+        0 40px 80px rgba(0,0,0,0.7),
+        0 0 80px rgba(201,168,76,0.07);
+      position: relative; overflow: hidden;
+    }
+    .phone-notch {
+      position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 72px; height: 22px;
+      background: #060714; border-radius: 0 0 14px 14px;
+      z-index: 10; display: flex; align-items: center; justify-content: center;
+    }
+    .phone-notch-camera {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #1a1a2e;
+    }
+    .phone-side {
+      position: absolute; right: -9px; top: 100px;
+      width: 4px; height: 60px; background: #141528; border-radius: 0 3px 3px 0;
+    }
+    .phone-screen {
+      width: 100%; height: 100%;
+      background: #0b0c1e;
+      display: flex; flex-direction: column;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* Status bar */
+    .app-status {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 26px 16px 4px; font-size: 0.6rem;
+      color: rgba(255,255,255,0.7); flex-shrink: 0;
+    }
+    .app-time { font-weight: 700; }
+    .app-icons { display: flex; gap: 4px; font-size: 0.5rem; }
+
+    /* App header */
+    .app-header {
+      display: flex; align-items: center; gap: 8px;
+      padding: 6px 14px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      flex-shrink: 0;
+    }
+    .app-logo {
+      width: 30px; height: 30px; border-radius: 9px;
+      background: linear-gradient(135deg, var(--gold), #7a5c1e);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 900; color: #0a0814;
+      flex-shrink: 0; transition: background 0.4s;
+      letter-spacing: -1px; overflow: hidden;
+    }
+    .app-header-text { flex: 1; min-width: 0; }
+    .app-brand {
+      display: block; font-size: 0.82rem; font-weight: 700;
+      color: #eceae2; white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis;
+      transition: opacity 0.15s;
+    }
+    .app-brand.flash { opacity: 0; }
+    .app-tagline { font-size: 0.55rem; color: rgba(255,255,255,0.4); }
+    .app-notif { font-size: 0.8rem; }
+
+    /* Body */
+    .app-body { flex: 1; padding: 10px 14px; overflow: hidden; }
+    .app-greeting { font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+    .app-greeting strong { color: rgba(255,255,255,0.85); }
+    .app-card-label {
+      font-size: 0.56rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--gold); margin-bottom: 6px;
+    }
+    .app-service {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 10px; border-radius: 10px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.05);
+      margin-bottom: 5px;
+    }
+    .app-svc-icon {
+      width: 26px; height: 26px; border-radius: 7px;
+      background: rgba(201,168,76,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; color: var(--gold); flex-shrink: 0;
+    }
+    .app-svc-info { flex: 1; min-width: 0; }
+    .app-svc-name { font-size: 0.66rem; font-weight: 600; color: #eceae2; }
+    .app-svc-meta { font-size: 0.56rem; color: rgba(255,255,255,0.4); }
+    .app-svc-arrow { color: rgba(255,255,255,0.25); font-size: 0.8rem; }
+    .app-loyalty { margin-top: 6px; }
+    .app-loyalty-bar {
+      height: 4px; background: rgba(255,255,255,0.07);
+      border-radius: 2px; margin-bottom: 5px; overflow: hidden;
+    }
+    .app-loyalty-fill {
+      height: 100%; width: 70%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      border-radius: 2px;
+    }
+    .app-loyalty-label { font-size: 0.55rem; color: rgba(255,255,255,0.4); }
+    .app-loyalty-label strong { color: var(--gold); }
+
+    /* Bottom nav */
+    .app-nav {
+      display: flex; justify-content: space-around;
+      padding: 8px 6px 14px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      background: rgba(6,7,20,0.95); flex-shrink: 0;
+    }
+    .app-nav-item {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 2px; font-size: 0.5rem; color: rgba(255,255,255,0.3);
+    }
+    .app-nav-item span { font-size: 0.85rem; }
+    .app-nav-item.active { color: var(--gold); }
+
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+      .demo-wrap { flex-direction: column; gap: 40px; text-align: center; }
+      .demo-left { width: 100%; }
+      .demo-perks { text-align: left; max-width: 320px; margin: 0 auto 32px; }
+      .demo-right { display: flex; justify-content: center; }
+      .demo-cta { width: 100%; max-width: 340px; text-align: center; }
+    }
+
+    /* SCROLL PROGRESS */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0;
+      height: 2px; width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      z-index: 9999; transition: width 0.08s linear;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* MOBILE STICKY CTA */
+    /* CTA flottant — desktop : pill compact bas-droite */
+    .mobile-cta-bar {
+      display: flex;
+      position: fixed; bottom: 32px; right: 32px;
+      left: auto; width: auto;
+      background: transparent; border: none; padding: 0;
+      align-items: center; justify-content: center;
+      z-index: 98;
+      opacity: 0; pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity 0.4s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.4s cubic-bezier(0.22,1,0.36,1);
+    }
+    .mobile-cta-bar.visible {
+      opacity: 1; pointer-events: all; transform: translateY(0);
+    }
+    .mobile-cta-bar a {
+      display: inline-block; background: var(--gold); color: #0a0814;
+      text-align: center; padding: 12px 26px; border-radius: 980px;
+      text-decoration: none; font-size: 0.88rem; font-weight: 700;
+      letter-spacing: 0.1px; white-space: nowrap;
+      box-shadow: 0 8px 32px rgba(201,168,76,0.3), 0 2px 8px rgba(0,0,0,0.4);
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .mobile-cta-bar a:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(201,168,76,0.4), 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    /* ============================================================
+       RESPONSIVE — MOBILE  (≤ 768px)
+    ============================================================ */
+    @media (max-width: 768px) {
+
+      body { padding-bottom: 88px; }
+
+      /* ── Navigation ── */
+      nav { padding: 0 16px; height: 52px; }
+      nav .nav-links { display: none; }
+      .hamburger { display: flex; }
+      /* Mobile : barre pleine largeur en bas */
+      .mobile-cta-bar {
+        bottom: 0; right: 0; left: 0; width: auto;
+        background: rgba(8,9,26,0.94);
+        backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+        border-top: 1px solid var(--divider);
+        padding: 10px 20px;
+        transform: translateY(12px);
+      }
+      .mobile-cta-bar.visible { transform: translateY(0); }
+      .mobile-cta-bar a {
+        padding: 11px 28px; font-size: 0.88rem;
+        box-shadow: none;
+      }
+
+      /* ── Hero — plein écran ── */
+      .hero {
+        min-height: calc(100svh - 52px);
+        display: flex; flex-direction: column;
+        justify-content: center; align-items: center;
+        padding: 48px 24px 96px;
+      }
+      .hero .eyebrow {
+        font-size: 0.68rem; padding: 5px 14px;
+        letter-spacing: 1.5px; max-width: 92vw; text-align: center;
+      }
+      .hero h1 {
+        font-size: clamp(2.4rem, 10vw, 3.4rem);
+        letter-spacing: -2px; margin-bottom: 18px; line-height: 1.05;
+      }
+      .hero p { font-size: 1rem; margin-bottom: 36px; max-width: 100%; }
+      .hero-btns {
+        flex-direction: column; align-items: stretch;
+        gap: 12px; width: 100%; max-width: 400px; margin: 0 auto;
+      }
+      .hero-btns .btn-primary,
+      .hero-btns .btn-secondary {
+        width: 100%; text-align: center;
+        padding: 16px 20px; min-height: 52px;
+        display: flex; align-items: center; justify-content: center;
+      }
+
+      /* ── Diff band — ticker horizontal animé ── */
+      .diff-band {
+        background: var(--bg);
+        border-bottom: 1px solid var(--divider);
+        padding: 0; overflow: hidden;
+        flex-direction: row; flex-wrap: nowrap;
+        justify-content: flex-start; align-items: center;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+        mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+      }
+      .diff-ticker {
+        display: flex; align-items: center;
+        width: max-content; flex-shrink: 0;
+        animation: ticker-scroll 26s linear infinite;
+      }
+      .diff-ticker:hover { animation-play-state: paused; }
+      .diff-ticker [aria-hidden="true"] { display: flex; }
+      .diff-sep {
+        display: flex; flex-shrink: 0;
+        width: 1px; height: 18px;
+        background: var(--divider); align-self: center;
+      }
+      .diff-item {
+        flex-shrink: 0; white-space: nowrap;
+        padding: 16px 24px; font-size: 0.83rem;
+        border: none; text-align: left; justify-content: flex-start;
+      }
+
+      /* ── Verticals — défilement horizontal ── */
+      .verticals {
+        padding: 14px 16px; gap: 6px;
+        flex-wrap: nowrap; justify-content: flex-start;
+        overflow-x: auto; -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .verticals::-webkit-scrollbar { display: none; }
+      .vert-pill { flex-shrink: 0; font-size: 0.82rem; padding: 6px 14px; }
+
+      /* ── Sections ── */
+      .section { padding: 64px 20px; }
+      .section h2 { font-size: clamp(1.9rem, 7vw, 2.6rem); letter-spacing: -1px; }
+      .section p.sub { font-size: 0.97rem; max-width: 100%; margin-bottom: 36px; }
+
+      /* ── Features — 1 colonne sur mobile ── */
+      .features-grid { grid-template-columns: 1fr; border-radius: 16px; }
+      .feat-cell { padding: 22px 18px; }
+      .feat-cell .fc-icon { font-size: 1.4rem; margin-bottom: 10px; }
+      .feat-cell h4 { font-size: 0.97rem; }
+      .feat-cell p { font-size: 0.86rem; }
+
+      /* ── Steps — colonne centrée ── */
+      .steps-row {
+        flex-direction: column; gap: 20px;
+        align-items: center;
+      }
+      .steps-row::before { display: none; }
+      .step { width: 100%; max-width: 360px; padding: 0 8px; }
+      .step-num { margin-bottom: 14px; }
+
+      /* ── Pricing — empilées ── */
+      .pricing-grid {
+        flex-direction: column; gap: 14px;
+        max-width: 460px; margin: 0 auto;
+      }
+      .p-card { min-width: unset; width: 100%; padding: 28px 22px; }
+      .p-card h3 { font-size: 1.3rem; }
+      .p-card .price { font-size: 2.5rem; letter-spacing: -1.5px; }
+      .p-card.enterprise .price { font-size: 1.8rem; }
+      .p-card ul li { font-size: 0.9rem; }
+      .p-card a.p-btn { min-height: 44px; padding: 13px; }
+
+      /* ── Compare table — scroll horizontal ── */
+      .compare-wrap {
+        overflow-x: auto; margin-top: 32px;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 16px;
+        border: 1px solid var(--divider);
+      }
+      .compare-table {
+        min-width: 460px; font-size: 0.84rem;
+        border: none; border-radius: 0;
+      }
+      .compare-table thead th,
+      .compare-table tbody td { padding: 12px 14px; }
+
+      /* ── FAQ ── */
+      .faq-btn { padding: 18px 4px; min-height: 52px; }
+
+      /* ── ROI ── */
+      .roi-section { padding: 64px 20px; }
+      .roi-section h2 { font-size: clamp(1.9rem, 7vw, 2.6rem); letter-spacing: -1px; }
+      .roi-section p.sub { font-size: 0.97rem; max-width: 100%; }
+      .roi-widget { border-radius: 16px; }
+      .roi-inputs { grid-template-columns: 1fr; padding: 24px 20px; gap: 22px; }
+      .roi-input-group .range-val { font-size: 1.5rem; }
+      .roi-results { grid-template-columns: 1fr 1fr; }
+      .roi-results .roi-result-cell:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.08); }
+      .roi-results .roi-result-cell:nth-child(1),
+      .roi-results .roi-result-cell:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .roi-result-cell { padding: 22px 10px; }
+      .roi-result-cell .r-label { font-size: 0.6rem; letter-spacing: 0.4px; }
+      .roi-result-cell .r-value { font-size: 1.25rem; letter-spacing: -0.5px; }
+      .roi-result-cell .r-note { font-size: 0.65rem; }
+      .roi-disclaimer { padding: 12px 16px; font-size: 0.7rem; }
+
+      /* ── CTA band ── */
+      .cta-band { padding: 80px 20px 72px; }
+      .cta-band h2 {
+        font-size: clamp(2rem, 8vw, 2.8rem);
+        letter-spacing: -1.2px; line-height: 1.06;
+      }
+      .cta-band p { font-size: 0.97rem; margin-bottom: 36px; max-width: 100%; }
+      .cta-band .cta-stats { gap: 28px; flex-wrap: wrap; justify-content: center; }
+      .cta-band .cta-stat strong { font-size: 1.8rem; }
+      .cta-band .cta-stat span { font-size: 0.76rem; }
+      .cta-band-btns { flex-direction: column; gap: 12px; width: 100%; }
+      .cta-band .btn-primary {
+        width: 100%; max-width: 360px;
+        padding: 16px 24px; display: flex;
+        align-items: center; justify-content: center; margin: 0 auto;
+      }
+      .cta-band .btn-call {
+        width: 100%; max-width: 360px;
+        justify-content: center; margin: 0 auto;
+      }
+
+      /* ── Footer ── */
+      footer {
+        padding: 24px 20px;
+        flex-direction: column; text-align: center;
+        align-items: center; gap: 12px;
+      }
+      footer .footer-links { justify-content: center; flex-wrap: wrap; }
+    }
+
+    /* ── Petits écrans ≤ 390px ── */
+    @media (max-width: 390px) {
+
+      .hero { padding: 40px 16px 88px; }
+      .hero h1 { font-size: 2.1rem; letter-spacing: -1.2px; }
+      .hero p { font-size: 0.93rem; margin-bottom: 30px; }
+      .hero-btns { max-width: 100%; }
+
+      .section { padding: 54px 16px; }
+      .section h2 { font-size: 1.75rem; }
+      .section p.sub { font-size: 0.9rem; }
+
+      .p-card { padding: 22px 16px; }
+      .p-card .price { font-size: 2.1rem; }
+      .p-card ul li { font-size: 0.86rem; }
+
+      .roi-section { padding: 54px 16px; }
+      .roi-result-cell { padding: 18px 6px; }
+      .roi-result-cell .r-value { font-size: 1.05rem; }
+      .roi-result-cell .r-label { font-size: 0.54rem; letter-spacing: 0; }
+
+      .cta-band { padding: 64px 16px 54px; }
+      .cta-band h2 { font-size: 1.85rem; letter-spacing: -0.6px; }
+      .cta-band .cta-stats { gap: 20px; }
+      .cta-band .cta-stat strong { font-size: 1.5rem; }
+      .cta-band p { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVF29FFT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <div id="scroll-progress"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="logo"><span class="logo-icon">◈</span> Romand Web</a>
+    <div class="nav-links">
+      <a href="index.html#services">Offres sites</a>
+      <a href="app-booking.html" class="active">Application iOS/Android</a>
+      <a href="index.html#why">Pourquoi nous</a>
+      <a href="rdv.html?from=app">Réservez un RDV</a>
+      <a href="index.html#contact" class="nav-cta">Contact</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html#services">Offres sites</a>
+    <a href="app-booking.html">Application</a>
+    <a href="index.html#why">Pourquoi nous</a>
+    <div class="menu-divider"></div>
+    <a href="rdv.html?from=app">Réserver un RDV</a>
+    <a href="index.html#contact" class="menu-cta">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="eyebrow" data-anim="fade-in">App Mobile · iOS & Android</div>
+    <h1 data-anim="fade-up" data-delay="100">L'app de réservation<br>à votre <em>image</em>.</h1>
+    <p data-anim="fade-up" data-delay="200">Vos clients réservent, paient et fidélisent — depuis leur téléphone, 24h/24. Vous gardez le contrôle total depuis votre tableau de bord.</p>
+    <div class="hero-btns" data-anim="fade-up" data-delay="300">
+      <a href="rdv.html?from=app" class="btn-primary">Demander une démo gratuite</a>
+      <a href="#pricing" class="btn-secondary">Voir les tarifs</a>
+    </div>
+  </section>
+
+  <!-- ARGUMENT TARIFAIRE -->
+  <div class="diff-band">
+    <div class="diff-ticker">
+      <div class="diff-item diff-highlight">
+        <span class="diff-icon">✓</span>
+        <span><strong>Paiement unique</strong> — vous payez une fois, c'est à vous.</span>
+      </div>
+      <div class="diff-sep"></div>
+      <div class="diff-item diff-highlight">
+        <span class="diff-icon">✓</span>
+        <span><strong>0 % de commission</strong> sur vos réservations.</span>
+      </div>
+      <div class="diff-sep"></div>
+      <div class="diff-item">
+        <span class="diff-icon diff-cross">✕</span>
+        <span>Apps à commission : <strong>15–20 % par réservation</strong>, à vie.</span>
+      </div>
+      <div class="diff-sep" aria-hidden="true"></div>
+      <div class="diff-item diff-highlight" aria-hidden="true">
+        <span class="diff-icon">✓</span>
+        <span><strong>Paiement unique</strong> — vous payez une fois, c'est à vous.</span>
+      </div>
+      <div class="diff-sep" aria-hidden="true"></div>
+      <div class="diff-item diff-highlight" aria-hidden="true">
+        <span class="diff-icon">✓</span>
+        <span><strong>0 % de commission</strong> sur vos réservations.</span>
+      </div>
+      <div class="diff-sep" aria-hidden="true"></div>
+      <div class="diff-item" aria-hidden="true">
+        <span class="diff-icon diff-cross">✕</span>
+        <span>Apps à commission : <strong>15–20 % par réservation</strong>, à vie.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MÉTIERS -->
+  <div class="verticals">
+    <span class="vert-pill">Barbershop</span>
+    <span class="vert-pill">Coiffure</span>
+    <span class="vert-pill">Ongles</span>
+    <span class="vert-pill">Beauté & spa</span>
+    <span class="vert-pill">Tatouage</span>
+    <span class="vert-pill">Bien-être</span>
+  </div>
+
+  <!-- DÉMO INTERACTIVE -->
+  <section class="section demo-section" id="demo">
+    <div class="eyebrow">Aperçu personnalisé</div>
+    <h2 data-anim="fade-up">Visualisez <em>votre</em> app.</h2>
+    <p class="sub" data-anim="fade-up" data-delay="100">Entrez le nom de votre établissement — votre app apparaît instantanément.</p>
+
+    <div class="demo-wrap" data-anim="fade-up" data-delay="200">
+
+      <!-- Colonne gauche : input + avantages -->
+      <div class="demo-left">
+        <div class="demo-input-group">
+          <label class="demo-label" for="brand-input">Nom de votre établissement</label>
+          <input
+            type="text" id="brand-input" class="demo-input"
+            placeholder="Ex : The K Concept" maxlength="28"
+            autocomplete="off" spellcheck="false"
+          />
+          <span class="demo-char" id="brand-char">0 / 28</span>
+        </div>
+        <ul class="demo-perks">
+          <li><span class="dp-icon">◈</span> Votre logo &amp; couleurs</li>
+          <li><span class="dp-icon">◷</span> Réservations 24h/24</li>
+          <li><span class="dp-icon">◉</span> Programme de fidélité</li>
+          <li><span class="dp-icon">◻</span> Paiement &amp; acompte</li>
+        </ul>
+        <a href="rdv.html?from=app" class="btn-primary demo-cta">Je veux cette app →</a>
+      </div>
+
+      <!-- Colonne droite : mockup téléphone -->
+      <div class="demo-right">
+        <div class="phone-mockup">
+          <div class="phone-frame">
+            <!-- Notch -->
+            <div class="phone-notch"><div class="phone-notch-camera"></div></div>
+            <div class="phone-screen">
+
+              <!-- Barre de statut -->
+              <div class="app-status">
+                <span class="app-time">9:41</span>
+                <div class="app-icons">
+                  <span>▪▪▪</span>
+                  <span>▮▮▮▮</span>
+                </div>
+              </div>
+
+              <!-- Header app -->
+              <div class="app-header">
+                <div class="app-logo" id="app-logo">K</div>
+                <div class="app-header-text">
+                  <span class="app-brand" id="brand-display">Votre Salon</span>
+                  <span class="app-tagline">Réservez en 30 sec</span>
+                </div>
+                <div class="app-notif">🔔</div>
+              </div>
+
+              <!-- Contenu -->
+              <div class="app-body">
+                <div class="app-greeting">Bonjour, <strong>Lucas</strong> 👋</div>
+
+                <div class="app-card-label">Nos prestations</div>
+                <div class="app-service">
+                  <div class="app-svc-icon">✂</div>
+                  <div class="app-svc-info">
+                    <div class="app-svc-name">Coupe Homme</div>
+                    <div class="app-svc-meta">30 min · CHF 35</div>
+                  </div>
+                  <div class="app-svc-arrow">›</div>
+                </div>
+                <div class="app-service">
+                  <div class="app-svc-icon">◈</div>
+                  <div class="app-svc-info">
+                    <div class="app-svc-name">Coupe + Barbe</div>
+                    <div class="app-svc-meta">55 min · CHF 55</div>
+                  </div>
+                  <div class="app-svc-arrow">›</div>
+                </div>
+
+                <div class="app-card-label" style="margin-top:10px">Fidélité</div>
+                <div class="app-loyalty">
+                  <div class="app-loyalty-bar">
+                    <div class="app-loyalty-fill" id="app-loyalty-fill"></div>
+                  </div>
+                  <div class="app-loyalty-label">7 / 10 pts · Prochaine récompense : <strong>Soin offert</strong></div>
+                </div>
+              </div>
+
+              <!-- Navigation -->
+              <div class="app-nav">
+                <div class="app-nav-item active"><span>⌂</span>Accueil</div>
+                <div class="app-nav-item"><span>◷</span>RDV</div>
+                <div class="app-nav-item"><span>◉</span>Points</div>
+                <div class="app-nav-item"><span>◎</span>Profil</div>
+              </div>
+
+            </div><!-- /phone-screen -->
+          </div><!-- /phone-frame -->
+          <!-- Bouton latéral déco -->
+          <div class="phone-side"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FONCTIONNALITÉS -->
+  <section class="section" id="features">
+    <div class="eyebrow" data-anim="fade-in">Fonctionnalités</div>
+    <h2 data-anim="fade-up" data-delay="100">Tout ce qu'il faut.</h2>
+    <p class="sub" data-anim="fade-up" data-delay="200">Pas d'abonnement commission. Pas de partage de clientèle. Votre app, vos règles.</p>
+
+    <div class="features-grid" data-anim="fade-up" data-delay="300">
+      <div class="feat-cell">
+        <span class="fc-icon">◷</span>
+        <h4>Réservation 24h/24</h4>
+        <p>Créneaux en temps réel, sélection du prestataire, confirmation instantanée. Anti double-booking automatique.</p>
+      </div>
+      <div class="feat-cell">
+        <span class="fc-icon">◈</span>
+        <h4>Programme de fidélité</h4>
+        <p>Points, paliers Silver/Gold/Platinum, récompenses personnalisées. Vos clients reviennent — et le savent.</p>
+      </div>
+      <div class="feat-cell">
+        <span class="fc-icon">◻</span>
+        <h4>Acompte en ligne</h4>
+        <p>Encaissez un acompte à la réservation pour éliminer les no-shows. Intégration Stripe disponible.</p>
+      </div>
+      <div class="feat-cell">
+        <span class="fc-icon">◉</span>
+        <h4>Notifications push</h4>
+        <p>Rappel 24h et 2h avant le RDV. Campagnes marketing et promos ciblées directement sur l'écran.</p>
+      </div>
+      <div class="feat-cell">
+        <span class="fc-icon">◎</span>
+        <h4>Géofencing proximité</h4>
+        <p>Notifiez automatiquement vos clients quand ils passent à moins de 5 km de votre salon.</p>
+      </div>
+      <div class="feat-cell">
+        <span class="fc-icon">◇</span>
+        <h4>Marque blanche</h4>
+        <p>Votre logo, vos couleurs, votre nom dans l'App Store. Option Premium : app publiée sous votre compte Apple.</p>
+      </div>
+      <div class="feat-cell">
+        <span class="fc-icon">⊹</span>
+        <h4>Multi-prestataires</h4>
+        <p>Gérez plusieurs coiffeurs ou collaborateurs, chacun avec son planning, ses services et ses horaires.</p>
+      </div>
+      <div class="feat-cell">
+        <span class="fc-icon">◆</span>
+        <h4>Avis clients</h4>
+        <p>Collectez des avis après chaque rendez-vous. Boostez votre réputation en ligne automatiquement.</p>
+      </div>
+      <div class="feat-cell">
+        <span class="fc-icon">▦</span>
+        <h4>Dashboard salon</h4>
+        <p>Gérez vos services, horaires et prestations en temps réel depuis votre tableau de bord web.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMENT ÇA MARCHE -->
+  <section class="section steps" id="how">
+    <div class="eyebrow" data-anim="fade-in">En 4 étapes</div>
+    <h2 data-anim="fade-up" data-delay="100">Mis en ligne en quelques semaines.</h2>
+    <p class="sub" data-anim="fade-up" data-delay="200">Vous gérez votre salon. On s'occupe de tout le reste.</p>
+
+    <div class="steps-row" data-anim="fade-up" data-delay="300">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Brief & design</h4>
+        <p>On recueille votre charte graphique, vos services et vos horaires.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Personnalisation</h4>
+        <p>L'app est configurée à votre image — logo, couleurs, fidélité.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Tests & validation</h4>
+        <p>Vous testez l'app sur votre téléphone avant la mise en ligne.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Publication</h4>
+        <p>L'app est publiée sur l'App Store et Google Play. Vos clients téléchargent.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TARIFS -->
+  <section class="section" id="pricing">
+    <div class="eyebrow" data-anim="fade-in">Tarifs</div>
+    <h2 data-anim="fade-up" data-delay="100">Un prix unique. Pas de commission.</h2>
+    <p class="sub" data-anim="fade-up" data-delay="200">Vous payez une fois, vous gardez votre clientèle. Pas de % sur vos réservations.</p>
+
+    <div class="pricing-grid" data-anim="fade-up" data-delay="300">
+
+      <div class="p-card popular">
+        <span class="badge">Le plus populaire</span>
+        <h3>Solo Pro</h3>
+        <div class="price">1'990</div>
+        <div class="price-note">CHF · paiement unique + CHF 290/an</div>
+        <div class="divider"></div>
+        <ul>
+          <li>App iOS & Android</li>
+          <li>Réservation en ligne 24h/24</li>
+          <li>Programme de fidélité</li>
+          <li>Notifications push + rappels</li>
+          <li>Géofencing proximité</li>
+          <li>Avis clients intégrés</li>
+          <li>Dashboard salon web</li>
+          <li>Multi-prestataires (jusqu'à 5)</li>
+        </ul>
+        <a href="rdv.html?from=app" class="p-btn">Demander une démo →</a>
+      </div>
+
+
+      <div class="p-card enterprise">
+        <span class="badge">Chaîne / Franchise</span>
+        <h3>Signature</h3>
+        <div class="price">Sur devis</div>
+        <div class="price-note">Multi-salons · branding centralisé</div>
+        <div class="divider"></div>
+        <ul>
+          <li>Salons illimités</li>
+          <li>Backend dédié (Supabase / AWS)</li>
+          <li>Intégrations sur mesure</li>
+          <li>SLA & support dédié</li>
+        </ul>
+        <a href="#demo" class="p-btn">Nous contacter →</a>
+      </div>
+
+    </div>
+    <div class="compare-wrap" data-anim="fade-up" data-delay="400">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="col-popular">Solo Pro</th>
+            <th>Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="cat-row"><td colspan="3">Tarifs</td></tr>
+          <tr>
+            <td>Prix unique</td>
+            <td class="col-popular">CHF 1'990</td>
+            <td>Sur devis</td>
+          </tr>
+          <tr>
+            <td>Maintenance annuelle</td>
+            <td class="col-popular">CHF 290/an</td>
+            <td>Sur devis</td>
+          </tr>
+          <tr>
+            <td>Commission sur réservations</td>
+            <td class="col-popular check">0 %</td>
+            <td class="check">0 %</td>
+          </tr>
+
+          <tr class="cat-row"><td colspan="3">Fonctionnalités incluses</td></tr>
+          <tr>
+            <td>App iOS & Android</td>
+            <td class="col-popular check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Réservation en ligne 24h/24</td>
+            <td class="col-popular check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Programme de fidélité</td>
+            <td class="col-popular check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Notifications push & rappels</td>
+            <td class="col-popular check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Géofencing proximité</td>
+            <td class="col-popular check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Avis clients intégrés</td>
+            <td class="col-popular check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Dashboard salon web</td>
+            <td class="col-popular check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Multi-prestataires</td>
+            <td class="col-popular">Jusqu'à 5</td>
+            <td>Illimités</td>
+          </tr>
+          <tr>
+            <td>Acompte en ligne (Stripe)</td>
+            <td class="col-popular cross">—</td>
+            <td class="check">✓</td>
+          </tr>
+
+          <tr class="cat-row"><td colspan="3">Chaîne & Franchise</td></tr>
+          <tr>
+            <td>Salons multiples</td>
+            <td class="col-popular cross">—</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Backend dédié</td>
+            <td class="col-popular cross">—</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Intégrations sur mesure</td>
+            <td class="col-popular cross">—</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>SLA & support dédié</td>
+            <td class="col-popular cross">—</td>
+            <td class="check">✓</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:28px;font-size:0.78rem;color:var(--text-dim);" data-anim="fade-in" data-delay="500">Aucune commission sur les réservations. La maintenance annuelle couvre les mises à jour et l'hébergement backend.</p>
+  </section>
+
+  <!-- ROI CALCULATOR -->
+  <section class="roi-section" id="roi">
+    <div class="eyebrow" data-anim="fade-in">Calculateur de rentabilité</div>
+    <h2 data-anim="fade-up" data-delay="100">Combien perdez-vous chez la concurrence ?</h2>
+    <p class="sub" data-anim="fade-up" data-delay="200">Entrez votre volume mensuel et voyez ce que vous économisez avec Romand Web.</p>
+
+    <div class="roi-widget" data-anim="scale-in" data-delay="300">
+      <div class="roi-inputs">
+        <div class="roi-input-group">
+          <label>Rendez-vous par mois</label>
+          <input type="range" id="roi-rdv" min="20" max="400" value="80" step="10" oninput="calcROI()">
+          <div class="range-val"><span id="roi-rdv-val">80</span> RDV/mois</div>
+        </div>
+        <div class="roi-input-group">
+          <label>Prix moyen par RDV</label>
+          <input type="range" id="roi-price" min="20" max="200" value="50" step="5" oninput="calcROI()">
+          <div class="range-val">CHF <span id="roi-price-val">50</span></div>
+        </div>
+      </div>
+
+      <div class="roi-results">
+        <div class="roi-result-cell bad">
+          <div class="r-label">Commission concurrents/an</div>
+          <div class="r-value" id="roi-concur">—</div>
+          <div class="r-note">commission standard du marché (20 %)</div>
+        </div>
+        <div class="roi-result-cell">
+          <div class="r-label">Coût Romand Web an 1</div>
+          <div class="r-value" id="roi-rw">—</div>
+          <div class="r-note">acquisition + maintenance (CHF 1'990 + 290)</div>
+        </div>
+        <div class="roi-result-cell good">
+          <div class="r-label">Économie nette an 1</div>
+          <div class="r-value" id="roi-saving">—</div>
+          <div class="r-note" id="roi-saving-note">—</div>
+        </div>
+        <div class="roi-result-cell good">
+          <div class="r-label">Remboursé en</div>
+          <div class="r-value" id="roi-payback">—</div>
+          <div class="r-note">dès ce seuil, 100 % d'économie</div>
+        </div>
+      </div>
+      <div class="roi-disclaimer">* Calcul basé sur 20 % de commission (taux standard du marché) vs CHF 1'990 d'acquisition + CHF 290/an de maintenance.</div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section alt" id="faq">
+    <div class="eyebrow" data-anim="fade-in">FAQ</div>
+    <h2 data-anim="fade-up" data-delay="100">Questions fréquentes.</h2>
+    <p class="sub" data-anim="fade-up" data-delay="200">Tout ce que vous voulez savoir avant de commencer.</p>
+
+    <div class="faq-list" data-anim="fade-up" data-delay="300">
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          Combien de temps pour livrer l'app ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>En général 3 à 6 semaines, selon la complexité de votre charte graphique et le nombre de services à configurer. La publication sur l'App Store peut prendre 1 à 3 jours supplémentaires (validation Apple).</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          Puis-je avoir plusieurs salons sur la même app ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Oui. L'architecture est multi-salons par défaut. L'offre Sur mesure est pensée pour les chaînes et franchises avec plusieurs établissements et un branding centralisé.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          Y a-t-il une commission sur mes réservations ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Aucune. Les apps de réservation à commission prennent 15–20 % sur chaque RDV à vie. Avec Romand Web, vous payez uniquement le tarif initial + la maintenance annuelle. Vos revenus restent 100 % à vous.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">
+          Que couvre la maintenance annuelle ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Les mises à jour de l'app (compatibilité iOS/Android), l'hébergement du backend (base de données, API) et le support technique par email.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-band">
+    <div class="cta-eyebrow" data-anim="fade-in">Lancez-vous</div>
+    <h2 data-anim="fade-up" data-delay="100">Votre app.<br><span>Vos clients.</span><br>Zéro commission.</h2>
+    <p data-anim="fade-up" data-delay="200">30 minutes de démo gratuite — on vous montre tout, sans engagement.</p>
+    <div class="cta-stats" data-anim="fade-up" data-delay="300">
+      <div class="cta-stat">
+        <strong>0 %</strong>
+        <span>de commission</span>
+      </div>
+      <div class="cta-stat">
+        <strong>3–6 sem.</strong>
+        <span>délai de livraison</span>
+      </div>
+      <div class="cta-stat">
+        <strong>iOS & Android</strong>
+        <span>App Store + Google Play</span>
+      </div>
+    </div>
+    <div class="cta-band-btns" data-anim="fade-up" data-delay="400">
+      <a href="rdv.html?from=app" class="btn-primary">Demander ma démo gratuite →</a>
+      <a href="tel:+41765060676" class="btn-call"><span>📞</span> Appeler maintenant</a>
+    </div>
+  </section>
+
+  <!-- MOBILE STICKY CTA -->
+  <div class="mobile-cta-bar">
+    <a href="rdv.html?from=app">Demander une démo gratuite →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Romand Web — Romandie, Suisse · <a href="tel:+41765060676" style="color:inherit;text-decoration:none;">+41 76 506 06 76</a></p>
+    <div class="footer-links">
+      <a href="index.html">Accueil</a>
+      <a href="index.html#services">Offres sites</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger
+    const ham = document.getElementById('hamburger');
+    const mob = document.getElementById('mobile-menu');
+    ham.addEventListener('click', () => { ham.classList.toggle('open'); mob.classList.toggle('open'); });
+    mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { ham.classList.remove('open'); mob.classList.remove('open'); }));
+
+    // Mobile sticky CTA — visible uniquement quand aucun bouton de démo n'est à l'écran
+    (function () {
+      const ctaBar = document.querySelector('.mobile-cta-bar');
+      if (!ctaBar) return;
+      const targets = Array.from(document.querySelectorAll(
+        '.hero-btns .btn-primary, .p-card.popular .p-btn, .cta-band .btn-primary'
+      ));
+      if (!targets.length) return;
+      if (!('IntersectionObserver' in window)) { ctaBar.classList.add('visible'); return; }
+      const visible = new Set();
+      const obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) visible.add(e.target);
+          else visible.delete(e.target);
+        });
+        ctaBar.classList.toggle('visible', visible.size === 0);
+      }, { threshold: 0 });
+      targets.forEach(function (t) { obs.observe(t); });
+    }());
+
+    // Démo interactive — mise à jour live du mockup
+    (function () {
+      const input   = document.getElementById('brand-input');
+      const display = document.getElementById('brand-display');
+      const logo    = document.getElementById('app-logo');
+      const counter = document.getElementById('brand-char');
+      if (!input || !display) return;
+
+      input.addEventListener('input', function () {
+        const val = this.value.trim();
+        counter.textContent = this.value.length + ' / 28';
+
+        // Flash transition
+        display.classList.add('flash');
+        logo.classList.add('flash');
+        setTimeout(function () {
+          display.textContent = val || 'Votre Salon';
+          logo.textContent    = val ? val.charAt(0).toUpperCase() : 'K';
+          display.classList.remove('flash');
+          logo.classList.remove('flash');
+        }, 150);
+      });
+    }());
+
+    // ROI Calculator
+    function calcROI() {
+      const rdv   = parseInt(document.getElementById('roi-rdv').value);
+      const price = parseInt(document.getElementById('roi-price').value);
+      document.getElementById('roi-rdv-val').textContent   = rdv;
+      document.getElementById('roi-price-val').textContent = price;
+
+      const acquisition = 1990;
+      const maintenance = 290;
+      const rwYear1     = acquisition + maintenance;          // CHF 2'280 an 1
+      const commissionAnnual = Math.round(rdv * price * 12 * 0.20);
+      const savingYear1 = commissionAnnual - rwYear1;
+      const savingRecurring = commissionAnnual - maintenance; // dès an 2
+      const paybackMonths = Math.ceil(acquisition / Math.max(1, savingRecurring / 12));
+
+      document.getElementById('roi-concur').textContent = 'CHF ' + commissionAnnual.toLocaleString('fr-CH');
+      document.getElementById('roi-rw').textContent     = 'CHF ' + rwYear1.toLocaleString('fr-CH');
+
+      const savingEl   = document.getElementById('roi-saving');
+      const savingNote = document.getElementById('roi-saving-note');
+      if (savingYear1 > 0) {
+        savingEl.textContent   = 'CHF ' + savingYear1.toLocaleString('fr-CH');
+        savingNote.textContent = 'dès an 2 : CHF ' + savingRecurring.toLocaleString('fr-CH') + '/an';
+      } else {
+        savingEl.textContent   = '−CHF ' + Math.abs(savingYear1).toLocaleString('fr-CH');
+        savingNote.textContent = 'remboursé en ' + paybackMonths + ' mois';
+      }
+
+      document.getElementById('roi-payback').textContent = paybackMonths + ' mois';
+    }
+    calcROI();
+
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    // Scroll animations
+    const animEls = document.querySelectorAll('[data-anim]');
+
+    // Active le masquage CSS uniquement maintenant que JS est prêt
+    document.body.classList.add('anim-js');
+
+    function revealInView() {
+      animEls.forEach(el => {
+        if (el.classList.contains('visible')) return;
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight + 60) {
+          el.classList.add('visible');
+        }
+      });
+    }
+
+    // Déclenche immédiatement + après rendu
+    revealInView();
+    requestAnimationFrame(() => { revealInView(); requestAnimationFrame(revealInView); });
+    setTimeout(revealInView, 150);
+
+    // IntersectionObserver pour le scroll
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+      }, { threshold: 0.05 });
+      animEls.forEach(el => { if (!el.classList.contains('visible')) observer.observe(el); });
+    }
+
+    window.addEventListener('scroll', revealInView, { passive: true });
+
+    // Scroll progress bar
+    const prog = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+      const s = document.documentElement;
+      const pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
+      prog.style.width = pct + '%';
+    }, { passive: true });
+
+    // Page fade-in
+    document.body.style.opacity = '0';
+    window.addEventListener('pageshow', () => {
+      document.body.style.transition = 'opacity 0.35s ease';
+      document.body.style.opacity = '1';
+    });
+    document.body.style.opacity = '1';
+  </script>
+</body>
+</html>

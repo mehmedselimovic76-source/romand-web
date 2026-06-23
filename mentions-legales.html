@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mentions légales — Romand Web</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #1d1d1f;
+      --gray: #6e6e73;
+      --light-gray: #f5f5f7;
+      --blue: #0071e3;
+      --white: #ffffff;
+      --divider: rgba(0,0,0,0.08);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--black);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--divider);
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 22px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    @keyframes logoSpin {
+      0%   { transform: rotate(0deg) scale(1); }
+      50%  { transform: rotate(180deg) scale(1); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+    nav .logo {
+      font-size: 1.2rem; font-weight: 700; color: var(--black);
+      letter-spacing: -0.3px; text-decoration: none;
+      display: flex; align-items: center; gap: 8px;
+    }
+    nav .logo-icon {
+      color: var(--blue); font-size: 1.5rem; display: inline-block;
+      animation: logoSpin 6s cubic-bezier(0.4,0,0.2,1) infinite;
+    }
+    nav .back {
+      font-size: 0.9rem; color: var(--blue); text-decoration: none;
+      font-weight: 500; display: flex; align-items: center; gap: 4px;
+    }
+    nav .back:hover { opacity: 0.7; }
+    .lang-btn { background:none; border:1.5px solid var(--divider); border-radius:8px; padding:4px 11px; font-size:.78rem; font-weight:700; color:var(--gray); cursor:pointer; transition:border-color .2s,color .2s,background .2s; font-family:inherit; letter-spacing:.6px; margin-left:8px; }
+    .lang-btn:hover { border-color:var(--blue); color:var(--blue); }
+    .lang-btn.active { border-color:var(--blue); color:var(--blue); background:rgba(0,113,227,0.07); }
+    .nav-right { display:flex; align-items:center; gap:4px; }
+
+    .page-hero {
+      background: var(--light-gray);
+      padding: 64px 40px 56px;
+      border-bottom: 1px solid var(--divider);
+      text-align: center;
+    }
+    .page-hero .eyebrow {
+      font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px;
+      color: var(--blue); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .page-hero h1 {
+      font-size: 3rem; font-weight: 800; letter-spacing: -1.5px;
+      color: var(--black); margin-bottom: 10px;
+    }
+    .page-hero p {
+      font-size: 1rem; color: var(--gray); font-weight: 300;
+    }
+
+    .content {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 64px 40px 100px;
+    }
+
+    .section-block {
+      margin-bottom: 52px;
+    }
+    .section-block h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: var(--black);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--divider);
+    }
+    .section-block p {
+      font-size: 0.97rem;
+      color: var(--gray);
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 12px;
+    }
+    .section-block p:last-child { margin-bottom: 0; }
+    .section-block ul {
+      list-style: none;
+      margin-top: 8px;
+    }
+    .section-block ul li {
+      font-size: 0.97rem;
+      color: var(--gray);
+      line-height: 1.75;
+      font-weight: 300;
+      padding: 4px 0 4px 20px;
+      position: relative;
+    }
+    .section-block ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    .highlight-box {
+      background: var(--light-gray);
+      border-left: 3px solid var(--blue);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+    .highlight-box p {
+      font-size: 0.97rem;
+      color: var(--black) !important;
+      font-weight: 400 !important;
+      line-height: 1.7;
+      margin: 0 !important;
+    }
+    .highlight-box strong { color: var(--black); font-weight: 600; }
+
+    .warning-box {
+      background: #fff7ed;
+      border-left: 3px solid #f59e0b;
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+    .warning-box p {
+      font-size: 0.97rem;
+      color: #92400e !important;
+      font-weight: 400 !important;
+      line-height: 1.7;
+      margin: 0 !important;
+    }
+    .warning-box strong { color: #78350f; font-weight: 600; }
+
+    .update-date {
+      font-size: 0.8rem;
+      color: #aeaeb2;
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--divider);
+    }
+
+    footer {
+      background: var(--light-gray);
+      border-top: 1px solid var(--divider);
+      padding: 22px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    footer p { font-size: 0.78rem; color: #aeaeb2; }
+    footer a { font-size: 0.78rem; color: #aeaeb2; text-decoration: none; }
+    footer a:hover { color: var(--gray); }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --black: #f5f5f7; --gray: #98989d; --light-gray: #1c1c1e;
+        --blue: #2997ff; --white: #000000; --divider: rgba(255,255,255,0.08);
+      }
+      nav { background: rgba(0,0,0,0.85); }
+      .highlight-box { background: #1c2a3a; }
+      .highlight-box p { color: #e0e0e5 !important; }
+      .warning-box { background: #2a1f0e; }
+      .warning-box p { color: #fbbf24 !important; }
+    }
+
+    @media (max-width: 768px) {
+      .page-hero { padding: 48px 20px 40px; }
+      .page-hero h1 { font-size: 2.2rem; }
+      .content { padding: 40px 20px 80px; }
+      footer { justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">
+      <span class="logo-icon">◈</span> Romand Web
+    </a>
+    <a href="index.html" class="back" id="ml-back">‹ Retour</a>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="eyebrow" id="ml-eyebrow">Informations légales</div>
+    <h1 id="ml-h1">Mentions légales</h1>
+    <p id="ml-date">Dernière mise à jour : avril 2026</p>
+  </div>
+
+  <div class="content">
+
+    <!-- 1. Éditeur -->
+    <div class="section-block">
+      <h2 id="ml-s1h">1. Éditeur du site</h2>
+      <div id="ml-s1c">
+        <p>Le site <strong>romand-web.com</strong> est édité par <strong>Romand Web</strong>, entreprise individuelle établie en Romandie, Suisse.</p>
+        <ul>
+          <li>Forme juridique : entreprise individuelle</li>
+          <li>Région : Romandie, Suisse</li>
+          <li>Email : <a href="mailto:info@romand-web.com" style="color: var(--blue); text-decoration: none;">info@romand-web.com</a></li>
+          <li>Téléphone : <a href="tel:+41765060676" style="color: var(--blue); text-decoration: none;">+41 76 506 06 76</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2. Hébergement -->
+    <div class="section-block">
+      <h2 id="ml-s2h">2. Hébergement</h2>
+      <p id="ml-s2c">Le site est hébergé par <strong>GitHub Pages</strong>, service de GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, États-Unis.</p>
+    </div>
+
+    <!-- 3. Propriété intellectuelle -->
+    <div class="section-block">
+      <h2 id="ml-s3h">3. Propriété intellectuelle</h2>
+      <div id="ml-s3c">
+        <p>L'ensemble des éléments constituant le site romand-web.com (textes, graphismes, logotypes, icônes, images, animations) est la propriété exclusive de Romand Web et est protégé par les lois suisses et internationales relatives à la propriété intellectuelle.</p>
+        <p>Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site est interdite sans autorisation écrite préalable de Romand Web.</p>
+      </div>
+    </div>
+
+    <!-- 4. Responsabilité -->
+    <div class="section-block">
+      <h2 id="ml-s4h">4. Limitation de responsabilité</h2>
+      <div id="ml-s4c">
+        <p>Romand Web s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur le site. Toutefois, Romand Web ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition sur ce site.</p>
+        <p>Romand Web décline toute responsabilité pour tout dommage résultant d'une intrusion frauduleuse d'un tiers ayant entraîné une modification des informations mises à disposition sur le site.</p>
+      </div>
+    </div>
+
+    <!-- 5. Données personnelles -->
+    <div class="section-block">
+      <h2 id="ml-s5h">5. Protection des données personnelles</h2>
+      <div id="ml-s5c">
+        <p>Conformément à la Loi fédérale sur la protection des données (LPD) en vigueur en Suisse, les données personnelles collectées via le formulaire de contact (nom, email, téléphone) sont utilisées exclusivement dans le cadre de la relation commerciale avec Romand Web.</p>
+        <ul>
+          <li>Aucune donnée n'est vendue ou transmise à des tiers</li>
+          <li>Les données sont conservées pour une durée maximale de 3 ans</li>
+          <li>Vous disposez d'un droit d'accès, de rectification et de suppression</li>
+        </ul>
+        <p>Pour exercer vos droits, contactez-nous à : <a href="mailto:info@romand-web.com" style="color: var(--blue); text-decoration: none;">info@romand-web.com</a></p>
+      </div>
+    </div>
+
+    <!-- 6. Cookies -->
+    <div class="section-block">
+      <h2 id="ml-s6h">6. Cookies</h2>
+      <p id="ml-s6c">Le site romand-web.com n'utilise pas de cookies de suivi ou de profilage. Les seuls cookies potentiellement déposés sont ceux liés au service hCaptcha (protection anti-spam du formulaire de contact), nécessaires au bon fonctionnement du site.</p>
+    </div>
+
+    <!-- 7. Conditions commerciales -->
+    <div class="section-block">
+      <h2 id="ml-s7h">7. Conditions commerciales</h2>
+      <div id="ml-s7c">
+        <p><strong id="ml-s7t1">Validité des devis</strong></p>
+        <div class="highlight-box">
+          <p id="ml-s7p1">Tout devis émis par Romand Web est valable <strong>7 jours calendaires</strong> à compter de sa date d'émission. Passé ce délai, Romand Web se réserve le droit de réviser les tarifs proposés.</p>
+        </div>
+        <p style="margin-top: 20px;"><strong id="ml-s7t2">Acceptation et démarrage de la prestation</strong></p>
+        <div class="highlight-box">
+          <p id="ml-s7p2">L'acceptation du devis par le client vaut bon de commande ferme et engage les deux parties. Dès acceptation, le client s'engage à verser <strong>l'intégralité du montant convenu</strong> selon les modalités de paiement précisées dans le devis (acompte ou paiement complet selon la formule choisie).</p>
+        </div>
+        <p style="margin-top: 20px;"><strong id="ml-s7t3">Conditions d'annulation</strong></p>
+        <div class="warning-box">
+          <p id="ml-s7p3">En cas d'annulation par le client <strong>après acceptation du devis</strong>, une indemnité forfaitaire correspondant à <strong>50 % du montant total TTC</strong> du devis sera due à Romand Web, à titre de compensation pour les travaux engagés et le manque à gagner. Cette indemnité est exigible dans un délai de 30 jours suivant la notification d'annulation.</p>
+        </div>
+        <p id="ml-s7p4">En cas de non-paiement, Romand Web se réserve le droit de suspendre la prestation, de retirer le site en ligne et d'engager toute procédure de recouvrement nécessaire conformément au droit suisse.</p>
+      </div>
+    </div>
+
+    <!-- 8. Droit applicable -->
+    <div class="section-block">
+      <h2 id="ml-s8h">8. Droit applicable et juridiction compétente</h2>
+      <p id="ml-s8c">Les présentes mentions légales et conditions générales sont soumises au <strong>droit suisse</strong>. En cas de litige, et à défaut de règlement amiable, les tribunaux suisses seront seuls compétents.</p>
+    </div>
+
+    <p class="update-date" id="ml-update">Document mis à jour en avril 2026 — Romand Web, Romandie, Suisse</p>
+
+  </div>
+
+  <footer>
+    <p id="ml-fcopy">© 2026 Romand Web — Romandie, Suisse</p>
+    <a href="index.html" id="ml-fback">← Retour au site</a>
+  </footer>
+
+  <script>
+    const T = {
+      fr: {
+        'ml-back':'‹ Retour',
+        'ml-eyebrow':'Informations légales','ml-h1':'Mentions légales',
+        'ml-date':'Dernière mise à jour : avril 2026',
+        'ml-s1h':'1. Éditeur du site',
+        'ml-s1c':'<p>Le site <strong>romand-web.com</strong> est édité par <strong>Romand Web</strong>, entreprise individuelle établie en Romandie, Suisse.</p><ul><li>Forme juridique : entreprise individuelle</li><li>Région : Romandie, Suisse</li><li>Email : <a href="mailto:info@romand-web.com" style="color:var(--blue);text-decoration:none;">info@romand-web.com</a></li><li>Téléphone : <a href="tel:+41765060676" style="color:var(--blue);text-decoration:none;">+41 76 506 06 76</a></li></ul>',
+        'ml-s2h':'2. Hébergement',
+        'ml-s2c':'Le site est hébergé par <strong>GitHub Pages</strong>, service de GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, États-Unis.',
+        'ml-s3h':'3. Propriété intellectuelle',
+        'ml-s3c':'<p>L\'ensemble des éléments constituant le site romand-web.com (textes, graphismes, logotypes, icônes, images, animations) est la propriété exclusive de Romand Web et est protégé par les lois suisses et internationales relatives à la propriété intellectuelle.</p><p>Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site est interdite sans autorisation écrite préalable de Romand Web.</p>',
+        'ml-s4h':'4. Limitation de responsabilité',
+        'ml-s4c':'<p>Romand Web s\'efforce d\'assurer l\'exactitude et la mise à jour des informations diffusées sur le site. Toutefois, Romand Web ne peut garantir l\'exactitude, la précision ou l\'exhaustivité des informations mises à disposition sur ce site.</p><p>Romand Web décline toute responsabilité pour tout dommage résultant d\'une intrusion frauduleuse d\'un tiers ayant entraîné une modification des informations mises à disposition sur le site.</p>',
+        'ml-s5h':'5. Protection des données personnelles',
+        'ml-s5c':'<p>Conformément à la Loi fédérale sur la protection des données (LPD) en vigueur en Suisse, les données personnelles collectées via le formulaire de contact (nom, email, téléphone) sont utilisées exclusivement dans le cadre de la relation commerciale avec Romand Web.</p><ul><li>Aucune donnée n\'est vendue ou transmise à des tiers</li><li>Les données sont conservées pour une durée maximale de 3 ans</li><li>Vous disposez d\'un droit d\'accès, de rectification et de suppression</li></ul><p>Pour exercer vos droits, contactez-nous à : <a href="mailto:info@romand-web.com" style="color:var(--blue);text-decoration:none;">info@romand-web.com</a></p>',
+        'ml-s6h':'6. Cookies',
+        'ml-s6c':'Le site romand-web.com n\'utilise pas de cookies de suivi ou de profilage. Les seuls cookies potentiellement déposés sont ceux liés au service hCaptcha (protection anti-spam du formulaire de contact), nécessaires au bon fonctionnement du site.',
+        'ml-s7h':'7. Conditions commerciales',
+        'ml-s7t1':'Validité des devis',
+        'ml-s7p1':'Tout devis émis par Romand Web est valable <strong>7 jours calendaires</strong> à compter de sa date d\'émission. Passé ce délai, Romand Web se réserve le droit de réviser les tarifs proposés.',
+        'ml-s7t2':'Acceptation et démarrage de la prestation',
+        'ml-s7p2':'L\'acceptation du devis par le client vaut bon de commande ferme et engage les deux parties. Dès acceptation, le client s\'engage à verser <strong>l\'intégralité du montant convenu</strong> selon les modalités de paiement précisées dans le devis (acompte ou paiement complet selon la formule choisie).',
+        'ml-s7t3':'Conditions d\'annulation',
+        'ml-s7p3':'En cas d\'annulation par le client <strong>après acceptation du devis</strong>, une indemnité forfaitaire correspondant à <strong>50 % du montant total TTC</strong> du devis sera due à Romand Web, à titre de compensation pour les travaux engagés et le manque à gagner. Cette indemnité est exigible dans un délai de 30 jours suivant la notification d\'annulation.',
+        'ml-s7p4':'En cas de non-paiement, Romand Web se réserve le droit de suspendre la prestation, de retirer le site en ligne et d\'engager toute procédure de recouvrement nécessaire conformément au droit suisse.',
+        'ml-s8h':'8. Droit applicable et juridiction compétente',
+        'ml-s8c':'Les présentes mentions légales et conditions générales sont soumises au <strong>droit suisse</strong>. En cas de litige, et à défaut de règlement amiable, les tribunaux suisses seront seuls compétents.',
+        'ml-update':'Document mis à jour en avril 2026 — Romand Web, Romandie, Suisse',
+        'ml-fcopy':'© 2026 Romand Web — Romandie, Suisse',
+        'ml-fback':'← Retour au site'
+      },
+      en: {
+        'ml-back':'‹ Back',
+        'ml-eyebrow':'Legal information','ml-h1':'Legal Notice',
+        'ml-date':'Last updated: April 2026',
+        'ml-s1h':'1. Website publisher',
+        'ml-s1c':'<p>The website <strong>romand-web.com</strong> is published by <strong>Romand Web</strong>, a sole trader established in French-speaking Switzerland.</p><ul><li>Legal form: sole trader</li><li>Region: Romandie, Switzerland</li><li>Email: <a href="mailto:info@romand-web.com" style="color:var(--blue);text-decoration:none;">info@romand-web.com</a></li><li>Phone: <a href="tel:+41765060676" style="color:var(--blue);text-decoration:none;">+41 76 506 06 76</a></li></ul>',
+        'ml-s2h':'2. Hosting',
+        'ml-s2c':'This website is hosted by <strong>GitHub Pages</strong>, a service of GitHub, Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, United States.',
+        'ml-s3h':'3. Intellectual property',
+        'ml-s3c':'<p>All elements of the romand-web.com website (texts, graphics, logos, icons, images, animations) are the exclusive property of Romand Web and are protected by Swiss and international intellectual property laws.</p><p>Any reproduction, representation, modification, publication or adaptation of any part of the website\'s content is prohibited without prior written authorisation from Romand Web.</p>',
+        'ml-s4h':'4. Limitation of liability',
+        'ml-s4c':'<p>Romand Web strives to ensure the accuracy and currency of the information published on this website. However, Romand Web cannot guarantee the accuracy, completeness or relevance of the information made available.</p><p>Romand Web disclaims all liability for any damage resulting from a fraudulent third-party intrusion that leads to the modification of information published on the website.</p>',
+        'ml-s5h':'5. Personal data protection',
+        'ml-s5c':'<p>In accordance with the Swiss Federal Act on Data Protection (FADP), personal data collected via the contact form (name, email, phone) is used exclusively in the context of the commercial relationship with Romand Web.</p><ul><li>No data is sold or transmitted to third parties</li><li>Data is retained for a maximum of 3 years</li><li>You have the right to access, rectify and delete your data</li></ul><p>To exercise your rights, contact us at: <a href="mailto:info@romand-web.com" style="color:var(--blue);text-decoration:none;">info@romand-web.com</a></p>',
+        'ml-s6h':'6. Cookies',
+        'ml-s6c':'The romand-web.com website does not use tracking or profiling cookies. The only cookies potentially set are those related to the hCaptcha service (anti-spam protection for the contact form), which are necessary for the proper functioning of the website.',
+        'ml-s7h':'7. Commercial terms',
+        'ml-s7t1':'Quote validity',
+        'ml-s7p1':'Any quote issued by Romand Web is valid for <strong>7 calendar days</strong> from its issue date. After this period, Romand Web reserves the right to revise the quoted prices.',
+        'ml-s7t2':'Acceptance and commencement of service',
+        'ml-s7p2':'The client\'s acceptance of a quote constitutes a firm purchase order binding both parties. Upon acceptance, the client agrees to pay <strong>the full agreed amount</strong> according to the payment terms specified in the quote (deposit or full payment depending on the chosen package).',
+        'ml-s7t3':'Cancellation conditions',
+        'ml-s7p3':'In the event of cancellation by the client <strong>after acceptance of the quote</strong>, a flat-rate compensation equal to <strong>50% of the total amount (VAT included)</strong> of the quote will be owed to Romand Web, as compensation for work undertaken and loss of earnings. This amount is payable within 30 days of the cancellation notice.',
+        'ml-s7p4':'In the event of non-payment, Romand Web reserves the right to suspend the service, take the website offline and initiate any recovery proceedings necessary under Swiss law.',
+        'ml-s8h':'8. Applicable law and jurisdiction',
+        'ml-s8c':'These legal notices and general terms are governed by <strong>Swiss law</strong>. In the event of a dispute, and in the absence of an amicable resolution, Swiss courts shall have exclusive jurisdiction.',
+        'ml-update':'Document updated April 2026 — Romand Web, French-speaking Switzerland',
+        'ml-fcopy':'© 2026 Romand Web — French-speaking Switzerland',
+        'ml-fback':'← Back to website'
+      }
+    };
+
+    function setLang(lang) {
+      document.documentElement.lang = lang === 'en' ? 'en' : 'fr';
+      localStorage.setItem('rw-lang', lang);
+      document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      const dict = T[lang];
+      Object.keys(dict).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = dict[id];
+      });
+    }
+    const savedLang = localStorage.getItem('rw-lang') || 'fr';
+    if (savedLang === 'en') setLang('en');
+  </script>
+</body>
+</html>

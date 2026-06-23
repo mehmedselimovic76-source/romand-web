@@ -1,0 +1,47 @@
+# Romand Web
+
+> Agence web suisse spécialisée dans la création de sites internet rapides et abordables pour les PME de Suisse romande, et dans le développement d'applications mobiles de réservation (iOS & Android) pour les salons de coiffure, barbershops et instituts de beauté.
+
+Romand Web est basée en Suisse romande et intervient à Genève, Lausanne, Fribourg, Neuchâtel, Sion, Yverdon-les-Bains, Bulle, Morges, Nyon, Sierre, Delémont et La Chaux-de-Fonds. Devis gratuit, prix transparent, livraison rapide.
+
+- Site web : https://romand-web.com
+- Email : info@romand-web.com
+- Téléphone : +41 76 506 06 76
+- Langue : français (fr-CH)
+- Paiement accepté : virement bancaire, TWINT, PayPal
+- Horaires : lundi à vendredi, 08:00–18:30
+
+## Création de sites internet (PME)
+
+- [Pack Starter — CHF 299](https://romand-web.com/pack-starter.html) : site vitrine 1 page responsive, formulaire de contact, hébergement gratuit, livraison en 7 jours.
+- [Pack Business — CHF 599](https://romand-web.com/pack-business.html) : site multi-pages (3 à 5 pages), SEO local Romandie, Google Maps intégré, livraison en 10 jours.
+- [Pack Premium — CHF 999](https://romand-web.com/pack-premium.html) : boutique e-commerce, paiement en ligne sécurisé, SEO avancé, formation incluse, livraison en 14 jours.
+- [Tous les tarifs](https://romand-web.com/tarifs.html)
+
+## Application mobile de réservation (salons, barbershops, instituts)
+
+- [Application iOS & Android](https://romand-web.com/app-booking.html) : app de réservation sur mesure pour barbershops, coiffeurs, instituts de beauté, ongleries, spas et tatoueurs.
+  - Offre Solo Pro : CHF 1'990 (paiement unique) + CHF 290/an de maintenance.
+  - Offre Signature : sur devis, pour chaînes et franchises multi-salons.
+  - Avantage clé : **0 % de commission** sur les réservations (contre 15–20 % à vie pour les apps concurrentes type Treatwell, Fresha, Planity).
+  - Fonctions : réservation 24h/24, programme de fidélité, paiement et acompte en ligne, notifications push, tableau de bord gérant.
+
+## Pages par ville
+
+- [Genève](https://romand-web.com/geneve.html)
+- [Lausanne](https://romand-web.com/lausanne.html)
+- [Fribourg](https://romand-web.com/fribourg.html)
+- [Neuchâtel](https://romand-web.com/neuchatel.html)
+- [Sion](https://romand-web.com/sion.html)
+- [Yverdon-les-Bains](https://romand-web.com/yverdon.html)
+- [Bulle](https://romand-web.com/bulle.html)
+- [Morges](https://romand-web.com/morges.html)
+- [Nyon](https://romand-web.com/nyon.html)
+- [Sierre](https://romand-web.com/sierre.html)
+- [Delémont](https://romand-web.com/delemont.html)
+- [La Chaux-de-Fonds](https://romand-web.com/la-chaux-de-fonds.html)
+
+## Contact & devis
+
+- [Réserver un rendez-vous](https://romand-web.com/rdv.html)
+- [Demander un devis gratuit](https://romand-web.com/#contact) — réponse sous 24h ouvrables.

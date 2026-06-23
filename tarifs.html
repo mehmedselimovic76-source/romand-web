@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TVF29FFT');</script>
+  <!-- End Google Tag Manager -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tarifs – Romand Web | Sites Internet pour PME de Romandie</title>
+  <meta name="description" content="Découvrez nos forfaits web clairs et transparents. Site vitrine dès CHF 299, pack SEO à CHF 599, boutique en ligne à CHF 999. Devis gratuit sous 24h." />
+  <link rel="canonical" href="https://romand-web.com/tarifs.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://romand-web.com/tarifs.html" />
+  <meta property="og:title" content="Tarifs – Romand Web" />
+  <meta property="og:description" content="Forfaits web transparents pour PME de Romandie. Dès CHF 299." />
+  <meta property="og:image" content="https://romand-web.com/og-image.jpg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Création de site internet – Romand Web",
+    "provider": { "@type": "ProfessionalService", "name": "Romand Web", "url": "https://romand-web.com" },
+    "offers": [
+      { "@type": "Offer", "name": "Starter", "price": "299", "priceCurrency": "CHF" },
+      { "@type": "Offer", "name": "Business", "price": "599", "priceCurrency": "CHF" },
+      { "@type": "Offer", "name": "Premium", "price": "999", "priceCurrency": "CHF" }
+    ]
+  }
+  </script>
+
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #1d1d1f;
+      --gray: #6e6e73;
+      --light-gray: #f5f5f7;
+      --blue: #0071e3;
+      --blue-hover: #0077ed;
+      --white: #ffffff;
+      --divider: rgba(0,0,0,0.08);
+    }
+    html { scroll-behavior: smooth; }
+    body { opacity: 0; transition: opacity 0.4s ease; }
+    body.loaded { opacity: 1; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--black);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAVBAR */
+    @keyframes logoSpin {
+      0%   { transform: rotate(0deg) scale(1); }
+      25%  { transform: rotate(90deg) scale(1.15); }
+      50%  { transform: rotate(180deg) scale(1); }
+      75%  { transform: rotate(270deg) scale(1.15); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+    @keyframes logoPulse {
+      0%, 100% { opacity: 1; filter: drop-shadow(0 0 0px var(--blue)); }
+      50%       { opacity: 0.85; filter: drop-shadow(0 0 6px var(--blue)); }
+    }
+    nav {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--divider);
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 22px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--black);
+      letter-spacing: -0.3px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    nav .logo-icon {
+      color: var(--blue);
+      font-size: 1.5rem;
+      display: inline-block;
+      animation: logoSpin 6s cubic-bezier(0.4,0,0.2,1) infinite, logoPulse 3s ease-in-out infinite;
+      transform-origin: center;
+    }
+    nav .logo:hover .logo-icon {
+      animation: logoSpin 1s cubic-bezier(0.4,0,0.2,1) infinite, logoPulse 1s ease-in-out infinite;
+    }
+    nav .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    nav .nav-links a {
+      text-decoration: none;
+      color: var(--black);
+      font-size: 0.9rem;
+      font-weight: 400;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    nav .nav-links a:hover { opacity: 1; }
+    nav .nav-links a.active { font-weight: 600; opacity: 1; color: var(--blue); }
+    nav .nav-cta {
+      color: var(--blue) !important;
+      opacity: 1 !important;
+      font-weight: 500 !important;
+    }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--black); margin: 5px 0; border-radius: 2px; transition: 0.3s; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 52px; left: 0; right: 0; background: rgba(255,255,255,0.97); padding: 16px 22px; border-bottom: 1px solid var(--divider); gap: 16px; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: block; }
+    }
+    .lang-btn { background:none; border:1.5px solid var(--divider); border-radius:8px; padding:4px 11px; font-size:.78rem; font-weight:700; color:var(--gray); cursor:pointer; transition:border-color .2s,color .2s,background .2s; font-family:inherit; letter-spacing:.6px; margin-left:8px; }
+    .lang-btn:hover { border-color:var(--blue); color:var(--blue); }
+    .lang-btn.active { border-color:var(--blue); color:var(--blue); background:rgba(0,113,227,0.07); }
+
+    /* HERO */
+    @keyframes heroBgSpin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to   { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    .hero {
+      background: var(--light-gray);
+      text-align: center;
+      padding: 80px 20px 90px;
+      border-bottom: 1px solid var(--divider);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '◈';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) rotate(0deg);
+      font-size: 52vw;
+      color: rgba(0,113,227,0.10);
+      animation: heroBgSpin 20s linear infinite;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+      z-index: 0;
+    }
+    .hero > * { position: relative; z-index: 1; }
+    .hero .eyebrow {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: var(--blue);
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-size: 4.4rem;
+      font-weight: 800;
+      letter-spacing: -3px;
+      line-height: 1.02;
+      color: var(--black);
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--gray);
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.8rem; letter-spacing: -1.5px; }
+    }
+
+    /* TOGGLE ANNUEL/MENSUEL */
+    .billing-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 48px 0 0;
+    }
+    .billing-toggle span {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--gray);
+      transition: color 0.2s;
+    }
+    .billing-toggle span.active { color: var(--black); }
+    .toggle-switch {
+      width: 48px;
+      height: 28px;
+      background: var(--blue);
+      border-radius: 980px;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      background: white;
+      border-radius: 50%;
+      top: 3px;
+      left: 3px;
+      transition: transform 0.3s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+    .toggle-switch.mensuel::after { transform: translateX(20px); }
+    .badge-promo {
+      background: #34c759;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 980px;
+    }
+
+    /* PRICING SECTION */
+    .pricing-section {
+      padding: 70px 20px 90px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      align-items: start;
+      margin-top: 48px;
+    }
+    @media (max-width: 900px) {
+      .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
+    }
+
+    /* CARDS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .plan-card {
+      background: var(--light-gray);
+      border-radius: 20px;
+      padding: 36px 28px 32px;
+      position: relative;
+      opacity: 0;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .plan-card.visible { animation: fadeUp 0.6s ease forwards; }
+    .plan-card:nth-child(1).visible { animation-delay: 0s; }
+    .plan-card:nth-child(2).visible { animation-delay: 0.1s; }
+    .plan-card:nth-child(3).visible { animation-delay: 0.2s; }
+    .plan-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    }
+    .plan-card.featured {
+      background: var(--black);
+      color: white;
+      transform: scale(1.02);
+    }
+    .plan-card.featured:hover {
+      transform: scale(1.02) translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+
+    .plan-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 980px;
+      margin-bottom: 20px;
+    }
+    .plan-card:not(.featured) .plan-badge { background: rgba(0,113,227,0.1); color: var(--blue); }
+    .plan-card.featured .plan-badge { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
+    .plan-badge.popular { background: #0071e3; color: white; }
+
+    .plan-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+    .plan-card.featured .plan-name { color: white; }
+
+    .plan-desc {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .plan-card.featured .plan-desc { color: rgba(255,255,255,0.55); }
+
+    .plan-price {
+      margin-bottom: 6px;
+    }
+    .plan-price .currency {
+      font-size: 1.4rem;
+      font-weight: 600;
+      vertical-align: top;
+      margin-top: 8px;
+      display: inline-block;
+    }
+    .plan-price .amount {
+      font-size: 4rem;
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+    .plan-card.featured .plan-price .amount { color: white; }
+    .plan-card.featured .plan-price .currency { color: rgba(255,255,255,0.8); }
+
+    .plan-note {
+      font-size: 0.82rem;
+      color: var(--gray);
+      margin-bottom: 28px;
+    }
+    .plan-card.featured .plan-note { color: rgba(255,255,255,0.4); }
+
+    .plan-divider {
+      height: 1px;
+      background: var(--divider);
+      margin-bottom: 24px;
+    }
+    .plan-card.featured .plan-divider { background: rgba(255,255,255,0.1); }
+
+    .plan-features {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+    .plan-features li {
+      font-size: 0.9rem;
+      color: var(--black);
+      padding: 8px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      border-bottom: 1px solid var(--divider);
+    }
+    .plan-features li:last-child { border-bottom: none; }
+    .plan-card.featured .plan-features li { color: rgba(255,255,255,0.85); border-bottom-color: rgba(255,255,255,0.08); }
+    .plan-features li .check {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(0,113,227,0.12);
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .plan-card.featured .plan-features li .check {
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.8);
+    }
+    .plan-features li .feat-text strong { font-weight: 600; }
+
+    .plan-cta {
+      display: block;
+      text-align: center;
+      padding: 14px 24px;
+      border-radius: 980px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      letter-spacing: 0.1px;
+    }
+    .plan-card:not(.featured) .plan-cta {
+      background: var(--blue);
+      color: white;
+    }
+    .plan-card:not(.featured) .plan-cta:hover { background: var(--blue-hover); }
+    .plan-card.featured .plan-cta {
+      background: white;
+      color: var(--black);
+    }
+    .plan-card.featured .plan-cta:hover { background: rgba(255,255,255,0.9); }
+
+    /* COMPARISON TABLE */
+    .compare-section {
+      padding: 0 20px 90px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .compare-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 40px;
+      color: var(--black);
+    }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    }
+    .compare-table th {
+      padding: 18px 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-align: center;
+      background: var(--light-gray);
+      color: var(--black);
+    }
+    .compare-table th:first-child { text-align: left; }
+    .compare-table th.highlight { background: var(--black); color: white; }
+    .compare-table td {
+      padding: 14px 20px;
+      font-size: 0.88rem;
+      color: var(--black);
+      border-bottom: 1px solid var(--divider);
+      text-align: center;
+    }
+    .compare-table td:first-child { text-align: left; font-weight: 500; color: var(--gray); }
+    .compare-table td.highlight { background: rgba(0,0,0,0.02); }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table .yes { color: #34c759; font-size: 1.1rem; }
+    .compare-table .no { color: #aeaeb2; font-size: 1.1rem; }
+    @media (max-width: 640px) {
+      .compare-section { overflow-x: auto; }
+      .compare-table { min-width: 520px; }
+    }
+
+    /* FAQ */
+    .faq-section {
+      padding: 0 20px 90px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .faq-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 40px;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--divider);
+    }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 0;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--black);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-family: inherit;
+    }
+    .faq-q .faq-icon {
+      font-size: 1.4rem;
+      color: var(--blue);
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.7;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+    }
+    .faq-item.open .faq-a { max-height: 300px; padding-bottom: 20px; }
+
+    /* CTA BOTTOM */
+    .cta-section {
+      background: var(--black);
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .cta-section .eyebrow {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .cta-section h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      color: white;
+      margin-bottom: 14px;
+      line-height: 1.1;
+    }
+    .cta-section p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 36px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: white;
+      color: var(--black);
+      padding: 16px 40px;
+      border-radius: 980px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .cta-btn:hover { background: rgba(255,255,255,0.9); transform: scale(1.02); }
+    @media (max-width: 768px) {
+      .cta-section h2 { font-size: 2rem; letter-spacing: -1px; }
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--light-gray);
+      border-top: 1px solid var(--divider);
+      padding: 28px 22px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--gray);
+    }
+    footer a { color: var(--gray); text-decoration: none; }
+    footer a:hover { color: var(--black); }
+  </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVF29FFT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- NAVBAR -->
+<nav>
+  <a href="index.html" class="logo">
+    <span class="logo-icon">◈</span>
+    Romand Web
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html" id="tn-home">Accueil</a>
+    <a href="index.html#services" id="tn-services">Services</a>
+    <a href="tarifs.html" class="active" id="tn-pricing">Tarifs</a>
+    <a href="index.html#contact" class="nav-cta" id="tn-contact">Devis gratuit</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:6px;">
+    <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="eyebrow" id="th-eyebrow">Tarifs transparents</p>
+  <h1 id="th-h1">Votre site.<br>Votre budget.</h1>
+  <p id="th-p">Pas de surprise. Pas d'abonnement caché. Un prix fixe, une livraison rapide.</p>
+</section>
+
+<!-- PRICING -->
+<div class="pricing-section">
+
+  <div class="pricing-grid" id="pricingGrid">
+
+    <!-- STARTER -->
+    <div class="plan-card" style="cursor:pointer;" onclick="smoothGo('pack-starter.html')">
+      <span class="plan-badge">Starter</span>
+      <p class="plan-name" id="ts-name">Site vitrine</p>
+      <p class="plan-desc" id="ts-desc">L'essentiel pour exister en ligne. Idéal pour les indépendants et petites entreprises.</p>
+      <div class="plan-price">
+        <span class="currency">CHF</span><span class="amount">299</span>
+      </div>
+      <p class="plan-note" id="ts-note">Paiement unique · domaine exclu</p>
+      <div class="plan-divider"></div>
+      <ul class="plan-features" id="ts-feat">
+        <li><span class="check">✓</span><span class="feat-text"><strong>1 page</strong> responsive (mobile + desktop)</span></li>
+        <li><span class="check">✓</span><span class="feat-text">Design professionnel sur mesure</span></li>
+        <li><span class="check">✓</span><span class="feat-text">Formulaire de contact</span></li>
+        <li><span class="check">✓</span><span class="feat-text">Mise en ligne incluse</span></li>
+        <li><span class="check">✓</span><span class="feat-text">Livraison en <strong>7 jours</strong></span></li>
+        <li><span class="check">✓</span><span class="feat-text">1 mois de support offert</span></li>
+        <li><span class="check" style="color:#34c759;">☁</span><span class="feat-text" style="color:#34c759;font-weight:600;">Hébergement GitHub 100% gratuit</span></li>
+      </ul>
+      <span class="plan-cta" id="ts-cta" style="display:block;text-align:center;padding:14px 24px;border-radius:980px;font-size:.95rem;font-weight:600;background:var(--blue);color:white;cursor:pointer;">Découvrir ce pack →</span>
+    </div>
+
+    <!-- BUSINESS (featured) -->
+    <div class="plan-card featured" style="cursor:pointer;" onclick="smoothGo('pack-business.html')">
+      <span class="plan-badge popular" id="tb-badge">⭐ Le plus populaire</span>
+      <p class="plan-name" id="tb-name">Business</p>
+      <p class="plan-desc" id="tb-desc">Site multi-pages avec SEO local. La solution complète pour attirer des clients en Romandie.</p>
+      <div class="plan-price">
+        <span class="currency">CHF</span><span class="amount">599</span>
+      </div>
+      <p class="plan-note" id="tb-note">Paiement unique · domaine exclu</p>
+      <div class="plan-divider"></div>
+      <ul class="plan-features" id="tb-feat">
+        <li><span class="check">✓</span><span class="feat-text"><strong>3 à 5 pages</strong> responsive</span></li>
+        <li><span class="check">✓</span><span class="feat-text">SEO local Romandie inclus</span></li>
+        <li><span class="check">✓</span><span class="feat-text">Google Maps intégré</span></li>
+        <li><span class="check">✓</span><span class="feat-text">Design personnalisé + animations</span></li>
+        <li><span class="check">✓</span><span class="feat-text">Formulaire de contact avancé</span></li>
+        <li><span class="check">✓</span><span class="feat-text">Livraison en <strong>10 jours</strong></span></li>
+        <li><span class="check">✓</span><span class="feat-text">3 mois de support offert</span></li>
+        <li><span class="check" style="color:#34c759;">☁</span><span class="feat-text" style="color:#34c759;font-weight:600;">Hébergement GitHub 100% gratuit</span></li>
+      </ul>
+      <span class="plan-cta" id="tb-cta" style="display:block;text-align:center;padding:14px 24px;border-radius:980px;font-size:.95rem;font-weight:600;background:white;color:var(--black);cursor:pointer;">Découvrir ce pack →</span>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="plan-card" style="cursor:pointer;" onclick="smoothGo('pack-premium.html')">
+      <span class="plan-badge">Premium</span>
+      <p class="plan-name" id="tp-name">E-commerce</p>
+      <p class="plan-desc" id="tp-desc">Boutique en ligne complète pour vendre vos produits ou services 24h/24 en Suisse.</p>
+      <div class="plan-price">
+        <span class="currency">CHF</span><span class="amount">999</span>
+      </div>
+      <p class="plan-note" id="tp-note">Paiement unique · domaine exclu</p>
+      <div class="plan-divider"></div>
+      <ul class="plan-features" id="tp-feat">
+        <li><span class="check">✓</span><span class="feat-text"><strong>Jusqu'à 10 pages</strong></span></li>
+        <li><span class="check">✓</span><span class="feat-text">Boutique en ligne (Shopify / WooCommerce)</span></li>
+        <li><span class="check">✓</span><span class="feat-text">Paiement en ligne sécurisé</span></li>
+        <li><span class="check">✓</span><span class="feat-text">SEO avancé + Google Shopping</span></li>
+        <li><span class="check">✓</span><span class="feat-text">Formation à l'utilisation incluse</span></li>
+        <li><span class="check">✓</span><span class="feat-text">Livraison en <strong>14 jours</strong></span></li>
+        <li><span class="check">✓</span><span class="feat-text">6 mois de support offert</span></li>
+        <li><span class="check" style="color:#ff9f0a;">⚠</span><span class="feat-text" style="color:#ff9f0a;font-size:.83rem;">Frais de plateforme mensuel à la charge du client</span></li>
+      </ul>
+      <span class="plan-cta" id="tp-cta" style="display:block;text-align:center;padding:14px 24px;border-radius:980px;font-size:.95rem;font-weight:600;background:var(--blue);color:white;cursor:pointer;">Découvrir ce pack →</span>
+    </div>
+
+  </div>
+
+  <p id="t-footnote" style="text-align:center;font-size:0.82rem;color:var(--gray);margin-top:24px;">
+    * L'achat du nom de domaine (~CHF 15/an) est exclu de tous les tarifs. Pour les packs Starter &amp; Business, l'hébergement GitHub est 100% gratuit. Pour le pack Premium (e-commerce), les frais de plateforme mensuel (Shopify/WooCommerce) sont à la charge du client.
+  </p>
+
+</div>
+
+<!-- COMPARISON TABLE -->
+<div class="compare-section">
+  <h2 class="compare-title" id="tc-title">Comparer les formules</h2>
+  <div style="overflow-x:auto;">
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th id="tc-hfeat">Fonctionnalité</th>
+        <th>Starter</th>
+        <th class="highlight">Business</th>
+        <th>Premium</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td id="tc-r1">Nombre de pages</td>
+        <td>1</td>
+        <td class="highlight">3–5</td>
+        <td id="tc-r1p">Jusqu'à 10</td>
+      </tr>
+      <tr>
+        <td id="tc-r2">Design responsive mobile</td>
+        <td><span class="yes">✓</span></td>
+        <td class="highlight"><span class="yes">✓</span></td>
+        <td><span class="yes">✓</span></td>
+      </tr>
+      <tr>
+        <td id="tc-r3">Formulaire de contact</td>
+        <td><span class="yes">✓</span></td>
+        <td class="highlight"><span class="yes">✓</span></td>
+        <td><span class="yes">✓</span></td>
+      </tr>
+      <tr>
+        <td id="tc-r4">SEO local Romandie</td>
+        <td><span class="no">–</span></td>
+        <td class="highlight"><span class="yes">✓</span></td>
+        <td><span class="yes">✓</span></td>
+      </tr>
+      <tr>
+        <td id="tc-r5">Google Maps intégré</td>
+        <td><span class="no">–</span></td>
+        <td class="highlight"><span class="yes">✓</span></td>
+        <td><span class="yes">✓</span></td>
+      </tr>
+      <tr>
+        <td id="tc-r6">Boutique en ligne</td>
+        <td><span class="no">–</span></td>
+        <td class="highlight"><span class="no">–</span></td>
+        <td><span class="yes">✓</span></td>
+      </tr>
+      <tr>
+        <td id="tc-r7">Paiement en ligne</td>
+        <td><span class="no">–</span></td>
+        <td class="highlight"><span class="no">–</span></td>
+        <td><span class="yes">✓</span></td>
+      </tr>
+      <tr>
+        <td id="tc-r8">Formation incluse</td>
+        <td><span class="no">–</span></td>
+        <td class="highlight"><span class="no">–</span></td>
+        <td><span class="yes">✓</span></td>
+      </tr>
+      <tr>
+        <td id="tc-r9">Délai de livraison</td>
+        <td id="tc-r9s">7 jours</td>
+        <td class="highlight" id="tc-r9b">10 jours</td>
+        <td id="tc-r9p">14 jours</td>
+      </tr>
+      <tr>
+        <td id="tc-r10">Support offert</td>
+        <td id="tc-r10s">1 mois</td>
+        <td class="highlight" id="tc-r10b">3 mois</td>
+        <td id="tc-r10p">6 mois</td>
+      </tr>
+      <tr>
+        <td id="tc-r11" style="font-weight:700;color:var(--black);">Prix</td>
+        <td style="font-weight:700;">CHF 299</td>
+        <td class="highlight" style="font-weight:700;">CHF 599</td>
+        <td style="font-weight:700;">CHF 999</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <h2 class="faq-title" id="tfq-title">Questions fréquentes</h2>
+
+  <div class="faq-item">
+    <button class="faq-q" id="tfq-1q">Qu'est-ce qui n'est pas inclus dans le tarif ? <span class="faq-icon">+</span></button>
+    <div class="faq-a" id="tfq-1a">Le nom de domaine (~CHF 15/an) est exclu de tous les tarifs. Pour les packs Starter et Business, l'hébergement est assuré via GitHub Pages — <strong>100% gratuit</strong>. Pour le pack Premium (e-commerce), les frais de plateforme mensuel Shopify (~CHF 29/mois) ou l'hébergement WooCommerce sont à la charge du client. Nous vous guidons dans ces démarches gratuitement.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" id="tfq-2q">Puis-je modifier mon site après livraison ? <span class="faq-icon">+</span></button>
+    <div class="faq-a" id="tfq-2a">Oui. Pendant la période de support incluse, les petites modifications sont gratuites. Au-delà, nous proposons des retouches à CHF 49/heure ou un forfait maintenance mensuel.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" id="tfq-3q">Comment se passe le paiement ? <span class="faq-icon">+</span></button>
+    <div class="faq-a" id="tfq-3a">50% à la commande pour lancer le projet, 50% à la livraison. Paiement par virement bancaire ou Twint. Aucune carte de crédit requise.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" id="tfq-4q">Vous déplacez-vous pour les réunions ? <span class="faq-icon">+</span></button>
+    <div class="faq-a" id="tfq-4a">Oui, déplacement possible sur toute la Romandie (Genève, Lausanne, Fribourg, Neuchâtel, Sion, et plus). La première consultation est toujours gratuite, en personne ou en visio.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" id="tfq-5q">Que se passe-t-il si je ne suis pas satisfait ? <span class="faq-icon">+</span></button>
+    <div class="faq-a" id="tfq-5a">Nous travaillons avec vous jusqu'à ce que le résultat soit à votre goût. Les révisions sont incluses jusqu'à validation finale. Votre satisfaction est notre priorité.</div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <p class="eyebrow" id="tcs-eyebrow">Prêt à vous lancer ?</p>
+  <h2 id="tcs-h2">Demandez votre<br>devis gratuit</h2>
+  <p id="tcs-p">Réponse sous 24h ouvrables · Sans engagement</p>
+  <a href="index.html#contact" class="cta-btn" id="tcs-btn">Obtenir mon devis →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p id="tft">
+    © 2026 Romand Web ·
+    <a href="index.html">Accueil</a> ·
+    <a href="mentions-legales.html">Mentions légales</a> ·
+    <a href="tel:+41765060676">+41 76 506 06 76</a> ·
+    <a href="mailto:info@romand-web.com">info@romand-web.com</a>
+  </p>
+</footer>
+
+<script>
+  // Fade-in on load
+  window.addEventListener('load', () => document.body.classList.add('loaded'));
+
+  // Smooth navigation
+  function smoothGo(href) {
+    document.body.style.transition = 'opacity 0.3s ease';
+    document.body.style.opacity = '0';
+    setTimeout(() => window.location.href = href, 300);
+  }
+
+  // Hamburger
+  document.getElementById('hamburger').addEventListener('click', function() {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  // Scroll animation on pricing cards
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.plan-card').forEach(c => observer.observe(c));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const item = this.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // ── TRADUCTION FR / EN ──
+  const T = {
+    fr: {
+      'tn-home':'Accueil','tn-services':'Services','tn-pricing':'Tarifs','tn-contact':'Devis gratuit',
+      'th-eyebrow':'Tarifs transparents','th-h1':'Votre site.<br>Votre budget.',
+      'th-p':'Pas de surprise. Pas d\'abonnement caché. Un prix fixe, une livraison rapide.',
+      'ts-name':'Site vitrine','ts-desc':'L\'essentiel pour exister en ligne. Idéal pour les indépendants et petites entreprises.',
+      'ts-note':'Paiement unique · domaine exclu',
+      'ts-feat':'<li><span class="check">✓</span><span class="feat-text"><strong>1 page</strong> responsive (mobile + desktop)</span></li><li><span class="check">✓</span><span class="feat-text">Design professionnel sur mesure</span></li><li><span class="check">✓</span><span class="feat-text">Formulaire de contact</span></li><li><span class="check">✓</span><span class="feat-text">Mise en ligne incluse</span></li><li><span class="check">✓</span><span class="feat-text">Livraison en <strong>7 jours</strong></span></li><li><span class="check">✓</span><span class="feat-text">1 mois de support offert</span></li><li><span class="check" style="color:#34c759;">☁</span><span class="feat-text" style="color:#34c759;font-weight:600;">Hébergement GitHub 100% gratuit</span></li>',
+      'ts-cta':'Découvrir ce pack →',
+      'tb-badge':'⭐ Le plus populaire','tb-name':'Business',
+      'tb-desc':'Site multi-pages avec SEO local. La solution complète pour attirer des clients en Romandie.',
+      'tb-note':'Paiement unique · domaine exclu',
+      'tb-feat':'<li><span class="check">✓</span><span class="feat-text"><strong>3 à 5 pages</strong> responsive</span></li><li><span class="check">✓</span><span class="feat-text">SEO local Romandie inclus</span></li><li><span class="check">✓</span><span class="feat-text">Google Maps intégré</span></li><li><span class="check">✓</span><span class="feat-text">Design personnalisé + animations</span></li><li><span class="check">✓</span><span class="feat-text">Formulaire de contact avancé</span></li><li><span class="check">✓</span><span class="feat-text">Livraison en <strong>10 jours</strong></span></li><li><span class="check">✓</span><span class="feat-text">3 mois de support offert</span></li><li><span class="check" style="color:#34c759;">☁</span><span class="feat-text" style="color:#34c759;font-weight:600;">Hébergement GitHub 100% gratuit</span></li>',
+      'tb-cta':'Découvrir ce pack →',
+      'tp-name':'E-commerce','tp-desc':'Boutique en ligne complète pour vendre vos produits ou services 24h/24 en Suisse.',
+      'tp-note':'Paiement unique · domaine exclu',
+      'tp-feat':'<li><span class="check">✓</span><span class="feat-text"><strong>Jusqu\'à 10 pages</strong></span></li><li><span class="check">✓</span><span class="feat-text">Boutique en ligne (Shopify / WooCommerce)</span></li><li><span class="check">✓</span><span class="feat-text">Paiement en ligne sécurisé</span></li><li><span class="check">✓</span><span class="feat-text">SEO avancé + Google Shopping</span></li><li><span class="check">✓</span><span class="feat-text">Formation à l\'utilisation incluse</span></li><li><span class="check">✓</span><span class="feat-text">Livraison en <strong>14 jours</strong></span></li><li><span class="check">✓</span><span class="feat-text">6 mois de support offert</span></li><li><span class="check" style="color:#ff9f0a;">⚠</span><span class="feat-text" style="color:#ff9f0a;font-size:.83rem;">Frais de plateforme mensuel à la charge du client</span></li>',
+      'tp-cta':'Découvrir ce pack →',
+      't-footnote':'* L\'achat du nom de domaine (~CHF 15/an) est exclu de tous les tarifs. Pour les packs Starter &amp; Business, l\'hébergement GitHub est 100% gratuit. Pour le pack Premium (e-commerce), les frais de plateforme mensuel (Shopify/WooCommerce) sont à la charge du client.',
+      'tc-title':'Comparer les formules','tc-hfeat':'Fonctionnalité',
+      'tc-r1':'Nombre de pages','tc-r1p':'Jusqu\'à 10',
+      'tc-r2':'Design responsive mobile','tc-r3':'Formulaire de contact',
+      'tc-r4':'SEO local Romandie','tc-r5':'Google Maps intégré',
+      'tc-r6':'Boutique en ligne','tc-r7':'Paiement en ligne','tc-r8':'Formation incluse',
+      'tc-r9':'Délai de livraison','tc-r9s':'7 jours','tc-r9b':'10 jours','tc-r9p':'14 jours',
+      'tc-r10':'Support offert','tc-r10s':'1 mois','tc-r10b':'3 mois','tc-r10p':'6 mois',
+      'tc-r11':'Prix',
+      'tfq-title':'Questions fréquentes',
+      'tfq-1q':'Qu\'est-ce qui n\'est pas inclus dans le tarif ? <span class="faq-icon">+</span>',
+      'tfq-1a':'Le nom de domaine (~CHF 15/an) est exclu de tous les tarifs. Pour les packs Starter et Business, l\'hébergement est assuré via GitHub Pages — <strong>100% gratuit</strong>. Pour le pack Premium (e-commerce), les frais de plateforme mensuel Shopify (~CHF 29/mois) ou l\'hébergement WooCommerce sont à la charge du client. Nous vous guidons dans ces démarches gratuitement.',
+      'tfq-2q':'Puis-je modifier mon site après livraison ? <span class="faq-icon">+</span>',
+      'tfq-2a':'Oui. Pendant la période de support incluse, les petites modifications sont gratuites. Au-delà, nous proposons des retouches à CHF 49/heure ou un forfait maintenance mensuel.',
+      'tfq-3q':'Comment se passe le paiement ? <span class="faq-icon">+</span>',
+      'tfq-3a':'50% à la commande pour lancer le projet, 50% à la livraison. Paiement par virement bancaire ou Twint. Aucune carte de crédit requise.',
+      'tfq-4q':'Vous déplacez-vous pour les réunions ? <span class="faq-icon">+</span>',
+      'tfq-4a':'Oui, déplacement possible sur toute la Romandie (Genève, Lausanne, Fribourg, Neuchâtel, Sion, et plus). La première consultation est toujours gratuite, en personne ou en visio.',
+      'tfq-5q':'Que se passe-t-il si je ne suis pas satisfait ? <span class="faq-icon">+</span>',
+      'tfq-5a':'Nous travaillons avec vous jusqu\'à ce que le résultat soit à votre goût. Les révisions sont incluses jusqu\'à validation finale. Votre satisfaction est notre priorité.',
+      'tcs-eyebrow':'Prêt à vous lancer ?','tcs-h2':'Demandez votre<br>devis gratuit',
+      'tcs-p':'Réponse sous 24h ouvrables · Sans engagement','tcs-btn':'Obtenir mon devis →',
+      'tft':'© 2026 Romand Web · <a href="index.html">Accueil</a> · <a href="mentions-legales.html">Mentions légales</a> · <a href="tel:+41765060676">+41 76 506 06 76</a> · <a href="mailto:info@romand-web.com">info@romand-web.com</a>'
+    },
+    en: {
+      'tn-home':'Home','tn-services':'Services','tn-pricing':'Pricing','tn-contact':'Free quote',
+      'th-eyebrow':'Transparent pricing','th-h1':'Your website.<br>Your budget.',
+      'th-p':'No surprises. No hidden subscription. One fixed price, fast delivery.',
+      'ts-name':'Showcase website','ts-desc':'Everything you need to exist online. Ideal for freelancers and small businesses.',
+      'ts-note':'One-time payment · domain excluded',
+      'ts-feat':'<li><span class="check">✓</span><span class="feat-text"><strong>1 page</strong> responsive (mobile + desktop)</span></li><li><span class="check">✓</span><span class="feat-text">Custom professional design</span></li><li><span class="check">✓</span><span class="feat-text">Contact form</span></li><li><span class="check">✓</span><span class="feat-text">Hosting &amp; deployment included</span></li><li><span class="check">✓</span><span class="feat-text">Delivered in <strong>7 days</strong></span></li><li><span class="check">✓</span><span class="feat-text">1 month support included</span></li><li><span class="check" style="color:#34c759;">☁</span><span class="feat-text" style="color:#34c759;font-weight:600;">GitHub hosting 100% free</span></li>',
+      'ts-cta':'Discover this pack →',
+      'tb-badge':'⭐ Most popular','tb-name':'Business',
+      'tb-desc':'Multi-page website with local SEO. The complete solution to attract clients in Switzerland.',
+      'tb-note':'One-time payment · domain excluded',
+      'tb-feat':'<li><span class="check">✓</span><span class="feat-text"><strong>3 to 5 pages</strong> responsive</span></li><li><span class="check">✓</span><span class="feat-text">Local SEO Switzerland included</span></li><li><span class="check">✓</span><span class="feat-text">Google Maps integrated</span></li><li><span class="check">✓</span><span class="feat-text">Custom design + animations</span></li><li><span class="check">✓</span><span class="feat-text">Advanced contact form</span></li><li><span class="check">✓</span><span class="feat-text">Delivered in <strong>10 days</strong></span></li><li><span class="check">✓</span><span class="feat-text">3 months support included</span></li><li><span class="check" style="color:#34c759;">☁</span><span class="feat-text" style="color:#34c759;font-weight:600;">GitHub hosting 100% free</span></li>',
+      'tb-cta':'Discover this pack →',
+      'tp-name':'E-commerce','tp-desc':'Full online store to sell your products or services 24/7 in Switzerland.',
+      'tp-note':'One-time payment · domain excluded',
+      'tp-feat':'<li><span class="check">✓</span><span class="feat-text"><strong>Up to 10 pages</strong></span></li><li><span class="check">✓</span><span class="feat-text">Online store (Shopify / WooCommerce)</span></li><li><span class="check">✓</span><span class="feat-text">Secure online payment</span></li><li><span class="check">✓</span><span class="feat-text">Advanced SEO + Google Shopping</span></li><li><span class="check">✓</span><span class="feat-text">Training included</span></li><li><span class="check">✓</span><span class="feat-text">Delivered in <strong>14 days</strong></span></li><li><span class="check">✓</span><span class="feat-text">6 months support included</span></li><li><span class="check" style="color:#ff9f0a;">⚠</span><span class="feat-text" style="color:#ff9f0a;font-size:.83rem;">Monthly platform fees at client\'s expense</span></li>',
+      'tp-cta':'Discover this pack →',
+      't-footnote':'* Domain name (~CHF 15/yr) is excluded from all packages. For Starter &amp; Business, GitHub hosting is 100% free. For Premium (e-commerce), monthly platform fees (Shopify/WooCommerce) are at the client\'s expense.',
+      'tc-title':'Compare plans','tc-hfeat':'Feature',
+      'tc-r1':'Number of pages','tc-r1p':'Up to 10',
+      'tc-r2':'Mobile responsive design','tc-r3':'Contact form',
+      'tc-r4':'Local SEO Switzerland','tc-r5':'Google Maps integrated',
+      'tc-r6':'Online store','tc-r7':'Online payment','tc-r8':'Training included',
+      'tc-r9':'Delivery time','tc-r9s':'7 days','tc-r9b':'10 days','tc-r9p':'14 days',
+      'tc-r10':'Included support','tc-r10s':'1 month','tc-r10b':'3 months','tc-r10p':'6 months',
+      'tc-r11':'Price',
+      'tfq-title':'Frequently asked questions',
+      'tfq-1q':'What is not included in the price? <span class="faq-icon">+</span>',
+      'tfq-1a':'The domain name (~CHF 15/yr) is excluded from all packages. For Starter and Business, hosting is provided via GitHub Pages — <strong>100% free</strong>. For the Premium pack (e-commerce), monthly Shopify fees (~CHF 29/month) or WooCommerce hosting are at the client\'s expense. We guide you through these steps free of charge.',
+      'tfq-2q':'Can I update my website after delivery? <span class="faq-icon">+</span>',
+      'tfq-2a':'Yes. During the included support period, small changes are free. Beyond that, we offer updates at CHF 49/hour or a monthly maintenance plan.',
+      'tfq-3q':'How does payment work? <span class="faq-icon">+</span>',
+      'tfq-3a':'50% upfront to start the project, 50% on delivery. Payment by bank transfer or Twint. No credit card required.',
+      'tfq-4q':'Do you travel for meetings? <span class="faq-icon">+</span>',
+      'tfq-4a':'Yes, we travel anywhere in French-speaking Switzerland (Geneva, Lausanne, Fribourg, Neuchâtel, Sion, and more). The first consultation is always free, in person or by video call.',
+      'tfq-5q':'What if I\'m not satisfied? <span class="faq-icon">+</span>',
+      'tfq-5a':'We work with you until the result is exactly what you want. Revisions are included until final approval. Your satisfaction is our priority.',
+      'tcs-eyebrow':'Ready to get started?','tcs-h2':'Request your<br>free quote',
+      'tcs-p':'Reply within 24 business hours · No commitment','tcs-btn':'Get my quote →',
+      'tft':'© 2026 Romand Web · <a href="index.html">Home</a> · <a href="mentions-legales.html">Legal Notice</a> · <a href="tel:+41765060676">+41 76 506 06 76</a> · <a href="mailto:info@romand-web.com">info@romand-web.com</a>'
+    }
+  };
+
+  function setLang(lang) {
+    document.documentElement.lang = lang === 'en' ? 'en' : 'fr';
+    localStorage.setItem('rw-lang', lang);
+    document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    const dict = T[lang];
+    Object.keys(dict).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = dict[id];
+    });
+  }
+  const savedLang = localStorage.getItem('rw-lang') || 'fr';
+  if (savedLang === 'en') setLang('en');
+</script>
+</body>
+</html>
